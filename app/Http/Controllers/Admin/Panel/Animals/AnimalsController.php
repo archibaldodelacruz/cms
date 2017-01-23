@@ -46,7 +46,7 @@ class AnimalsController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(30);
 
-        return view('admin.panel.animals.index', compact('animals', 'request', 'total'));
+        return view('panel.animals.index', compact('animals', 'request', 'total'));
     }
 
     /**
@@ -63,7 +63,7 @@ class AnimalsController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(25);
 
-        return view('admin.panel.animals.deleted', compact('animals', 'request', 'total'));
+        return view('panel.animals.deleted', compact('animals', 'request', 'total'));
     }
 
     /**
@@ -78,7 +78,7 @@ class AnimalsController extends BaseAdminController
             ->permission()
             ->findOrFail($id);
 
-        return view('admin.panel.animals.show', compact('animal'));
+        return view('panel.animals.show', compact('animal'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AnimalsController extends BaseAdminController
     {
         $this->authorize('create', Animal::class);
 
-        return view('admin.panel.animals.create');
+        return view('panel.animals.create');
     }
 
     /**
@@ -120,7 +120,7 @@ class AnimalsController extends BaseAdminController
 
         $this->authorize('update', $animal);
 
-        return view('admin.panel.animals.edit', compact('animal'));
+        return view('panel.animals.edit', compact('animal'));
     }
 
     /**

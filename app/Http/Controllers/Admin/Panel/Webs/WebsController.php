@@ -20,7 +20,7 @@ class WebsController extends BaseAdminController
      */
     public function index()
     {
-        return view('admin.panel.webs.index');
+        return view('panel.webs.index');
     }
 
     /**

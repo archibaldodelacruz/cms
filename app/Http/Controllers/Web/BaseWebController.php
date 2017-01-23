@@ -13,7 +13,7 @@ class BaseWebController extends Controller
     {
         parent::__construct();
 
-        Theme::set($this->web->getConfig('theme'));
+        Theme::set('web/'.$this->web->getConfig('theme'));
 
         $widgets = $this->web->widgets()->active()->with(['links' => function ($query) {
             $query->orderBy('order', 'ASC');

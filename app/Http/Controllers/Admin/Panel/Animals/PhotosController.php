@@ -39,7 +39,7 @@ class PhotosController extends BaseAdminController
             $query->where('type', 'photo');
         }])->findOrFail($id);
 
-        return view('admin.panel.animals.photos.photos', compact('animal'));
+        return view('panel.animals.photos.photos', compact('animal'));
     }
 
     /**

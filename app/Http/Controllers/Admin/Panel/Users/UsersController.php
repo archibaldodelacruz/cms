@@ -44,7 +44,7 @@ class UsersController extends BaseAdminController
             ->orderBy('name')
             ->paginate(25);
 
-        return view('admin.panel.users.index', compact('users', 'request', 'total'));
+        return view('panel.users.index', compact('users', 'request', 'total'));
     }
 
     /**
@@ -57,7 +57,7 @@ class UsersController extends BaseAdminController
         $user = $this->web->users()
             ->findOrFail($id);
 
-        return view('admin.panel.users.show', compact('user'));
+        return view('panel.users.show', compact('user'));
     }
 
     /**
@@ -67,7 +67,7 @@ class UsersController extends BaseAdminController
     {
         $this->authorize('create', User::class);
 
-        return view('admin.panel.users.create');
+        return view('panel.users.create');
     }
 
     /**
@@ -101,7 +101,7 @@ class UsersController extends BaseAdminController
 
         $this->authorize('update', $user);
 
-        return view('admin.panel.users.edit', compact('user'));
+        return view('panel.users.edit', compact('user'));
     }
 
     /**

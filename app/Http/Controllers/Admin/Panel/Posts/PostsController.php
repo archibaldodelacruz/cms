@@ -44,7 +44,7 @@ class PostsController extends BaseAdminController
             ->orderBy('published_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.posts.index', compact('posts', 'request', 'total'));
+        return view('panel.posts.index', compact('posts', 'request', 'total'));
     }
 
     /**
@@ -61,7 +61,7 @@ class PostsController extends BaseAdminController
             ->orderBy('published_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.posts.deleted', compact('posts', 'request', 'total'));
+        return view('panel.posts.deleted', compact('posts', 'request', 'total'));
     }
 
     /**
@@ -71,7 +71,7 @@ class PostsController extends BaseAdminController
     {
         $this->authorize('create', Post::class);
 
-        return view('admin.panel.posts.create');
+        return view('panel.posts.create');
     }
 
     /**
@@ -86,7 +86,7 @@ class PostsController extends BaseAdminController
             ->with(['author', 'category'])
             ->findOrFail($id);
 
-        return view('admin.panel.posts.show', compact('post'));
+        return view('panel.posts.show', compact('post'));
     }
 
     /**
@@ -117,7 +117,7 @@ class PostsController extends BaseAdminController
 
         $this->authorize('update', $post);
 
-        return view('admin.panel.posts.edit', compact('post'));
+        return view('panel.posts.edit', compact('post'));
     }
 
     /**

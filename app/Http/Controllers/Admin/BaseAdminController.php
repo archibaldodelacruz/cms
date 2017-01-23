@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
+use Theme;
 use Request;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,8 @@ class BaseAdminController extends Controller
         parent::__construct();
 
         config('translatable.use_fallback', false);
+
+        Theme::set('admin/metronic');
 
         view()->share('web', $this->web);
         view()->share('sidebar', $this->getSidebar());
