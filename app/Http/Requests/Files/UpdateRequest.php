@@ -14,9 +14,9 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title'   => 'required',
             'user_id' => 'required|exists:users,id',
-            'file' => '',
+            'file'    => '',
         ];
     }
 }

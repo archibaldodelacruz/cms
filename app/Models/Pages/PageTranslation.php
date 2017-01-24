@@ -7,16 +7,16 @@ use App\Models\BaseModel;
 class PageTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'pages_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title', 'slug', 'text', 'user_id'
+        'title', 'slug', 'text', 'user_id',
     ];
 }

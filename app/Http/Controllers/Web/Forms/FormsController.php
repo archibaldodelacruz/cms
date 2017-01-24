@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Web\Forms;
 
-use Mail;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Web\BaseWebController;
+use Illuminate\Http\Request;
+use Mail;
 
 class FormsController extends BaseWebController
 {
@@ -28,7 +27,7 @@ class FormsController extends BaseWebController
     public function send(Request $request, $id)
     {
         $this->validate($request, [
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha',
         ]);
 
         $form = $this->web->forms()
@@ -38,7 +37,7 @@ class FormsController extends BaseWebController
         $data = $request->except(['_token', 'captcha']);
 
         foreach ($data as $field => $value) {
-            if (! isset($form->fields()->where('name', '=', $field)->first()->title)) {
+            if (!isset($form->fields()->where('name', '=', $field)->first()->title)) {
                 abort(500);
             }
             $data[$form->fields()->where('name', '=', $field)->first()->title] = $value;
@@ -47,7 +46,7 @@ class FormsController extends BaseWebController
 
         Mail::send('emails.web.form', [
             'data' => $data,
-            'form' => $form
+            'form' => $form,
         ], function ($m) use ($form) {
             $m->to($form->email)
                 ->from($form->email)

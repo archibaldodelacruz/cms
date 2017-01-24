@@ -1,9 +1,6 @@
 <?php
 
 use App\Models\Veterinarians\Veterinary;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VeterinariesControllerTest extends TestCase
 {
@@ -14,9 +11,9 @@ class VeterinariesControllerTest extends TestCase
     public function it_check_veterinarians_list()
     {
         $veterinarians = factory(Veterinary::class, 10)->create([
-            'web_id' => 1,
-            'name' => 'Veterinario',
-            'contact_name' => 'Jaime'
+            'web_id'       => 1,
+            'name'         => 'Veterinario',
+            'contact_name' => 'Jaime',
         ]);
 
         $this->actingAs($this->authUser())
@@ -34,7 +31,7 @@ class VeterinariesControllerTest extends TestCase
     public function it_check_veterinarians_deleted_list()
     {
         $veterinarians = factory(Veterinary::class, 10)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs($this->authUser())
@@ -67,20 +64,20 @@ class VeterinariesControllerTest extends TestCase
     public function it_edit_veterinary()
     {
         $veterinary = factory(Veterinary::class)->create([
-            'web_id' => 1,
-            'name' => 'Veterinario',
-            'contact_name' => 'Jaime'
+            'web_id'       => 1,
+            'name'         => 'Veterinario',
+            'contact_name' => 'Jaime',
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('veterinarians', [
-                'id' => 1
+                'id' => 1,
             ])
             ->visitRoute('admin::panel::veterinarians::edit', ['id' => 1])
             ->type('Otro nombre', 'name')
             ->press('Actualizar')
             ->seeInDatabase('veterinarians', [
-                'name' => 'Otro nombre'
+                'name' => 'Otro nombre',
             ]);
     }
 
@@ -91,19 +88,19 @@ class VeterinariesControllerTest extends TestCase
     public function it_delete_veterinary()
     {
         $veterinary = factory(Veterinary::class)->create([
-            'web_id' => 1,
-            'name' => 'Veterinario',
-            'contact_name' => 'Jaime'
+            'web_id'       => 1,
+            'name'         => 'Veterinario',
+            'contact_name' => 'Jaime',
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('veterinarians', [
-                'id' => 1
+                'id' => 1,
             ])
             ->visitRoute('admin::panel::veterinarians::delete', ['id' => 1])
             ->notSeeInDatabase('veterinarians', [
-                'id' => 1,
-                'deleted_at' => null
+                'id'         => 1,
+                'deleted_at' => null,
             ]);
     }
 
@@ -114,30 +111,30 @@ class VeterinariesControllerTest extends TestCase
     public function it_restore_veterinary()
     {
         $veterinary = factory(Veterinary::class)->create([
-            'web_id' => 1,
-            'name' => 'Veterinario',
-            'contact_name' => 'Jaime'
+            'web_id'       => 1,
+            'name'         => 'Veterinario',
+            'contact_name' => 'Jaime',
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('veterinarians', [
-                'id' => 1,
-                'name' => 'Veterinario',
-                'contact_name' => 'Jaime'
+                'id'           => 1,
+                'name'         => 'Veterinario',
+                'contact_name' => 'Jaime',
             ])
             ->visitRoute('admin::panel::veterinarians::delete', ['id' => 1])
             ->notSeeInDatabase('veterinarians', [
-                'id' => 1,
-                'name' => 'Veterinario',
+                'id'           => 1,
+                'name'         => 'Veterinario',
                 'contact_name' => 'Jaime',
-                'deleted_at' => null
+                'deleted_at'   => null,
             ])
             ->visitRoute('admin::panel::veterinarians::restore', ['id' => 1])
             ->seeInDatabase('veterinarians', [
-                'id' => 1,
-                'name' => 'Veterinario',
+                'id'           => 1,
+                'name'         => 'Veterinario',
                 'contact_name' => 'Jaime',
-                'deleted_at' => null
+                'deleted_at'   => null,
             ]);
     }
 }

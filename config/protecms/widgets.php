@@ -5,29 +5,29 @@ return [
     'type' => [
         'menu',
         'custom',
-        'protecms'
+        'protecms',
     ],
 
     'status' => [
         'active',
-        'inactive'
+        'inactive',
     ],
 
     'side' => [
         'left',
-        'right'
+        'right',
     ],
 
     'file' => [
         'animals_search',
         'last_animals',
-        'locale'
+        'locale',
     ],
 
     'config' => [
         'without_background',
         'without_title',
-        'without_background_bottom'
-    ]
+        'without_background_bottom',
+    ],
 
 ];

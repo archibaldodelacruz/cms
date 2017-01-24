@@ -7,16 +7,16 @@ use App\Models\BaseModel;
 class CategoryTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'posts_categories_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title', 'slug', 'text'
+        'title', 'slug', 'text',
     ];
 }

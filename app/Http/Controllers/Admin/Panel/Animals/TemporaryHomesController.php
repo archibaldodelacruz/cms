@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Animals\TemporaryHome;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\TemporaryHomes\StoreRequest;
 use App\Http\Requests\TemporaryHomes\UpdateRequest;
+use App\Models\Animals\TemporaryHome;
+use Illuminate\Http\Request;
 
 class TemporaryHomesController extends BaseAdminController
 {
@@ -20,6 +20,7 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * TemporaryHomesController constructor.
+     *
      * @param TemporaryHome $temporary_home
      */
     public function __construct(TemporaryHome $temporary_home)
@@ -31,6 +32,7 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -47,6 +49,7 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -87,6 +90,7 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -104,6 +108,7 @@ class TemporaryHomesController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function edit(Request $request, $id)
@@ -119,6 +124,7 @@ class TemporaryHomesController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -136,6 +142,7 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
@@ -155,7 +162,9 @@ class TemporaryHomesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)

@@ -2,10 +2,10 @@
 
 namespace App\Models\Forms;
 
-use App\Models\BaseModel;
-use App\Models\Webs\Web;
-use App\Models\Users\User;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Users\User;
+use App\Models\Webs\Web;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,35 +14,35 @@ class Form extends BaseModel
     use SoftDeletes, Translatable, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'forms';
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title', 'slug', 'text', 'subject', 'user_id'
+        'title', 'slug', 'text', 'subject', 'user_id',
     ];
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'email', 'status'
+        'id', 'email', 'status',
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'published_at'
+        'published_at',
     ];
 
     /**
@@ -53,9 +53,10 @@ class Form extends BaseModel
     protected $touches = ['web'];
 
     /**
-     * Set animal translations
+     * Set animal translations.
      *
      * @param Illuminate\Http\Request
+     *
      * @return $this
      */
     public function setTranslations($request)
@@ -89,7 +90,8 @@ class Form extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return $this
      */
     public function setAttribute($key, $value)
@@ -102,7 +104,7 @@ class Form extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

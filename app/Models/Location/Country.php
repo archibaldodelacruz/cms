@@ -2,14 +2,14 @@
 
 namespace App\Models\Location;
 
-use App\Models\Webs\Web;
 use App\Models\Users\User;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
@@ -18,7 +18,7 @@ class Country extends Model
     ];
 
     /**
-     * Relations
+     * Relations.
      */
     public function webs()
     {

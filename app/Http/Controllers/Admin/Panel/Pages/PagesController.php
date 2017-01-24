@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Pages;
 
-use App\Models\Pages\Page;
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Pages\StoreRequest;
 use App\Http\Requests\Pages\UpdateRequest;
+use App\Models\Pages\Page;
+use Illuminate\Http\Request;
 
 class PagesController extends BaseAdminController
 {
@@ -27,6 +27,7 @@ class PagesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -44,6 +45,7 @@ class PagesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -71,6 +73,7 @@ class PagesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -86,6 +89,7 @@ class PagesController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -102,6 +106,7 @@ class PagesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -118,6 +123,7 @@ class PagesController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -130,11 +136,12 @@ class PagesController extends BaseAdminController
 
         flash('La página se ha actualizado correctamente.');
 
-        return redirect()->to(route('admin::panel::pages::edit', ['id' => $id]) . '?langform=' . $request->get('langform'));
+        return redirect()->to(route('admin::panel::pages::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
@@ -154,7 +161,9 @@ class PagesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)
@@ -175,6 +184,7 @@ class PagesController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete_translation(Request $request, $id)

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use Auth;
-use Theme;
-use Request;
 use App\Http\Controllers\Controller;
+use Theme;
 
 class BaseWebController extends Controller
 {

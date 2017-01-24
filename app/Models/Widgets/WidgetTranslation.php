@@ -7,16 +7,16 @@ use App\Models\BaseModel;
 class WidgetTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'widgets_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title', 'content'
+        'title', 'content',
     ];
 }

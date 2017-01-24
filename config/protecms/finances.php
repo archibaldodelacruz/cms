@@ -4,7 +4,7 @@ return [
 
     'type' => [
         'income',
-        'spending'
+        'spending',
     ],
 
     'reason' => [
@@ -15,6 +15,6 @@ return [
         'work',
         'shopping',
         'sales',
-    ]
+    ],
 
 ];

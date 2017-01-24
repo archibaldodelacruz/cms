@@ -2,11 +2,11 @@
 
 namespace App\Models\Posts;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
-use App\Models\Users\User;
-use App\Models\Forms\Form;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Forms\Form;
+use App\Models\Users\User;
+use App\Models\Webs\Web;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,46 +15,46 @@ class Post extends BaseModel
     use LogsActivity, SoftDeletes, Translatable;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'posts';
 
     /**
-     * Translatable fields
+     * Translatable fields.
      *
      * @var array
      */
     public $translatedAttributes = [
-        'title', 'slug', 'text', 'user_id'
+        'title', 'slug', 'text', 'user_id',
     ];
 
     /**
-     * Insert relations
+     * Insert relations.
      *
      * @var array
      */
     protected $with = [
-        'translations'
+        'translations',
     ];
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'status', 'comments_status', 'comments', 'published_at', 'category_id', 'form_id', 'fixed'
+        'id', 'status', 'comments_status', 'comments', 'published_at', 'category_id', 'form_id', 'fixed',
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'published_at'
+        'published_at',
     ];
 
     /**
@@ -68,7 +68,8 @@ class Post extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -81,7 +82,7 @@ class Post extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

@@ -4,7 +4,7 @@ return [
 
     'status' => [
         'active',
-        'inactive'
-    ]
+        'inactive',
+    ],
 
 ];

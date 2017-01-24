@@ -14,12 +14,12 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            config('app.locale') . '.title' => 'required',
-            config('app.locale') . '.slug' => 'required|alpha_dash',
-            config('app.locale') . '.text' => 'required',
-            config('app.locale') . '.user_id' => 'required|exists:users,id',
-            'form_id' => 'exists:forms,id',
-            'status' => 'required|in:' . implode(',', config('protecms.posts.status')),
+            config('app.locale').'.title'   => 'required',
+            config('app.locale').'.slug'    => 'required|alpha_dash',
+            config('app.locale').'.text'    => 'required',
+            config('app.locale').'.user_id' => 'required|exists:users,id',
+            'form_id'                         => 'exists:forms,id',
+            'status'                          => 'required|in:'.implode(',', config('protecms.posts.status')),
         ];
     }
 }

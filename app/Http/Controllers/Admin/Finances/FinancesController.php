@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Finances;
 
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Finances\Finance;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Finances\StoreRequest;
 use App\Http\Requests\Finances\UpdateRequest;
+use App\Models\Finances\Finance;
+use Illuminate\Http\Request;
 
 class FinancesController extends BaseAdminController
 {
@@ -20,6 +20,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * FinancesController constructor.
+     *
      * @param Finance $finance
      */
     public function __construct(Finance $finance)
@@ -31,6 +32,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -59,6 +61,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -73,6 +76,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -97,6 +101,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -113,6 +118,7 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -127,6 +133,7 @@ class FinancesController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -143,6 +150,7 @@ class FinancesController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Request $request, $id)
@@ -162,7 +170,9 @@ class FinancesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)
@@ -186,32 +196,32 @@ class FinancesController extends BaseAdminController
         return [
             [
                 'title' => 'Finanzas',
-                'menu' => [
-                    'title' => 'Finanzas',
-                    'icon' => 'fa fa-bar-chart',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/finances*',
+                'menu'  => [
+                    'title'   => 'Finanzas',
+                    'icon'    => 'fa fa-bar-chart',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/finances*',
                     'submenu' => [
                         [
                             'title' => 'Listado',
-                            'icon' => 'fa fa-reorder',
-                            'url' => route('admin::finances::index')
+                            'icon'  => 'fa fa-reorder',
+                            'url'   => route('admin::finances::index'),
                         ],
                         [
-                            'title' => 'Añadir registro',
-                            'icon' => 'fa fa-plus-square',
-                            'url' => route('admin::finances::create'),
-                            'permissions' => ['admin.finances']
+                            'title'       => 'Añadir registro',
+                            'icon'        => 'fa fa-plus-square',
+                            'url'         => route('admin::finances::create'),
+                            'permissions' => ['admin.finances'],
                         ],
                         [
-                            'title' => 'Registros eliminados',
-                            'icon' => 'fa fa-trash',
-                            'url' => route('admin::finances::deleted'),
-                            'permissions' => ['admin.finances']
-                        ]
-                    ]
-                ]
-            ]
+                            'title'       => 'Registros eliminados',
+                            'icon'        => 'fa fa-trash',
+                            'url'         => route('admin::finances::deleted'),
+                            'permissions' => ['admin.finances'],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use App\Helpers\UploadFile;
-use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\UploadFile;
 use App\Http\Controllers\Admin\BaseAdminController;
+use App\Models\Animals\Animal;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotosController extends BaseAdminController
 {
@@ -20,6 +20,7 @@ class PhotosController extends BaseAdminController
 
     /**
      * PhotosController constructor.
+     *
      * @param Animal $animal
      */
     public function __construct(Animal $animal)
@@ -31,6 +32,7 @@ class PhotosController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($id)
@@ -45,6 +47,7 @@ class PhotosController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request, $id)
@@ -57,8 +60,8 @@ class PhotosController extends BaseAdminController
             checkFolder($this->web->getStorageFolder('images/animals'), 0775);
 
             foreach ($request->file('photos') as $file) {
-                $path = 'web/' . $animal->web_id . '/animals/' . $animal->id . '/photos';
-                $name = uniqid() . time();
+                $path = 'web/'.$animal->web_id.'/animals/'.$animal->id.'/photos';
+                $name = uniqid().time();
 
                 $photo = (new UploadFile($file, $path, $name))
                     ->resize(1000)
@@ -66,35 +69,36 @@ class PhotosController extends BaseAdminController
                     ->makeThumbnail(600, 600, 'thumbnail-m-')
                     ->getName();
 
-                ! count($animal->photos) ? $main = 1 : $main = 0;
+                !count($animal->photos) ? $main = 1 : $main = 0;
 
                 $new_photo = $animal->media()->create([
                     'file' => $photo,
                     'type' => 'photo',
-                    'main' => $main
+                    'main' => $main,
                 ]);
 
                 array_push($photos, [
-                    'url' => $new_photo->thumbnail_url,
-                    'main_url' => route('admin::panel::animals::photos::main', ['animal_id' => $animal->id, 'id' => $new_photo->id]),
-                    'delete_url' => route('admin::panel::animals::photos::delete', ['animal_id' => $animal->id, 'id' => $new_photo->id])
+                    'url'        => $new_photo->thumbnail_url,
+                    'main_url'   => route('admin::panel::animals::photos::main', ['animal_id' => $animal->id, 'id' => $new_photo->id]),
+                    'delete_url' => route('admin::panel::animals::photos::delete', ['animal_id' => $animal->id, 'id' => $new_photo->id]),
                 ]);
             }
 
             return response()->json([
                 'web_id' => $animal->web_id,
-                'photos' => $photos
+                'photos' => $photos,
             ]);
         }
 
         return response()->json([
-            'error' => true
+            'error' => true,
         ], 500);
     }
 
     /**
      * @param $animal_id
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function main($animal_id, $id)
@@ -103,7 +107,7 @@ class PhotosController extends BaseAdminController
             ->findOrFail($animal_id)
             ->photos()
             ->update([
-                'main' => 0
+                'main' => 0,
             ]);
 
         $this->animal
@@ -111,7 +115,7 @@ class PhotosController extends BaseAdminController
             ->photos()
             ->findOrFail($id)
             ->update([
-                'main' => 1
+                'main' => 1,
             ]);
 
         flash('Foto actualizada correctamente');
@@ -122,6 +126,7 @@ class PhotosController extends BaseAdminController
     /**
      * @param $animal_id
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($animal_id, $id)
@@ -134,9 +139,9 @@ class PhotosController extends BaseAdminController
         $main = $photo->isMain();
 
         $files_to_delete = [
-            $photo->getPath() . '/' . $photo->file,
-            $photo->getPath() . '/' . $photo->getThumbnail('m'),
-            $photo->getPath() . '/' . $photo->getThumbnail('xs'),
+            $photo->getPath().'/'.$photo->file,
+            $photo->getPath().'/'.$photo->getThumbnail('m'),
+            $photo->getPath().'/'.$photo->getThumbnail('xs'),
         ];
 
         foreach ($files_to_delete as $file) {
@@ -149,7 +154,7 @@ class PhotosController extends BaseAdminController
 
         if ($main && $photo = $this->animal->findOrFail($animal_id)->photos()->first()) {
             $photo->update([
-                'main' => 1
+                'main' => 1,
             ]);
         }
 

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use Notification;
-use Carbon\Carbon;
-use App\Models\Webs\Web;
-use App\Models\Users\User;
-use Illuminate\Http\Request;
-use Spatie\Analytics\Period;
-use App\Notifications\NewUpdate;
-use Spatie\Analytics\AnalyticsFacade as Analytics;
 use App\Http\Controllers\Admin\BaseAdminController;
+use App\Models\Users\User;
+use App\Models\Webs\Web;
+use App\Notifications\NewUpdate;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Notification;
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Spatie\Analytics\Period;
 
 class SuperAdminController extends BaseAdminController
 {
@@ -26,6 +26,7 @@ class SuperAdminController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -43,16 +44,18 @@ class SuperAdminController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function notifications_send(Request $request)
     {
         Notification::send(User::get(), new NewUpdate([
             'text' => $request->get('text'),
-            'link' => $request->get('link')
+            'link' => $request->get('link'),
         ]));
 
         flash('Notificación enviada correctamente');
+
         return redirect()->back();
     }
 
@@ -66,18 +69,18 @@ class SuperAdminController extends BaseAdminController
             'ga:pageviews,ga:users',
             [
                 'dimensions' => 'ga:date,ga:hostname',
-                'sort' => '-ga:date',
-                'filters' => 'ga:hostname=='.$this->web->subdomain.'.protecms.com'
+                'sort'       => '-ga:date',
+                'filters'    => 'ga:hostname=='.$this->web->subdomain.'.protecms.com',
             ]
         );
 
         $analytics = collect($response['rows'] ?? [])
             ->map(function (array $row) {
                 return [
-                    'date' => Carbon::createFromFormat('Ymd', $row[0]),
-                    'hostname' => $row[1],
+                    'date'      => Carbon::createFromFormat('Ymd', $row[0]),
+                    'hostname'  => $row[1],
                     'pageViews' => (int) $row[2],
-                    'visitors' => (int) $row[3],
+                    'visitors'  => (int) $row[3],
                 ];
             });
 
@@ -86,15 +89,16 @@ class SuperAdminController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function set_web(Request $request)
     {
         $this->validate($request, [
-            'web_id' => 'exists:webs,id'
+            'web_id' => 'exists:webs,id',
         ]);
 
-        if (! (int) $request->get('web_id')) {
+        if (!(int) $request->get('web_id')) {
             $this->web->unsetConfig('web');
         } else {
             $this->web->setConfig('web', Web::find($request->get('web_id'))->id);
@@ -109,48 +113,48 @@ class SuperAdminController extends BaseAdminController
     {
         return [
             [
-                'title' => 'Menú principal',
+                'title'       => 'Menú principal',
                 'permissions' => ['admin'],
-                'menu' => [
-                    'title' => 'Menú principal',
-                    'icon' => 'fa fa-home',
-                    'url' => 'javascript:;',
-                    'base' => ['superadmin'],
+                'menu'        => [
+                    'title'   => 'Menú principal',
+                    'icon'    => 'fa fa-home',
+                    'url'     => 'javascript:;',
+                    'base'    => ['superadmin'],
                     'submenu' => [
                         [
                             'title' => 'Escritorio',
-                            'icon' => 'fa fa-home',
-                            'url' => route('superadmin::index'),
+                            'icon'  => 'fa fa-home',
+                            'url'   => route('superadmin::index'),
                         ],
                         [
                             'title' => 'Notificaciones',
-                            'icon' => 'fa fa-bell',
-                            'url' => route('superadmin::notifications'),
-                        ]
-                    ]
-                ]
+                            'icon'  => 'fa fa-bell',
+                            'url'   => route('superadmin::notifications'),
+                        ],
+                    ],
+                ],
             ],
             [
-                'title' => 'Protectora',
+                'title'       => 'Protectora',
                 'permissions' => ['admin'],
-                'menu' => [
-                    'title' => 'Protectora',
-                    'icon' => 'fa fa-file-text-o',
-                    'url' => 'javascript:;',
-                    'base' => 'superadmin/webs*',
+                'menu'        => [
+                    'title'   => 'Protectora',
+                    'icon'    => 'fa fa-file-text-o',
+                    'url'     => 'javascript:;',
+                    'base'    => 'superadmin/webs*',
                     'submenu' => [
                         [
                             'title' => 'Listado',
-                            'icon' => 'fa fa-list-ul',
-                            'url' => route('superadmin::webs::index'),
+                            'icon'  => 'fa fa-list-ul',
+                            'url'   => route('superadmin::webs::index'),
                         ],
                         [
                             'title' => 'Nueva protectora',
-                            'icon' => 'fa fa-plus-square',
-                            'url' => route('superadmin::webs::create'),
+                            'icon'  => 'fa fa-plus-square',
+                            'url'   => route('superadmin::webs::create'),
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
     }

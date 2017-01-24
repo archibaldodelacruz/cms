@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\StoreRequest;
 use App\Http\Requests\Animals\UpdateRequest;
+use App\Models\Animals\Animal;
+use Illuminate\Http\Request;
 
 class AnimalsController extends BaseAdminController
 {
@@ -21,6 +20,7 @@ class AnimalsController extends BaseAdminController
 
     /**
      * AnimalsController constructor.
+     *
      * @param Animal $animal
      */
     public function __construct(Animal $animal)
@@ -32,6 +32,7 @@ class AnimalsController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -51,6 +52,7 @@ class AnimalsController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -68,6 +70,7 @@ class AnimalsController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -93,6 +96,7 @@ class AnimalsController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -110,6 +114,7 @@ class AnimalsController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function edit(Request $request, $id)
@@ -126,6 +131,7 @@ class AnimalsController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -138,11 +144,12 @@ class AnimalsController extends BaseAdminController
 
         flash('La ficha del animal se ha actualizado correctamente.');
 
-        return redirect()->to(route('admin::panel::animals::edit', ['id' => $id]) . '?langform=' . $request->get('langform'));
+        return redirect()->to(route('admin::panel::animals::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
@@ -162,7 +169,9 @@ class AnimalsController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)
@@ -182,6 +191,7 @@ class AnimalsController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete_translation(Request $request, $id)

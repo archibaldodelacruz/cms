@@ -14,12 +14,12 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            $this->get('langform') . '.title' => 'required',
-            $this->get('langform') . '.slug' => 'required|alpha_dash',
-            $this->get('langform') . '.text' => 'required',
-            $this->get('langform') . '.user_id' => 'required|exists:users,id',
-            'form_id' => 'exists:forms,id',
-            'status' => 'required|in:' . implode(',', config('protecms.posts.status')),
+            $this->get('langform').'.title'   => 'required',
+            $this->get('langform').'.slug'    => 'required|alpha_dash',
+            $this->get('langform').'.text'    => 'required',
+            $this->get('langform').'.user_id' => 'required|exists:users,id',
+            'form_id'                           => 'exists:forms,id',
+            'status'                            => 'required|in:'.implode(',', config('protecms.posts.status')),
         ];
     }
 }

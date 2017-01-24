@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Veterinarians;
 
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Veterinarians\Veterinary;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Veterinarians\StoreRequest;
 use App\Http\Requests\Veterinarians\UpdateRequest;
+use App\Models\Veterinarians\Veterinary;
+use Illuminate\Http\Request;
 
 class VeterinariansController extends BaseAdminController
 {
@@ -17,6 +17,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * VeterinariansController constructor.
+     *
      * @param Veterinary $veterinary
      */
     public function __construct(Veterinary $veterinary)
@@ -28,6 +29,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -44,6 +46,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -60,6 +63,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -84,6 +88,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -100,6 +105,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -115,6 +121,7 @@ class VeterinariansController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -132,6 +139,7 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
@@ -151,7 +159,9 @@ class VeterinariansController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)

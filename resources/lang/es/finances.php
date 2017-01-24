@@ -3,17 +3,17 @@
 return [
 
     'type' => [
-        'income' => 'Ingreso',
-        'spending' => 'Gasto'
+        'income'   => 'Ingreso',
+        'spending' => 'Gasto',
     ],
 
     'reason' => [
-        'other' => 'Otro',
+        'other'      => 'Otro',
         'veterinary' => 'Veterinario',
-        'adoption' => 'Adopción',
-        'donation' => 'Donación',
-        'work' => 'Trabajo',
-        'shopping' => 'Compras',
-        'sales' => 'Ventas',
-    ]
+        'adoption'   => 'Adopción',
+        'donation'   => 'Donación',
+        'work'       => 'Trabajo',
+        'shopping'   => 'Compras',
+        'sales'      => 'Ventas',
+    ],
 ];

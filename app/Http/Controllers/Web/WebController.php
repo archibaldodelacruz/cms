@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Requests;
 use App\Models\Posts\Post;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Web\BaseWebController;
 
 class WebController extends BaseWebController
 {
@@ -15,7 +13,7 @@ class WebController extends BaseWebController
     {
         parent::__construct();
 
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
             abort(404);
         }
 

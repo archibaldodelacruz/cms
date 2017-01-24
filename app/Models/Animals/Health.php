@@ -2,8 +2,8 @@
 
 namespace App\Models\Animals;
 
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Health extends BaseModel
@@ -11,24 +11,24 @@ class Health extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'animals_health';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
         'animal_id', 'type', 'title', 'medicine', 'text', 'finish_text', 'start_date', 'end_date', 'cost', 'treatments_number',
-        'treatments_each', 'treatments_time', 'treatments_life', 'test_result', 'hidden_in_calendar'
+        'treatments_each', 'treatments_time', 'treatments_life', 'test_result', 'hidden_in_calendar',
     ];
 
     protected $dates = [
-        'start_date', 'end_date'
+        'start_date', 'end_date',
     ];
 
     /**
@@ -42,7 +42,8 @@ class Health extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -59,7 +60,7 @@ class Health extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function animal()
     {

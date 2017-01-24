@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Users\Permission;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        # Import locations
+        // Import locations
         $files = ['countries.sql', 'states.sql', 'cities.sql'];
 
         foreach ($files as $file) {
-            $sql = file_get_contents(database_path('seeds/dumps/' . $file));
+            $sql = file_get_contents(database_path('seeds/dumps/'.$file));
             $statements = array_filter(array_map('trim', explode(';', $sql)));
 
             foreach ($statements as $stmt) {
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         foreach ($permissions as $permission) {
             Permission::create([
-                'permission' => $permission
+                'permission' => $permission,
             ]);
         }
     }

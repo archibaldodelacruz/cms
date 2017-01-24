@@ -14,9 +14,9 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'color' => 'required',
-            'logo' => 'string',
-            'header' => 'string'
+            'color'  => 'required',
+            'logo'   => 'string',
+            'header' => 'string',
         ];
     }
 }

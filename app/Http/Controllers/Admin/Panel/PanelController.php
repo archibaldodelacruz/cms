@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Panel;
 
-use App\Models\Posts\Post;
-use App\Models\Users\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Spatie\Analytics\Period;
+use App\Http\Controllers\Admin\BaseAdminController;
 use App\Models\Animals\Animal;
 use App\Models\Partners\Partner;
+use App\Models\Posts\Post;
+use App\Models\Users\User;
 use App\Models\Veterinarians\Veterinary;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
-use App\Http\Controllers\Admin\BaseAdminController;
+use Spatie\Analytics\Period;
 
 class PanelController extends BaseAdminController
 {
@@ -43,14 +43,14 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        # Pageviews Analytics
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
+        // Pageviews Analytics
+        if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),
                 'ga:pageviews,ga:users',
                 [
                     'dimensions' => 'ga:date,ga:hostname',
-                    'sort' => '-ga:date'
+                    'sort'       => '-ga:date',
                 ]
             );
         } else {
@@ -59,8 +59,8 @@ class PanelController extends BaseAdminController
                 'ga:pageviews,ga:users',
                 [
                     'dimensions' => 'ga:date,ga:hostname',
-                    'sort' => '-ga:date',
-                    'filters' => 'ga:hostname=='.$this->web->getDomainOrSubdomain()
+                    'sort'       => '-ga:date',
+                    'filters'    => 'ga:hostname=='.$this->web->getDomainOrSubdomain(),
                 ]
             );
         }
@@ -68,10 +68,10 @@ class PanelController extends BaseAdminController
         $google_analytics = collect($response['rows'] ?? [])
             ->map(function (array $row) {
                 return [
-                    'date' => Carbon::createFromFormat('Ymd', $row[0]),
-                    'hostname' => $row[1],
+                    'date'      => Carbon::createFromFormat('Ymd', $row[0]),
+                    'hostname'  => $row[1],
                     'pageViews' => (int) $row[2],
-                    'visitors' => (int) $row[3],
+                    'visitors'  => (int) $row[3],
                 ];
             });
 
@@ -87,11 +87,11 @@ class PanelController extends BaseAdminController
                 }
             }
 
-            if (! isset($analytics['pageviews'][$now])) {
+            if (!isset($analytics['pageviews'][$now])) {
                 $analytics['pageviews'][$now] = 0;
             }
 
-            if (! isset($analytics['users'][$now])) {
+            if (!isset($analytics['users'][$now])) {
                 $analytics['users'][$now] = 0;
             }
         }
@@ -100,16 +100,16 @@ class PanelController extends BaseAdminController
         ksort($analytics['pageviews']);
         ksort($analytics['users']);
 
-        # Animals
+        // Animals
         $animals = [];
         $animals['total'] = $this->animal->where('status', '!=', 'dead')->count();
 
-        # Gender
+        // Gender
         $animals['male'] = $this->animal->where('status', '!=', 'dead')->where('gender', 'male')->count();
         $animals['female'] = $this->animal->where('status', '!=', 'dead')->where('gender', 'female')->count();
         $animals['unknown'] = $this->animal->where('status', '!=', 'dead')->where('gender', 'unknown')->count();
 
-        # Status
+        // Status
         $animals['adoption'] = $this->animal->where('status', '!=', 'dead')->where('status', 'adoption')->count();
         $animals['adopted'] = $this->animal->where('status', '!=', 'dead')->where('status', 'adopted')->count();
         $animals['reserved'] = $this->animal->where('status', '!=', 'dead')->where('status', 'reserved')->count();
@@ -117,7 +117,7 @@ class PanelController extends BaseAdminController
         $animals['found'] = $this->animal->where('status', '!=', 'dead')->where('status', 'found')->count();
         $animals['lost'] = $this->animal->where('status', '!=', 'dead')->where('status', 'lost')->count();
 
-        # Location
+        // Location
         $animals['shelter'] = $this->animal->where('status', '!=', 'dead')->where('location', 'shelter')->count();
         $animals['temporary_home'] = $this->animal->where('status', '!=', 'dead')->where('location', 'temporary_home')->count();
         $animals['animal_home'] = $this->animal->where('status', '!=', 'dead')->where('location', 'animal_home')->count();
@@ -125,7 +125,7 @@ class PanelController extends BaseAdminController
         $animals['unknown'] = $this->animal->where('status', '!=', 'dead')->where('location', 'unknown')->count();
         $animals['family'] = $this->animal->where('status', '!=', 'dead')->where('location', 'family')->count();
 
-        # Kind
+        // Kind
         $animals['dog'] = $this->animal->where('status', '!=', 'dead')->where('kind', 'dog')->count();
         $animals['cat'] = $this->animal->where('status', '!=', 'dead')->where('kind', 'cat')->count();
         $animals['horse'] = $this->animal->where('status', '!=', 'dead')->where('kind', 'horse')->count();
@@ -134,62 +134,62 @@ class PanelController extends BaseAdminController
         $animals['reptile'] = $this->animal->where('status', '!=', 'dead')->where('kind', 'reptile')->count();
         $animals['other'] = $this->animal->where('status', '!=', 'dead')->where('kind', 'other')->count();
 
-        # Users
+        // Users
         $users['users'] = $this->web->users()->where('type', 'user')->count();
         $users['volunteers'] = $this->web->users()->where('type', 'volunteer')->count();
         $users['admins'] = $this->web->users()->where('type', 'admin')->count();
 
-        # Partners
+        // Partners
         $partners['partners'] = $this->partner->count();
 
-        # Posts
+        // Posts
         $posts['posts'] = $this->post->count();
 
-        # Pages
+        // Pages
         $pages['pages'] = $this->post->count();
 
-        # Forms
+        // Forms
         $forms['forms'] = $this->post->count();
 
-        # Files
+        // Files
         $files['files'] = $this->post->count();
 
-        # Veterinarians
+        // Veterinarians
         $veterinarians['veterinarians'] = $this->veterinary->count();
 
         $data = [
-            'analytics' => $analytics,
-            'animals_total' => $animals['total'],
-            'animals_male' => $animals['male'],
-            'animals_female' => $animals['female'],
-            'animals_unknown' => $animals['unknown'],
-            'animals_adoption' => $animals['adoption'],
-            'animals_adopted' => $animals['adopted'],
-            'animals_reserved' => $animals['reserved'],
-            'animals_unavailable' => $animals['unavailable'],
-            'animals_found' => $animals['found'],
-            'animals_lost' => $animals['lost'],
-            'animals_shelter' => $animals['shelter'],
+            'analytics'              => $analytics,
+            'animals_total'          => $animals['total'],
+            'animals_male'           => $animals['male'],
+            'animals_female'         => $animals['female'],
+            'animals_unknown'        => $animals['unknown'],
+            'animals_adoption'       => $animals['adoption'],
+            'animals_adopted'        => $animals['adopted'],
+            'animals_reserved'       => $animals['reserved'],
+            'animals_unavailable'    => $animals['unavailable'],
+            'animals_found'          => $animals['found'],
+            'animals_lost'           => $animals['lost'],
+            'animals_shelter'        => $animals['shelter'],
             'animals_temporary_home' => $animals['temporary_home'],
-            'animals_animal_home' => $animals['animal_home'],
-            'animals_street' => $animals['street'],
-            'animals_family' => $animals['family'],
-            'animals_dog' => $animals['dog'],
-            'animals_cat' => $animals['cat'],
-            'animals_horse' => $animals['horse'],
-            'animals_rodent' => $animals['rodent'],
-            'animals_bird' => $animals['bird'],
-            'animals_reptile' => $animals['reptile'],
-            'animals_other' => $animals['other'],
-            'users' => $users['users'],
-            'volunteers' => $users['volunteers'],
-            'admins' => $users['admins'],
-            'partners' => $partners['partners'],
-            'posts' => $posts['posts'],
-            'pages' => $pages['pages'],
-            'forms' => $forms['forms'],
-            'files' => $files['files'],
-            'veterinarians' => $veterinarians['veterinarians']
+            'animals_animal_home'    => $animals['animal_home'],
+            'animals_street'         => $animals['street'],
+            'animals_family'         => $animals['family'],
+            'animals_dog'            => $animals['dog'],
+            'animals_cat'            => $animals['cat'],
+            'animals_horse'          => $animals['horse'],
+            'animals_rodent'         => $animals['rodent'],
+            'animals_bird'           => $animals['bird'],
+            'animals_reptile'        => $animals['reptile'],
+            'animals_other'          => $animals['other'],
+            'users'                  => $users['users'],
+            'volunteers'             => $users['volunteers'],
+            'admins'                 => $users['admins'],
+            'partners'               => $partners['partners'],
+            'posts'                  => $posts['posts'],
+            'pages'                  => $pages['pages'],
+            'forms'                  => $forms['forms'],
+            'files'                  => $files['files'],
+            'veterinarians'          => $veterinarians['veterinarians'],
         ];
 
         return view('panel.stats', compact('data'));

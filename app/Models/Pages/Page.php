@@ -2,11 +2,11 @@
 
 namespace App\Models\Pages;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
-use App\Models\Users\User;
-use App\Models\Forms\Form;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Forms\Form;
+use App\Models\Users\User;
+use App\Models\Webs\Web;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,35 +15,35 @@ class Page extends BaseModel
     use SoftDeletes, Translatable, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'pages';
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title', 'slug', 'text', 'user_id'
+        'title', 'slug', 'text', 'user_id',
     ];
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'status', 'published_at', 'category_id', 'form_id'
+        'id', 'status', 'published_at', 'category_id', 'form_id',
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'published_at'
+        'published_at',
     ];
 
     /**
@@ -57,7 +57,8 @@ class Page extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -70,7 +71,7 @@ class Page extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

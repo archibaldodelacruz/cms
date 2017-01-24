@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class FormTranslation extends Model
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'forms_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title', 'slug', 'text', 'subject', 'user_id'
+        'title', 'slug', 'text', 'subject', 'user_id',
     ];
 }

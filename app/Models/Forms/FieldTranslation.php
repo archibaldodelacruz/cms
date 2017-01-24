@@ -7,16 +7,16 @@ use App\Models\BaseModel;
 class FieldTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'forms_fields_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title'
+        'title',
     ];
 }

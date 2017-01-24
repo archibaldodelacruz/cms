@@ -1,10 +1,6 @@
 <?php
 
 use App\Models\Forms\Form;
-use App\Models\Forms\Field;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FormsControllerTest extends TestCase
 {
@@ -16,13 +12,13 @@ class FormsControllerTest extends TestCase
     {
         $forms = factory(Form::class, 10)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
                 'user_id' => 1,
-                'subject' => 'Asunto'
-            ]
+                'subject' => 'Asunto',
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -32,11 +28,11 @@ class FormsControllerTest extends TestCase
                 'id' => $forms[0]->id,
             ])
             ->seeInDatabase('forms_translations', [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
                 'user_id' => 1,
-                'subject' => 'Asunto'
+                'subject' => 'Asunto',
             ]);
     }
 
@@ -48,13 +44,13 @@ class FormsControllerTest extends TestCase
     {
         factory(Form::class, 10)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
                 'user_id' => 1,
-                'subject' => 'Asunto'
-            ]
+                'subject' => 'Asunto',
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -69,13 +65,13 @@ class FormsControllerTest extends TestCase
     {
         $form = factory(Form::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
                 'user_id' => 1,
-                'subject' => 'Asunto'
-            ]
+                'subject' => 'Asunto',
+            ],
         ]);
 
         $this->actingAs($this->authUser())

@@ -2,7 +2,6 @@
 
 namespace App\Models\Forms;
 
-use App\Models\Webs\Web;
 use App\Models\BaseModel;
 use Dimsav\Translatable\Translatable;
 
@@ -11,35 +10,35 @@ class Field extends BaseModel
     use Translatable;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'forms_fields';
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title'
+        'title',
     ];
 
     /**
-     * Insert relations
+     * Insert relations.
      *
      * @var array
      */
     protected $with = [
-        'translations'
+        'translations',
     ];
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'order', 'name', 'type', 'required'
+        'id', 'order', 'name', 'type', 'required',
     ];
 
     /**
@@ -50,7 +49,7 @@ class Field extends BaseModel
     protected $touches = ['form'];
 
     /**
-     * Relations
+     * Relations.
      */
     public function form()
     {

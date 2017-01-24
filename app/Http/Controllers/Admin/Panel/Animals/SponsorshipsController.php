@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\Sponsorships\StoreRequest;
 use App\Http\Requests\Animals\Sponsorships\UpdateRequest;
+use App\Models\Animals\Animal;
+use Illuminate\Http\Request;
 
 class SponsorshipsController extends BaseAdminController
 {
@@ -20,6 +20,7 @@ class SponsorshipsController extends BaseAdminController
 
     /**
      * SponsorshipsController constructor.
+     *
      * @param Animal $animal
      */
     public function __construct(Animal $animal)
@@ -32,6 +33,7 @@ class SponsorshipsController extends BaseAdminController
     /**
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request, $id)
@@ -46,6 +48,7 @@ class SponsorshipsController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create($id)
@@ -58,6 +61,7 @@ class SponsorshipsController extends BaseAdminController
     /**
      * @param StoreRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request, $id)
@@ -75,6 +79,7 @@ class SponsorshipsController extends BaseAdminController
     /**
      * @param $animal_id
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($animal_id, $id)
@@ -89,6 +94,7 @@ class SponsorshipsController extends BaseAdminController
      * @param UpdateRequest $request
      * @param $animal_id
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $animal_id, $id)
@@ -107,7 +113,9 @@ class SponsorshipsController extends BaseAdminController
     /**
      * @param $animal_id
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($animal_id, $id)

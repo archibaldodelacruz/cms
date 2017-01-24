@@ -8,17 +8,17 @@ use App\Models\Users\User;
 class PostTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'posts_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'title', 'slug', 'text', 'user_id'
+        'title', 'slug', 'text', 'user_id',
     ];
 
     public function author()

@@ -2,13 +2,12 @@
 
 namespace App\Helpers\Traits;
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Builder;
 
 trait FilterByWeb
 {
     protected static $excludedTables = [
-        'webs_config', 'users'
+        'webs_config', 'users',
     ];
 
     /**
@@ -16,7 +15,7 @@ trait FilterByWeb
      */
     public static function getTableName() : string
     {
-        return with(new static)->getTable();
+        return with(new static())->getTable();
     }
 
     /**
@@ -29,8 +28,8 @@ trait FilterByWeb
         parent::boot();
 
         if (method_exists(get_called_class(), 'web')
-            && ! in_array(self::getTableName(), self::$excludedTables)) {
-            if (! app()->runningInConsole() || app()->environment() === 'testing') {
+            && !in_array(self::getTableName(), self::$excludedTables)) {
+            if (!app()->runningInConsole() || app()->environment() === 'testing') {
                 static::creating(function ($model) {
                     $model->web_id = app('App\Models\Webs\Web')->id;
                 });

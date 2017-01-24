@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Posts\Post;
 use App\Models\Posts\Category;
+use App\Models\Posts\Post;
 use App\Models\Users\User;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PostsControllerTest extends TestCase
 {
@@ -17,12 +14,12 @@ class PostsControllerTest extends TestCase
     {
         $posts = factory(Post::class, 10)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -32,10 +29,10 @@ class PostsControllerTest extends TestCase
                 'id' => $posts[0]->id,
             ])
             ->seeInDatabase('posts_translations', [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ]);
     }
 
@@ -47,12 +44,12 @@ class PostsControllerTest extends TestCase
     {
         factory(Post::class, 10)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs(factory(User::class)->create())
@@ -68,12 +65,12 @@ class PostsControllerTest extends TestCase
     {
         factory(Post::class, 10)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -104,10 +101,10 @@ class PostsControllerTest extends TestCase
                 'id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ])
             ->seeRouteIs('admin::panel::posts::edit', ['id' => 1]);
     }
@@ -119,12 +116,12 @@ class PostsControllerTest extends TestCase
     {
         $post = factory(Post::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -140,32 +137,32 @@ class PostsControllerTest extends TestCase
     {
         $post = factory(Post::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('posts', [
-                'id' => 1
+                'id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ])
             ->visitRoute('admin::panel::posts::edit', ['id' => 1])
             ->type('Otro título', 'es[title]')
             ->type('otro-slug', 'es[slug]')
             ->press('Actualizar')
             ->seeInDatabase('posts_translations', [
-                'title' => 'Otro título',
-                'slug' => 'otro-slug',
-                'user_id' => 1
+                'title'   => 'Otro título',
+                'slug'    => 'otro-slug',
+                'user_id' => 1,
             ]);
     }
 
@@ -177,28 +174,28 @@ class PostsControllerTest extends TestCase
     {
         $post = factory(Post::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('posts', [
-                'id' => 1
+                'id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ])
             ->visitRoute('admin::panel::posts::delete', ['id' => 1])
             ->notSeeInDatabase('posts', [
-                'id' => 1,
-                'deleted_at' => null
+                'id'         => 1,
+                'deleted_at' => null,
             ]);
     }
 
@@ -210,36 +207,36 @@ class PostsControllerTest extends TestCase
     {
         $post = factory(Post::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ],
             'en' => [
-                'title' => 'Test',
-                'slug' => 'test',
-                'text' => 'Text',
-                'user_id' => 1
-            ]
+                'title'   => 'Test',
+                'slug'    => 'test',
+                'text'    => 'Text',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('posts_translations', [
-                'locale' => 'es',
-                'text' => 'Texto',
-                'user_id' => 1
+                'locale'  => 'es',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'locale' => 'en',
-                'text' => 'Text',
-                'user_id' => 1
+                'locale'  => 'en',
+                'text'    => 'Text',
+                'user_id' => 1,
             ])
             ->visitRoute('admin::panel::posts::delete_translation', ['id' => 1])
             ->notSeeInDatabase('posts_translations', [
-                'locale' => 'es',
-                'text' => 'Texto',
-                'user_id' => 1
+                'locale'  => 'es',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ]);
     }
 
@@ -251,12 +248,12 @@ class PostsControllerTest extends TestCase
     {
         $post = factory(Post::class)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Prueba',
-                'slug' => 'prueba',
-                'text' => 'Texto',
-                'user_id' => 1
-            ]
+            'es'     => [
+                'title'   => 'Prueba',
+                'slug'    => 'prueba',
+                'text'    => 'Texto',
+                'user_id' => 1,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
@@ -264,19 +261,19 @@ class PostsControllerTest extends TestCase
                 'id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'locale' => 'es',
-                'text' => 'Texto',
-                'user_id' => 1
+                'locale'  => 'es',
+                'text'    => 'Texto',
+                'user_id' => 1,
             ])
             ->visitRoute('admin::panel::posts::delete', ['id' => 1])
             ->notSeeInDatabase('posts', [
-                'id' => 1,
-                'deleted_at' => null
+                'id'         => 1,
+                'deleted_at' => null,
             ])
             ->visitRoute('admin::panel::posts::restore', ['id' => 1])
             ->seeInDatabase('posts', [
-                'id' => 1,
-                'deleted_at' => null
+                'id'         => 1,
+                'deleted_at' => null,
             ]);
     }
 }

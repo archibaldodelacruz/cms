@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Finances\Finance;
-use App\Http\Requests\Animals\Health\StoreRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
+use App\Http\Requests\Animals\Health\StoreRequest;
 use App\Http\Requests\Animals\Health\UpdateRequest;
+use App\Models\Animals\Animal;
+use App\Models\Finances\Finance;
+use Illuminate\Http\Request;
 
 class HealthController extends BaseAdminController
 {
@@ -26,7 +26,8 @@ class HealthController extends BaseAdminController
 
     /**
      * HealthController constructor.
-     * @param Animal $animal
+     *
+     * @param Animal  $animal
      * @param Finance $finance
      */
     public function __construct(Animal $animal, Finance $finance)
@@ -64,11 +65,11 @@ class HealthController extends BaseAdminController
 
         if ($request->has('finances') && $request->get('finances') && $request->get('cost') > 0) {
             $this->finance->create([
-                'title' => $health->title,
-                'amount' => $health->cost,
+                'title'       => $health->title,
+                'amount'      => $health->cost,
                 'executed_at' => $health->start_date,
-                'reason' => 'veterinary',
-                'type' => 'spending'
+                'reason'      => 'veterinary',
+                'type'        => 'spending',
             ]);
         }
 
@@ -100,7 +101,9 @@ class HealthController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($animal_id, $id)

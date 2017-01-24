@@ -6,14 +6,13 @@ use App\Models\Webs\Web;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class WebInstalled extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * @var Web $web
+     * @var Web
      */
     public $web;
 
@@ -25,7 +24,7 @@ class WebInstalled extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param Web $web
+     * @param Web    $web
      * @param string $password
      */
     public function __construct(Web $web, string $password)

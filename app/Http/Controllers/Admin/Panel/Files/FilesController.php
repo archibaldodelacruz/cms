@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Panel\Files;
 
-use App\Models\Files\File;
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Files\StoreRequest;
 use App\Http\Requests\Files\UpdateRequest;
+use App\Models\Files\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends BaseAdminController
 {
@@ -21,6 +21,7 @@ class FilesController extends BaseAdminController
 
     /**
      * FilesController constructor.
+     *
      * @param File $file
      */
     public function __construct(File $file)
@@ -32,6 +33,7 @@ class FilesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -49,6 +51,7 @@ class FilesController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -76,14 +79,15 @@ class FilesController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', File::class);
 
-        if (Storage::exists($this->web->getStorageFolder(false, 'uploads/' . $request->file('file')->getClientOriginalName()))) {
-            $name = time() . '-' . $request->file('file')->getClientOriginalName();
+        if (Storage::exists($this->web->getStorageFolder(false, 'uploads/'.$request->file('file')->getClientOriginalName()))) {
+            $name = time().'-'.$request->file('file')->getClientOriginalName();
         } else {
             $name = $request->file('file')->getClientOriginalName();
         }
@@ -107,6 +111,7 @@ class FilesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -123,6 +128,7 @@ class FilesController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -135,8 +141,8 @@ class FilesController extends BaseAdminController
         $data = $request->except('file');
 
         if ($request->hasFile('file')) {
-            if (Storage::exists($this->web->getStorageFolder(false, 'uploads/' . $request->file('file')->getClientOriginalName()))) {
-                $name = time() . '-' . $request->file('file')->getClientOriginalName();
+            if (Storage::exists($this->web->getStorageFolder(false, 'uploads/'.$request->file('file')->getClientOriginalName()))) {
+                $name = time().'-'.$request->file('file')->getClientOriginalName();
             } else {
                 $name = $request->file('file')->getClientOriginalName();
             }
@@ -148,8 +154,8 @@ class FilesController extends BaseAdminController
             $data['file'] = $name;
             $data['extension'] = $request->file('file')->getClientOriginalExtension();
 
-            if (Storage::exists($this->web->getStorageFolder(false, 'uploads/' . $file->file))) {
-                Storage::delete($this->web->getStorageFolder(false, 'uploads/' . $file->file));
+            if (Storage::exists($this->web->getStorageFolder(false, 'uploads/'.$file->file))) {
+                Storage::delete($this->web->getStorageFolder(false, 'uploads/'.$file->file));
             }
         }
 
@@ -162,6 +168,7 @@ class FilesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
@@ -180,7 +187,9 @@ class FilesController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)

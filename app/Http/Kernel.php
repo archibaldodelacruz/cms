@@ -46,17 +46,17 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'setTheme' => \igaster\laravelTheme\Middleware\setTheme::class,
-        'checkInstallation' => \App\Http\Middleware\VerifyInstall::class,
+        'auth'                => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'          => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'            => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'                 => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'               => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'            => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'setTheme'            => \igaster\laravelTheme\Middleware\setTheme::class,
+        'checkInstallation'   => \App\Http\Middleware\VerifyInstall::class,
         'redirectIfInstalled' => \App\Http\Middleware\RedirectIfInstalled::class,
         'redirectIfHasDomain' => \App\Http\Middleware\RedirectIFHasDomain::class,
-        'superAdmin' => \App\Http\Middleware\CheckSuperAdmin::class,
-        'verifyAdminAccess' => \App\Http\Middleware\VerifyAdminAccess::class,
+        'superAdmin'          => \App\Http\Middleware\CheckSuperAdmin::class,
+        'verifyAdminAccess'   => \App\Http\Middleware\VerifyAdminAccess::class,
     ];
 }
