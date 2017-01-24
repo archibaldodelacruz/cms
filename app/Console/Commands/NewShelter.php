@@ -26,7 +26,7 @@ class NewShelter extends Command
 
     /**
      * Web model
-     * 
+     *
      * @var \App\Models\Webs\Web
      */
     protected $web;
@@ -51,9 +51,9 @@ class NewShelter extends Command
     public function handle()
     {
         $web = $this->web;
-            $web->domain = $this->argument('domain');
-            $web->subdomain = $this->argument('subdomain');
-            $web->email = $this->argument('email');
+        $web->domain = $this->argument('domain');
+        $web->subdomain = $this->argument('subdomain');
+        $web->email = $this->argument('email');
         $web->save();
 
         $code = mt_rand(00000, 99999);

@@ -44,7 +44,7 @@ class FilesController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.files.index', compact('files', 'request', 'total'));
+        return view('panel.files.index', compact('files', 'request', 'total'));
     }
 
     /**
@@ -61,7 +61,7 @@ class FilesController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.files.deleted', compact('files', 'request', 'total'));
+        return view('panel.files.deleted', compact('files', 'request', 'total'));
     }
 
     /**
@@ -71,7 +71,7 @@ class FilesController extends BaseAdminController
     {
         $this->authorize('create', File::class);
 
-        return view('admin.panel.files.create');
+        return view('panel.files.create');
     }
 
     /**
@@ -117,7 +117,7 @@ class FilesController extends BaseAdminController
 
         $this->authorize('update', $file);
 
-        return view('admin.panel.files.edit', compact('file'));
+        return view('panel.files.edit', compact('file'));
     }
 
     /**

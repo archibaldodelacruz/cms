@@ -45,14 +45,14 @@ class HealthController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.animals.health.index', compact('animal', 'health', 'request'));
+        return view('panel.animals.health.index', compact('animal', 'health', 'request'));
     }
 
     public function create($id)
     {
         $animal = $this->animal->findOrFail($id);
 
-        return view('admin.panel.animals.health.create', compact('animal'));
+        return view('panel.animals.health.create', compact('animal'));
     }
 
     public function store(StoreRequest $request, $id)
@@ -82,7 +82,7 @@ class HealthController extends BaseAdminController
         $animal = $this->animal->with('health')->findOrFail($animal_id);
         $health = $animal->health()->findOrFail($id);
 
-        return view('admin.panel.animals.health.edit', compact('animal', 'health'));
+        return view('panel.animals.health.edit', compact('animal', 'health'));
     }
 
     public function update(UpdateRequest $request, $animal_id, $id)

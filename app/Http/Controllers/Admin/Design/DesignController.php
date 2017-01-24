@@ -29,7 +29,7 @@ class DesignController extends BaseAdminController
         chdir(public_path('assets/images/backgrounds'));
         $backgrounds = glob('*.png');
 
-        return view('admin.design.index', compact('backgrounds'));
+        return view('design.index', compact('backgrounds'));
     }
 
     /**
@@ -39,7 +39,7 @@ class DesignController extends BaseAdminController
     {
         $this->customAuthorize('admin.design');
 
-        return view('admin.design.config');
+        return view('design.config');
     }
 
     /**
@@ -49,7 +49,7 @@ class DesignController extends BaseAdminController
     {
         $this->customAuthorize('admin.design');
 
-        return view('admin.design.css');
+        return view('design.css');
     }
 
     /**

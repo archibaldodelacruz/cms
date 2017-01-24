@@ -42,7 +42,7 @@ class CalendarController extends BaseAdminController
     {
         $this->authorize('view', Calendar::class);
 
-        return view('admin.calendar.index');
+        return view('calendar.index');
     }
 
     /**
@@ -52,7 +52,7 @@ class CalendarController extends BaseAdminController
     {
         $this->authorize('create', Calendar::class);
 
-        return view('admin.calendar.create');
+        return view('calendar.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class CalendarController extends BaseAdminController
 
         $this->authorize('update', $event);
 
-        return view('admin.calendar.edit', compact('event'));
+        return view('calendar.edit', compact('event'));
     }
 
     /**

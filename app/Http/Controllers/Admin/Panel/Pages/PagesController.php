@@ -39,7 +39,7 @@ class PagesController extends BaseAdminController
             ->orderBy('published_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.pages.index', compact('pages', 'request', 'total'));
+        return view('panel.pages.index', compact('pages', 'request', 'total'));
     }
 
     /**
@@ -56,7 +56,7 @@ class PagesController extends BaseAdminController
             ->orderBy('published_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.pages.deleted', compact('pages', 'request', 'total'));
+        return view('panel.pages.deleted', compact('pages', 'request', 'total'));
     }
 
     /**
@@ -66,7 +66,7 @@ class PagesController extends BaseAdminController
     {
         $this->authorize('create', Page::class);
 
-        return view('admin.panel.pages.create');
+        return view('panel.pages.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class PagesController extends BaseAdminController
             ->with(['author'])
             ->findOrFail($id);
 
-        return view('admin.panel.pages.show', compact('page'));
+        return view('panel.pages.show', compact('page'));
     }
 
     /**
@@ -112,7 +112,7 @@ class PagesController extends BaseAdminController
 
         $this->authorize('update', $page);
 
-        return view('admin.panel.pages.edit', compact('page'));
+        return view('panel.pages.edit', compact('page'));
     }
 
     /**

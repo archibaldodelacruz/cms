@@ -38,7 +38,7 @@ class PanelController extends BaseAdminController
         $posts = $this->post->with(['translations', 'category.translations'])->orderBy('created_at', 'DESC')->take(5)->get();
         $users = $this->web->users()->orderBy('created_at', 'DESC')->take(5)->get();
 
-        return view('admin.panel.index', compact('animals', 'posts', 'users'));
+        return view('panel.index', compact('animals', 'posts', 'users'));
     }
 
     public function stats(Request $request)
@@ -192,6 +192,6 @@ class PanelController extends BaseAdminController
             'veterinarians' => $veterinarians['veterinarians']
         ];
 
-        return view('admin.panel.stats', compact('data'));
+        return view('panel.stats', compact('data'));
     }
 }

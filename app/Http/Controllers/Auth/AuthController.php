@@ -83,11 +83,11 @@ class AuthController extends Controller
         } elseif ($logins_to_block === 0) {
             return back()->withErrors([
                 'email' => ['Su cuenta ha sido temporalmente bloqueada. Prueba de nuevo en 1 minuto.']
-            ]); 
+            ]);
         } else {
             return back()->withErrors([
                 'email' => ['El correo electrónico o la contraseña no son válidos. Le quedan ' . $logins_to_block . ' intentos, luego se bloqueará al usuario durante 1 minuto.']
-            ]);    
+            ]);
         }
     }
 

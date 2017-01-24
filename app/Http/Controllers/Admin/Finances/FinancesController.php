@@ -42,7 +42,7 @@ class FinancesController extends BaseAdminController
             ->orderBy('executed_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.finances.index', compact('finances', 'request', 'total'));
+        return view('finances.index', compact('finances', 'request', 'total'));
     }
 
     /**
@@ -54,7 +54,7 @@ class FinancesController extends BaseAdminController
 
         $finances = $this->finance;
 
-        return view('admin.finances.stats', compact('finances'));
+        return view('finances.stats', compact('finances'));
     }
 
     /**
@@ -68,7 +68,7 @@ class FinancesController extends BaseAdminController
             ->orderBy('executed_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.finances.deleted', compact('finances', 'request', 'total'));
+        return view('finances.deleted', compact('finances', 'request', 'total'));
     }
 
     /**
@@ -82,7 +82,7 @@ class FinancesController extends BaseAdminController
         $finances = $this->finance
             ->findOrFail($id);
 
-        return view('admin.finances.show', compact('finances'));
+        return view('finances.show', compact('finances'));
     }
 
     /**
@@ -92,7 +92,7 @@ class FinancesController extends BaseAdminController
     {
         $this->authorize('create', Finance::class);
 
-        return view('admin.finances.create');
+        return view('finances.create');
     }
 
     /**
@@ -121,7 +121,7 @@ class FinancesController extends BaseAdminController
             ->findOrFail($id);
         $this->authorize('update', $finances);
 
-        return view('admin.finances.edit', compact('finances'));
+        return view('finances.edit', compact('finances'));
     }
 
     /**

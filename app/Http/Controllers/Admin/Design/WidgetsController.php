@@ -34,7 +34,7 @@ class WidgetsController extends BaseAdminController
             ->orderBy('order', 'ASC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.design.widgets.index', compact('widgets', 'request', 'total'));
+        return view('design.widgets.index', compact('widgets', 'request', 'total'));
     }
 
     /**
@@ -51,7 +51,7 @@ class WidgetsController extends BaseAdminController
             ->orderBy('order', 'ASC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.design.widgets.deleted', compact('widgets', 'request', 'total'));
+        return view('design.widgets.deleted', compact('widgets', 'request', 'total'));
     }
 
     /**
@@ -61,7 +61,7 @@ class WidgetsController extends BaseAdminController
     {
         $this->customAuthorize('admin.design');
         
-        return view('admin.design.widgets.create');
+        return view('design.widgets.create');
     }
 
     /**
@@ -107,7 +107,7 @@ class WidgetsController extends BaseAdminController
         $widget = $this->web->widgets()
             ->findOrFail($id);
 
-        return view('admin.design.widgets.edit', compact('widget'));
+        return view('design.widgets.edit', compact('widget'));
     }
 
     /**

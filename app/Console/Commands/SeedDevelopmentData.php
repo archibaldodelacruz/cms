@@ -11,11 +11,17 @@ use Illuminate\Console\Command;
 use App\Models\Location\Country;
 use App\Models\Partners\Partner;
 use App\Models\Calendar\Calendar;
-use App\Models\Widgets\{Widget, Link};
-use App\Models\Users\{User, Permission};
+use App\Models\Widgets\Widget;
+use App\Models\Widgets\Link;
+use App\Models\Users\User;
+use App\Models\Users\Permission;
 use App\Models\Veterinarians\Veterinary;
-use App\Models\Posts\{Post, Category, Comment};
-use App\Models\Animals\{Animal, Media, TemporaryHome};
+use App\Models\Posts\Post;
+use App\Models\Posts\Category;
+use App\Models\Posts\Comment;
+use App\Models\Animals\Animal;
+use App\Models\Animals\Media;
+use App\Models\Animals\TemporaryHome;
 
 class SeedDevelopmentData extends Command
 {

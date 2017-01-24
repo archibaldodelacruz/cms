@@ -43,7 +43,7 @@ class FormsController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.forms.index', compact('forms', 'request', 'total'));
+        return view('panel.forms.index', compact('forms', 'request', 'total'));
     }
 
     public function deleted(Request $request)
@@ -56,7 +56,7 @@ class FormsController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.forms.deleted', compact('forms', 'request', 'total'));
+        return view('panel.forms.deleted', compact('forms', 'request', 'total'));
     }
 
     /**
@@ -66,7 +66,7 @@ class FormsController extends BaseAdminController
     {
         $this->authorize('create', Form::class);
 
-        return view('admin.panel.forms.create');
+        return view('panel.forms.create');
     }
 
     /**
@@ -117,7 +117,7 @@ class FormsController extends BaseAdminController
 
         $this->authorize('update', $form);
 
-        return view('admin.panel.forms.edit', compact('form'));
+        return view('panel.forms.edit', compact('form'));
     }
 
     /**

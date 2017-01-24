@@ -41,7 +41,7 @@ class SponsorshipsController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.animals.sponsorships.index', compact('animal', 'sponsorships', 'request'));
+        return view('panel.animals.sponsorships.index', compact('animal', 'sponsorships', 'request'));
     }
 
     /**
@@ -52,7 +52,7 @@ class SponsorshipsController extends BaseAdminController
     {
         $animal = $this->web->animals()->findOrFail($id);
 
-        return view('admin.panel.animals.sponsorships.create', compact('animal'));
+        return view('panel.animals.sponsorships.create', compact('animal'));
     }
 
     /**
@@ -82,7 +82,7 @@ class SponsorshipsController extends BaseAdminController
         $animal = $this->web->animals()->with('sponsorships')->findOrFail($animal_id);
         $sponsorship = $animal->sponsorships()->findOrFail($id);
 
-        return view('admin.panel.animals.sponsorships.edit', compact('animal', 'sponsorship'));
+        return view('panel.animals.sponsorships.edit', compact('animal', 'sponsorship'));
     }
 
     /**

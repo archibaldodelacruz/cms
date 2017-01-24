@@ -39,7 +39,7 @@ class VeterinariansController extends BaseAdminController
             ->orderBy('name')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.veterinarians.index', compact('veterinarians', 'request', 'total'));
+        return view('panel.veterinarians.index', compact('veterinarians', 'request', 'total'));
     }
 
     /**
@@ -55,7 +55,7 @@ class VeterinariansController extends BaseAdminController
             ->orderBy('name')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.veterinarians.deleted', compact('veterinarians', 'request', 'total'));
+        return view('panel.veterinarians.deleted', compact('veterinarians', 'request', 'total'));
     }
 
     /**
@@ -69,7 +69,7 @@ class VeterinariansController extends BaseAdminController
         $veterinary = $this->veterinary
             ->findOrFail($id);
 
-        return view('admin.panel.veterinarians.show', compact('veterinary'));
+        return view('panel.veterinarians.show', compact('veterinary'));
     }
 
     /**
@@ -79,7 +79,7 @@ class VeterinariansController extends BaseAdminController
     {
         $this->authorize('create', Veterinary::class);
 
-        return view('admin.panel.veterinarians.create');
+        return view('panel.veterinarians.create');
     }
 
     /**
@@ -109,7 +109,7 @@ class VeterinariansController extends BaseAdminController
 
         $this->authorize('update', $veterinary);
 
-        return view('admin.panel.veterinarians.edit', compact('veterinary'));
+        return view('panel.veterinarians.edit', compact('veterinary'));
     }
 
     /**

@@ -42,7 +42,7 @@ class TemporaryHomesController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(30);
 
-        return view('admin.panel.temporaryhomes.index', compact('temporary_homes', 'request', 'total'));
+        return view('panel.temporaryhomes.index', compact('temporary_homes', 'request', 'total'));
     }
 
     /**
@@ -59,7 +59,7 @@ class TemporaryHomesController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(25);
 
-        return view('admin.panel.temporaryhomes.deleted', compact('temporary_homes', 'request', 'total'));
+        return view('panel.temporaryhomes.deleted', compact('temporary_homes', 'request', 'total'));
     }
 
     /**
@@ -72,7 +72,7 @@ class TemporaryHomesController extends BaseAdminController
         $temporary_home = $this->temporary_home
             ->findOrFail($id);
 
-        return view('admin.panel.temporaryhomes.show', compact('temporary_home'));
+        return view('panel.temporaryhomes.show', compact('temporary_home'));
     }
 
     /**
@@ -82,7 +82,7 @@ class TemporaryHomesController extends BaseAdminController
     {
         $this->authorize('create', TemporaryHome::class);
 
-        return view('admin.panel.temporaryhomes.create');
+        return view('panel.temporaryhomes.create');
     }
 
     /**
@@ -113,7 +113,7 @@ class TemporaryHomesController extends BaseAdminController
 
         $this->authorize('update', $temporary_home);
 
-        return view('admin.panel.temporaryhomes.edit', compact('temporary_home'));
+        return view('panel.temporaryhomes.edit', compact('temporary_home'));
     }
 
     /**

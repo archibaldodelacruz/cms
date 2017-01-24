@@ -42,7 +42,7 @@ class PartnersController extends BaseAdminController
             ->orderBy('name')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.partners.index', compact('partners', 'request', 'total'));
+        return view('panel.partners.index', compact('partners', 'request', 'total'));
     }
 
     /**
@@ -58,7 +58,7 @@ class PartnersController extends BaseAdminController
             ->orderBy('name')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.partners.deleted', compact('partners', 'request', 'total'));
+        return view('panel.partners.deleted', compact('partners', 'request', 'total'));
     }
 
     /**
@@ -72,7 +72,7 @@ class PartnersController extends BaseAdminController
         $partner = $this->partner
             ->findOrFail($id);
 
-        return view('admin.panel.partners.show', compact('partner'));
+        return view('panel.partners.show', compact('partner'));
     }
 
     /**
@@ -82,7 +82,7 @@ class PartnersController extends BaseAdminController
     {
         $this->authorize('create', Partner::class);
 
-        return view('admin.panel.partners.create');
+        return view('panel.partners.create');
     }
 
     /**
@@ -112,7 +112,7 @@ class PartnersController extends BaseAdminController
 
         $this->authorize('update', $partner);
 
-        return view('admin.panel.partners.edit', compact('partner'));
+        return view('panel.partners.edit', compact('partner'));
     }
 
     /**

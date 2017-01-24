@@ -24,7 +24,7 @@ class SupportController extends BaseAdminController
     {
         $this->customAuthorize('admin.support');
 
-        return view('admin.support.index');
+        return view('support.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class SupportController extends BaseAdminController
     {
         $this->customAuthorize('admin.support');
 
-        return view('admin.support.faq');
+        return view('support.faq');
     }
 
     /**
@@ -44,7 +44,7 @@ class SupportController extends BaseAdminController
     {
         $this->customAuthorize('admin.support');
 
-        return view('admin.support.contact');
+        return view('support.contact');
     }
 
     /**
@@ -69,7 +69,7 @@ class SupportController extends BaseAdminController
     {
         $this->customAuthorize('admin.support');
 
-        return view('admin.support.changelog');
+        return view('support.changelog');
     }
 
     /**
