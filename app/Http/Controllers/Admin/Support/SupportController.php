@@ -9,17 +9,11 @@ use Illuminate\Support\Facades\Mail;
 
 class SupportController extends BaseAdminController
 {
-    /**
-     * SupportController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $this->customAuthorize('admin.support');
@@ -27,9 +21,6 @@ class SupportController extends BaseAdminController
         return view('support.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function faq()
     {
         $this->customAuthorize('admin.support');
@@ -37,9 +28,6 @@ class SupportController extends BaseAdminController
         return view('support.faq');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function contact()
     {
         $this->customAuthorize('admin.support');
@@ -47,11 +35,6 @@ class SupportController extends BaseAdminController
         return view('support.contact');
     }
 
-    /**
-     * @param ContactRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function contact_post(ContactRequest $request)
     {
         $this->customAuthorize('admin.support');
@@ -63,9 +46,6 @@ class SupportController extends BaseAdminController
         return redirect()->route('admin::support::contact');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function changelog()
     {
         $this->customAuthorize('admin.support');
@@ -73,9 +53,6 @@ class SupportController extends BaseAdminController
         return view('support.changelog');
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [

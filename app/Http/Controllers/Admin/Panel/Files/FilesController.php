@@ -14,16 +14,8 @@ class FilesController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var File
-     */
     protected $file;
 
-    /**
-     * FilesController constructor.
-     *
-     * @param File $file
-     */
     public function __construct(File $file)
     {
         parent::__construct();
@@ -31,11 +23,6 @@ class FilesController extends BaseAdminController
         $this->file = $file;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', File::class);
@@ -49,11 +36,6 @@ class FilesController extends BaseAdminController
         return view('panel.files.index', compact('files', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('view', File::class);
@@ -67,9 +49,6 @@ class FilesController extends BaseAdminController
         return view('panel.files.deleted', compact('files', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', File::class);
@@ -77,11 +56,6 @@ class FilesController extends BaseAdminController
         return view('panel.files.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', File::class);
@@ -109,11 +83,6 @@ class FilesController extends BaseAdminController
         return redirect()->route('admin::panel::files::edit', ['id' => $file->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $file = $this->file
@@ -125,12 +94,6 @@ class FilesController extends BaseAdminController
         return view('panel.files.edit', compact('file'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $file = $this->file
@@ -166,11 +129,6 @@ class FilesController extends BaseAdminController
         return redirect()->route('admin::panel::files::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $file = $this->file
@@ -185,13 +143,6 @@ class FilesController extends BaseAdminController
         return redirect()->route('admin::panel::files::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $file = $this->file

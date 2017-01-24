@@ -10,19 +10,11 @@ trait FilterByWeb
         'webs_config', 'users',
     ];
 
-    /**
-     * @return string
-     */
     public static function getTableName() : string
     {
         return with(new static())->getTable();
     }
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
     protected static function boot()
     {
         parent::boot();

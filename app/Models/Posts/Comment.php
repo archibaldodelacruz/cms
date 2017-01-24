@@ -11,25 +11,9 @@ class Comment extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected $table = 'posts_comments';
+    protected $fillable = [];
 
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-
-    ];
-
-    /**
-     * Relations.
-     */
     public function post()
     {
         return $this->belongsTo(Post::class);

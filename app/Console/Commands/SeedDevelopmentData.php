@@ -21,110 +21,22 @@ use Image;
 
 class SeedDevelopmentData extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'protecms:seeddevdata';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Seed fake data to development';
 
-    /**
-     * Users to generate.
-     *
-     * @var int
-     */
     const USERS = 20;
-
-    /**
-     * Posts categories to generate.
-     *
-     * @var int
-     */
     const POSTS_CATEGORIES = 4;
-
-    /**
-     * Posts to generate.
-     *
-     * @var int
-     */
     const POSTS = 20;
-
-    /**
-     * Posts comments max to generate.
-     *
-     * @var int
-     */
     const POSTS_COMMENTS = 20;
-
-    /**
-     * Files max to generate.
-     *
-     * @var int
-     */
     const FILES = 20;
-
-    /**
-     * Animals max to generate.
-     *
-     * @var int
-     */
     const ANIMALS = 20;
-
-    /**
-     * Animals photos max to generate.
-     *
-     * @var int
-     */
     const ANIMALS_PHOTOS = 6;
-
-    /**
-     * Pages max to generate.
-     *
-     * @var int
-     */
     const PAGES = 5;
-
-    /**
-     * Veterinarians max to generate.
-     *
-     * @var int
-     */
     const VETERINARIANS = 5;
-
-    /**
-     * Calendar max to generate.
-     *
-     * @var int
-     */
     const CALENDAR = 50;
-
-    /**
-     * Temporary homes max to generate.
-     *
-     * @var int
-     */
     const TEMPORARY_HOMES = 20;
-
-    /**
-     * Partners max to generate.
-     *
-     * @var int
-     */
     const PARTNERS = 100;
 
-    /**
-     * Create a new command instance.
-     *
-     * @param Web  $web
-     * @param User $user
-     */
     public function __construct(Web $web, User $user)
     {
         parent::__construct();
@@ -133,11 +45,6 @@ class SeedDevelopmentData extends Command
         $this->user = $user;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
         $this->call('migrate:refresh');

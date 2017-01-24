@@ -16,16 +16,8 @@ class UsersController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var User
-     */
     protected $user;
 
-    /**
-     * UsersController constructor.
-     *
-     * @param User $user
-     */
     public function __construct(User $user)
     {
         parent::__construct();
@@ -33,11 +25,6 @@ class UsersController extends BaseAdminController
         $this->user = $user;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', User::class);
@@ -50,9 +37,6 @@ class UsersController extends BaseAdminController
         return view('panel.users.index', compact('users', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', User::class);
@@ -63,9 +47,6 @@ class UsersController extends BaseAdminController
         return view('panel.users.show', compact('user'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', User::class);
@@ -73,11 +54,6 @@ class UsersController extends BaseAdminController
         return view('panel.users.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', User::class);
@@ -94,11 +70,6 @@ class UsersController extends BaseAdminController
         return redirect()->route('admin::panel::users::edit', ['id' => $user->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $user = $this->web->users()
@@ -109,12 +80,6 @@ class UsersController extends BaseAdminController
         return view('panel.users.edit', compact('user'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $data = $request->all();
@@ -135,13 +100,6 @@ class UsersController extends BaseAdminController
         return redirect()->route('admin::panel::users::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $user = $this->web->users()

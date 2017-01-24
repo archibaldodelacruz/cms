@@ -12,27 +12,16 @@ use Intervention\Image\Facades\Image;
 
 class InstallController extends Controller
 {
-    /**
-     * InstallController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         return view('install.index');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function data(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -41,11 +30,6 @@ class InstallController extends Controller
         return view('install.data');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function data_post(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -77,11 +61,6 @@ class InstallController extends Controller
         return redirect()->route('install::design');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
     public function design(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -92,11 +71,6 @@ class InstallController extends Controller
         return view('install.design');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function design_post(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -172,11 +146,6 @@ class InstallController extends Controller
         return redirect()->route('install::terms');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
     public function terms(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -189,11 +158,6 @@ class InstallController extends Controller
         return view('install.terms', compact('web'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function terms_post(Request $request)
     {
         $this->checkCodeInstallation($request);
@@ -204,9 +168,6 @@ class InstallController extends Controller
         return redirect()->route('install::finish');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function finish()
     {
         if (!$this->checkInstallation('terms')) {
@@ -246,19 +207,11 @@ class InstallController extends Controller
         return view('install.finish', compact('web', 'user', 'password'));
     }
 
-    /**
-     * @param $step
-     *
-     * @return bool
-     */
     protected function checkInstallation($step)
     {
         return $this->web->getConfig('install_step') === $step;
     }
 
-    /**
-     * @param Request $request
-     */
     protected function checkCodeInstallation(Request $request)
     {
         if (session()->has('install_code')) {
@@ -276,12 +229,6 @@ class InstallController extends Controller
         session()->put('install_code', $request->get('code'));
     }
 
-    /**
-     * Generate web data.
-     *
-     * @param $web
-     * @param $user
-     */
     protected function generateWeb($web, $user)
     {
         checkFolder($web->getStorageFolder('uploads'), 0775);

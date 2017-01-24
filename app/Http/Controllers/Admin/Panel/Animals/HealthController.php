@@ -14,22 +14,9 @@ class HealthController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Animal
-     */
     protected $animal;
-
-    /**
-     * @var Finance
-     */
     protected $finance;
 
-    /**
-     * HealthController constructor.
-     *
-     * @param Animal  $animal
-     * @param Finance $finance
-     */
     public function __construct(Animal $animal, Finance $finance)
     {
         parent::__construct();

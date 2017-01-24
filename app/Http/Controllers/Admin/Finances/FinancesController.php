@@ -13,16 +13,8 @@ class FinancesController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Finance
-     */
     protected $finance;
 
-    /**
-     * FinancesController constructor.
-     *
-     * @param Finance $finance
-     */
     public function __construct(Finance $finance)
     {
         parent::__construct();
@@ -30,11 +22,6 @@ class FinancesController extends BaseAdminController
         $this->finance = $finance;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Finance::class);
@@ -47,9 +34,6 @@ class FinancesController extends BaseAdminController
         return view('finances.index', compact('finances', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function stats()
     {
         $this->authorize('view', Finance::class);
@@ -59,11 +43,6 @@ class FinancesController extends BaseAdminController
         return view('finances.stats', compact('finances'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $total = $this->finance->onlyTrashed()->count();
@@ -74,11 +53,6 @@ class FinancesController extends BaseAdminController
         return view('finances.deleted', compact('finances', 'request', 'total'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Finance::class);
@@ -89,9 +63,6 @@ class FinancesController extends BaseAdminController
         return view('finances.show', compact('finances'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Finance::class);
@@ -99,11 +70,6 @@ class FinancesController extends BaseAdminController
         return view('finances.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Finance::class);
@@ -116,11 +82,6 @@ class FinancesController extends BaseAdminController
         return redirect()->route('admin::finances::edit', ['id' => $finances->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $finances = $this->finance
@@ -130,12 +91,6 @@ class FinancesController extends BaseAdminController
         return view('finances.edit', compact('finances'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $finances = $this->finance->findOrFail($id);
@@ -147,12 +102,6 @@ class FinancesController extends BaseAdminController
         return redirect()->route('admin::finances::edit', ['id' => $id]);
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore(Request $request, $id)
     {
         $finances = $this->finance
@@ -168,13 +117,6 @@ class FinancesController extends BaseAdminController
         return redirect()->route('admin::finances::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $finances = $this->finance

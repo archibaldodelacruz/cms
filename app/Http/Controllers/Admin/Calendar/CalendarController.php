@@ -12,22 +12,9 @@ use Illuminate\Http\Request;
 
 class CalendarController extends BaseAdminController
 {
-    /**
-     * @var Calendar
-     */
+    protected $animal;
     protected $calendar;
 
-    /**
-     * @var Animal
-     */
-    protected $animal;
-
-    /**
-     * CalendarController constructor.
-     *
-     * @param Calendar $calendar
-     * @param Animal   $animal
-     */
     public function __construct(Calendar $calendar, Animal $animal)
     {
         parent::__construct();
@@ -36,9 +23,6 @@ class CalendarController extends BaseAdminController
         $this->animal = $animal;
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $this->authorize('view', Calendar::class);
@@ -46,9 +30,6 @@ class CalendarController extends BaseAdminController
         return view('calendar.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Calendar::class);
@@ -56,11 +37,6 @@ class CalendarController extends BaseAdminController
         return view('calendar.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Calendar::class);
@@ -73,11 +49,6 @@ class CalendarController extends BaseAdminController
         return redirect()->to(route('admin::calendar::index').'?type=all');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $event = $this->calendar
@@ -88,12 +59,6 @@ class CalendarController extends BaseAdminController
         return view('calendar.edit', compact('event'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $event = $this->calendar
@@ -108,13 +73,6 @@ class CalendarController extends BaseAdminController
         return redirect()->to(route('admin::calendar::edit', ['id' => $id]).'?type=all');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $event = $this->calendar
@@ -131,11 +89,6 @@ class CalendarController extends BaseAdminController
         return redirect()->to(route('admin::calendar::index').'?type=all');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return mixed
-     */
     public function calendar(Request $request)
     {
         $this->authorize('view', Calendar::class);
@@ -324,9 +277,6 @@ class CalendarController extends BaseAdminController
         return $calendar;
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [

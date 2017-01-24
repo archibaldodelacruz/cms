@@ -14,82 +14,29 @@ class User extends Authenticatable
 {
     use LogsActivity, FilterByWeb, Notifiable;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected $table = 'users';
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
+    protected $touches = ['web'];
+    protected $dates = ['last_login'];
+    protected $hidden = ['password', 'remember_token'];
     protected $fillable = [
         'id', 'web_id', 'name', 'email', 'password', 'status', 'type', 'last_login', 'created_at', 'updated_at',
     ];
 
-    /**
-     * Hidden fields.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * Dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'last_login',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
-    protected $touches = ['web'];
-
-    /**
-     * Check if user is admin.
-     *
-     * @return bool
-     */
     public function isAdmin()
     {
         return $this->type == 'admin';
     }
 
-    /**
-     * Check if user is admin or volunteer.
-     *
-     * @return bool
-     */
     public function isAdminOrVolunteer()
     {
         return $this->type === 'admin' || $this->type === 'volunteer';
     }
 
-    /**
-     * Set encrypted password.
-     */
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
     }
 
-    /**
-     * Delete old and save new permissions.
-     *
-     * @param $request
-     *
-     * @return $this
-     */
     public function managePermissions($request)
     {
         $this->permissions()->detach();
@@ -114,13 +61,6 @@ class User extends Authenticatable
         return $this;
     }
 
-    /**
-     * Check if user has permission.
-     *
-     * @param $permission
-     *
-     * @return bool
-     */
     public function hasPermission($permission)
     {
         if ($this->isAdmin()) {
@@ -136,13 +76,6 @@ class User extends Authenticatable
         return false;
     }
 
-    /**
-     * Check if user has permissions.
-     *
-     * @param $permissions
-     *
-     * @return bool
-     */
     public function hasPermissions($permissions)
     {
         if ($this->isAdmin()) {
@@ -163,11 +96,6 @@ class User extends Authenticatable
         return false;
     }
 
-    /**
-     * Check if user has animals permissions.
-     *
-     * @return array
-     */
     public function animalsPermissions()
     {
         $permissions = [];
@@ -181,11 +109,6 @@ class User extends Authenticatable
         return $permissions;
     }
 
-    /**
-     * Check if user can create an animals.
-     *
-     * @return array
-     */
     public function canCreateAnimals()
     {
         $permissions = [];
@@ -199,19 +122,11 @@ class User extends Authenticatable
         return $permissions;
     }
 
-    /**
-     * Check if user is banned.
-     *
-     * @return bool
-     */
     public function isBanned()
     {
         return $this->status == 'banned';
     }
 
-    /**
-     * Relations.
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

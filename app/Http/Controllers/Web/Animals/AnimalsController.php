@@ -11,19 +11,11 @@ class AnimalsController extends BaseWebController
 {
     use FilterBy;
 
-    /**
-     * AnimalsController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $request = $this->translateFilters($request);
@@ -40,11 +32,6 @@ class AnimalsController extends BaseWebController
         return view('animals.index', compact('animals', 'total'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $animal = $this->web->animals()
@@ -95,7 +82,7 @@ class AnimalsController extends BaseWebController
     }
 
     /*
-     * Temporal
+     * TODO: Temporal
      */
     private function translateFilters($request)
     {

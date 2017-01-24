@@ -14,9 +14,6 @@ use Spatie\Analytics\Period;
 
 class SuperAdminController extends BaseAdminController
 {
-    /**
-     * SuperAdminController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -24,29 +21,16 @@ class SuperAdminController extends BaseAdminController
         $this->web = app('App\Models\Webs\Web');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         return view('superadmin.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory
-     */
     public function notifications()
     {
         return view('superadmin.notifications');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function notifications_send(Request $request)
     {
         Notification::send(User::get(), new NewUpdate([
@@ -59,9 +43,6 @@ class SuperAdminController extends BaseAdminController
         return redirect()->back();
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function analytics()
     {
         $response = Analytics::performQuery(
@@ -87,11 +68,6 @@ class SuperAdminController extends BaseAdminController
         return view('superadmin.analytics', compact('analytics'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function set_web(Request $request)
     {
         $this->validate($request, [

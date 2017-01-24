@@ -12,59 +12,22 @@ class Widget extends BaseModel
 {
     use SoftDeletes, Translatable, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
+    public $translatedAttributes = ['title', 'content'];
     protected $table = 'widgets';
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'file', 'status', 'side', 'order', 'type', 'config',
-    ];
-
-    /**
-     * With relation.
-     *
-     * @var array
-     */
-    protected $with = [
-        'translations', 'links.translations',
-    ];
-
-    /**
-     * Translatable fields.
-     */
-    public $translatedAttributes = [
-        'title', 'content',
-    ];
-
-    protected $casts = [
-        'config' => 'array',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $casts = ['config' => 'array'];
+    protected $with = ['translations', 'links.translations'];
+    protected $fillable = ['id', 'file', 'status', 'side', 'order', 'type', 'config'];
 
     public function getConfig($config)
     {
         if (isset($this->config[$config])) {
             return $this->config[$config];
         }
+
+        return;
     }
 
-    /**
-     * @param $request
-     */
     public function setConfigAttribute($request)
     {
         if ($request !== '0') {
@@ -86,9 +49,6 @@ class Widget extends BaseModel
         return $query->where('status', 'active');
     }
 
-    /**
-     * Relations.
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

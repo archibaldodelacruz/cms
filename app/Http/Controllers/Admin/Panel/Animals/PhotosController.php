@@ -13,16 +13,8 @@ class PhotosController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Animal
-     */
     protected $animal;
 
-    /**
-     * PhotosController constructor.
-     *
-     * @param Animal $animal
-     */
     public function __construct(Animal $animal)
     {
         parent::__construct();
@@ -30,11 +22,6 @@ class PhotosController extends BaseAdminController
         $this->animal = $animal;
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index($id)
     {
         $animal = $this->animal->with(['translations', 'media' => function ($query) {
@@ -44,12 +31,6 @@ class PhotosController extends BaseAdminController
         return view('panel.animals.photos.photos', compact('animal'));
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function store(Request $request, $id)
     {
         $animal = $this->animal->findOrFail($id);
@@ -95,12 +76,6 @@ class PhotosController extends BaseAdminController
         ], 500);
     }
 
-    /**
-     * @param $animal_id
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function main($animal_id, $id)
     {
         $this->animal
@@ -123,12 +98,6 @@ class PhotosController extends BaseAdminController
         return redirect()->route('admin::panel::animals::photos::index', ['animal_id' => $animal_id]);
     }
 
-    /**
-     * @param $animal_id
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete($animal_id, $id)
     {
         $photo = $this->animal

@@ -43,7 +43,6 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        // Pageviews Analytics
         if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),

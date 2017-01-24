@@ -13,16 +13,8 @@ class FormsController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Form
-     */
     protected $form;
 
-    /**
-     * FormsController constructor.
-     *
-     * @param Form $form
-     */
     public function __construct(Form $form)
     {
         parent::__construct();
@@ -30,11 +22,6 @@ class FormsController extends BaseAdminController
         $this->form = $form;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Form::class);
@@ -61,9 +48,6 @@ class FormsController extends BaseAdminController
         return view('panel.forms.deleted', compact('forms', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Form::class);
@@ -71,11 +55,6 @@ class FormsController extends BaseAdminController
         return view('panel.forms.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Form::class);
@@ -107,13 +86,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::edit', ['id' => $form->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     *
-     * @internal param Request $request
-     */
     public function edit($id)
     {
         $form = $this->form
@@ -125,12 +97,6 @@ class FormsController extends BaseAdminController
         return view('panel.forms.edit', compact('form'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         if (!count($request->get('fields'))) {
@@ -192,11 +158,6 @@ class FormsController extends BaseAdminController
         return redirect()->to(route('admin::panel::forms::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $form = $this->form->withTrashed()
@@ -210,13 +171,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $form = $this->form
@@ -232,12 +186,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $form = $this->form

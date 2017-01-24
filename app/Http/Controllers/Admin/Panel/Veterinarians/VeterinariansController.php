@@ -15,11 +15,6 @@ class VeterinariansController extends BaseAdminController
 
     protected $veterinary;
 
-    /**
-     * VeterinariansController constructor.
-     *
-     * @param Veterinary $veterinary
-     */
     public function __construct(Veterinary $veterinary)
     {
         parent::__construct();
@@ -27,11 +22,6 @@ class VeterinariansController extends BaseAdminController
         $this->veterinary = $veterinary;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Veterinary::class);
@@ -44,11 +34,6 @@ class VeterinariansController extends BaseAdminController
         return view('panel.veterinarians.index', compact('veterinarians', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('delete', Veterinary::class);
@@ -61,11 +46,6 @@ class VeterinariansController extends BaseAdminController
         return view('panel.veterinarians.deleted', compact('veterinarians', 'request', 'total'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Veterinary::class);
@@ -76,9 +56,6 @@ class VeterinariansController extends BaseAdminController
         return view('panel.veterinarians.show', compact('veterinary'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Veterinary::class);
@@ -86,11 +63,6 @@ class VeterinariansController extends BaseAdminController
         return view('panel.veterinarians.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Veterinary::class);
@@ -103,11 +75,6 @@ class VeterinariansController extends BaseAdminController
         return redirect()->route('admin::panel::veterinarians::edit', ['id' => $veterinary->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $veterinary = $this->veterinary
@@ -118,12 +85,6 @@ class VeterinariansController extends BaseAdminController
         return view('panel.veterinarians.edit', compact('veterinary'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $veterinary = $this->veterinary
@@ -137,11 +98,6 @@ class VeterinariansController extends BaseAdminController
         return redirect()->route('admin::panel::veterinarians::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $veterinary = $this->veterinary
@@ -157,13 +113,6 @@ class VeterinariansController extends BaseAdminController
         return redirect()->route('admin::panel::veterinarians::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $veterinary = $this->veterinary

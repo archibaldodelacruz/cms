@@ -26,64 +26,24 @@ class Web extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected $table = 'webs';
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
+    protected $casts = ['config' => 'array'];
+    protected $with = ['config'];
     protected $fillable = [
         'name', 'description', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id',
         'contact_name', 'contact_email', 'contact_phone', 'logo', 'config',
     ];
 
-    /**
-     * Cast fields.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'config' => 'array',
-    ];
-
-    /**
-     * With relation.
-     *
-     * @var array
-     */
-    protected $with = [
-        'config',
-    ];
-
-    /**
-     * Return active lang.
-     *
-     * @return string
-     */
     public function getLangAttribute()
     {
         return 'es';
     }
 
-    /**
-     * @return string
-     */
     public function getTheme()
     {
         return $this->config['theme'];
     }
 
-    /**
-     * @param bool $subdomain
-     *
-     * @return string
-     */
     public function getUrl(bool $subdomain = false) : string
     {
         if ($this->domain && !$subdomain) {
@@ -93,9 +53,6 @@ class Web extends BaseModel
         return 'http://'.$this->subdomain.'.protecms.com';
     }
 
-    /**
-     * @return mixed
-     */
     public function getDomainOrSubdomain()
     {
         if ($this->domain) {
@@ -105,14 +62,6 @@ class Web extends BaseModel
         return $this->subdomain.'.protecms.com';
     }
 
-    /**
-     * Get config.
-     *
-     * @param $key
-     * @param $value
-     *
-     * @return $this
-     */
     public function getConfig($key, $value = null)
     {
         foreach ($this->config as $i => $config) {
@@ -124,26 +73,11 @@ class Web extends BaseModel
         return $value ?: null;
     }
 
-    /**
-     * Has config.
-     *
-     * @param $key
-     *
-     * @return $this
-     */
     public function hasConfig($key)
     {
         return $this->getConfig($key) ? true : false;
     }
 
-    /**
-     * Set config.
-     *
-     * @param $key
-     * @param $value
-     *
-     * @return $this
-     */
     public function setConfig($key, $value)
     {
         if (!$this->config()->where('key', $key)->exists()) {
@@ -160,29 +94,6 @@ class Web extends BaseModel
         return $this;
     }
 
-    /**
-     * Set config.
-     *
-     * @param $key
-     *
-     * @return $this
-     */
-    public function unsetConfig($key)
-    {
-        if ($config = $this->config()->where('key', $key)->first()) {
-            $config->delete();
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set multiple config.
-     *
-     * @param array $config
-     *
-     * @return $this
-     */
     public function setConfigs(array $config)
     {
         foreach ($config as $key => $value) {
@@ -197,14 +108,15 @@ class Web extends BaseModel
         return $this;
     }
 
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return \Illuminate\Database\Eloquent\Model|void
-     */
+    public function unsetConfig($key)
+    {
+        if ($config = $this->config()->where('key', $key)->first()) {
+            $config->delete();
+        }
+
+        return $this;
+    }
+
     public function setAttribute($key, $value)
     {
         if (in_array($key, ['country_id', 'state_id', 'city_id'])) {
@@ -216,14 +128,6 @@ class Web extends BaseModel
         parent::setAttribute($key, $value);
     }
 
-    /**
-     * Storage folder.
-     *
-     * @param $path
-     * @param bool $local
-     *
-     * @return string
-     */
     public function getStorageFolder($path = null, $local = true)
     {
         if ($local) {
@@ -239,9 +143,6 @@ class Web extends BaseModel
         return $storage_path;
     }
 
-    /**
-     * Relations.
-     */
     public function volunteers()
     {
         return $this->hasMany(User::class)->whereIn('type', ['volunteer', 'admin']);

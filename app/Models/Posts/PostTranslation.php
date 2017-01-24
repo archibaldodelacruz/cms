@@ -7,19 +7,8 @@ use App\Models\Users\User;
 
 class PostTranslation extends BaseModel
 {
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected $table = 'posts_translations';
-
-    /**
-     * Fillable fields.
-     */
-    protected $fillable = [
-        'title', 'slug', 'text', 'user_id',
-    ];
+    protected $fillable = ['title', 'slug', 'text', 'user_id'];
 
     public function author()
     {
