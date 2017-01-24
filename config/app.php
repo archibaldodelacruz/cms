@@ -184,7 +184,6 @@ return [
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         igaster\laravelTheme\themeServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,

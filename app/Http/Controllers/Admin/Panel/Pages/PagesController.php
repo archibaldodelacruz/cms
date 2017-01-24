@@ -13,9 +13,6 @@ class PagesController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Page
-     */
     protected $page;
 
     public function __construct(Page $page)
@@ -25,11 +22,6 @@ class PagesController extends BaseAdminController
         $this->page = $page;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Page::class);
@@ -43,11 +35,6 @@ class PagesController extends BaseAdminController
         return view('panel.pages.index', compact('pages', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('view', Page::class);
@@ -61,9 +48,6 @@ class PagesController extends BaseAdminController
         return view('panel.pages.deleted', compact('pages', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Page::class);
@@ -71,11 +55,6 @@ class PagesController extends BaseAdminController
         return view('panel.pages.create');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Page::class);
@@ -87,11 +66,6 @@ class PagesController extends BaseAdminController
         return view('panel.pages.show', compact('page'));
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Page::class);
@@ -104,11 +78,6 @@ class PagesController extends BaseAdminController
         return redirect()->route('admin::panel::pages::edit', ['id' => $page->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $page = $this->page
@@ -120,12 +89,6 @@ class PagesController extends BaseAdminController
         return view('panel.pages.edit', compact('page'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $page = $this->page
@@ -139,11 +102,6 @@ class PagesController extends BaseAdminController
         return redirect()->to(route('admin::panel::pages::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $page = $this->page
@@ -159,13 +117,6 @@ class PagesController extends BaseAdminController
         return redirect()->route('admin::panel::pages::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $page = $this->page
@@ -181,12 +132,6 @@ class PagesController extends BaseAdminController
         return redirect()->route('admin::panel::pages::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $page = $this->page

@@ -12,19 +12,11 @@ class WidgetsController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * WidgetsController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -38,11 +30,6 @@ class WidgetsController extends BaseAdminController
         return view('design.widgets.index', compact('widgets', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -56,9 +43,6 @@ class WidgetsController extends BaseAdminController
         return view('design.widgets.deleted', compact('widgets', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->customAuthorize('admin.design');
@@ -66,11 +50,6 @@ class WidgetsController extends BaseAdminController
         return view('design.widgets.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->customAuthorize('admin.design');
@@ -99,11 +78,6 @@ class WidgetsController extends BaseAdminController
         return redirect()->route('admin::design::widgets::edit', ['id' => $widget->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $this->customAuthorize('admin.design');
@@ -114,12 +88,6 @@ class WidgetsController extends BaseAdminController
         return view('design.widgets.edit', compact('widget'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $this->customAuthorize('admin.design');
@@ -175,11 +143,6 @@ class WidgetsController extends BaseAdminController
         return redirect()->to(route('admin::design::widgets::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $this->customAuthorize('admin.design');
@@ -194,13 +157,6 @@ class WidgetsController extends BaseAdminController
         return redirect()->route('admin::design::widgets::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $this->customAuthorize('admin.design');
@@ -216,12 +172,6 @@ class WidgetsController extends BaseAdminController
         return redirect()->route('admin::design::widgets::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $this->customAuthorize('admin.design');
@@ -235,9 +185,6 @@ class WidgetsController extends BaseAdminController
         return redirect()->route('admin::design::widgets::edit', ['id' => $id]);
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [

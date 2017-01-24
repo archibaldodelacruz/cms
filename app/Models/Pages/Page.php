@@ -14,53 +14,12 @@ class Page extends BaseModel
 {
     use SoftDeletes, Translatable, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
+    public $translatedAttributes = ['title', 'slug', 'text', 'user_id'];
     protected $table = 'pages';
-
-    /**
-     * Translatable fields.
-     */
-    public $translatedAttributes = [
-        'title', 'slug', 'text', 'user_id',
-    ];
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'status', 'published_at', 'category_id', 'form_id',
-    ];
-
-    /**
-     * Dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'published_at',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $dates = ['published_at'];
+    protected $fillable = ['id', 'status', 'published_at', 'category_id', 'form_id'];
 
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return \Illuminate\Database\Eloquent\Model|void
-     */
     public function setAttribute($key, $value)
     {
         if (in_array($key, ['published_at'])) {
@@ -70,9 +29,6 @@ class Page extends BaseModel
         parent::setAttribute($key, $value);
     }
 
-    /**
-     * Relations.
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

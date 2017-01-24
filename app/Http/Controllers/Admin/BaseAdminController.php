@@ -9,14 +9,8 @@ use Theme;
 
 class BaseAdminController extends Controller
 {
-    /**
-     * Default pagination.
-     */
     const PAGINATION = 30;
 
-    /**
-     * BaseAdminController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -40,11 +34,6 @@ class BaseAdminController extends Controller
         }
     }
 
-    /**
-     * Get default sidebar.
-     *
-     * @return array
-     */
     public function getSidebar()
     {
         return [

@@ -10,17 +10,11 @@ use Image;
 
 class DesignController extends BaseAdminController
 {
-    /**
-     * DesignController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $this->customAuthorize('admin.design');
@@ -31,9 +25,6 @@ class DesignController extends BaseAdminController
         return view('design.index', compact('backgrounds'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function config()
     {
         $this->customAuthorize('admin.design');
@@ -41,9 +32,6 @@ class DesignController extends BaseAdminController
         return view('design.config');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function css()
     {
         $this->customAuthorize('admin.design');
@@ -51,11 +39,6 @@ class DesignController extends BaseAdminController
         return view('design.css');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function css_update(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -67,11 +50,6 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::css');
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function config_update(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -85,11 +63,6 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::config');
     }
 
-    /**
-     * @param UpdateRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request)
     {
         $this->customAuthorize('admin.design');
@@ -228,9 +201,6 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::index');
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [

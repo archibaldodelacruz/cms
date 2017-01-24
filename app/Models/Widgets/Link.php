@@ -10,48 +10,12 @@ class Link extends BaseModel
 {
     use SoftDeletes, Translatable;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
+    public $translatedAttributes = ['title', 'link'];
     protected $table = 'widgets_links';
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'widget_id', 'type', 'order',
-    ];
-
-    /**
-     * With relation.
-     *
-     * @var array
-     */
-    protected $with = [
-        'translations',
-    ];
-
-    /**
-     * Translatable fields.
-     */
-    public $translatedAttributes = [
-        'title', 'link',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
+    protected $with = ['translations'];
     protected $touches = ['widget'];
+    protected $fillable = ['widget_id', 'type', 'order'];
 
-    /**
-     * Relations.
-     */
     public function widget()
     {
         return $this->belongsTo(Widget::class);

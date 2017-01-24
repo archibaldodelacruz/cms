@@ -13,52 +13,12 @@ class Form extends BaseModel
 {
     use SoftDeletes, Translatable, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
+    public $translatedAttributes = ['title', 'slug', 'text', 'subject', 'user_id'];
     protected $table = 'forms';
-
-    /**
-     * Translatable fields.
-     */
-    public $translatedAttributes = [
-        'title', 'slug', 'text', 'subject', 'user_id',
-    ];
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'email', 'status',
-    ];
-
-    /**
-     * Dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'published_at',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $dates = ['published_at'];
+    protected $fillable = ['id', 'email', 'status'];
 
-    /**
-     * Set animal translations.
-     *
-     * @param Illuminate\Http\Request
-     *
-     * @return $this
-     */
     public function setTranslations($request)
     {
         foreach ($this->web->config['langs'] as $lang) {
@@ -86,14 +46,6 @@ class Form extends BaseModel
         return $this;
     }
 
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return $this
-     */
     public function setAttribute($key, $value)
     {
         if ($value === '') {
@@ -103,9 +55,6 @@ class Form extends BaseModel
         return parent::setAttribute($key, $value);
     }
 
-    /**
-     * Relations.
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

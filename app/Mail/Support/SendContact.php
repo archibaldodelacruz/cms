@@ -12,21 +12,11 @@ class SendContact extends Mailable
 
     public $request;
 
-    /**
-     * Create a new message instance.
-     *
-     * @param $request
-     */
     public function __construct($request)
     {
         $this->request = $request;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         $build = $this->view('emails.support.contact')

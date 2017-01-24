@@ -13,16 +13,8 @@ class PostsController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Post
-     */
     protected $post;
 
-    /**
-     * PostsController constructor.
-     *
-     * @param Post $post
-     */
     public function __construct(Post $post)
     {
         parent::__construct();
@@ -30,11 +22,6 @@ class PostsController extends BaseAdminController
         $this->post = $post;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Post::class);
@@ -48,11 +35,6 @@ class PostsController extends BaseAdminController
         return view('panel.posts.index', compact('posts', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('view', Post::class);
@@ -66,9 +48,6 @@ class PostsController extends BaseAdminController
         return view('panel.posts.deleted', compact('posts', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Post::class);
@@ -76,11 +55,6 @@ class PostsController extends BaseAdminController
         return view('panel.posts.create');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Post::class);
@@ -92,11 +66,6 @@ class PostsController extends BaseAdminController
         return view('panel.posts.show', compact('post'));
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Post::class);
@@ -109,11 +78,6 @@ class PostsController extends BaseAdminController
         return redirect()->route('admin::panel::posts::edit', ['id' => $post->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $post = $this->post
@@ -125,12 +89,6 @@ class PostsController extends BaseAdminController
         return view('panel.posts.edit', compact('post'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $post = $this->post->findOrFail($id);
@@ -142,11 +100,6 @@ class PostsController extends BaseAdminController
         return redirect()->to(route('admin::panel::posts::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $post = $this->post
@@ -162,13 +115,6 @@ class PostsController extends BaseAdminController
         return redirect()->route('admin::panel::posts::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $post = $this->post
@@ -184,12 +130,6 @@ class PostsController extends BaseAdminController
         return redirect()->route('admin::panel::posts::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $this->post

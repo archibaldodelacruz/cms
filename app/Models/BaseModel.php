@@ -9,14 +9,6 @@ class BaseModel extends Model
 {
     use FilterByWeb;
 
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return Model
-     */
     public function setAttribute($key, $value)
     {
         if ($value === '') {

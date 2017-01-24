@@ -13,16 +13,8 @@ class PartnersController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Partner
-     */
     protected $partner;
 
-    /**
-     * PartnersController constructor.
-     *
-     * @param Partner $partner
-     */
     public function __construct(Partner $partner)
     {
         parent::__construct();
@@ -30,11 +22,6 @@ class PartnersController extends BaseAdminController
         $this->partner = $partner;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Partner::class);
@@ -47,11 +34,6 @@ class PartnersController extends BaseAdminController
         return view('panel.partners.index', compact('partners', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('delete', Partner::class);
@@ -64,11 +46,6 @@ class PartnersController extends BaseAdminController
         return view('panel.partners.deleted', compact('partners', 'request', 'total'));
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Partner::class);
@@ -79,9 +56,6 @@ class PartnersController extends BaseAdminController
         return view('panel.partners.show', compact('partner'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Partner::class);
@@ -89,11 +63,6 @@ class PartnersController extends BaseAdminController
         return view('panel.partners.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Partner::class);
@@ -106,11 +75,6 @@ class PartnersController extends BaseAdminController
         return redirect()->route('admin::panel::partners::edit', ['id' => $partner->id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $partner = $this->partner
@@ -121,12 +85,6 @@ class PartnersController extends BaseAdminController
         return view('panel.partners.edit', compact('partner'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $partner = $this->partner
@@ -140,13 +98,6 @@ class PartnersController extends BaseAdminController
         return redirect()->route('admin::panel::partners::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function restore($id)
     {
         $partner = $this->partner
@@ -161,13 +112,6 @@ class PartnersController extends BaseAdminController
         return redirect()->route('admin::panel::partners::index');
     }
 
-    /**
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $partner = $this->partner

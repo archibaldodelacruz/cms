@@ -12,32 +12,10 @@ class File extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
-    /**
-     * Table name.
-     *
-     * @var string
-     */
     protected $table = 'files';
-
-    /**
-     * Fillable fields.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'web_id', 'user_id', 'title', 'description', 'file', 'extension', 'public',
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $fillable = ['web_id', 'user_id', 'title', 'description', 'file', 'extension', 'public'];
 
-    /**
-     * Relations.
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);
