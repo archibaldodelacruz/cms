@@ -2,13 +2,13 @@
 
 namespace App\Models\Animals;
 
-use App\Helpers\Traits\LogsActivity;
-use App\Models\BaseModel;
-use App\Models\Webs\Web;
 use Carbon\Carbon;
+use App\Models\Webs\Web;
+use App\Models\BaseModel;
+use App\Helpers\Traits\LogsActivity;
+use Illuminate\Support\Facades\Auth;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 
 class Animal extends BaseModel
 {
@@ -74,11 +74,11 @@ class Animal extends BaseModel
                 $years,
                 [':count' => $years]).' y '.Carbon::getTranslator()->transChoice('month', $months, [':count' => $months]
             );
-        } elseif ($years && !$months) {
+        } elseif ($years && ! $months) {
             return Carbon::getTranslator()->transChoice('year', $years, [':count' => $years]);
-        } elseif (!$years && $months && !$days) {
+        } elseif (! $years && $months && ! $days) {
             return Carbon::getTranslator()->transChoice('month', $months, [':count' => $months]);
-        } elseif (!$years && $months && $days) {
+        } elseif (! $years && $months && $days) {
             if ($this->birth_date_approximate) {
                 return Carbon::getTranslator()->transChoice('month', $months, [':count' => $months]);
             }

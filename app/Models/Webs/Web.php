@@ -2,24 +2,24 @@
 
 namespace App\Models\Webs;
 
-use App\Helpers\Traits\LogsActivity;
 use App\Models\Activity;
-use App\Models\Animals\Animal;
 use App\Models\BaseModel;
-use App\Models\Calendar\Calendar;
 use App\Models\Files\File;
-use App\Models\Finances\Finance;
 use App\Models\Forms\Form;
-use App\Models\Location\City;
-use App\Models\Location\Country;
-use App\Models\Location\State;
 use App\Models\Pages\Page;
-use App\Models\Partners\Partner;
-use App\Models\Posts\Category;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
-use App\Models\Veterinarians\Veterinary;
+use App\Models\Location\City;
+use App\Models\Animals\Animal;
+use App\Models\Location\State;
+use App\Models\Posts\Category;
 use App\Models\Widgets\Widget;
+use App\Models\Finances\Finance;
+use App\Models\Location\Country;
+use App\Models\Partners\Partner;
+use App\Models\Calendar\Calendar;
+use App\Helpers\Traits\LogsActivity;
+use App\Models\Veterinarians\Veterinary;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Web extends BaseModel
@@ -46,7 +46,7 @@ class Web extends BaseModel
 
     public function getUrl(bool $subdomain = false) : string
     {
-        if ($this->domain && !$subdomain) {
+        if ($this->domain && ! $subdomain) {
             return 'http://'.$this->domain;
         }
 
@@ -80,7 +80,7 @@ class Web extends BaseModel
 
     public function setConfig($key, $value)
     {
-        if (!$this->config()->where('key', $key)->exists()) {
+        if (! $this->config()->where('key', $key)->exists()) {
             $this->config()->create([
                 'key'   => $key,
                 'value' => $value,
@@ -97,7 +97,7 @@ class Web extends BaseModel
     public function setConfigs(array $config)
     {
         foreach ($config as $key => $value) {
-            if (!$this->config()->where('key', $key)->exists()) {
+            if (! $this->config()->where('key', $key)->exists()) {
                 $this->config()->create([
                     'key'   => $key,
                     'value' => $value,

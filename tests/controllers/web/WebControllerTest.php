@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Posts\Post;
 use Carbon\Carbon;
+use App\Models\Posts\Post;
 
 class WebControllerTest extends TestCase
 {

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\TemporaryHomes\StoreRequest;
-use App\Http\Requests\TemporaryHomes\UpdateRequest;
-use App\Models\Animals\TemporaryHome;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
+use App\Models\Animals\TemporaryHome;
+use App\Http\Requests\TemporaryHomes\StoreRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
+use App\Http\Requests\TemporaryHomes\UpdateRequest;
 
 class TemporaryHomesController extends BaseAdminController
 {

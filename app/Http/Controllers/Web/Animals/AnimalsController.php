@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Web\Animals;
 
+use Mail;
+use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Controllers\Web\BaseWebController;
-use Illuminate\Http\Request;
-use Mail;
 
 class AnimalsController extends BaseWebController
 {

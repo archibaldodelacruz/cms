@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Posts\Category;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
+use App\Models\Posts\Category;
 
 class PostsControllerTest extends TestCase
 {

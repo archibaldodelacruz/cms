@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Models\Animals\Animal;
 use PDF;
+use App\Models\Animals\Animal;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class ExportController extends BaseAdminController
 {

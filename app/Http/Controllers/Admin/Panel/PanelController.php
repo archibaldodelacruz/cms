@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Panel;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Models\Animals\Animal;
-use App\Models\Partners\Partner;
+use Carbon\Carbon;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
-use App\Models\Veterinarians\Veterinary;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Spatie\Analytics\AnalyticsFacade as Analytics;
 use Spatie\Analytics\Period;
+use App\Models\Animals\Animal;
+use App\Models\Partners\Partner;
+use App\Models\Veterinarians\Veterinary;
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class PanelController extends BaseAdminController
 {
@@ -43,7 +43,7 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),
                 'ga:pageviews,ga:users',
@@ -86,11 +86,11 @@ class PanelController extends BaseAdminController
                 }
             }
 
-            if (!isset($analytics['pageviews'][$now])) {
+            if (! isset($analytics['pageviews'][$now])) {
                 $analytics['pageviews'][$now] = 0;
             }
 
-            if (!isset($analytics['users'][$now])) {
+            if (! isset($analytics['users'][$now])) {
                 $analytics['users'][$now] = 0;
             }
         }

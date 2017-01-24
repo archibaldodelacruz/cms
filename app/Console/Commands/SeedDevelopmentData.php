@@ -2,22 +2,22 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Animals\Animal;
-use App\Models\Animals\Media;
-use App\Models\Animals\TemporaryHome;
-use App\Models\Calendar\Calendar;
+use DB;
+use Image;
+use App\Models\Webs\Web;
 use App\Models\Files\File;
 use App\Models\Pages\Page;
-use App\Models\Partners\Partner;
-use App\Models\Posts\Category;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
-use App\Models\Veterinarians\Veterinary;
-use App\Models\Webs\Web;
 use App\Models\Widgets\Link;
-use DB;
+use App\Models\Animals\Media;
+use App\Models\Animals\Animal;
+use App\Models\Posts\Category;
 use Illuminate\Console\Command;
-use Image;
+use App\Models\Partners\Partner;
+use App\Models\Calendar\Calendar;
+use App\Models\Animals\TemporaryHome;
+use App\Models\Veterinarians\Veterinary;
 
 class SeedDevelopmentData extends Command
 {

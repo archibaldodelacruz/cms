@@ -2,12 +2,12 @@
 
 namespace App\Models\Animals;
 
-use App\Helpers\Traits\LogsActivity;
+use App\Models\Webs\Web;
 use App\Models\BaseModel;
 use App\Models\Location\City;
-use App\Models\Location\Country;
 use App\Models\Location\State;
-use App\Models\Webs\Web;
+use App\Models\Location\Country;
+use App\Helpers\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TemporaryHome extends BaseModel

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Animals\TemporaryHome;
 use App\Models\Users\User;
+use App\Models\Animals\TemporaryHome;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TemporaryHomePolicy
@@ -12,7 +12,7 @@ class TemporaryHomePolicy
 
     public function before($user)
     {
-        if (!$user->isAdminOrVolunteer()) {
+        if (! $user->isAdminOrVolunteer()) {
             return false;
         }
     }

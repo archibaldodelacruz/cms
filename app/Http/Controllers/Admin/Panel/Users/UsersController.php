@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Panel\Users;
 
+use Auth;
+use App\Models\Users\User;
+use App\Mail\UserRegistered;
+use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Users\StoreRequest;
 use App\Http\Requests\Users\UpdateRequest;
-use App\Mail\UserRegistered;
-use App\Models\Users\User;
-use Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class UsersController extends BaseAdminController
 {

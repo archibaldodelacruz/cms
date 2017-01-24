@@ -13,7 +13,7 @@ class WebController extends BaseWebController
     {
         parent::__construct();
 
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
             abort(404);
         }
 

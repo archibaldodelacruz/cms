@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Partners\Partner;
 use App\Models\Users\User;
+use App\Models\Partners\Partner;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PartnerPolicy
@@ -12,7 +12,7 @@ class PartnerPolicy
 
     public function before($user)
     {
-        if (!$user->isAdminOrVolunteer()) {
+        if (! $user->isAdminOrVolunteer()) {
             return false;
         }
     }

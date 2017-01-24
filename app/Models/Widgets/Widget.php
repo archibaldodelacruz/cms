@@ -2,9 +2,9 @@
 
 namespace App\Models\Widgets;
 
-use App\Helpers\Traits\LogsActivity;
-use App\Models\BaseModel;
 use App\Models\Webs\Web;
+use App\Models\BaseModel;
+use App\Helpers\Traits\LogsActivity;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,8 +24,6 @@ class Widget extends BaseModel
         if (isset($this->config[$config])) {
             return $this->config[$config];
         }
-
-        return;
     }
 
     public function setConfigAttribute($request)

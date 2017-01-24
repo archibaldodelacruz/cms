@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Veterinarians;
 
+use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
+use App\Models\Veterinarians\Veterinary;
 use App\Http\Requests\Veterinarians\StoreRequest;
 use App\Http\Requests\Veterinarians\UpdateRequest;
-use App\Models\Veterinarians\Veterinary;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class VeterinariansController extends BaseAdminController
 {

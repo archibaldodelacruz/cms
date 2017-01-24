@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web\Pages;
 
-use App\Http\Controllers\Web\BaseWebController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Web\BaseWebController;
 
 class PagesController extends BaseWebController
 {

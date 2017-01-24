@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Pages;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Pages\StoreRequest;
-use App\Http\Requests\Pages\UpdateRequest;
 use App\Models\Pages\Page;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
+use App\Http\Requests\Pages\StoreRequest;
+use App\Http\Requests\Pages\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class PagesController extends BaseAdminController
 {

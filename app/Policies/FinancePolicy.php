@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Finances\Finance;
 use App\Models\Users\User;
+use App\Models\Finances\Finance;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FinancePolicy
@@ -12,7 +12,7 @@ class FinancePolicy
 
     public function before($user)
     {
-        if (!$user->isAdminOrVolunteer()) {
+        if (! $user->isAdminOrVolunteer()) {
             return false;
         }
     }

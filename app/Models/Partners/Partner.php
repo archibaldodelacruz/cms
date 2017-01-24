@@ -2,9 +2,9 @@
 
 namespace App\Models\Partners;
 
-use App\Helpers\Traits\LogsActivity;
-use App\Models\BaseModel;
 use App\Models\Webs\Web;
+use App\Models\BaseModel;
+use App\Helpers\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Partner extends BaseModel

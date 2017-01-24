@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Panel\Webs;
 
-use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Webs\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class WebsController extends BaseAdminController
 {

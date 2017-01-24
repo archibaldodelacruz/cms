@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use Mail;
+use App\Models\Users\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\Users\User;
-use Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Http\Request;
-use Mail;
 
 class AuthController extends Controller
 {
@@ -37,7 +37,7 @@ class AuthController extends Controller
 
     public function password(Request $request)
     {
-        if (!$request->has('token') || !$this->user->whereRememberToken($request->get('token'))->exists()) {
+        if (! $request->has('token') || ! $this->user->whereRememberToken($request->get('token'))->exists()) {
             abort(401);
         }
 
@@ -52,7 +52,7 @@ class AuthController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if (!app('App\Models\Webs\Web')->users()->where('email', $request->get('email'))->exists()) {
+        if (! app('App\Models\Webs\Web')->users()->where('email', $request->get('email'))->exists()) {
             flash('Ha ocurrido un error al enviar el formulario. Revisa los campos.', 'error');
 
             return back()->withErrors([

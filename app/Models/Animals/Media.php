@@ -2,10 +2,10 @@
 
 namespace App\Models\Animals;
 
-use App\Helpers\Traits\LogsActivity;
 use App\Models\BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Helpers\Traits\LogsActivity;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Media extends BaseModel
 {
@@ -22,7 +22,7 @@ class Media extends BaseModel
 
     public function getPhotoUrlAttribute()
     {
-        if (!$this->file) {
+        if (! $this->file) {
             return;
         }
 
@@ -31,7 +31,7 @@ class Media extends BaseModel
 
     public function getPhotoPathAttribute()
     {
-        if (!$this->file) {
+        if (! $this->file) {
             return;
         }
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Partners;
 
+use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
+use App\Models\Partners\Partner;
 use App\Http\Requests\Partners\StoreRequest;
 use App\Http\Requests\Partners\UpdateRequest;
-use App\Models\Partners\Partner;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class PartnersController extends BaseAdminController
 {

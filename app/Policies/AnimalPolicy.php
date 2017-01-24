@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Animals\Animal;
 use App\Models\Users\User;
+use App\Models\Animals\Animal;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AnimalPolicy
@@ -12,7 +12,7 @@ class AnimalPolicy
 
     public function before($user)
     {
-        if (!$user->isAdminOrVolunteer()) {
+        if (! $user->isAdminOrVolunteer()) {
             return false;
         }
     }

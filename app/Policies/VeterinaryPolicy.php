@@ -12,7 +12,7 @@ class VeterinaryPolicy
 
     public function before($user)
     {
-        if (!$user->isAdminOrVolunteer()) {
+        if (! $user->isAdminOrVolunteer()) {
             return false;
         }
     }

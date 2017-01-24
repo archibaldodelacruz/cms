@@ -2,8 +2,8 @@
 
 namespace App\Models\Location;
 
-use App\Models\Users\User;
 use App\Models\Webs\Web;
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
