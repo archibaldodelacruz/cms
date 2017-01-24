@@ -57,7 +57,7 @@ return [
 
     'themes' => [
 
-        /**
+        /*
          * Web themes
          */
         'default' => [
@@ -66,13 +66,13 @@ return [
             'asset-path'    => 'themes/default',
         ],
 
-        /**
+        /*
          * Admin themes
          */
         'admin' => [
             'extends'       => null,
             'views-path'    => 'admin/metronic',
             'asset-path'    => 'themes/default',
-        ]
-    ]
+        ],
+    ],
 ];

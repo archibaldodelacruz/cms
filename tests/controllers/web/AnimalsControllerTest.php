@@ -1,9 +1,6 @@
 <?php
 
 use App\Models\Animals\Animal;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Mail;
 
 class AnimalsControllersTest extends TestCase
@@ -30,7 +27,7 @@ class AnimalsControllersTest extends TestCase
         factory(Animal::class, 1)->create(['visible' => 'visible', 'kind' => 'cat']);
         factory(App\Models\Animals\Animal::class, 1)->create(['visible' => 'hidden']);
 
-        $this->visit(route('web::animals::index') . '?especie=perros')
+        $this->visit(route('web::animals::index').'?especie=perros')
             ->countElements('.animals .animals-list .animal', 2);
     }
 
@@ -45,7 +42,7 @@ class AnimalsControllersTest extends TestCase
             ->see("Ficha de {$animal->name}");
     }
 
-    /**
+    /*
      * @group web
      */
     // public function test_contact_animal_email()

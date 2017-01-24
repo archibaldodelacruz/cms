@@ -14,9 +14,9 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'all_day' => 'required|boolean',
-            'type' => 'required|in:' . implode(',', config('protecms.calendar.type')),
+            'title'       => 'required',
+            'all_day'     => 'required|boolean',
+            'type'        => 'required|in:'.implode(',', config('protecms.calendar.type')),
             'description' => 'string',
         ];
     }

@@ -2,8 +2,8 @@
 
 namespace App\Models\Posts;
 
-use App\Models\Webs\Web;
 use App\Models\BaseModel;
+use App\Models\Webs\Web;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,30 +12,30 @@ class Category extends BaseModel
     use SoftDeletes, Translatable;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'posts_categories';
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title', 'slug', 'text'
+        'title', 'slug', 'text',
     ];
 
     /**
-     * Insert relations
+     * Insert relations.
      *
      * @var array
      */
     protected $with = [
-        'translations'
+        'translations',
     ];
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
@@ -51,7 +51,7 @@ class Category extends BaseModel
     protected $touches = ['web'];
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

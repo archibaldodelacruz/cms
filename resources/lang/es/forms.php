@@ -3,24 +3,24 @@
 return [
 
     'status' => [
-        'hidden' => 'Oculto',
-        'published' => 'Publicado'
+        'hidden'    => 'Oculto',
+        'published' => 'Publicado',
     ],
 
     'fields' => [
         'required' => [
             'No',
-            'Si'
+            'Si',
         ],
 
         'type' => [
-            'text' => 'Texto',
+            'text'     => 'Texto',
             'password' => 'Contraseña',
-            'email' => 'Correo electrónico',
-            'date' => 'Fecha',
-            'numeric' => 'Numérico',
+            'email'    => 'Correo electrónico',
+            'date'     => 'Fecha',
+            'numeric'  => 'Numérico',
             'textarea' => 'Área de texto',
-        ]
+        ],
     ],
 
 ];

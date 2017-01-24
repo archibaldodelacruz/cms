@@ -40,7 +40,7 @@ return [
         'image/jpeg',
         'image/pjpeg',
         'image/png',
-        'image/gif'
+        'image/gif',
     ],
 
     // available since v1.3.0

@@ -14,15 +14,15 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'email',
-            'phone' => '',
-            'address' => '',
-            'status' => 'required|in:' . implode(',', config('protecms.temporaryhomes.status')),
+            'name'       => 'required',
+            'email'      => 'email',
+            'phone'      => '',
+            'address'    => '',
+            'status'     => 'required|in:'.implode(',', config('protecms.temporaryhomes.status')),
             'country_id' => 'exists:countries,id',
-            'state_id' => 'exists:states,id',
-            'city_id' => 'exists:cities,id',
-            'text' => ''
+            'state_id'   => 'exists:states,id',
+            'city_id'    => 'exists:cities,id',
+            'text'       => '',
         ];
     }
 }

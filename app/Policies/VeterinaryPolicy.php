@@ -11,13 +11,15 @@ class VeterinaryPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user is volunteer or admin
+     * Determine whether the user is volunteer or admin.
+     *
      * @param $user
+     *
      * @return bool
      */
     public function before($user)
     {
-        if (! $user->isAdminOrVolunteer()) {
+        if (!$user->isAdminOrVolunteer()) {
             return false;
         }
     }
@@ -25,54 +27,58 @@ class VeterinaryPolicy
     /**
      * Determine whether the user can view the veterinary.
      *
-     * @param  \App\Models\Users\User $user
+     * @param \App\Models\Users\User $user
+     *
      * @return mixed
      */
     public function view(User $user)
     {
         return $user->hasPermissions([
             'admin.panel.veterinarians',
-            'admin.panel.veterinarians.view'
+            'admin.panel.veterinarians.view',
         ]);
     }
 
     /**
      * Determine whether the user can create veterinarians.
      *
-     * @param  \App\Models\Users\User  $user
+     * @param \App\Models\Users\User $user
+     *
      * @return mixed
      */
     public function create(User $user)
     {
         return $user->hasPermissions([
-            'admin.panel.veterinarians'
+            'admin.panel.veterinarians',
         ]);
     }
 
     /**
      * Determine whether the user can update the veterinary.
      *
-     * @param  \App\Models\Users\User $user
-     * @param  \App\Models\Veterinarians\Veterinary  $veterinary
+     * @param \App\Models\Users\User               $user
+     * @param \App\Models\Veterinarians\Veterinary $veterinary
+     *
      * @return mixed
      */
     public function update(User $user, Veterinary $veterinary)
     {
         return $user->hasPermissions([
-            'admin.panel.veterinarians'
+            'admin.panel.veterinarians',
         ]);
     }
 
     /**
      * Determine whether the user can delete the veterinary.
      *
-     * @param  \App\Models\Users\User $user
+     * @param \App\Models\Users\User $user
+     *
      * @return mixed
      */
     public function delete(User $user)
     {
         return $user->hasPermissions([
-            'admin.panel.veterinarians'
+            'admin.panel.veterinarians',
         ]);
     }
 }

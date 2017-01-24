@@ -2,10 +2,10 @@
 
 namespace App\Models\Files;
 
-use App\Models\Webs\Web;
+use App\Helpers\Traits\LogsActivity;
 use App\Models\BaseModel;
 use App\Models\Users\User;
-use App\Helpers\Traits\LogsActivity;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class File extends BaseModel
@@ -13,19 +13,19 @@ class File extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'files';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'web_id', 'user_id', 'title', 'description', 'file', 'extension', 'public'
+        'web_id', 'user_id', 'title', 'description', 'file', 'extension', 'public',
     ];
 
     /**
@@ -36,7 +36,7 @@ class File extends BaseModel
     protected $touches = ['web'];
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

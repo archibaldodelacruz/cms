@@ -4,7 +4,7 @@ return [
 
     'status' => [
         'published',
-        'pending'
+        'pending',
     ],
 
 ];

@@ -2,9 +2,9 @@
 
 namespace App\Models\Calendar;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Calendar extends BaseModel
@@ -12,25 +12,25 @@ class Calendar extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'calendar';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'start_date', 'end_date', 'all_day', 'type'
+        'title', 'description', 'start_date', 'end_date', 'all_day', 'type',
     ];
 
     protected $appends = ['color'];
 
     protected $dates = [
-        'start_date', 'end_date'
+        'start_date', 'end_date',
     ];
 
     /**
@@ -44,7 +44,8 @@ class Calendar extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -61,7 +62,7 @@ class Calendar extends BaseModel
     }
 
     /**
-     * Get color by type
+     * Get color by type.
      *
      * @return string
      */
@@ -103,7 +104,7 @@ class Calendar extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

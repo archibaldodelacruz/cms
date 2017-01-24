@@ -2,24 +2,24 @@
 
 namespace App\Models\Webs;
 
-use App\Models\Activity;
-use App\Models\BaseModel;
-use App\Models\Files\File;
-use App\Models\Pages\Page;
-use App\Models\Users\User;
-use App\Models\Forms\Form;
-use App\Models\Posts\Post;
-use App\Models\Location\City;
-use App\Models\Animals\Animal;
-use App\Models\Widgets\Widget;
-use App\Models\Posts\Category;
-use App\Models\Location\State;
-use App\Models\Partners\Partner;
-use App\Models\Finances\Finance;
-use App\Models\Location\Country;
-use App\Models\Calendar\Calendar;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\Activity;
+use App\Models\Animals\Animal;
+use App\Models\BaseModel;
+use App\Models\Calendar\Calendar;
+use App\Models\Files\File;
+use App\Models\Finances\Finance;
+use App\Models\Forms\Form;
+use App\Models\Location\City;
+use App\Models\Location\Country;
+use App\Models\Location\State;
+use App\Models\Pages\Page;
+use App\Models\Partners\Partner;
+use App\Models\Posts\Category;
+use App\Models\Posts\Post;
+use App\Models\Users\User;
 use App\Models\Veterinarians\Veterinary;
+use App\Models\Widgets\Widget;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Web extends BaseModel
@@ -27,42 +27,42 @@ class Web extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'webs';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
         'name', 'description', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id',
-        'contact_name', 'contact_email', 'contact_phone', 'logo', 'config'
+        'contact_name', 'contact_email', 'contact_phone', 'logo', 'config',
     ];
 
     /**
-     * Cast fields
+     * Cast fields.
      *
      * @var array
      */
     protected $casts = [
-        'config' => 'array'
+        'config' => 'array',
     ];
 
     /**
-     * With relation
+     * With relation.
      *
      * @var array
      */
     protected $with = [
-        'config'
+        'config',
     ];
 
     /**
-     * Return active lang
+     * Return active lang.
      *
      * @return string
      */
@@ -81,15 +81,16 @@ class Web extends BaseModel
 
     /**
      * @param bool $subdomain
+     *
      * @return string
      */
     public function getUrl(bool $subdomain = false) : string
     {
-        if ($this->domain && ! $subdomain) {
-            return 'http://' . $this->domain;
+        if ($this->domain && !$subdomain) {
+            return 'http://'.$this->domain;
         }
 
-        return 'http://' . $this->subdomain . '.protecms.com';
+        return 'http://'.$this->subdomain.'.protecms.com';
     }
 
     /**
@@ -105,10 +106,11 @@ class Web extends BaseModel
     }
 
     /**
-     * Get config
+     * Get config.
      *
      * @param $key
      * @param $value
+     *
      * @return $this
      */
     public function getConfig($key, $value = null)
@@ -123,9 +125,10 @@ class Web extends BaseModel
     }
 
     /**
-     * Has config
+     * Has config.
      *
      * @param $key
+     *
      * @return $this
      */
     public function hasConfig($key)
@@ -134,22 +137,23 @@ class Web extends BaseModel
     }
 
     /**
-     * Set config
+     * Set config.
      *
      * @param $key
      * @param $value
+     *
      * @return $this
      */
     public function setConfig($key, $value)
     {
-        if (! $this->config()->where('key', $key)->exists()) {
+        if (!$this->config()->where('key', $key)->exists()) {
             $this->config()->create([
-                'key' => $key,
-                'value' => $value
+                'key'   => $key,
+                'value' => $value,
             ]);
         } else {
             $this->config()->where('key', $key)->update([
-                'value' => $value
+                'value' => $value,
             ]);
         }
 
@@ -157,9 +161,10 @@ class Web extends BaseModel
     }
 
     /**
-     * Set config
+     * Set config.
      *
      * @param $key
+     *
      * @return $this
      */
     public function unsetConfig($key)
@@ -172,18 +177,19 @@ class Web extends BaseModel
     }
 
     /**
-     * Set multiple config
+     * Set multiple config.
      *
      * @param array $config
+     *
      * @return $this
      */
     public function setConfigs(array $config)
     {
         foreach ($config as $key => $value) {
-            if (! $this->config()->where('key', $key)->exists()) {
+            if (!$this->config()->where('key', $key)->exists()) {
                 $this->config()->create([
-                    'key' => $key,
-                    'value' => $value
+                    'key'   => $key,
+                    'value' => $value,
                 ]);
             }
         }
@@ -195,7 +201,8 @@ class Web extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -210,29 +217,30 @@ class Web extends BaseModel
     }
 
     /**
-     * Storage folder
+     * Storage folder.
      *
      * @param $path
      * @param bool $local
+     *
      * @return string
      */
     public function getStorageFolder($path = null, $local = true)
     {
         if ($local) {
-            $storage_path = storage_path('app/web/' . $this->id);
+            $storage_path = storage_path('app/web/'.$this->id);
         } else {
-            $storage_path = 'web/' . $this->id;
+            $storage_path = 'web/'.$this->id;
         }
 
         if ($path) {
-            $storage_path = $storage_path . '/' . $path;
+            $storage_path = $storage_path.'/'.$path;
         }
 
         return $storage_path;
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function volunteers()
     {

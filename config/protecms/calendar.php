@@ -9,6 +9,6 @@ return [
         'treatment',
         'work',
         'visit',
-        'other'
+        'other',
     ],
 ];

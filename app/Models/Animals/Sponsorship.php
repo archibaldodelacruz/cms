@@ -2,33 +2,32 @@
 
 namespace App\Models\Animals;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\BaseModel;
+use App\Models\Location\City;
 use App\Models\Location\Country;
 use App\Models\Location\State;
-use App\Models\Location\City;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sponsorship extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'animals_sponsorships';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
         'name', 'email', 'phone', 'start_date', 'end_date', 'donation', 'donation_time', 'payment_method', 'address', 'city_id',
-        'state_id', 'country_id', 'status', 'text', 'visible'
+        'state_id', 'country_id', 'status', 'text', 'visible',
     ];
 
     /**
@@ -39,14 +38,15 @@ class Sponsorship extends BaseModel
     protected $touches = ['animal'];
 
     protected $dates = [
-       'start_date', 'end_date'
+       'start_date', 'end_date',
     ];
 
     /**
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -63,7 +63,7 @@ class Sponsorship extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function animal()
     {

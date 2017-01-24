@@ -14,13 +14,13 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'type' => 'required|in:' . implode(',', config('protecms.animals.health.type')),
-            'medicine' => '',
+            'title'      => 'required',
+            'type'       => 'required|in:'.implode(',', config('protecms.animals.health.type')),
+            'medicine'   => '',
             'start_date' => '',
-            'end_date' => '',
-            'cost' => '',
-            'text' => '',
+            'end_date'   => '',
+            'cost'       => '',
+            'text'       => '',
         ];
     }
 }

@@ -7,23 +7,23 @@ use App\Models\BaseModel;
 class Permission extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'permissions';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'permission'
+        'id', 'permission',
     ];
 
     /**
-     * Hidden fields
+     * Hidden fields.
      *
      * @var array
      */
@@ -32,7 +32,7 @@ class Permission extends BaseModel
     ];
 
     /**
-     * Relations
+     * Relations.
      */
     public function users()
     {

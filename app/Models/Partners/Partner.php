@@ -2,9 +2,9 @@
 
 namespace App\Models\Partners;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Partner extends BaseModel
@@ -12,29 +12,29 @@ class Partner extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'partners';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
         'id', 'web_id', 'name', 'email', 'donation', 'donation_time', 'payment_method', 'city', 'start_date', 'end_date', 'text',
-        'phone', 'address', 'city_id', 'state_id', 'country_id'
+        'phone', 'address', 'city_id', 'state_id', 'country_id',
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'start_date', 'end_date'
+        'start_date', 'end_date',
     ];
 
     /**
@@ -48,7 +48,8 @@ class Partner extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -65,7 +66,7 @@ class Partner extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

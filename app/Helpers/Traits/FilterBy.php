@@ -13,13 +13,13 @@ trait FilterBy
                 $relation = strstr($field, '.', true);
                 $relation_field = str_replace('.', '', strstr($field, '.'));
                 $relations[$relation] = function ($query) use ($relation_field, $request, $field) {
-                    $query->where($relation_field, 'LIKE', '%'. $request->get(str_replace('.', '_', $field)) . '%');
+                    $query->where($relation_field, 'LIKE', '%'.$request->get(str_replace('.', '_', $field)).'%');
                 };
 
                 if ($relation == 'translations') {
                     $collection = $collection->whereHas('translations', function ($query) use ($request, $relation_field, $field) {
                         $query->where('locale', config('app.locale'))
-                            ->where($relation_field, 'LIKE', '%'. $request->get(str_replace('.', '_', $field)) .'%');
+                            ->where($relation_field, 'LIKE', '%'.$request->get(str_replace('.', '_', $field)).'%');
                     });
                 }
             } elseif (empty($request->get($field))) {
@@ -43,7 +43,7 @@ trait FilterBy
                     if ($field === 'gender') {
                         $collection = $collection->where($field, '=', $request->get($field));
                     } else {
-                        $collection = $collection->where($field, 'LIKE', '%' . $request->get($field) . '%');
+                        $collection = $collection->where($field, 'LIKE', '%'.$request->get($field).'%');
                     }
                 }
             }

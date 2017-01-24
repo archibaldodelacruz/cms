@@ -14,12 +14,12 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|unique:users,email,' . $this->id,
-            'password' => 'between:5,30',
+            'name'                  => 'required',
+            'email'                 => 'required|unique:users,email,'.$this->id,
+            'password'              => 'between:5,30',
             'password_confirmation' => 'required_with:password|same:password',
-            'status' => 'required|in:' . implode(',', config('protecms.users.status')),
-            'type' => 'required|in:' . implode(',', config('protecms.users.type'))
+            'status'                => 'required|in:'.implode(',', config('protecms.users.status')),
+            'type'                  => 'required|in:'.implode(',', config('protecms.users.type')),
         ];
     }
 }

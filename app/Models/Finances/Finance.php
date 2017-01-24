@@ -2,9 +2,9 @@
 
 namespace App\Models\Finances;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Finance extends BaseModel
@@ -12,28 +12,28 @@ class Finance extends BaseModel
     use SoftDeletes, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'finances';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'amount', 'type', 'reason', 'executed_at'
+        'title', 'description', 'amount', 'type', 'reason', 'executed_at',
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'executed_at'
+        'executed_at',
     ];
 
     /**
@@ -63,7 +63,8 @@ class Finance extends BaseModel
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return \Illuminate\Database\Eloquent\Model|void
      */
     public function setAttribute($key, $value)
@@ -76,7 +77,7 @@ class Finance extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

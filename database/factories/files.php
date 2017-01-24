@@ -10,9 +10,9 @@ $factory->define(App\Models\Files\File::class, function (Faker\Generator $faker)
         'user_id' => function () {
             return factory(App\Models\Users\User::class)->create()->id;
         },
-        'title' => $faker->sentence,
+        'title'       => $faker->sentence,
         'description' => $faker->optional()->paragraph,
-        'file' => $faker->unique()->uuid . '.' . $type,
-        'extension' => $type
+        'file'        => $faker->unique()->uuid.'.'.$type,
+        'extension'   => $type,
     ];
 });

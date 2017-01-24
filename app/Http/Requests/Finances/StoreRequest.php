@@ -14,12 +14,12 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title'       => 'required',
             'description' => '',
-            'amount' => 'required|numeric',
+            'amount'      => 'required|numeric',
             'executed_at' => 'required',
-            'type' => 'required|in:' . implode(',', config('protecms.finances.type')),
-            'reason' => 'required|in:' . implode(',', config('protecms.finances.reason'))
+            'type'        => 'required|in:'.implode(',', config('protecms.finances.type')),
+            'reason'      => 'required|in:'.implode(',', config('protecms.finances.reason')),
         ];
     }
 }

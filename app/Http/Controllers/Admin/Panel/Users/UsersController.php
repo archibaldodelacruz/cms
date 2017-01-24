@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Panel\Users;
 
-use Auth;
-use App\Models\Users\User;
-use Illuminate\Http\Request;
-use App\Mail\UserRegistered;
 use App\Helpers\Traits\FilterBy;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Users\StoreRequest;
 use App\Http\Requests\Users\UpdateRequest;
+use App\Mail\UserRegistered;
+use App\Models\Users\User;
+use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends BaseAdminController
 {
@@ -23,6 +23,7 @@ class UsersController extends BaseAdminController
 
     /**
      * UsersController constructor.
+     *
      * @param User $user
      */
     public function __construct(User $user)
@@ -34,6 +35,7 @@ class UsersController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -73,6 +75,7 @@ class UsersController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -93,6 +96,7 @@ class UsersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -108,6 +112,7 @@ class UsersController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -132,7 +137,9 @@ class UsersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)
@@ -169,7 +176,7 @@ class UsersController extends BaseAdminController
         Auth::user()->unreadNotifications->markAsRead();
 
         return response()->json([
-            'status' => 'success'
+            'status' => 'success',
         ]);
     }
 }

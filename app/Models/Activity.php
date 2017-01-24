@@ -2,26 +2,25 @@
 
 namespace App\Models;
 
-use App\Models\Users\User;
 use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'activity_log';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'web_id', 'log', 'description', 'model_id', 'model_type', 'user_id', 'user_type'
+        'web_id', 'log', 'description', 'model_id', 'model_type', 'user_id', 'user_type',
     ];
 
     public function model()

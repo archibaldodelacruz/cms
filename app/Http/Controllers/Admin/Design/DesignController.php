@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Design;
 
-use Image;
-use App\Helpers\UploadFile;
-use Illuminate\Http\Request;
-use App\Http\Requests\Design\UpdateRequest;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Admin\BaseAdminController;
+use App\Http\Requests\Design\UpdateRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class DesignController extends BaseAdminController
 {
@@ -54,6 +53,7 @@ class DesignController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function css_update(Request $request)
@@ -69,6 +69,7 @@ class DesignController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function config_update(Request $request)
@@ -86,13 +87,14 @@ class DesignController extends BaseAdminController
 
     /**
      * @param UpdateRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request)
     {
         $this->customAuthorize('admin.design');
 
-        if ($request->has('logo') && ! empty($request->get('logo'))) {
+        if ($request->has('logo') && !empty($request->get('logo'))) {
             $logo = Image::make($request->get('logo'))->resize(400, 400, function ($constraint) {
                 $constraint->upsize();
             });
@@ -114,16 +116,16 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'logo.' . $extension;
+            $name = 'logo.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $logo->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $logo->stream($extension, 100)->__toString(), 'public');
 
             $this->web->update([
-                'logo' => $name
+                'logo' => $name,
             ]);
         }
 
-        if ($request->has('header') && ! empty($request->get('header'))) {
+        if ($request->has('header') && !empty($request->get('header'))) {
             $header = Image::make($request->get('header'))->resize(1200, 200, function ($constraint) {
                 $constraint->upsize();
             });
@@ -145,9 +147,9 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'header.' . $extension;
+            $name = 'header.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $header->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $header->stream($extension, 100)->__toString(), 'public');
 
             $this->web->setConfig('themes.default.header_image', $name);
         }
@@ -175,9 +177,9 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'favicon.' . $extension;
+            $name = 'favicon.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $favicon->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $favicon->stream($extension, 100)->__toString(), 'public');
             $this->web->setConfig('themes.default.favicon', $name);
         }
 
@@ -212,7 +214,7 @@ class DesignController extends BaseAdminController
                 $this->web->setConfig('themes.default.background_content_color', $request->get('background_image_content')['background_content_color']);
                 $this->web->unsetConfig('themes.default.background_color');
                 break;
-            
+
             default:
                 $this->web->unsetConfig('themes.default.background_type');
                 $this->web->unsetConfig('themes.default.background_color');
@@ -234,62 +236,62 @@ class DesignController extends BaseAdminController
         return [
             [
                 'title' => 'Diseño',
-                'menu' => [
-                    'title' => 'Diseño',
-                    'icon' => 'fa fa-picture-o',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/design*',
+                'menu'  => [
+                    'title'   => 'Diseño',
+                    'icon'    => 'fa fa-picture-o',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/design*',
                     'submenu' => [
                         [
-                            'title' => 'Principal',
-                            'icon' => 'fa fa-picture-o',
-                            'url' => route('admin::design::index'),
-                            'permissions' => ['admin.design', 'admin.design.view']
+                            'title'       => 'Principal',
+                            'icon'        => 'fa fa-picture-o',
+                            'url'         => route('admin::design::index'),
+                            'permissions' => ['admin.design', 'admin.design.view'],
                         ],
                         [
-                            'title' => 'Configuración',
-                            'icon' => 'fa fa-cogs',
-                            'url' => route('admin::design::config'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Configuración',
+                            'icon'        => 'fa fa-cogs',
+                            'url'         => route('admin::design::config'),
+                            'permissions' => ['admin.design'],
                         ],
                         [
-                            'title' => 'CSS Personalizado',
-                            'icon' => 'fa fa-css3',
-                            'url' => route('admin::design::css'),
-                            'permissions' => ['admin.design']
-                        ]
-                    ]
-                ]
+                            'title'       => 'CSS Personalizado',
+                            'icon'        => 'fa fa-css3',
+                            'url'         => route('admin::design::css'),
+                            'permissions' => ['admin.design'],
+                        ],
+                    ],
+                ],
             ],
             [
                 'title' => 'Bloques',
-                'menu' => [
-                    'title' => 'Bloques',
-                    'icon' => 'fa fa-clone',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/design*',
+                'menu'  => [
+                    'title'   => 'Bloques',
+                    'icon'    => 'fa fa-clone',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/design*',
                     'submenu' => [
                         [
-                            'title' => 'Bloques',
-                            'icon' => 'fa fa-clone',
-                            'url' => route('admin::design::widgets::index'),
-                            'permissions' => ['admin.design', 'admin.design.view']
+                            'title'       => 'Bloques',
+                            'icon'        => 'fa fa-clone',
+                            'url'         => route('admin::design::widgets::index'),
+                            'permissions' => ['admin.design', 'admin.design.view'],
                         ],
                         [
-                            'title' => 'Crear bloque',
-                            'icon' => 'fa fa-plus-square',
-                            'url' => route('admin::design::widgets::create'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Crear bloque',
+                            'icon'        => 'fa fa-plus-square',
+                            'url'         => route('admin::design::widgets::create'),
+                            'permissions' => ['admin.design'],
                         ],
                         [
-                            'title' => 'Bloques eliminados',
-                            'icon' => 'fa fa-trash',
-                            'url' => route('admin::design::widgets::deleted'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Bloques eliminados',
+                            'icon'        => 'fa fa-trash',
+                            'url'         => route('admin::design::widgets::deleted'),
+                            'permissions' => ['admin.design'],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

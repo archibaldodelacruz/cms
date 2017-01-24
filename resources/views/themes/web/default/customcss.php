@@ -51,21 +51,21 @@ $color = $web->getConfig('themes.default.color');
 if ($web->hasConfig('themes.default.background_type')) {
     switch ($web->getConfig('themes.default.background_type')) {
         case 'background_color':
-            echo 'body { background: ' . $web->getConfig('themes.default.background_color') . '; }';
+            echo 'body { background: '.$web->getConfig('themes.default.background_color').'; }';
             break;
 
         case 'background_content_color':
-            echo 'body { background: ' . $web->getConfig('themes.default.background_color') . '; }';
-            echo '#wrapper { background: ' . $web->getConfig('themes.default.background_content_color') . '; }';
+            echo 'body { background: '.$web->getConfig('themes.default.background_color').'; }';
+            echo '#wrapper { background: '.$web->getConfig('themes.default.background_content_color').'; }';
             break;
 
         case 'background_image':
-            echo 'body { background: url(/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') . ') repeat; }';
+            echo 'body { background: url(/assets/images/backgrounds/'.$web->getConfig('themes.default.background_image').') repeat; }';
             break;
 
         case 'background_image_content':
-            echo 'body { background: url(/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') . ') repeat; }';
-            echo '#wrapper { background: ' . $web->getConfig('themes.default.background_content_color') . '; }';
+            echo 'body { background: url(/assets/images/backgrounds/'.$web->getConfig('themes.default.background_image').') repeat; }';
+            echo '#wrapper { background: '.$web->getConfig('themes.default.background_content_color').'; }';
             break;
 
         default:

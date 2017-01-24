@@ -2,23 +2,23 @@
 
 namespace App\Models\Location;
 
-use App\Models\Webs\Web;
 use App\Models\Users\User;
+use App\Models\Webs\Web;
 use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'country_id', 'name'
+        'country_id', 'name',
     ];
 
     /**
-     * Relations
+     * Relations.
      */
     public function webs()
     {

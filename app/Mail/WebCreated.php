@@ -6,7 +6,6 @@ use App\Models\Webs\Web;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class WebCreated extends Mailable
 {
@@ -24,6 +23,7 @@ class WebCreated extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param Web $web
      * @param $install_code
      */

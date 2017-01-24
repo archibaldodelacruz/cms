@@ -4,13 +4,13 @@ return [
 
     'status' => [
         'hidden',
-        'published'
+        'published',
     ],
 
     'fields' => [
         'required' => [
             0,
-            1
+            1,
         ],
 
         'type' => [
@@ -20,7 +20,7 @@ return [
             'date',
             'numeric',
             'textarea',
-        ]
+        ],
     ],
 
 ];

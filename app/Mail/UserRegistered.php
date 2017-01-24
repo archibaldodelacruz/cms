@@ -6,33 +6,33 @@ use App\Models\Users\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserRegistered extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * The user instance
+     * The user instance.
      *
      * @var User
      */
     public $user;
 
     /**
-     * The web instance
+     * The web instance.
      *
      * @var \App\Models\Webs\Web;
      */
     public $web;
 
     /**
-     * Request
+     * Request.
      */
     public $request;
 
     /**
      * Create a new message instance.
+     *
      * @param User $user
      * @param $request
      */

@@ -25,7 +25,7 @@ class NewShelter extends Command
     protected $description = 'Create a new shelter';
 
     /**
-     * Web model
+     * Web model.
      *
      * @var \App\Models\Webs\Web
      */
@@ -59,6 +59,6 @@ class NewShelter extends Command
         $code = mt_rand(00000, 99999);
         $web->setConfig('install_code', $code);
 
-        $this->info('Shelter created successfully. The security code is: ' . $code);
+        $this->info('Shelter created successfully. The security code is: '.$code);
     }
 }

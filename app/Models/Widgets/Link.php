@@ -11,35 +11,35 @@ class Link extends BaseModel
     use SoftDeletes, Translatable;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'widgets_links';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'widget_id', 'type', 'order'
+        'widget_id', 'type', 'order',
     ];
 
     /**
-     * With relation
+     * With relation.
      *
      * @var array
      */
     protected $with = [
-        'translations'
+        'translations',
     ];
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title', 'link'
+        'title', 'link',
     ];
 
     /**
@@ -50,7 +50,7 @@ class Link extends BaseModel
     protected $touches = ['widget'];
 
     /**
-     * Relations
+     * Relations.
      */
     public function widget()
     {

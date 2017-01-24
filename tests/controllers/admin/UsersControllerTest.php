@@ -3,9 +3,6 @@
 use App\Models\Pages\Page;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UsersControllerTest extends TestCase
 {
@@ -15,7 +12,7 @@ class UsersControllerTest extends TestCase
     public function test_check_users_list()
     {
         factory(User::class, 9)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs($this->authUser())
@@ -52,18 +49,18 @@ class UsersControllerTest extends TestCase
     public function test_edit_user()
     {
         factory(User::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('users', [
-                'id' => 2
+                'id' => 2,
             ])
             ->visitRoute('admin::panel::users::edit', ['id' => 2])
             ->type('Cambio de nombre', 'name')
             ->press('Actualizar')
             ->seeInDatabase('users', [
-                'name' => 'Cambio de nombre'
+                'name' => 'Cambio de nombre',
             ]);
     }
 
@@ -75,64 +72,64 @@ class UsersControllerTest extends TestCase
         $from = factory(User::class)->create([
             'web_id' => 1,
             'status' => 'active',
-            'type' => 'volunteer'
+            'type'   => 'volunteer',
         ]);
 
         factory(Post::class, 2)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Titulo',
-                'slug' => 'titulo',
-                'text' => 'Texto',
-                'user_id' => $from->id
-            ]
+            'es'     => [
+                'title'   => 'Titulo',
+                'slug'    => 'titulo',
+                'text'    => 'Texto',
+                'user_id' => $from->id,
+            ],
         ]);
 
         factory(Page::class, 2)->create([
             'web_id' => 1,
-            'es' => [
-                'title' => 'Titulo',
-                'slug' => 'titulo',
-                'text' => 'Texto',
-                'user_id' => $from->id
-            ]
+            'es'     => [
+                'title'   => 'Titulo',
+                'slug'    => 'titulo',
+                'text'    => 'Texto',
+                'user_id' => $from->id,
+            ],
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('users', [
-                'id' => $from->id
+                'id' => $from->id,
             ])
             ->seeInDatabase('users', [
-                'id' => 1
+                'id' => 1,
             ])
             ->seeInDatabase('posts_translations', [
-                'user_id' => $from->id
+                'user_id' => $from->id,
             ])
             ->notSeeInDatabase('posts_translations', [
-                'user_id' => 1
+                'user_id' => 1,
             ])
             ->seeInDatabase('pages_translations', [
-                'user_id' => $from->id
+                'user_id' => $from->id,
             ])
             ->notSeeInDatabase('pages_translations', [
-                'user_id' => 1
+                'user_id' => 1,
             ])
             ->visitRoute('admin::panel::users::delete', ['id' => $from->id])
             ->seeInDatabase('posts_translations', [
-                'user_id' => 1
+                'user_id' => 1,
             ])
             ->notSeeInDatabase('posts_translations', [
-                'user_id' => $from->id
+                'user_id' => $from->id,
             ])
             ->seeInDatabase('pages_translations', [
-                'user_id' => 1
+                'user_id' => 1,
             ])
             ->notSeeInDatabase('pages_translations', [
-                'user_id' => $from->id
+                'user_id' => $from->id,
             ])
             ->notSeeInDatabase('users', [
-                'id' => $from->id,
-                'deleted_at' => null
+                'id'         => $from->id,
+                'deleted_at' => null,
             ]);
     }
 }

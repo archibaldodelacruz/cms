@@ -3,16 +3,16 @@
 return [
 
     'type' => [
-        'user' => 'Usuario',
+        'user'      => 'Usuario',
         'volunteer' => 'Voluntario',
-        'admin' => 'Administrador'
+        'admin'     => 'Administrador',
     ],
 
     'status' => [
-        'active' => 'Activo',
+        'active'   => 'Activo',
         'inactive' => 'Inactivo',
-        'banned' => 'Bloqueado',
-        'pending' => 'Pendiente'
-    ]
+        'banned'   => 'Bloqueado',
+        'pending'  => 'Pendiente',
+    ],
 
 ];

@@ -9,7 +9,7 @@ return [
         'rodent',
         'bird',
         'reptile',
-        'other'
+        'other',
     ],
 
     'status' => [
@@ -19,7 +19,7 @@ return [
         'unavailable',
         'dead',
         'found',
-        'lost'
+        'lost',
     ],
 
     'location' => [
@@ -28,18 +28,18 @@ return [
         'animal_home',
         'street',
         'unknown',
-        'family'
+        'family',
     ],
 
     'gender' => [
         'male',
         'female',
-        'unknown'
+        'unknown',
     ],
 
     'visible' => [
         'visible',
-        'hidden'
+        'hidden',
     ],
 
     'health' => [
@@ -50,13 +50,13 @@ return [
                 'day',
                 'week',
                 'month',
-                'year'
+                'year',
             ],
 
             'life' => [
                 0,
-                1
-            ]
+                1,
+            ],
         ],
 
         'type' => [
@@ -66,27 +66,27 @@ return [
             'review',
             'appointment',
             'test',
-            'disease'
+            'disease',
         ],
 
         'test' => [
             'positive',
             'negative',
             'pending',
-            'undefined'
-        ]
+            'undefined',
+        ],
     ],
 
     'sponsorships' => [
 
         'visible' => [
             'hidden',
-            'visible'
+            'visible',
         ],
 
         'status' => [
             'active',
-            'inactive'
+            'inactive',
         ],
 
         'donation_time' => [
@@ -101,7 +101,7 @@ return [
             null,
             'cash',
             'wire_transfer',
-        ]
-    ]
+        ],
+    ],
 
 ];

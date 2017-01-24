@@ -7,16 +7,16 @@ use App\Models\BaseModel;
 class AnimalTranslation extends BaseModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'animals_translations';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      */
     protected $fillable = [
-        'text', 'private_text', 'health_text', 'breed'
+        'text', 'private_text', 'health_text', 'breed',
     ];
 }

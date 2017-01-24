@@ -2,36 +2,36 @@
 
 namespace App\Models\Users;
 
-use App\Models\Webs\Web;
 use App\Helpers\Traits\FilterByWeb;
 use App\Helpers\Traits\LogsActivity;
-use App\Models\Posts\PostTranslation;
 use App\Models\Pages\PageTranslation;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Posts\PostTranslation;
+use App\Models\Webs\Web;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use LogsActivity, FilterByWeb, Notifiable;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'users';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'web_id', 'name', 'email', 'password', 'status', 'type', 'last_login', 'created_at', 'updated_at'
+        'id', 'web_id', 'name', 'email', 'password', 'status', 'type', 'last_login', 'created_at', 'updated_at',
     ];
 
     /**
-     * Hidden fields
+     * Hidden fields.
      *
      * @var array
      */
@@ -40,12 +40,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * Dates
+     * Dates.
      *
      * @var array
      */
     protected $dates = [
-        'last_login'
+        'last_login',
     ];
 
     /**
@@ -56,9 +56,9 @@ class User extends Authenticatable
     protected $touches = ['web'];
 
     /**
-     * Check if user is admin
+     * Check if user is admin.
      *
-     * @return boolean
+     * @return bool
      */
     public function isAdmin()
     {
@@ -66,9 +66,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is admin or volunteer
+     * Check if user is admin or volunteer.
      *
-     * @return boolean
+     * @return bool
      */
     public function isAdminOrVolunteer()
     {
@@ -76,7 +76,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Set encrypted password
+     * Set encrypted password.
      */
     public function setPasswordAttribute($password)
     {
@@ -87,6 +87,7 @@ class User extends Authenticatable
      * Delete old and save new permissions.
      *
      * @param $request
+     *
      * @return $this
      */
     public function managePermissions($request)
@@ -96,7 +97,7 @@ class User extends Authenticatable
         $permissions = [];
         foreach ($request->get('permissions') as $key => $value) {
             if ($value !== '0' && $value !== '1') {
-                $permissions[] = $key . '.' . $value;
+                $permissions[] = $key.'.'.$value;
             } else {
                 if ($value !== '0') {
                     $permissions[] = str_replace('.1', '', $key);
@@ -114,9 +115,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user has permission
+     * Check if user has permission.
      *
      * @param $permission
+     *
      * @return bool
      */
     public function hasPermission($permission)
@@ -135,9 +137,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user has permissions
+     * Check if user has permissions.
      *
      * @param $permissions
+     *
      * @return bool
      */
     public function hasPermissions($permissions)
@@ -161,7 +164,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user has animals permissions
+     * Check if user has animals permissions.
      *
      * @return array
      */
@@ -170,7 +173,7 @@ class User extends Authenticatable
         $permissions = [];
 
         foreach (config('protecms.animals.kind') as $kind) {
-            if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.' . $kind, 'admin.panel.animals.' . $kind . '.view'])) {
+            if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.'.$kind, 'admin.panel.animals.'.$kind.'.view'])) {
                 $permissions[] = $kind;
             }
         }
@@ -179,7 +182,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user can create an animals
+     * Check if user can create an animals.
      *
      * @return array
      */
@@ -188,7 +191,7 @@ class User extends Authenticatable
         $permissions = [];
 
         foreach (config('protecms.animals.kind') as $kind) {
-            if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.' . $kind])) {
+            if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.'.$kind])) {
                 $permissions[] = $kind;
             }
         }
@@ -197,9 +200,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is banned
+     * Check if user is banned.
      *
-     * @return boolean
+     * @return bool
      */
     public function isBanned()
     {
@@ -207,7 +210,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Install;
 
+use App\Http\Controllers\Controller;
 use App\Mail\WebInstalled;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class InstallController extends Controller
 {
@@ -30,6 +30,7 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function data(Request $request)
@@ -42,6 +43,7 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function data_post(Request $request)
@@ -49,24 +51,24 @@ class InstallController extends Controller
         $this->checkCodeInstallation($request);
         $web = $this->web;
         $this->validate($request, [
-            'name' => 'required',
+            'name'        => 'required',
             'description' => 'required',
-            'email' => [
+            'email'       => [
                 'required',
                 'email',
                 Rule::unique('webs')->where(function ($query) use ($web) {
                     $query->where('subdomain', '!=', $this->web->subdomain);
                 }),
             ],
-            'phone' => 'required',
-            'address' => 'required',
-            'country_id' => 'required|exists:countries,id',
-            'state_id' => 'required|exists:states,id',
-            'city_id' => 'required|exists:cities,id',
-            'contact_name' => 'required',
-            'contact_email' => 'required|email'
+            'phone'         => 'required',
+            'address'       => 'required',
+            'country_id'    => 'required|exists:countries,id',
+            'state_id'      => 'required|exists:states,id',
+            'city_id'       => 'required|exists:cities,id',
+            'contact_name'  => 'required',
+            'contact_email' => 'required|email',
         ], [
-            'email.unique' => 'Ya existe una protectora registrada con esa dirección'
+            'email.unique' => 'Ya existe una protectora registrada con esa dirección',
         ]);
 
         $this->web->update($request->all());
@@ -77,12 +79,13 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function design(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (! $this->checkInstallation('design')) {
+        if (!$this->checkInstallation('design')) {
             return redirect()->route('install::index');
         }
 
@@ -91,18 +94,19 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function design_post(Request $request)
     {
         $this->checkCodeInstallation($request);
         $this->validate($request, [
-            'color' => 'required',
-            'logo' => 'required',
-            'header' => ''
+            'color'  => 'required',
+            'logo'   => 'required',
+            'header' => '',
         ]);
 
-        if ($request->has('logo') && ! empty($request->get('logo'))) {
+        if ($request->has('logo') && !empty($request->get('logo'))) {
             $logo = Image::make($request->get('logo'))->resize(400, 400, function ($constraint) {
                 $constraint->upsize();
             });
@@ -124,16 +128,16 @@ class InstallController extends Controller
                     break;
             }
 
-            $name = 'logo.' . $extension;
+            $name = 'logo.'.$extension;
 
-            Storage::put('web/' . app('App\Models\Webs\Web')->id . '/images/' . $name, $logo->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.app('App\Models\Webs\Web')->id.'/images/'.$name, $logo->stream($extension, 100)->__toString(), 'public');
 
             $this->web->update([
-                'logo' => $name
+                'logo' => $name,
             ]);
         }
 
-        if ($request->has('header') && ! empty($request->get('header'))) {
+        if ($request->has('header') && !empty($request->get('header'))) {
             $header = Image::make($request->get('header'))->resize(1200, 200, function ($constraint) {
                 $constraint->upsize();
             });
@@ -155,9 +159,9 @@ class InstallController extends Controller
                     break;
             }
 
-            $name = 'header.' . $extension;
+            $name = 'header.'.$extension;
 
-            Storage::put('web/' . app('App\Models\Webs\Web')->id . '/images/' . $name, $header->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.app('App\Models\Webs\Web')->id.'/images/'.$name, $header->stream($extension, 100)->__toString(), 'public');
 
             $this->web->setConfig('themes.default.header_image', $name);
         }
@@ -170,12 +174,13 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function terms(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (! $this->checkInstallation('terms')) {
+        if (!$this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 
@@ -186,13 +191,14 @@ class InstallController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function terms_post(Request $request)
     {
         $this->checkCodeInstallation($request);
         $this->validate($request, [
-            'terms' => 'required|accepted'
+            'terms' => 'required|accepted',
         ]);
 
         return redirect()->route('install::finish');
@@ -203,7 +209,7 @@ class InstallController extends Controller
      */
     public function finish()
     {
-        if (! $this->checkInstallation('terms')) {
+        if (!$this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 
@@ -226,11 +232,11 @@ class InstallController extends Controller
         $password = str_random(10);
 
         $user = $web->users()->create([
-            'name' => 'Administrador',
-            'email' => $web->email,
+            'name'     => 'Administrador',
+            'email'    => $web->email,
             'password' => $password,
-            'type' => 'admin',
-            'status' => 'active'
+            'type'     => 'admin',
+            'status'   => 'active',
         ]);
 
         Mail::to($user)->send(new WebInstalled($web, $password));
@@ -242,6 +248,7 @@ class InstallController extends Controller
 
     /**
      * @param $step
+     *
      * @return bool
      */
     protected function checkInstallation($step)
@@ -256,21 +263,22 @@ class InstallController extends Controller
     {
         if (session()->has('install_code')) {
             $request->merge([
-                'code' => session('install_code')
+                'code' => session('install_code'),
             ]);
         }
 
         $this->validate($request, [
-            'code' => 'required|exists:webs_config,value,web_id,' . $this->web->id
+            'code' => 'required|exists:webs_config,value,web_id,'.$this->web->id,
         ], [
-            'code.exists' => 'El código no es válido'
+            'code.exists' => 'El código no es válido',
         ]);
 
         session()->put('install_code', $request->get('code'));
     }
 
     /**
-     * Generate web data
+     * Generate web data.
+     *
      * @param $web
      * @param $user
      */
@@ -278,219 +286,219 @@ class InstallController extends Controller
     {
         checkFolder($web->getStorageFolder('uploads'), 0775);
         checkFolder($web->getStorageFolder('images/animals'), 0775);
-        checkFolder(public_path('uploads/' . $web->id), 0775);
+        checkFolder(public_path('uploads/'.$web->id), 0775);
 
         /**
-         * Categories
+         * Categories.
          */
         $category = $web->posts_categories()->create([
             'es' => [
                 'title' => 'General',
-                'slug' => 'general'
-            ]
+                'slug'  => 'general',
+            ],
         ]);
 
         $web->posts_categories()->create([
             'es' => [
                 'title' => 'Noticias',
-                'slug' => 'noticias'
-            ]
+                'slug'  => 'noticias',
+            ],
         ]);
 
         $web->posts_categories()->create([
             'es' => [
                 'title' => 'Eventos',
-                'slug' => 'eventos'
-            ]
+                'slug'  => 'eventos',
+            ],
         ]);
 
-        /**
+        /*
          * Posts
          */
         $web->posts()->create([
-            'category_id' => $category->id,
-            'status' => 'published',
-            'published_at' => date('Y-m-d H:i:s'),
+            'category_id'     => $category->id,
+            'status'          => 'published',
+            'published_at'    => date('Y-m-d H:i:s'),
             'comments_status' => 1,
-            'es' => [
+            'es'              => [
                 'user_id' => $user->id,
-                'title' => 'Bienvenid@ a la web de tu protectora',
-                'slug' => 'bienvenido-a-la-web-de-tu-protectora',
-                'text' => '<p>¡La web de tu protectora se ha generado correctamente!</p><p>Si quieres editar este artículo puedes hacerlo en el panel de administración</p>'
-            ]
+                'title'   => 'Bienvenid@ a la web de tu protectora',
+                'slug'    => 'bienvenido-a-la-web-de-tu-protectora',
+                'text'    => '<p>¡La web de tu protectora se ha generado correctamente!</p><p>Si quieres editar este artículo puedes hacerlo en el panel de administración</p>',
+            ],
         ]);
 
-        /**
+        /*
          * Pages
          */
         $pages[] = $web->pages()->create([
-            'status' => 'published',
+            'status'       => 'published',
             'published_at' => date('Y-m-d H:i:s'),
-            'es' => [
+            'es'           => [
                 'user_id' => $user->id,
-                'title' => 'Quiénes somos',
-                'slug' => 'quienes-somos',
-                'text' => '<p>Modifica esta p&aacute;gina con los datos e historia de la protectora.</p>
+                'title'   => 'Quiénes somos',
+                'slug'    => 'quienes-somos',
+                'text'    => '<p>Modifica esta p&aacute;gina con los datos e historia de la protectora.</p>
 <p>Muchos usuarios quieren saber c&oacute;mo se fund&oacute;. C&oacute;mo empez&oacute; todo. Esta p&aacute;gina es perfecta para ello.</p>
-<p>Puedes modificarla a trav&eacute;s del panel de administraci&oacute;n, en la secci&oacute;n P&aacute;ginas.</p>'
-            ]
+<p>Puedes modificarla a trav&eacute;s del panel de administraci&oacute;n, en la secci&oacute;n P&aacute;ginas.</p>',
+            ],
         ]);
 
         $pages[] = $web->pages()->create([
-            'status' => 'published',
+            'status'       => 'published',
             'published_at' => date('Y-m-d H:i:s'),
-            'es' => [
+            'es'           => [
                 'user_id' => $user->id,
-                'title' => 'Ayúdanos',
-                'slug' => 'ayudanos',
-                'text' => '<p>Modifica esta p&aacute;gina con las opciones que tienen los voluntarios y no voluntarios de ayudar a la protectora.</p>
+                'title'   => 'Ayúdanos',
+                'slug'    => 'ayudanos',
+                'text'    => '<p>Modifica esta p&aacute;gina con las opciones que tienen los voluntarios y no voluntarios de ayudar a la protectora.</p>
 <p>Hay muchos tipos de ayuda: transporte, donaciones, limpieza, etc. Describe c&oacute;mo pueden ayudar y qu&eacute; tienen que hacer.</p>
-<p>Esta p&aacute;gina la puedes modificar en el panel de administraci&oacute;n.</p>'
-            ]
+<p>Esta p&aacute;gina la puedes modificar en el panel de administraci&oacute;n.</p>',
+            ],
         ]);
 
         $pages[] = $web->pages()->create([
-            'status' => 'published',
+            'status'       => 'published',
             'published_at' => date('Y-m-d H:i:s'),
-            'es' => [
+            'es'           => [
                 'user_id' => $user->id,
-                'title' => 'Donaciones',
-                'slug' => 'donaciones',
-                'text' => '<p>Modifica esta p&aacute;gina con los datos de la cuenta bancaria donde poder realizar ingresos y otras formas de donaciones.</p>
-<p>Esta p&aacute;gina la puedes modificar en el panel de administraci&oacute;n.</p>'
-            ]
+                'title'   => 'Donaciones',
+                'slug'    => 'donaciones',
+                'text'    => '<p>Modifica esta p&aacute;gina con los datos de la cuenta bancaria donde poder realizar ingresos y otras formas de donaciones.</p>
+<p>Esta p&aacute;gina la puedes modificar en el panel de administraci&oacute;n.</p>',
+            ],
         ]);
 
         /**
-         * Forms
+         * Forms.
          */
         $form = $web->forms()->create([
-            'email' => $web->email,
+            'email'  => $web->email,
             'status' => 'published',
-            'es' => [
+            'es'     => [
                 'user_id' => $user->id,
-                'title' => 'Contacto',
-                'slug' => 'contacto',
+                'title'   => 'Contacto',
+                'slug'    => 'contacto',
                 'subject' => 'Contacto',
-                'text' => '<p>Puedes contactar con nosotros mediante el siguiente formulario.</p>'
-            ]
+                'text'    => '<p>Puedes contactar con nosotros mediante el siguiente formulario.</p>',
+            ],
         ]);
 
         $fields = [
-            'name' => 'text',
+            'name'    => 'text',
             'subject' => 'text',
-            'email' => 'email',
-            'message' => 'textarea'
+            'email'   => 'email',
+            'message' => 'textarea',
         ];
 
         $order = 1;
         foreach ($fields as $key => $value) {
             $form->fields()->create([
-                'order' => $order,
-                'name' => $order,
-                'type' => $value,
+                'order'    => $order,
+                'name'     => $order,
+                'type'     => $value,
                 'required' => 1,
-                'es' => [
-                    'title' => ucfirst(trans('validation.attributes.' . $key))
-                ]
+                'es'       => [
+                    'title' => ucfirst(trans('validation.attributes.'.$key)),
+                ],
             ]);
 
             $order++;
         }
 
         /**
-         * Widgets
+         * Widgets.
          */
         $widget = $web->widgets()->create([
             'status' => 'active',
-            'side' => 'left',
-            'order' => 1,
-            'type' => 'menu',
-            'es' => [
-                'title' => 'Menú principal'
-            ]
+            'side'   => 'left',
+            'order'  => 1,
+            'type'   => 'menu',
+            'es'     => [
+                'title' => 'Menú principal',
+            ],
         ]);
 
         $widget->links()->create([
             'type' => 'link',
-            'es' => [
+            'es'   => [
                 'title' => 'Inicio',
-                'link' => '/'
-            ]
+                'link'  => '/',
+            ],
         ]);
 
         foreach ($pages as $page) {
             $widget->links()->create([
                 'type' => 'link',
-                'es' => [
+                'es'   => [
                     'title' => $page->title,
-                    'link' => '/pagina/' . $page->id . '-' . $page->slug
-                ]
+                    'link'  => '/pagina/'.$page->id.'-'.$page->slug,
+                ],
             ]);
         }
 
         $widget->links()->create([
             'type' => 'link',
-            'es' => [
+            'es'   => [
                 'title' => $form->title,
-                'link' => '/formulario/' . $form->id . '-' . $form->slug
-            ]
+                'link'  => '/formulario/'.$form->id.'-'.$form->slug,
+            ],
         ]);
 
         $widget = $web->widgets()->create([
             'status' => 'active',
-            'side' => 'left',
-            'order' => 2,
-            'type' => 'menu',
-            'es' => [
-                'title' => 'Animales'
-            ]
+            'side'   => 'left',
+            'order'  => 2,
+            'type'   => 'menu',
+            'es'     => [
+                'title' => 'Animales',
+            ],
         ]);
 
         $widget->links()->create([
             'type' => 'link',
-            'es' => [
+            'es'   => [
                 'title' => 'Todos los animales',
-                'link' => '/animales'
-            ]
+                'link'  => '/animales',
+            ],
         ]);
 
         $widget->links()->create([
             'type' => 'link',
-            'es' => [
+            'es'   => [
                 'title' => 'Perros en adopción',
-                'link' => '/animales?especie=perros&estado=en-adopcion'
-            ]
+                'link'  => '/animales?especie=perros&estado=en-adopcion',
+            ],
         ]);
 
         $widget->links()->create([
             'type' => 'link',
-            'es' => [
+            'es'   => [
                 'title' => 'Gatos en adopción',
-                'link' => '/animales?especie=gatos&estado=en-adopcion'
-            ]
+                'link'  => '/animales?especie=gatos&estado=en-adopcion',
+            ],
         ]);
 
         $web->widgets()->create([
             'status' => 'active',
-            'side' => 'right',
-            'order' => 1,
-            'type' => 'protecms',
-            'file' => 'animals_search',
-            'es' => [
-                'title' => 'Buscador de animales'
-            ]
+            'side'   => 'right',
+            'order'  => 1,
+            'type'   => 'protecms',
+            'file'   => 'animals_search',
+            'es'     => [
+                'title' => 'Buscador de animales',
+            ],
         ]);
 
         $web->widgets()->create([
             'status' => 'active',
-            'side' => 'right',
-            'order' => 2,
-            'type' => 'protecms',
-            'file' => 'last_animals',
-            'es' => [
-                'title' => 'Últimas fichas'
-            ]
+            'side'   => 'right',
+            'order'  => 2,
+            'type'   => 'protecms',
+            'file'   => 'last_animals',
+            'es'     => [
+                'title' => 'Últimas fichas',
+            ],
         ]);
     }
 }

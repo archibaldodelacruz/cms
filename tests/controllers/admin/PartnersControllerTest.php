@@ -1,9 +1,6 @@
 <?php
 
 use App\Models\Partners\Partner;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PartnersControllerTest extends TestCase
 {
@@ -14,9 +11,9 @@ class PartnersControllerTest extends TestCase
     public function it_check_partners_list()
     {
         $partners = factory(Partner::class, 10)->create([
-            'web_id' => 1,
-            'name' => 'Socio',
-            'donation' => 10
+            'web_id'   => 1,
+            'name'     => 'Socio',
+            'donation' => 10,
         ]);
 
         $this->actingAs($this->authUser())
@@ -34,7 +31,7 @@ class PartnersControllerTest extends TestCase
     public function it_check_partners_deleted_list()
     {
         $partners = factory(Partner::class, 10)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs($this->authUser())
@@ -67,20 +64,20 @@ class PartnersControllerTest extends TestCase
     public function it_edit_partner()
     {
         $partner = factory(Partner::class)->create([
-            'web_id' => 1,
-            'name' => 'Socio',
-            'donation' => 10
+            'web_id'   => 1,
+            'name'     => 'Socio',
+            'donation' => 10,
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('partners', [
-                'id' => 1
+                'id' => 1,
             ])
             ->visitRoute('admin::panel::partners::edit', ['id' => 1])
             ->type('Otro nombre', 'name')
             ->press('Actualizar')
             ->seeInDatabase('partners', [
-                'name' => 'Otro nombre'
+                'name' => 'Otro nombre',
             ]);
     }
 
@@ -91,19 +88,19 @@ class PartnersControllerTest extends TestCase
     public function it_delete_partner()
     {
         $partner = factory(Partner::class)->create([
-            'web_id' => 1,
-            'name' => 'Socio',
-            'donation' => 10
+            'web_id'   => 1,
+            'name'     => 'Socio',
+            'donation' => 10,
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('partners', [
-                'id' => 1
+                'id' => 1,
             ])
             ->visitRoute('admin::panel::partners::delete', ['id' => 1])
             ->notSeeInDatabase('partners', [
-                'id' => 1,
-                'deleted_at' => null
+                'id'         => 1,
+                'deleted_at' => null,
             ]);
     }
 
@@ -114,30 +111,30 @@ class PartnersControllerTest extends TestCase
     public function it_restore_partner()
     {
         $partner = factory(Partner::class)->create([
-            'web_id' => 1,
-            'name' => 'Socio',
-            'donation' => 10
+            'web_id'   => 1,
+            'name'     => 'Socio',
+            'donation' => 10,
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('partners', [
-                'id' => 1,
-                'name' => 'Socio',
-                'donation' => 10
+                'id'       => 1,
+                'name'     => 'Socio',
+                'donation' => 10,
             ])
             ->visitRoute('admin::panel::partners::delete', ['id' => 1])
             ->notSeeInDatabase('partners', [
-                'id' => 1,
-                'name' => 'Socio',
-                'donation' => 10,
-                'deleted_at' => null
+                'id'         => 1,
+                'name'       => 'Socio',
+                'donation'   => 10,
+                'deleted_at' => null,
             ])
             ->visitRoute('admin::panel::partners::restore', ['id' => 1])
             ->seeInDatabase('partners', [
-                'id' => 1,
-                'name' => 'Socio',
-                'donation' => 10,
-                'deleted_at' => null
+                'id'         => 1,
+                'name'       => 'Socio',
+                'donation'   => 10,
+                'deleted_at' => null,
             ]);
     }
 }

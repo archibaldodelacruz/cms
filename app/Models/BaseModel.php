@@ -13,7 +13,8 @@ class BaseModel extends Model
      * Set attribute.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return Model
      */
     public function setAttribute($key, $value)

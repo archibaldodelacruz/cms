@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Partners;
 
-use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Partners\Partner;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Partners\StoreRequest;
 use App\Http\Requests\Partners\UpdateRequest;
+use App\Models\Partners\Partner;
+use Illuminate\Http\Request;
 
 class PartnersController extends BaseAdminController
 {
@@ -20,6 +20,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * PartnersController constructor.
+     *
      * @param Partner $partner
      */
     public function __construct(Partner $partner)
@@ -31,6 +32,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -47,6 +49,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleted(Request $request)
@@ -63,6 +66,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -87,6 +91,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param StoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
@@ -103,6 +108,7 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -118,6 +124,7 @@ class PartnersController extends BaseAdminController
     /**
      * @param UpdateRequest $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, $id)
@@ -135,7 +142,9 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function restore($id)
@@ -154,7 +163,9 @@ class PartnersController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($id)

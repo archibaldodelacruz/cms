@@ -18,7 +18,8 @@ class ResizeImageUploadedLFM
     /**
      * Handle the event.
      *
-     * @param  ImageWasUploaded  $event
+     * @param ImageWasUploaded $event
+     *
      * @return void
      */
     public function handle(ImageWasUploaded $event)

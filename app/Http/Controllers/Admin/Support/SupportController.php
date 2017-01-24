@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Support;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Support\SendContact;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Support\ContactRequest;
+use App\Mail\Support\SendContact;
+use Illuminate\Support\Facades\Mail;
 
 class SupportController extends BaseAdminController
 {
@@ -49,6 +49,7 @@ class SupportController extends BaseAdminController
 
     /**
      * @param ContactRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function contact_post(ContactRequest $request)
@@ -80,35 +81,35 @@ class SupportController extends BaseAdminController
         return [
             [
                 'title' => 'Soporte',
-                'menu' => [
-                    'title' => 'Soporte',
-                    'icon' => 'fa fa-question-circle',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/support*',
+                'menu'  => [
+                    'title'   => 'Soporte',
+                    'icon'    => 'fa fa-question-circle',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/support*',
                     'submenu' => [
                         [
                             'title' => 'Inicio',
-                            'icon' => 'fa fa-home',
-                            'url' => route('admin::support::index')
+                            'icon'  => 'fa fa-home',
+                            'url'   => route('admin::support::index'),
                         ],
                         [
                             'title' => 'Preguntas frecuentes',
-                            'icon' => 'fa fa-question-circle',
-                            'url' => route('admin::support::faq')
+                            'icon'  => 'fa fa-question-circle',
+                            'url'   => route('admin::support::faq'),
                         ],
                         [
                             'title' => 'Contacto',
-                            'icon' => 'fa fa-envelope',
-                            'url' => route('admin::support::contact')
+                            'icon'  => 'fa fa-envelope',
+                            'url'   => route('admin::support::contact'),
                         ],
                         [
                             'title' => 'Historial de cambios',
-                            'icon' => 'fa fa-list-ul',
-                            'url' => route('admin::support::changelog')
-                        ]
-                    ]
-                ]
-            ]
+                            'icon'  => 'fa fa-list-ul',
+                            'url'   => route('admin::support::changelog'),
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

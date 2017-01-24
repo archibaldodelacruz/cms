@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\SuperAdmin\Webs;
 
+use App\Helpers\Traits\FilterBy;
+use App\Http\Controllers\SuperAdmin\SuperAdminController;
 use App\Mail\WebCreated;
 use App\Models\Webs\Web;
 use Illuminate\Http\Request;
-use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\SuperAdmin\SuperAdminController;
 
 class WebsController extends SuperAdminController
 {
@@ -25,6 +25,7 @@ class WebsController extends SuperAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -47,14 +48,15 @@ class WebsController extends SuperAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $web = (new Web)->forceCreate([
-            'domain' => $request->get('domain'),
+        $web = (new Web())->forceCreate([
+            'domain'    => $request->get('domain'),
             'subdomain' => $request->get('subdomain'),
-            'email' => $request->get('email')
+            'email'     => $request->get('email'),
         ]);
 
         $install_code = mt_rand(00000, 99999);
@@ -79,6 +81,7 @@ class WebsController extends SuperAdminController
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)

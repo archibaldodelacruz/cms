@@ -2,9 +2,9 @@
 
 namespace App\Models\Widgets;
 
-use App\Models\Webs\Web;
-use App\Models\BaseModel;
 use App\Helpers\Traits\LogsActivity;
+use App\Models\BaseModel;
+use App\Models\Webs\Web;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,39 +13,39 @@ class Widget extends BaseModel
     use SoftDeletes, Translatable, LogsActivity;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'widgets';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'file', 'status', 'side', 'order', 'type', 'config'
+        'id', 'file', 'status', 'side', 'order', 'type', 'config',
     ];
 
     /**
-     * With relation
+     * With relation.
      *
      * @var array
      */
     protected $with = [
-        'translations', 'links.translations'
+        'translations', 'links.translations',
     ];
 
     /**
-     * Translatable fields
+     * Translatable fields.
      */
     public $translatedAttributes = [
-        'title', 'content'
+        'title', 'content',
     ];
 
     protected $casts = [
-        'config' => 'array'
+        'config' => 'array',
     ];
 
     /**
@@ -60,8 +60,6 @@ class Widget extends BaseModel
         if (isset($this->config[$config])) {
             return $this->config[$config];
         }
-
-        return null;
     }
 
     /**
@@ -89,7 +87,7 @@ class Widget extends BaseModel
     }
 
     /**
-     * Relations
+     * Relations.
      */
     public function web()
     {

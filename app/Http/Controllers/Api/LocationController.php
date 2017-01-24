@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Location\Country;
 use App\Models\Location\State;
-use App\Models\Location\City;
+use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Panel\Webs;
 
-use App\Http\Requests\Webs\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
+use App\Http\Requests\Webs\UpdateRequest;
 
 class WebsController extends BaseAdminController
 {
@@ -25,6 +25,7 @@ class WebsController extends BaseAdminController
 
     /**
      * @param UpdateRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request)

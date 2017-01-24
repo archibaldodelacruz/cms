@@ -14,15 +14,15 @@ class StoreRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'status' => 'required|in:' . implode(',', config('protecms.animals.sponsorships.status')),
-            'visible' => 'required|in:' . implode(',', config('protecms.animals.sponsorships.visible')),
-            'donation_time' => 'required|in:' . implode(',', config('protecms.animals.sponsorships.donation_time')),
-            'payment_method' => 'in:' . implode(',', config('protecms.animals.sponsorships.payment_method')),
-            'start_date' => '',
-            'end_date' => '',
-            'donation' => '',
-            'text' => '',
+            'name'           => 'required',
+            'status'         => 'required|in:'.implode(',', config('protecms.animals.sponsorships.status')),
+            'visible'        => 'required|in:'.implode(',', config('protecms.animals.sponsorships.visible')),
+            'donation_time'  => 'required|in:'.implode(',', config('protecms.animals.sponsorships.donation_time')),
+            'payment_method' => 'in:'.implode(',', config('protecms.animals.sponsorships.payment_method')),
+            'start_date'     => '',
+            'end_date'       => '',
+            'donation'       => '',
+            'text'           => '',
         ];
     }
 }
