@@ -9,7 +9,8 @@ use App\Mail\UserRegistered;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Users\{StoreRequest, UpdateRequest};
+use App\Http\Requests\Users\StoreRequest;
+use App\Http\Requests\Users\UpdateRequest;
 
 class UsersController extends BaseAdminController
 {

@@ -8,16 +8,19 @@ use App\Models\Files\File;
 use App\Models\Pages\Page;
 use App\Models\Users\User;
 use App\Models\Forms\Form;
+use App\Models\Posts\Post;
+use App\Models\Location\City;
 use App\Models\Animals\Animal;
 use App\Models\Widgets\Widget;
+use App\Models\Posts\Category;
+use App\Models\Location\State;
 use App\Models\Partners\Partner;
 use App\Models\Finances\Finance;
+use App\Models\Location\Country;
 use App\Models\Calendar\Calendar;
 use App\Helpers\Traits\LogsActivity;
-use App\Models\Posts\{Post, Category};
 use App\Models\Veterinarians\Veterinary;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Location\{Country, State, City};
 
 class Web extends BaseModel
 {

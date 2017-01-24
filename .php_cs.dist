@@ -1,9 +1,13 @@
 <?php
 
 $finder = Symfony\Component\Finder\Finder::create()
-	->notPath('bootstrap/cache')
-	->notPath('storage')
-	->notPath('vendor')
+    ->notPath('bootstrap/cache')
+    ->notPath('storage')
+    ->notPath('storage/framework')
+    ->notPath('storage/framework/views')
+    ->notPath('storage/framework/sessions')
+    ->notPath('storage/framework/cache')
+    ->notPath('vendor')
     ->in(__DIR__)
     ->name('*.php')
     ->ignoreDotFiles(true)
@@ -11,11 +15,6 @@ $finder = Symfony\Component\Finder\Finder::create()
 
 return PhpCsFixer\Config::create()
     ->setRules([
-        '@PSR2' => true,
-        'blank_line_after_namespace' => true,
-        'array_syntax' => array('syntax' => 'short'),
-        'single_blank_line_before_namespace' => true,
-        'method_separation' => true,
-        'method_argument_space' => true
+        '@PSR2' => true
     ])
     ->setFinder($finder);

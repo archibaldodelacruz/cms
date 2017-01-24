@@ -62,7 +62,7 @@ class Calendar extends BaseModel
 
     /**
      * Get color by type
-     * 
+     *
      * @return string
      */
     public function getColorAttribute()

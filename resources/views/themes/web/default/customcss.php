@@ -1,4 +1,5 @@
-<?php if (!$web->getConfig('themes.default.border_radius')) { ?>
+<?php if (!$web->getConfig('themes.default.border_radius')) {
+    ?>
 /*
     BORDER RADIUS
 */
@@ -16,7 +17,8 @@
 .widgets .widget {
     border-radius: 0px;
 }
-<?php } ?>
+<?php 
+} ?>
 
 <?php
 $color = $web->getConfig('themes.default.color');
