@@ -2,8 +2,8 @@
 
 namespace App\Models\Posts;
 
-use App\Models\BaseModel;
 use App\Models\Webs\Web;
+use App\Models\BaseModel;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

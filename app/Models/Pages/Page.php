@@ -2,11 +2,11 @@
 
 namespace App\Models\Pages;
 
-use App\Helpers\Traits\LogsActivity;
+use App\Models\Webs\Web;
 use App\Models\BaseModel;
 use App\Models\Forms\Form;
 use App\Models\Users\User;
-use App\Models\Webs\Web;
+use App\Helpers\Traits\LogsActivity;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

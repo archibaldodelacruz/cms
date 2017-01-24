@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Design;
 
+use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Widgets\StoreRequest;
 use App\Http\Requests\Widgets\UpdateRequest;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class WidgetsController extends BaseAdminController
 {

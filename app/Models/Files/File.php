@@ -2,10 +2,10 @@
 
 namespace App\Models\Files;
 
-use App\Helpers\Traits\LogsActivity;
+use App\Models\Webs\Web;
 use App\Models\BaseModel;
 use App\Models\Users\User;
-use App\Models\Webs\Web;
+use App\Helpers\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class File extends BaseModel

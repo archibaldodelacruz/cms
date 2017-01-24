@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Design;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Design\UpdateRequest;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Image;
+use App\Http\Requests\Design\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class DesignController extends BaseAdminController
 {
@@ -67,7 +67,7 @@ class DesignController extends BaseAdminController
     {
         $this->customAuthorize('admin.design');
 
-        if ($request->has('logo') && !empty($request->get('logo'))) {
+        if ($request->has('logo') && ! empty($request->get('logo'))) {
             $logo = Image::make($request->get('logo'))->resize(400, 400, function ($constraint) {
                 $constraint->upsize();
             });
@@ -98,7 +98,7 @@ class DesignController extends BaseAdminController
             ]);
         }
 
-        if ($request->has('header') && !empty($request->get('header'))) {
+        if ($request->has('header') && ! empty($request->get('header'))) {
             $header = Image::make($request->get('header'))->resize(1200, 200, function ($constraint) {
                 $constraint->upsize();
             });

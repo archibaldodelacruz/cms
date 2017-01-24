@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Calendar;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Calendar\StoreRequest;
-use App\Http\Requests\Calendar\UpdateRequest;
-use App\Models\Animals\Animal;
-use App\Models\Calendar\Calendar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Animals\Animal;
+use App\Models\Calendar\Calendar;
+use App\Http\Requests\Calendar\StoreRequest;
+use App\Http\Requests\Calendar\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class CalendarController extends BaseAdminController
 {
@@ -188,7 +188,7 @@ class CalendarController extends BaseAdminController
                             }
 
                             continue;
-                        } elseif (!$health->end_date) {
+                        } elseif (! $health->end_date) {
                             $end_date = $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null;
                         } else {
                             $end_date = $health->end_date ? $health->end_date->format('Y-m-d H:i:s') : null;

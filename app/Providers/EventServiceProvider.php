@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Listeners\ResizeImageUploadedLFM;
-use App\Listeners\UserLoginSuccessful;
 use Illuminate\Auth\Events\Login;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Listeners\UserLoginSuccessful;
+use App\Listeners\ResizeImageUploadedLFM;
 use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {

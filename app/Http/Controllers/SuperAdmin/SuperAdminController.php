@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Models\Users\User;
-use App\Models\Webs\Web;
-use App\Notifications\NewUpdate;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Notification;
-use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Carbon\Carbon;
+use App\Models\Webs\Web;
+use App\Models\Users\User;
+use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
+use App\Notifications\NewUpdate;
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class SuperAdminController extends BaseAdminController
 {
@@ -74,7 +74,7 @@ class SuperAdminController extends BaseAdminController
             'web_id' => 'exists:webs,id',
         ]);
 
-        if (!(int) $request->get('web_id')) {
+        if (! (int) $request->get('web_id')) {
             $this->web->unsetConfig('web');
         } else {
             $this->web->setConfig('web', Web::find($request->get('web_id'))->id);

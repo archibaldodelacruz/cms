@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web\Posts;
 
-use App\Http\Controllers\Web\BaseWebController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Web\BaseWebController;
 
 class PostsController extends BaseWebController
 {

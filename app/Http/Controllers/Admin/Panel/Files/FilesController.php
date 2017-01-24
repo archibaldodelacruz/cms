@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Panel\Files;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Files\StoreRequest;
-use App\Http\Requests\Files\UpdateRequest;
 use App\Models\Files\File;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Files\StoreRequest;
+use App\Http\Requests\Files\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class FilesController extends BaseAdminController
 {

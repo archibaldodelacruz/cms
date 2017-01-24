@@ -2,8 +2,8 @@
 
 namespace App\Models\Animals;
 
-use App\Helpers\Traits\LogsActivity;
 use App\Models\BaseModel;
+use App\Helpers\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Health extends BaseModel

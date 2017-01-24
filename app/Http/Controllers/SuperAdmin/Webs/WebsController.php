@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\SuperAdmin\Webs;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\SuperAdmin\SuperAdminController;
 use App\Mail\WebCreated;
 use App\Models\Webs\Web;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\SuperAdmin\SuperAdminController;
 
 class WebsController extends SuperAdminController
 {

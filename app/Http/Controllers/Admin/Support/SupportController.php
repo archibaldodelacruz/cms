@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Support;
 
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Support\ContactRequest;
 use App\Mail\Support\SendContact;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\Support\ContactRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class SupportController extends BaseAdminController
 {

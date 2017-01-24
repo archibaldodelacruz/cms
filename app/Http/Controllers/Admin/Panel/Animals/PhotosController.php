@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
-use App\Helpers\Traits\FilterBy;
 use App\Helpers\UploadFile;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Models\Animals\Animal;
 use Illuminate\Http\Request;
+use App\Models\Animals\Animal;
+use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class PhotosController extends BaseAdminController
 {
@@ -50,7 +50,7 @@ class PhotosController extends BaseAdminController
                     ->makeThumbnail(600, 600, 'thumbnail-m-')
                     ->getName();
 
-                !count($animal->photos) ? $main = 1 : $main = 0;
+                ! count($animal->photos) ? $main = 1 : $main = 0;
 
                 $new_photo = $animal->media()->create([
                     'file' => $photo,

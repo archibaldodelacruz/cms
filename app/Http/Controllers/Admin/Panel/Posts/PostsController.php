@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Posts;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Posts\StoreRequest;
-use App\Http\Requests\Posts\UpdateRequest;
 use App\Models\Posts\Post;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
+use App\Http\Requests\Posts\StoreRequest;
+use App\Http\Requests\Posts\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class PostsController extends BaseAdminController
 {

@@ -2,9 +2,9 @@
 
 namespace App\Helpers;
 
+use Image;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Image;
 
 class UploadFile
 {

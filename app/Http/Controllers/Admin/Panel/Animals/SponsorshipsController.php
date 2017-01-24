@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
+use Illuminate\Http\Request;
+use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\Sponsorships\StoreRequest;
 use App\Http\Requests\Animals\Sponsorships\UpdateRequest;
-use App\Models\Animals\Animal;
-use Illuminate\Http\Request;
 
 class SponsorshipsController extends BaseAdminController
 {

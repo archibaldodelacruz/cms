@@ -2,13 +2,13 @@
 
 namespace App\Models\Users;
 
+use App\Models\Webs\Web;
 use App\Helpers\Traits\FilterByWeb;
 use App\Helpers\Traits\LogsActivity;
 use App\Models\Pages\PageTranslation;
 use App\Models\Posts\PostTranslation;
-use App\Models\Webs\Web;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {

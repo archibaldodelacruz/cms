@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Auth;
-use Request;
 use Theme;
+use Request;
+use App\Http\Controllers\Controller;
 
 class BaseAdminController extends Controller
 {
@@ -29,7 +29,7 @@ class BaseAdminController extends Controller
     {
         $method = is_array($permissions) ? 'hasPermissions' : 'hasPermission';
 
-        if (!Auth::user()->$method($permissions)) {
+        if (! Auth::user()->$method($permissions)) {
             abort(401);
         }
     }

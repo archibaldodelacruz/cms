@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Panel\Forms;
 
-use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Forms\StoreRequest;
-use App\Http\Requests\Forms\UpdateRequest;
 use App\Models\Forms\Form;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\FilterBy;
+use App\Http\Requests\Forms\StoreRequest;
+use App\Http\Requests\Forms\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class FormsController extends BaseAdminController
 {
@@ -59,7 +59,7 @@ class FormsController extends BaseAdminController
     {
         $this->authorize('create', Form::class);
 
-        if (!count($request->get('fields'))) {
+        if (! count($request->get('fields'))) {
             return redirect()->back()->withErrors([
                 'fields' => 'El formulario debe contener campos',
             ])->withInput();
@@ -99,7 +99,7 @@ class FormsController extends BaseAdminController
 
     public function update(UpdateRequest $request, $id)
     {
-        if (!count($request->get('fields'))) {
+        if (! count($request->get('fields'))) {
             return redirect()->back()->withErrors([
                 'fields' => 'El formulario debe contener campos',
             ])->withInput();
