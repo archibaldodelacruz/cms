@@ -16,7 +16,7 @@ trait LogsActivity
     {
         static::eventsToBeRecorded()->each(function ($eventName) {
             return static::$eventName(function (Model $model) use ($eventName) {
-                if (!$model->shouldLogEvent($eventName)) {
+                if (! $model->shouldLogEvent($eventName)) {
                     return;
                 }
 
@@ -77,7 +77,7 @@ trait LogsActivity
 
     protected function shouldLogEvent(string $eventName)
     {
-        if (!in_array($eventName, ['created', 'updated'])) {
+        if (! in_array($eventName, ['created', 'updated'])) {
             return true;
         }
 

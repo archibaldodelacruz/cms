@@ -1,4 +1,4 @@
-<?php if (!$web->getConfig('themes.default.border_radius')) {
+<?php if (! $web->getConfig('themes.default.border_radius')) {
     ?>
 /*
     BORDER RADIUS

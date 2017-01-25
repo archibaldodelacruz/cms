@@ -74,7 +74,7 @@ class SuperAdminController extends BaseAdminController
             'web_id' => 'exists:webs,id',
         ]);
 
-        if (!(int) $request->get('web_id')) {
+        if (! (int) $request->get('web_id')) {
             $this->web->unsetConfig('web');
         } else {
             $this->web->setConfig('web', Web::find($request->get('web_id'))->id);

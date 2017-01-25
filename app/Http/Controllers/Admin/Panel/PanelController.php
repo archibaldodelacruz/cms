@@ -86,11 +86,11 @@ class PanelController extends BaseAdminController
                 }
             }
 
-            if (!isset($analytics['pageviews'][$now])) {
+            if (! isset($analytics['pageviews'][$now])) {
                 $analytics['pageviews'][$now] = 0;
             }
 
-            if (!isset($analytics['users'][$now])) {
+            if (! isset($analytics['users'][$now])) {
                 $analytics['users'][$now] = 0;
             }
         }

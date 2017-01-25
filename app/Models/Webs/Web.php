@@ -80,7 +80,7 @@ class Web extends BaseModel
 
     public function setConfig($key, $value)
     {
-        if (!$this->config()->where('key', $key)->exists()) {
+        if (! $this->config()->where('key', $key)->exists()) {
             $this->config()->create([
                 'key'   => $key,
                 'value' => $value,
@@ -97,7 +97,7 @@ class Web extends BaseModel
     public function setConfigs(array $config)
     {
         foreach ($config as $key => $value) {
-            if (!$this->config()->where('key', $key)->exists()) {
+            if (! $this->config()->where('key', $key)->exists()) {
                 $this->config()->create([
                     'key'   => $key,
                     'value' => $value,

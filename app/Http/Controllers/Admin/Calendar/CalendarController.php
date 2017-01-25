@@ -188,7 +188,7 @@ class CalendarController extends BaseAdminController
                             }
 
                             continue;
-                        } elseif (!$health->end_date) {
+                        } elseif (! $health->end_date) {
                             $end_date = $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null;
                         } else {
                             $end_date = $health->end_date ? $health->end_date->format('Y-m-d H:i:s') : null;

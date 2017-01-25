@@ -27,7 +27,7 @@ class AnimalPolicy extends BasePolicy
 
     public function update(User $user, Animal $animal)
     {
-        if (!in_array($animal->kind, $user->animalsAllPermissions())) {
+        if (! in_array($animal->kind, $user->animalsAllPermissions())) {
             return false;
         }
 
@@ -38,7 +38,7 @@ class AnimalPolicy extends BasePolicy
 
     public function delete(User $user, Animal $animal)
     {
-        if (!in_array($animal->kind, $user->animalsAllPermissions())) {
+        if (! in_array($animal->kind, $user->animalsAllPermissions())) {
             return false;
         }
 

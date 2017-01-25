@@ -64,7 +64,7 @@ class InstallController extends Controller
     public function design(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (!$this->checkInstallation('design')) {
+        if (! $this->checkInstallation('design')) {
             return redirect()->route('install::index');
         }
 
@@ -149,7 +149,7 @@ class InstallController extends Controller
     public function terms(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (!$this->checkInstallation('terms')) {
+        if (! $this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 
@@ -170,7 +170,7 @@ class InstallController extends Controller
 
     public function finish()
     {
-        if (!$this->checkInstallation('terms')) {
+        if (! $this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 
