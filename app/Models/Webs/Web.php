@@ -46,7 +46,7 @@ class Web extends BaseModel
 
     public function getUrl(bool $subdomain = false) : string
     {
-        if ($this->domain && !$subdomain) {
+        if ($this->domain && ! $subdomain) {
             return 'http://'.$this->domain;
         }
 

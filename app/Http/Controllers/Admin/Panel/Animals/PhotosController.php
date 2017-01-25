@@ -50,7 +50,7 @@ class PhotosController extends BaseAdminController
                     ->makeThumbnail(600, 600, 'thumbnail-m-')
                     ->getName();
 
-                !count($animal->photos) ? $main = 1 : $main = 0;
+                ! count($animal->photos) ? $main = 1 : $main = 0;
 
                 $new_photo = $animal->media()->create([
                     'file' => $photo,
