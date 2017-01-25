@@ -37,7 +37,7 @@ class AuthController extends Controller
 
     public function password(Request $request)
     {
-        if (! $request->has('token') || !$this->user->whereRememberToken($request->get('token'))->exists()) {
+        if (! $request->has('token') || ! $this->user->whereRememberToken($request->get('token'))->exists()) {
             abort(401);
         }
 

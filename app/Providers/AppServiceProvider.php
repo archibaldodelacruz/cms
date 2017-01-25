@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $web = Web::where($findBy, $host)->with('config')->first();
 
-                if (!$web) {
+                if (! $web) {
                     abort(404);
                 }
 

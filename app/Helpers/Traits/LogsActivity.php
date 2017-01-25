@@ -68,7 +68,7 @@ trait LogsActivity
 
     public function attributesToBeIgnored()
     {
-        if (!isset(static::$ignoreChangedAttributes)) {
+        if (! isset(static::$ignoreChangedAttributes)) {
             return [];
         }
 

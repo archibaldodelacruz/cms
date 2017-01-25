@@ -20,7 +20,7 @@ trait FilterByWeb
         parent::boot();
 
         if (method_exists(get_called_class(), 'web')
-            && !in_array(self::getTableName(), self::$excludedTables)) {
+            && ! in_array(self::getTableName(), self::$excludedTables)) {
             if (! app()->runningInConsole() || app()->environment() === 'testing') {
                 static::creating(function ($model) {
                     $model->web_id = app('App\Models\Webs\Web')->id;

@@ -10,7 +10,7 @@ class VerifyInstall
     {
         $web = app('App\Models\Webs\Web');
 
-        if (! $web->installed && !$request->is('api*')) {
+        if (! $web->installed && ! $request->is('api*')) {
             if (! isset($web->config['install_step'])) {
                 return redirect()->route('install::index');
             } else {
