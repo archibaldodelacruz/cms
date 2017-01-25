@@ -6,7 +6,7 @@
  */
 function getWebByRequest($request = null, $method = 'first')
 {
-    if (! $request) {
+    if (!$request) {
         $request = app('Illuminate\Http\Request');
     }
 
@@ -24,7 +24,7 @@ function getWebByRequest($request = null, $method = 'first')
     return App\Models\Webs\Web::where($findBy, $host)->$method() ?: abort(500);
 }
 
-if (! function_exists('activity')) {
+if (!function_exists('activity')) {
     /**
      * @param null $user
      *
@@ -36,7 +36,7 @@ if (! function_exists('activity')) {
 
         $activity->setWeb(app('App\Models\Webs\Web') ?: null);
 
-        if (! $user) {
+        if (!$user) {
             $activity->setUser(Auth::check() ? Auth::user() : null);
         }
 
@@ -44,7 +44,7 @@ if (! function_exists('activity')) {
     }
 }
 
-if (! function_exists('checkFolder')) {
+if (!function_exists('checkFolder')) {
     /**
      * @param $path
      * @param int  $chmod
@@ -54,7 +54,7 @@ if (! function_exists('checkFolder')) {
      */
     function checkFolder($path, $chmod = 0777, $recursive = true)
     {
-        if (! is_dir($path)) {
+        if (!is_dir($path)) {
             mkdir($path, $chmod, $recursive);
         }
 
@@ -62,13 +62,13 @@ if (! function_exists('checkFolder')) {
     }
 }
 
-if (! function_exists('removeFolder')) {
+if (!function_exists('removeFolder')) {
     /**
      * @param $path
      */
     function removeFolder($path)
     {
-        if (! is_dir($path)) {
+        if (!is_dir($path)) {
             return;
         }
 
@@ -80,7 +80,7 @@ if (! function_exists('removeFolder')) {
     }
 }
 
-if (! function_exists('flash')) {
+if (!function_exists('flash')) {
     /**
      * @param $text
      * @param string $type

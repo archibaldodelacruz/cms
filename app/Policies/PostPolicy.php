@@ -6,16 +6,9 @@ use App\Models\Posts\Post;
 use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class PostPolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {
@@ -36,17 +29,19 @@ class PostPolicy
 
     public function update(User $user, Post $post)
     {
-        return $user->hasPermissions([
-            'admin.panel.posts',
-            'admin.panel.posts.crud',
-        ]);
+        if ($user->hasPermission('admin.panel.posts.crud')) {
+            return $post->user_id === $user->id;
+        }
+
+        return $user->hasPermission('admin.panel.posts');
     }
 
     public function delete(User $user, Post $post)
     {
-        return $user->hasPermissions([
-            'admin.panel.posts',
-            'admin.panel.posts.crud',
-        ]);
+        if ($user->hasPermission('admin.panel.posts.crud')) {
+            return $post->user_id === $user->id;
+        }
+
+        return $user->hasPermission('admin.panel.posts');
     }
 }

@@ -63,6 +63,7 @@ return [
         'admin.panel.animals.other.view',
         'admin.panel.temporaryhomes',
         'admin.panel.temporaryhomes.view',
+        'admin.panel.web',
     ],
 
 ];

@@ -37,7 +37,7 @@ class FormsController extends BaseWebController
         $data = $request->except(['_token', 'captcha']);
 
         foreach ($data as $field => $value) {
-            if (! isset($form->fields()->where('name', '=', $field)->first()->title)) {
+            if (!isset($form->fields()->where('name', '=', $field)->first()->title)) {
                 abort(500);
             }
             $data[$form->fields()->where('name', '=', $field)->first()->title] = $value;

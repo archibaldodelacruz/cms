@@ -109,6 +109,19 @@ class User extends Authenticatable
         return $permissions;
     }
 
+    public function animalsAllPermissions()
+    {
+        $permissions = [];
+
+        foreach (config('protecms.animals.kind') as $kind) {
+            if ($this->isAdmin() || $this->hasPermission('admin.panel.animals.'.$kind)) {
+                $permissions[] = $kind;
+            }
+        }
+
+        return $permissions;
+    }
+
     public function canCreateAnimals()
     {
         $permissions = [];

@@ -6,16 +6,9 @@ use App\Models\Users\User;
 use App\Models\Finances\Finance;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FinancePolicy
+class FinancePolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

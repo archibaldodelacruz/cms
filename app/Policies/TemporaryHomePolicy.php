@@ -6,16 +6,9 @@ use App\Models\Users\User;
 use App\Models\Animals\TemporaryHome;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TemporaryHomePolicy
+class TemporaryHomePolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

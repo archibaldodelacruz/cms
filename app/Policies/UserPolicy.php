@@ -5,16 +5,9 @@ namespace App\Policies;
 use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class UserPolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

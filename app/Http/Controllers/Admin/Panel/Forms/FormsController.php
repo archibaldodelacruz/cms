@@ -59,7 +59,7 @@ class FormsController extends BaseAdminController
     {
         $this->authorize('create', Form::class);
 
-        if (! count($request->get('fields'))) {
+        if (!count($request->get('fields'))) {
             return redirect()->back()->withErrors([
                 'fields' => 'El formulario debe contener campos',
             ])->withInput();
@@ -99,7 +99,7 @@ class FormsController extends BaseAdminController
 
     public function update(UpdateRequest $request, $id)
     {
-        if (! count($request->get('fields'))) {
+        if (!count($request->get('fields'))) {
             return redirect()->back()->withErrors([
                 'fields' => 'El formulario debe contener campos',
             ])->withInput();

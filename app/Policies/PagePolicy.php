@@ -6,16 +6,9 @@ use App\Models\Pages\Page;
 use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PagePolicy
+class PagePolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {
@@ -34,19 +27,21 @@ class PagePolicy
         ]);
     }
 
-    public function update(User $user, Page $page)
+    public function update(User $user, page $page)
     {
-        return $user->hasPermissions([
-            'admin.panel.pages',
-            'admin.panel.pages.crud',
-        ]);
+        if ($user->hasPermission('admin.panel.pages.crud')) {
+            return $page->user_id === $user->id;
+        }
+
+        return $user->hasPermission('admin.panel.pages');
     }
 
-    public function delete(User $user, Page $page)
+    public function delete(User $user, page $page)
     {
-        return $user->hasPermissions([
-            'admin.panel.pages',
-            'admin.panel.pages.crud',
-        ]);
+        if ($user->hasPermission('admin.panel.pages.crud')) {
+            return $page->user_id === $user->id;
+        }
+
+        return $user->hasPermission('admin.panel.pages');
     }
 }

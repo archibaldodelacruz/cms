@@ -34,7 +34,7 @@ class PanelController extends BaseAdminController
 
     public function index(Request $request)
     {
-        $animals = $this->animal->orderBy('created_at', 'DESC')->take(5)->get();
+        $animals = $this->animal->permission()->orderBy('created_at', 'DESC')->take(5)->get();
         $posts = $this->post->with(['translations', 'category.translations'])->orderBy('created_at', 'DESC')->take(5)->get();
         $users = $this->web->users()->orderBy('created_at', 'DESC')->take(5)->get();
 
@@ -43,7 +43,7 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\Models\Webs\Web')->subdomain === 'admin' && !app('App\Models\Webs\Web')->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),
                 'ga:pageviews,ga:users',
@@ -86,11 +86,11 @@ class PanelController extends BaseAdminController
                 }
             }
 
-            if (! isset($analytics['pageviews'][$now])) {
+            if (!isset($analytics['pageviews'][$now])) {
                 $analytics['pageviews'][$now] = 0;
             }
 
-            if (! isset($analytics['users'][$now])) {
+            if (!isset($analytics['users'][$now])) {
                 $analytics['users'][$now] = 0;
             }
         }

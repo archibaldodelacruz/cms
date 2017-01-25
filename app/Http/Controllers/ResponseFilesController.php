@@ -8,7 +8,7 @@ class ResponseFilesController extends Controller
     {
         $path = storage_path('app/web/'.$this->web->id.'/animals/'.$id.'/photos/'.$photo);
 
-        if (! is_file($path)) {
+        if (!is_file($path)) {
             abort(404);
         }
 
@@ -19,7 +19,7 @@ class ResponseFilesController extends Controller
     {
         $path = storage_path('app/web/'.$this->web->id.'/uploads/'.$file);
 
-        if (! is_file($path)) {
+        if (!is_file($path)) {
             abort(404);
         }
 
@@ -30,7 +30,7 @@ class ResponseFilesController extends Controller
     {
         $path = storage_path('app/web/'.$this->web->id.'/images/'.$file);
 
-        if (! is_file($path)) {
+        if (!is_file($path)) {
             abort(404);
         }
 

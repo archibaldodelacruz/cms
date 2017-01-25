@@ -12,7 +12,7 @@ class UpdateRequest extends BaseRequest
             'name'                   => 'required',
             'old_name'               => '',
             'status'                 => 'required',
-            'kind'                   => 'required',
+            'kind'                   => 'required|in:'.implode(',', \Auth::user()->animalsAllPermissions()),
             'location'               => 'required',
             'gender'                 => 'required',
             'visible'                => '',

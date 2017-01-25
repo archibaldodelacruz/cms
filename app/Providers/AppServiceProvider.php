@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale(config('app.locale'));
 
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             if ($this->app->environment() === 'dev') {
                 $web = Web::where('subdomain', 'dev')->first();
                 $this->app->bind('App\Models\Webs\Web', function () use ($web) {
@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $web = Web::where($findBy, $host)->with('config')->first();
 
-                if (! $web) {
+                if (!$web) {
                     abort(404);
                 }
 

@@ -66,13 +66,14 @@
                             <td>{{ trans('posts.status.' . $post->status) }}</td>
                             <td>{{ $post->category->title }}</td>
                             <td class="table-actions">
-                                @if (! Auth::user()->isAdmin() && Auth::user()->hasPermission('admin.panel.posts.view') || Auth::user()->hasPermission('admin.panel.posts.crud') && Auth::user()->id !== $post->user_id)
+                                @cannot('update', $post)
                                     <div class="col-md-offset-3 col-md-6 col-xs-12">
                                         <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                @else
+                                @endcannot
+                                @can('update', $post)
                                     <div class="col-md-6 col-xs-6">
                                         <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-edit"></i>

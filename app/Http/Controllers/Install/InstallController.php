@@ -64,7 +64,7 @@ class InstallController extends Controller
     public function design(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (! $this->checkInstallation('design')) {
+        if (!$this->checkInstallation('design')) {
             return redirect()->route('install::index');
         }
 
@@ -80,7 +80,7 @@ class InstallController extends Controller
             'header' => '',
         ]);
 
-        if ($request->has('logo') && ! empty($request->get('logo'))) {
+        if ($request->has('logo') && !empty($request->get('logo'))) {
             $logo = Image::make($request->get('logo'))->resize(400, 400, function ($constraint) {
                 $constraint->upsize();
             });
@@ -111,7 +111,7 @@ class InstallController extends Controller
             ]);
         }
 
-        if ($request->has('header') && ! empty($request->get('header'))) {
+        if ($request->has('header') && !empty($request->get('header'))) {
             $header = Image::make($request->get('header'))->resize(1200, 200, function ($constraint) {
                 $constraint->upsize();
             });
@@ -149,7 +149,7 @@ class InstallController extends Controller
     public function terms(Request $request)
     {
         $this->checkCodeInstallation($request);
-        if (! $this->checkInstallation('terms')) {
+        if (!$this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 
@@ -170,7 +170,7 @@ class InstallController extends Controller
 
     public function finish()
     {
-        if (! $this->checkInstallation('terms')) {
+        if (!$this->checkInstallation('terms')) {
             return redirect()->route('install::index');
         }
 

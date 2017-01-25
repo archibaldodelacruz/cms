@@ -71,13 +71,14 @@
                                 </span>
                             </td>
                             <td class="table-actions">
-                                @if (! Auth::user()->isAdmin() && Auth::user()->hasPermission('admin.finances.view'))
+                                @cannot('update', $item)
                                     <div class="col-md-offset-3 col-md-6 col-xs-12">
                                         <a href="{{ route('admin::finances::show', ['id' => $item->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                @else
+                                @endcannot
+                                @can('update', $item)
                                     <div class="col-md-6 col-xs-6">
                                         <a href="{{ route('admin::finances::edit', ['id' => $item->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-edit"></i>
@@ -88,7 +89,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

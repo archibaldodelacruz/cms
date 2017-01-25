@@ -70,13 +70,14 @@
                             <td>{{ trans('users.status.' . $user->status) }}</td>
                             <td>{{ $user->last_login ? $user->last_login->diffForHumans() : '-' }}</td>
                             <td class="table-actions">
-                                @if (! Auth::user()->isAdmin() && Auth::user()->hasPermission('admin.panel.users.view'))
+                                @cannot('update', $user)
                                     <div class="col-md-offset-3 col-md-6 col-xs-12">
                                         <a href="{{ route('admin::panel::users::show', ['id' => $user->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                @else
+                                @endcannot
+                                @can('update', $user)
                                     <div class="col-md-6 col-xs-6">
                                         <a href="{{ route('admin::panel::users::edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-edit"></i>
@@ -87,7 +88,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

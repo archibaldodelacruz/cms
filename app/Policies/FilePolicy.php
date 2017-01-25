@@ -6,16 +6,9 @@ use App\Models\Files\File;
 use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FilePolicy
+class FilePolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

@@ -60,13 +60,14 @@
                             <td>{{ $veterinary->phone }}</td>
                             <td>{{ trans('veterinarians.status.' . $veterinary->status) }}</td>
                             <td class="table-actions">
-                                @if (! Auth::user()->isAdmin() && Auth::user()->hasPermission('admin.panel.veterinarians.view'))
+                                @cannot('update', $veterinary)
                                     <div class="col-md-offset-3 col-md-6 col-xs-12">
                                         <a href="{{ route('admin::panel::veterinarians::show', ['id' => $veterinary->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                @else
+                                @endcannot
+                                @can('update', $veterinary)
                                     <div class="col-md-6 col-xs-6">
                                         <a href="{{ route('admin::panel::veterinarians::edit', ['id' => $veterinary->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-edit"></i>
@@ -77,7 +78,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

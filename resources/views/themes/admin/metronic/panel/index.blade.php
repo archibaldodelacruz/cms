@@ -30,7 +30,16 @@
                                         <td>{{ trans_choice('animals.kind.' . $animal->kind, 1) }}</td>
                                         <td>{{ trans_choice('animals.gender.' . $animal->gender, 1) }}</td>
                                         <td class="table-actions-single">
-                                            <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                            @cannot('update', $animal)
+                                                <a href="{{ route('admin::panel::animals::show', ['id' => $animal->id]) }}" class="btn btn-primary btn-block">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @endcannot
+                                            @can('update', $animal)
+                                                <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary btn-block">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -87,7 +96,16 @@
                                         <td class="text-left">{{ str_limit($post->title, 80, '...') }}</td>
                                         <td>{{ $post->category->title }}</td>
                                         <td class="table-actions-single">
-                                            <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                            @cannot('update', $post)
+                                                <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @endcannot
+                                            @can('update', $post)
+                                                <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

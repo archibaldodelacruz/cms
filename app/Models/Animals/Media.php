@@ -22,7 +22,7 @@ class Media extends BaseModel
 
     public function getPhotoUrlAttribute()
     {
-        if (! $this->file) {
+        if (!$this->file) {
             return;
         }
 
@@ -31,7 +31,7 @@ class Media extends BaseModel
 
     public function getPhotoPathAttribute()
     {
-        if (! $this->file) {
+        if (!$this->file) {
             return;
         }
 

@@ -6,16 +6,9 @@ use App\Models\Users\User;
 use App\Models\Calendar\Calendar;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CalendarPolicy
+class CalendarPolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

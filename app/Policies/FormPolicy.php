@@ -6,16 +6,9 @@ use App\Models\Forms\Form;
 use App\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FormPolicy
+class FormPolicy extends BasePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user)
-    {
-        if (! $user->isAdminOrVolunteer()) {
-            return false;
-        }
-    }
 
     public function view(User $user)
     {

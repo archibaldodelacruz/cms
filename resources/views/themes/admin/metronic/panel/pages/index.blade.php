@@ -56,13 +56,14 @@
                             </td>
                             <td>{{ trans('pages.status.' . $page->status) }}</td>
                             <td class="table-actions">
-                                @if (! Auth::user()->isAdmin() && Auth::user()->hasPermission('admin.panel.pages.view') || Auth::user()->hasPermission('admin.panel.pages.crud') && Auth::user()->id !== $page->user_id)
+                                @cannot('update', $page)
                                     <div class="col-md-offset-3 col-md-6 col-xs-12">
                                         <a href="{{ route('admin::panel::pages::show', ['id' => $page->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                @else
+                                @endcannot
+                                @can('update', $page)
                                     <div class="col-md-6 col-xs-6">
                                         <a href="{{ route('admin::panel::pages::edit', ['id' => $page->id]) }}" class="btn btn-primary btn-block">
                                             <i class="fa fa-edit"></i>
@@ -73,7 +74,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

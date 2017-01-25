@@ -29,7 +29,7 @@ class BaseAdminController extends Controller
     {
         $method = is_array($permissions) ? 'hasPermissions' : 'hasPermission';
 
-        if (! Auth::user()->$method($permissions)) {
+        if (!Auth::user()->$method($permissions)) {
             abort(401);
         }
     }

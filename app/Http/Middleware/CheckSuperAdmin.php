@@ -8,7 +8,7 @@ class CheckSuperAdmin
 {
     public function handle($request, Closure $next)
     {
-        if (! $request->user() || $request->user() && $request->user()->web->subdomain !== 'admin') {
+        if (!$request->user() || $request->user() && $request->user()->web->subdomain !== 'admin') {
             abort(401);
         }
 
