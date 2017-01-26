@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('themes.admin.metronic.layouts.base')
 
 @section('page.title')
     Listado de protectoras <div class="pull-right"><small>Mostrando {{ $webs->count() }} protectoras de un total de {{ $total }}.</small></div>

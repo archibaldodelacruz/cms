@@ -3,14 +3,16 @@
 $factory->define(App\Models\Widgets\Widget::class, function (Faker\Generator $faker) {
     return [
         'web_id' => function () {
-            return App\Models\Webs\Web::first()->id;
+            return factory(App\Models\Webs\Web::class)->create()->id;
         },
-        'file'    => $faker->name,
-        'status'  => $faker->name,
-        'side'    => $faker->name,
-        'order'   => $faker->name,
-        'type'    => $faker->name,
-        'title'   => $faker->name,
-        'content' => $faker->name,
+        'file'    => $faker->randomElement(config('protecms.widgets.files')),
+        'status'  => $faker->randomElement(config('protecms.widgets.status')),
+        'side'    => $faker->randomElement(config('protecms.widgets.side')),
+        'order'   => $faker->randomNumber,
+        'type'    => $faker->randomElement(config('protecms.widgets.type')),
+        'es'      => [
+            'title' => $faker->sentence,
+            'content' => $faker->paragraph
+        ],
     ];
 });

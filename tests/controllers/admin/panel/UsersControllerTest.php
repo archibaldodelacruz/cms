@@ -24,11 +24,26 @@ class UsersControllerTest extends TestCase
     /**
      * @group admin/panel/users
      */
+    public function test_check_users_list_without_permissions()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+            'type' => 'user'
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('admin::panel::users::index'))
+            ->seeStatusCode(401);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
     public function test_create_user()
     {
         $this->actingAs($this->authUser())
             ->visitRoute('admin::panel::users::create')
-            ->see('Publicar artículo')
+            ->see('Registrar usuario')
             ->type('Jaime', 'name')
             ->type('web@protecms.com', 'email')
             ->type('password', 'password')
@@ -41,6 +56,50 @@ class UsersControllerTest extends TestCase
                 'id' => 2,
             ])
             ->seeRouteIs('admin::panel::users::edit', ['id' => 2]);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_create_user_without_permissions()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+            'type' => 'user'
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('admin::panel::users::create'))
+            ->seeStatusCode(401);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_show_user()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+        ]);
+
+        $this->actingAs($this->authUser())
+            ->visitRoute('admin::panel::users::show', ['id' => 2])
+            ->see($user->name);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_show_user_without_permissions()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+            'type' => 'user'
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('admin::panel::users::show', ['id' => 2]))
+            ->seeStatusCode(401);
     }
 
     /**
@@ -62,6 +121,21 @@ class UsersControllerTest extends TestCase
             ->seeInDatabase('users', [
                 'name' => 'Cambio de nombre',
             ]);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_edit_user_without_permissions()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+            'type' => 'user'
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('admin::panel::users::edit', ['id' => $user->id]))
+            ->seeStatusCode(401);
     }
 
     /**
@@ -131,5 +205,38 @@ class UsersControllerTest extends TestCase
                 'id'         => $from->id,
                 'deleted_at' => null,
             ]);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_delete_user_without_permissions()
+    {
+        $user = factory(User::class)->create([
+            'web_id' => 1,
+            'type' => 'user'
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('admin::panel::users::delete', ['id' => $user->id]))
+            ->seeStatusCode(401);
+    }
+
+    /**
+     * @group admin/panel/users
+     */
+    public function test_read_notifications()
+    {
+        \Notification::send($this->authUser(), new \App\Notifications\NewUpdate([
+            'text' => 'New update',
+            'link' => 'new-update',
+        ]));
+
+        $this->assertEquals($this->authUser()->unreadNotifications()->count(), 1);
+
+        $this->actingAs($this->authUser())
+            ->post(route('admin::panel::users::read_notifications'));
+
+        $this->assertEquals($this->authUser()->unreadNotifications()->count(), 0);
     }
 }

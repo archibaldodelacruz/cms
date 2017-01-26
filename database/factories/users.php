@@ -3,7 +3,7 @@
 $factory->define(App\Models\Users\User::class, function (Faker\Generator $faker) {
     return [
         'web_id' => function () {
-            return App\Models\Webs\Web::first()->id;
+            return factory(App\Models\Webs\Web::class)->create()->id;
         },
         'name'           => $faker->name,
         'email'          => $faker->safeEmail,

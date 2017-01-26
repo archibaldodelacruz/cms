@@ -3,7 +3,7 @@
 $factory->define(App\Models\Veterinarians\Veterinary::class, function (Faker\Generator $faker) {
     return [
         'web_id' => function () {
-            return App\Models\Webs\Web::first()->id;
+            return factory(App\Models\Webs\Web::class)->create()->id;
         },
         'name'            => $faker->company,
         'contact_name'    => $faker->name,
