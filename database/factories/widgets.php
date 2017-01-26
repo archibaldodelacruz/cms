@@ -12,7 +12,7 @@ $factory->define(App\Models\Widgets\Widget::class, function (Faker\Generator $fa
         'type'    => $faker->randomElement(config('protecms.widgets.type')),
         'es'      => [
             'title' => $faker->sentence,
-            'content' => $faker->paragraph
+            'content' => $faker->paragraph,
         ],
     ];
 });

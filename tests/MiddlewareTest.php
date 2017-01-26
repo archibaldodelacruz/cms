@@ -12,12 +12,12 @@ class MiddlewareTest extends TestCase
     {
         $web = factory(Web::class)->create([
             'subdomain' => 'admin',
-            'installed' => 1
+            'installed' => 1,
         ]);
 
         $user = factory(User::class)->create([
             'web_id' => $web->id,
-            'type' => 'admin'
+            'type' => 'admin',
         ]);
 
         $web->setConfigs(config('protecms.webs.config.default'));
@@ -37,7 +37,7 @@ class MiddlewareTest extends TestCase
     {
         $web = factory(Web::class)->create([
             'subdomain' => 'other',
-            'installed' => 1
+            'installed' => 1,
         ]);
 
         $web->setConfigs(config('protecms.webs.config.default'));
@@ -67,7 +67,7 @@ class MiddlewareTest extends TestCase
     public function test_redirect_if_installed()
     {
         $web = factory(Web::class)->create([
-            'installed' => 1
+            'installed' => 1,
         ]);
 
         $web->setConfigs(config('protecms.webs.config.default'));
@@ -86,7 +86,7 @@ class MiddlewareTest extends TestCase
     public function test_verify_install()
     {
         $web = factory(Web::class)->create([
-            'installed' => 0
+            'installed' => 0,
         ]);
 
         $this->app->bind('App\Models\Webs\Web', function () use ($web) {
@@ -103,7 +103,7 @@ class MiddlewareTest extends TestCase
     public function test_verify_install_with_step()
     {
         $web = factory(Web::class)->create([
-            'installed' => 0
+            'installed' => 0,
         ]);
 
         $web->setConfig('install_step', 'data');

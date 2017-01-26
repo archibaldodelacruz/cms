@@ -159,7 +159,7 @@ class AnimalsControllerTest extends TestCase
             'web_id' => 1,
             'name'   => 'Turko',
         ]);
-        
+
         $this->actingAs(factory(User::class)->create())
             ->get(route('admin::panel::animals::delete', ['id' => $animal->id]))
             ->assertResponseStatus(401);

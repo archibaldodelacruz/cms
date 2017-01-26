@@ -28,7 +28,7 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create([
             'web_id' => 1,
-            'type' => 'user'
+            'type' => 'user',
         ]);
 
         $this->actingAs($user)
@@ -65,7 +65,7 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create([
             'web_id' => 1,
-            'type' => 'user'
+            'type' => 'user',
         ]);
 
         $this->actingAs($user)
@@ -94,7 +94,7 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create([
             'web_id' => 1,
-            'type' => 'user'
+            'type' => 'user',
         ]);
 
         $this->actingAs($user)
@@ -130,7 +130,7 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create([
             'web_id' => 1,
-            'type' => 'user'
+            'type' => 'user',
         ]);
 
         $this->actingAs($user)
@@ -214,7 +214,7 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create([
             'web_id' => 1,
-            'type' => 'user'
+            'type' => 'user',
         ]);
 
         $this->actingAs($user)

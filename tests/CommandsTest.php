@@ -12,7 +12,7 @@ class CommandsTest extends TestCase
         Artisan::call('protecms:newshelter', [
             'subdomain' => 'demo',
             'domain' => 'demo.dev',
-            'email' => 'testing@protecms.com'
+            'email' => 'testing@protecms.com',
         ]);
     }
 }

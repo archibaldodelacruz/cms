@@ -35,7 +35,7 @@ class AuthControllerTest extends TestCase
      */
     public function test_fail_login_temporary_ban_form()
     {
-        for ($i=5; $i > 1; $i--) { 
+        for ($i = 5; $i > 1; $i--) {
             $this->visitRoute('auth::login')
                 ->see('Acceder al panel')
                 ->type('testing@protecms.com', 'email')

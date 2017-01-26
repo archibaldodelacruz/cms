@@ -21,7 +21,7 @@ $factory->define(App\Models\Posts\Post::class, function (Faker\Generator $faker)
         'es'              => [
             'title'   => $title,
             'slug'    => $slug,
-            'text'    => $faker->paragraph,  
+            'text'    => $faker->paragraph,
         ],
     ];
 });

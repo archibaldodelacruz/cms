@@ -57,7 +57,7 @@ class WidgetsControllerTest extends TestCase
                 'id' => 1,
             ])
             ->seeInDatabase('widgets_translations', [
-                'title' => 'Title'
+                'title' => 'Title',
             ]);
     }
 
@@ -79,7 +79,7 @@ class WidgetsControllerTest extends TestCase
         $widget = factory(Widget::class)->create([
             'web_id' => 1,
             'type' => 'protecms',
-            'file' => 'animals_search'
+            'file' => 'animals_search',
         ]);
 
         $this->actingAs($this->authUser())
@@ -90,7 +90,7 @@ class WidgetsControllerTest extends TestCase
                 'id' => 1,
             ])
             ->seeInDatabase('widgets_translations', [
-                'title' => 'New Title'
+                'title' => 'New Title',
             ]);
     }
 
@@ -100,7 +100,7 @@ class WidgetsControllerTest extends TestCase
     public function test_edit_widgets_without_permissions()
     {
         $widget = factory(Widget::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs(factory(User::class)->create())
@@ -116,14 +116,14 @@ class WidgetsControllerTest extends TestCase
         $widget = factory(Widget::class)->create([
             'web_id' => 1,
             'type' => 'protecms',
-            'file' => 'animals_search'
+            'file' => 'animals_search',
         ]);
 
         $this->actingAs($this->authUser())
             ->visitRoute('admin::design::widgets::delete', ['id' => $widget->id])
             ->notSeeInDatabase('widgets', [
                 'id' => $widget->id,
-                'deleted_at' => null
+                'deleted_at' => null,
             ]);
     }
 
@@ -133,7 +133,7 @@ class WidgetsControllerTest extends TestCase
     public function test_delete_widgets_without_permissions()
     {
         $widget = factory(Widget::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs(factory(User::class)->create())
@@ -151,26 +151,26 @@ class WidgetsControllerTest extends TestCase
             'type' => 'protecms',
             'file' => 'animals_search',
             'es' => [
-                'title' => 'Prueba'
+                'title' => 'Prueba',
             ],
             'en' => [
-                'title' => 'Test'
+                'title' => 'Test',
             ],
         ]);
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('widgets_translations', [
                 'locale'  => 'es',
-                'title'  => 'Prueba'
+                'title'  => 'Prueba',
             ])
             ->seeInDatabase('widgets_translations', [
                 'locale'  => 'en',
-                'title'  => 'Test'
+                'title'  => 'Test',
             ])
-            ->visit(route('admin::design::widgets::delete_translation', ['id' => $widget->id]) . '?langform=en')
+            ->visit(route('admin::design::widgets::delete_translation', ['id' => $widget->id]).'?langform=en')
             ->notSeeInDatabase('widgets_translations', [
                 'locale'  => 'en',
-                'title'  => 'Test'
+                'title'  => 'Test',
             ]);
     }
 
@@ -180,7 +180,7 @@ class WidgetsControllerTest extends TestCase
     public function test_delete_widgets_translation_without_permissions()
     {
         $widget = factory(Widget::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs(factory(User::class)->create())
@@ -194,19 +194,19 @@ class WidgetsControllerTest extends TestCase
     public function test_restore_widgets()
     {
         $widget = factory(Widget::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs($this->authUser())
             ->visitRoute('admin::design::widgets::delete', ['id' => $widget->id])
             ->notSeeInDatabase('widgets', [
                 'id' => $widget->id,
-                'deleted_at' => null
+                'deleted_at' => null,
             ])
             ->visitRoute('admin::design::widgets::restore', ['id' => $widget->id])
             ->seeInDatabase('widgets', [
                 'id' => $widget->id,
-                'deleted_at' => null
+                'deleted_at' => null,
             ]);
     }
 
@@ -216,7 +216,7 @@ class WidgetsControllerTest extends TestCase
     public function test_restore_widgets_without_permissions()
     {
         $widget = factory(Widget::class)->create([
-            'web_id' => 1
+            'web_id' => 1,
         ]);
 
         $this->actingAs(factory(User::class)->create())

@@ -48,7 +48,7 @@ class WebsControllerTest extends TestCase
             ->type('new@protecms.com', 'email')
             ->press('Crear')
             ->seeInDatabase('webs', [
-                'email' => 'new@protecms.com'
+                'email' => 'new@protecms.com',
             ]);
     }
 
