@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Partners\Partner;
 use App\Policies\PartnerPolicy;
+use App\Models\Partners\Partner;
 
 class PartnerPolicyTest extends TestCase
 {

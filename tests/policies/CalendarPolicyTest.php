@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Calendar\Calendar;
 use App\Policies\CalendarPolicy;
+use App\Models\Calendar\Calendar;
 
 class CalendarPolicyTest extends TestCase
 {

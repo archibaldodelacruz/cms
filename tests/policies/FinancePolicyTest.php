@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Finances\Finance;
 use App\Policies\FinancePolicy;
+use App\Models\Finances\Finance;
 
 class FinancePolicyTest extends TestCase
 {
