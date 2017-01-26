@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Users\User;
 
 class AuthControllerTest extends TestCase
 {
