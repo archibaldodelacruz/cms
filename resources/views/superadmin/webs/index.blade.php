@@ -49,7 +49,7 @@
                         <tr>
                             <td>{{ $w->name or '-' }}</td>
                             <td>{{ $w->email }}</td>
-                            <td>{{ $w->subdomain }}</td>
+                            <td><a href="{{ $w->getUrl() }}" target="_blank">{{ $w->subdomain }}</a></td>
                             <td>{{ $w->updated_at->format('d-m-Y H:i') }}</td>
                             <td class="table-actions">
                                 <div class="col-md-12 col-xs-12">
