@@ -12,21 +12,9 @@ use App\Http\Controllers\Admin\BaseAdminController;
 
 class CalendarController extends BaseAdminController
 {
-    /**
-     * @var Calendar
-     */
+    protected $animal;
     protected $calendar;
 
-    /**
-     * @var Animal
-     */
-    protected $animal;
-
-    /**
-     * CalendarController constructor.
-     * @param Calendar $calendar
-     * @param Animal $animal
-     */
     public function __construct(Calendar $calendar, Animal $animal)
     {
         parent::__construct();
@@ -35,30 +23,20 @@ class CalendarController extends BaseAdminController
         $this->animal = $animal;
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $this->authorize('view', Calendar::class);
 
-        return view('admin.calendar.index');
+        return view('calendar.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Calendar::class);
 
-        return view('admin.calendar.create');
+        return view('calendar.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Calendar::class);
@@ -68,13 +46,9 @@ class CalendarController extends BaseAdminController
 
         flash('El evento se ha creado correctamente.');
 
-        return redirect()->to(route('admin::calendar::index') . '?type=all');
+        return redirect()->to(route('admin::calendar::index').'?type=all');
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $event = $this->calendar
@@ -82,14 +56,9 @@ class CalendarController extends BaseAdminController
 
         $this->authorize('update', $event);
 
-        return view('admin.calendar.edit', compact('event'));
+        return view('calendar.edit', compact('event'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $event = $this->calendar
@@ -101,14 +70,9 @@ class CalendarController extends BaseAdminController
 
         flash('El evento se ha actualizado correctamente.');
 
-        return redirect()->to(route('admin::calendar::edit', ['id' => $id]) . '?type=all');
+        return redirect()->to(route('admin::calendar::edit', ['id' => $id]).'?type=all');
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $event = $this->calendar
@@ -122,13 +86,9 @@ class CalendarController extends BaseAdminController
 
         flash('El evento se ha eliminado correctamente.');
 
-        return redirect()->to(route('admin::calendar::index') . '?type=all');
+        return redirect()->to(route('admin::calendar::index').'?type=all');
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function calendar(Request $request)
     {
         $this->authorize('view', Calendar::class);
@@ -183,47 +143,47 @@ class CalendarController extends BaseAdminController
                             if ($treatments_each > 0) {
                                 while ($date_while->format('Y-m-d H:i:s') < $end_date->format('Y-m-d H:i:s')) {
                                     $calendar[] = [
-                                        'id' => $health->id,
-                                        'title' => $health->title . ' (' . $animal->name . ')',
+                                        'id'          => $health->id,
+                                        'title'       => $health->title.' ('.$animal->name.')',
                                         'description' => $health->text,
-                                        'allDay' => $health->treatments_life ? true : false,
-                                        'start' => $date_while->format('Y-m-d H:i:s'),
-                                        'end' => $date_while->format('Y-m-d H:i:s'),
-                                        'type' => trans('animals.health.type.' . $health->type),
-                                        'color' => $health->color,
-                                        'event_url' => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
-                                        'edit_url' => null,
-                                        'delete_url' => null,
-                                        'treatment' => [
-                                            'cost' => $health->cost ?: '-',
+                                        'allDay'      => $health->treatments_life ? true : false,
+                                        'start'       => $date_while->format('Y-m-d H:i:s'),
+                                        'end'         => $date_while->format('Y-m-d H:i:s'),
+                                        'type'        => trans('animals.health.type.'.$health->type),
+                                        'color'       => $health->color,
+                                        'event_url'   => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
+                                        'edit_url'    => null,
+                                        'delete_url'  => null,
+                                        'treatment'   => [
+                                            'cost'     => $health->cost ?: '-',
                                             'medicine' => $health->medicine ?: '-',
-                                            'number' => $health->treatments_number ?: '-',
-                                            'each' => $health->treatments_each ?: '-',
-                                            'time' => trans('animals.health.treatments.time.' . $health->treatments_time)
-                                        ]
+                                            'number'   => $health->treatments_number ?: '-',
+                                            'each'     => $health->treatments_each ?: '-',
+                                            'time'     => trans('animals.health.treatments.time.'.$health->treatments_time),
+                                        ],
                                     ];
 
                                     $date_while = $date_while->addHours($treatments_each);
                                 }
                             } else {
                                 $calendar[] = [
-                                    'id' => $health->id,
-                                    'title' => $health->title . ' (' . $animal->name . ')',
+                                    'id'          => $health->id,
+                                    'title'       => $health->title.' ('.$animal->name.')',
                                     'description' => $health->text,
-                                    'allDay' => $health->treatments_life ? true : false,
-                                    'start' => $date_while->format('Y-m-d H:i:s'),
-                                    'end' => $date_while->format('Y-m-d H:i:s'),
-                                    'type' => trans('animals.health.type.' . $health->type),
-                                    'color' => $health->color,
-                                    'event_url' => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
-                                    'edit_url' => null,
-                                    'delete_url' => null,
-                                    'treatment' => [
-                                        'cost' => $health->cost ?: '-',
+                                    'allDay'      => $health->treatments_life ? true : false,
+                                    'start'       => $date_while->format('Y-m-d H:i:s'),
+                                    'end'         => $date_while->format('Y-m-d H:i:s'),
+                                    'type'        => trans('animals.health.type.'.$health->type),
+                                    'color'       => $health->color,
+                                    'event_url'   => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
+                                    'edit_url'    => null,
+                                    'delete_url'  => null,
+                                    'treatment'   => [
+                                        'cost'   => $health->cost ?: '-',
                                         'number' => $health->treatments_number ?: '-',
-                                        'each' => $health->treatments_each ?: '-',
-                                        'time' => trans('animals.health.treatments.time.' . $health->treatments_time)
-                                    ]
+                                        'each'   => $health->treatments_each ?: '-',
+                                        'time'   => trans('animals.health.treatments.time.'.$health->treatments_time),
+                                    ],
                                 ];
                             }
 
@@ -244,17 +204,17 @@ class CalendarController extends BaseAdminController
 
                             for ($i = 1; $i <= $health->treatments_number; $i++) {
                                 $calendar[] = [
-                                    'id' => $health->id,
-                                    'title' => $health->title . ' (' . $animal->name . ')',
+                                    'id'          => $health->id,
+                                    'title'       => $health->title.' ('.$animal->name.')',
                                     'description' => $health->text,
-                                    'allDay' => $health->treatments_life ? true : false,
-                                    'start' => $start_date->format('Y-m-d H:i:s'),
-                                    'end' => $end_date->format('Y-m-d H:i:s'),
-                                    'type' => trans('animals.health.type.' . $health->type),
-                                    'color' => $health->color,
-                                    'event_url' => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
-                                    'edit_url' => null,
-                                    'delete_url' => null,
+                                    'allDay'      => $health->treatments_life ? true : false,
+                                    'start'       => $start_date->format('Y-m-d H:i:s'),
+                                    'end'         => $end_date->format('Y-m-d H:i:s'),
+                                    'type'        => trans('animals.health.type.'.$health->type),
+                                    'color'       => $health->color,
+                                    'event_url'   => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
+                                    'edit_url'    => null,
+                                    'delete_url'  => null,
                                 ];
 
                                 $start_date->addHours($treatments_each);
@@ -262,32 +222,32 @@ class CalendarController extends BaseAdminController
                             }
                         } else {
                             $calendar[] = [
-                                'id' => $health->id,
-                                'title' => $health->title . ' (' . $animal->name . ')',
+                                'id'          => $health->id,
+                                'title'       => $health->title.' ('.$animal->name.')',
                                 'description' => $health->text,
-                                'allDay' => $health->treatments_life ? true : false,
-                                'start' => $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null,
-                                'end' => $end_date,
-                                'type' => trans('animals.health.type.' . $health->type),
-                                'color' => $health->color,
-                                'event_url' => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
-                                'edit_url' => null,
-                                'delete_url' => null,
+                                'allDay'      => $health->treatments_life ? true : false,
+                                'start'       => $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null,
+                                'end'         => $end_date,
+                                'type'        => trans('animals.health.type.'.$health->type),
+                                'color'       => $health->color,
+                                'event_url'   => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
+                                'edit_url'    => null,
+                                'delete_url'  => null,
                             ];
                         }
                     } else {
                         $calendar[] = [
-                            'id' => $health->id,
-                            'title' => $health->title . ' (' . $animal->name . ')',
+                            'id'          => $health->id,
+                            'title'       => $health->title.' ('.$animal->name.')',
                             'description' => $health->text,
-                            'allDay' => $health->treatments_life ? true : false,
-                            'start' => $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null,
-                            'end' => $health->end_date ? $health->end_date->format('Y-m-d H:i:s') : null,
-                            'type' => trans('animals.health.type.' . $health->type),
-                            'color' => $health->color,
-                            'event_url' => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
-                            'edit_url' => null,
-                            'delete_url' => null,
+                            'allDay'      => $health->treatments_life ? true : false,
+                            'start'       => $health->start_date ? $health->start_date->format('Y-m-d H:i:s') : null,
+                            'end'         => $health->end_date ? $health->end_date->format('Y-m-d H:i:s') : null,
+                            'type'        => trans('animals.health.type.'.$health->type),
+                            'color'       => $health->color,
+                            'event_url'   => route('admin::panel::animals::health::edit', ['id' => $health->id, 'animal_id' => $animal->id]),
+                            'edit_url'    => null,
+                            'delete_url'  => null,
                         ];
                     }
                 }
@@ -300,98 +260,95 @@ class CalendarController extends BaseAdminController
 
         foreach ($events as $event) {
             $calendar[] = [
-                'id' => $event->id,
-                'title' => $event->title,
+                'id'          => $event->id,
+                'title'       => $event->title,
                 'description' => $event->description,
-                'allDay' => $event->allDay,
-                'start' => $event->start,
-                'end' => $event->end,
-                'type' => trans('calendar.type.' . $event->type),
-                'color' => $event->color,
-                'event_url' => $event->url,
-                'edit_url' => route('admin::calendar::edit', ['id' => $event->id]),
-                'delete_url' => route('admin::calendar::delete', ['id' => $event->id]),
+                'allDay'      => $event->allDay,
+                'start'       => $event->start,
+                'end'         => $event->end,
+                'type'        => trans('calendar.type.'.$event->type),
+                'color'       => $event->color,
+                'event_url'   => $event->url,
+                'edit_url'    => route('admin::calendar::edit', ['id' => $event->id]),
+                'delete_url'  => route('admin::calendar::delete', ['id' => $event->id]),
             ];
         }
 
         return $calendar;
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [
             [
                 'title' => 'Calendario',
-                'menu' => [
-                    'title' => 'Calendario',
-                    'icon' => 'fa fa-calendar',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/calendar*',
+                'menu'  => [
+                    'title'   => 'Calendario',
+                    'icon'    => 'fa fa-calendar',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/calendar*',
                     'submenu' => [
                         [
                             'title' => 'Completo',
-                            'icon' => 'fa fa-calendar',
-                            'url' => route('admin::calendar::index') . '?type=all'
+                            'icon'  => 'fa fa-calendar',
+                            'url'   => route('admin::calendar::index').'?type=all',
                         ],
                         [
                             'title' => 'Vacunas',
-                            'icon' => 'fa fa-medkit',
-                            'url' => route('admin::calendar::index') . '?type=vaccine'
+                            'icon'  => 'fa fa-medkit',
+                            'url'   => route('admin::calendar::index').'?type=vaccine',
                         ],
                         [
                             'title' => 'Tratamientos',
-                            'icon' => 'fa fa-stethoscope',
-                            'url' => route('admin::calendar::index') . '?type=treatment'
+                            'icon'  => 'fa fa-stethoscope',
+                            'url'   => route('admin::calendar::index').'?type=treatment',
                         ],
                         [
                             'title' => 'Revisiones',
-                            'icon' => 'fa fa-eye',
-                            'url' => route('admin::calendar::index') . '?type=revision'
+                            'icon'  => 'fa fa-eye',
+                            'url'   => route('admin::calendar::index').'?type=revision',
                         ],
                         [
                             'title' => 'Tareas',
-                            'icon' => 'fa fa-tasks',
-                            'url' => route('admin::calendar::index') . '?type=work'
+                            'icon'  => 'fa fa-tasks',
+                            'url'   => route('admin::calendar::index').'?type=work',
                         ],
                         [
                             'title' => 'Transporte',
-                            'icon' => 'fa fa-truck',
-                            'url' => route('admin::calendar::index') . '?type=transport'
+                            'icon'  => 'fa fa-truck',
+                            'url'   => route('admin::calendar::index').'?type=transport',
                         ],
                         [
                             'title' => 'Visitas',
-                            'icon' => 'fa fa-users',
-                            'url' => route('admin::calendar::index') . '?type=visit'
+                            'icon'  => 'fa fa-users',
+                            'url'   => route('admin::calendar::index').'?type=visit',
                         ],
                         [
                             'title' => 'Otros',
-                            'icon' => 'fa fa-list-ul',
-                            'url' => route('admin::calendar::index') . '?type=other'
+                            'icon'  => 'fa fa-list-ul',
+                            'url'   => route('admin::calendar::index').'?type=other',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
-                'title' => 'Acciones',
+                'title'       => 'Acciones',
                 'permissions' => ['admin.calendar'],
-                'menu' => [
-                    'title' => 'Acciones',
-                    'icon' => 'fa fa-calendar-plus-o',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/calendar*',
+                'menu'        => [
+                    'title'   => 'Acciones',
+                    'icon'    => 'fa fa-calendar-plus-o',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/calendar*',
                     'submenu' => [
                         [
-                            'title' => 'Crear evento',
-                            'icon' => 'fa fa-plus-square',
-                            'url' => route('admin::calendar::create'),
-                            'permissions' => ['admin.calendar']
+                            'title'       => 'Crear evento',
+                            'icon'        => 'fa fa-plus-square',
+                            'url'         => route('admin::calendar::create'),
+                            'permissions' => ['admin.calendar'],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

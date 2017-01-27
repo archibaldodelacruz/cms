@@ -5,14 +5,14 @@ return [
     'type' => [
         'user',
         'volunteer',
-        'admin'
+        'admin',
     ],
 
     'status' => [
         'active',
         'inactive',
         'banned',
-        'pending'
+        'pending',
     ],
 
     'permissions' => [
@@ -62,7 +62,8 @@ return [
         'admin.panel.animals.other',
         'admin.panel.animals.other.view',
         'admin.panel.temporaryhomes',
-        'admin.panel.temporaryhomes.view'
-    ]
+        'admin.panel.temporaryhomes.view',
+        'admin.panel.web',
+    ],
 
 ];

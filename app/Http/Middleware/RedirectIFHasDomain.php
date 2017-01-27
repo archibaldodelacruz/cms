@@ -6,19 +6,12 @@ use Closure;
 
 class RedirectIFHasDomain
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle($request, Closure $next)
     {
         $domain = app('App\Models\Webs\Web')->domain;
 
         if ($request->path() !== '/') {
-            $redirect = app('App\Models\Webs\Web')->getUrl() . '/' . $request->path();
+            $redirect = app('App\Models\Webs\Web')->getUrl().'/'.$request->path();
         } else {
             $redirect = app('App\Models\Webs\Web')->getUrl();
         }

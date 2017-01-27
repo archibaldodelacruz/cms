@@ -8,18 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    /**
-     * Fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'iso', 'name',
-    ];
+    protected $fillable = ['iso', 'name'];
 
-    /**
-     * Relations
-     */
     public function webs()
     {
         return $this->hasMany(Web::class);

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web\Pages;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Web\BaseWebController;
 

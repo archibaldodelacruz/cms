@@ -11,12 +11,12 @@ $factory->define(App\Models\Pages\Page::class, function (Faker\Generator $faker)
         'user_id' => function () {
             return factory(App\Models\Users\User::class)->create()->id;
         },
-        'status' => $faker->randomElement(config('protecms.pages.status')),
+        'status'       => $faker->randomElement(config('protecms.pages.status')),
         'published_at' => \Carbon\Carbon::now(),
-        'es' => [
+        'es'           => [
             'title' => $title,
-            'slug' => $slug,
-            'text' => $faker->paragraph
-        ]
+            'slug'  => $slug,
+            'text'  => $faker->paragraph,
+        ],
     ];
 });

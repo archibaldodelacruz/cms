@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 trait LogsActivity
 {
-    /**
-     * @return mixed
-     */
     public function activity()
     {
         return $this->morphMany(Activity::class, 'model')->withTrashed();
@@ -50,9 +47,6 @@ trait LogsActivity
         return 'default';
     }
 
-    /*
-     * Get the event names that should be recorded.
-     */
     protected static function eventsToBeRecorded()
     {
         if (isset(static::$recordEvents)) {
@@ -93,7 +87,6 @@ trait LogsActivity
             }
         }
 
-        //do not log update event if only ignored attributes are changed
         return (bool) count(array_except($this->getDirty(), $this->attributesToBeIgnored()));
     }
 }

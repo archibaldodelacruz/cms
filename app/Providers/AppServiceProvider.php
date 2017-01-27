@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use App\Models\Webs\Web;
-use Illuminate\Support\Facades\Validator;
+use Laravel\Dusk\DuskServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         Carbon::setLocale(config('app.locale'));
 
         if (! $this->app->runningInConsole()) {
@@ -36,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
                     $host = strstr($host, '.', true);
                 } else {
                     $findBy = 'domain';
-                    $host = $host . $domain;
+                    $host = $host.$domain;
                 }
 
                 $web = Web::where($findBy, $host)->with('config')->first();
@@ -59,8 +61,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() === 'local') {
+        if ($this->app->environment('local')) {
             $this->app->register(IdeHelperServiceProvider::class);
+        }
+
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
         }
     }
 }

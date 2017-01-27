@@ -19,7 +19,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'themes_path' => realpath(base_path('resources/views/web/themes')), // eg: realpath(base_path('resources/themes'))
+    'themes_path' => realpath(base_path('resources/views/themes')), // eg: realpath(base_path('resources/themes'))
 
     /*
     |--------------------------------------------------------------------------
@@ -57,35 +57,22 @@ return [
 
     'themes' => [
 
+        /*
+         * Web themes
+         */
         'default' => [
-            'extends'        => null,
-            'views-path'    => 'default',
+            'extends'       => null,
+            'views-path'    => 'web/default',
             'asset-path'    => 'themes/default',
-        ]
+        ],
 
-        // Add your themes here...
-
-        /*--------------[ Example Structre ]-------------
-
-            // Recomended (all defaults) : Assets -> \public\BasicTheme , Views -> \resources\views\BasicTheme
-
-            'BasicTheme',
-
-
-            // This theme shares the views with BasicTheme but defines its own assets in \public\SomeTheme
-
-            'SomeTheme' => [
-                'views-path'	=> 'BasicTheme',
-            ],
-
-
-            // This theme extends BasicTheme and ovverides SOME views\assets in its folders
-
-            'AnotherTheme' => [
-                'extends'	=> 'BasicTheme',
-            ],
-
-        ------------------------------------------------*/
+        /*
+         * Admin themes
+         */
+        'admin' => [
+            'extends'       => null,
+            'views-path'    => 'admin/metronic',
+            'asset-path'    => 'themes/default',
+        ],
     ],
-
 ];

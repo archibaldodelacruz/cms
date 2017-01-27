@@ -100,26 +100,26 @@ return [
             'rule-name' => 'custom-message',
         ],
         'translations.*.title' => [
-            'required' => 'El campo título es obligatorio.'
+            'required' => 'El campo título es obligatorio.',
         ],
         'translations.*.slug' => [
-            'required' => 'El campo url es obligatorio.',
-            'alpha_dash' => 'Este campo solo debe contener letras, números y guiones.'
+            'required'   => 'El campo url es obligatorio.',
+            'alpha_dash' => 'Este campo solo debe contener letras, números y guiones.',
         ],
         'translations.*.text' => [
-            'required' => 'El campo texto es obligatorio.'
+            'required' => 'El campo texto es obligatorio.',
         ],
         'translations.*.breed' => [
-            'required' => 'El campo raza es obligatorio.'
+            'required' => 'El campo raza es obligatorio.',
         ],
         'translations.*.health_text' => [
-            'required' => 'El campo salud es obligatorio.'
+            'required' => 'El campo salud es obligatorio.',
         ],
         'translations.*.private_text' => [
-            'required' => 'El campo texto privado es obligatorio.'
+            'required' => 'El campo texto privado es obligatorio.',
         ],
         'translations.*.text' => [
-            'required' => 'El campo texto es obligatorio.'
+            'required' => 'El campo texto es obligatorio.',
         ],
     ],
 
@@ -234,7 +234,7 @@ return [
         'domain'                => 'dominio',
         'state'                 => 'estado',
         'favicon'               => 'favicon',
-        'link'                  => 'enlace'
+        'link'                  => 'enlace',
     ],
 
 ];

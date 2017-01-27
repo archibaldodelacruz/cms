@@ -5,23 +5,16 @@ namespace App\Http\Controllers\Admin\Panel\Forms;
 use App\Models\Forms\Form;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Forms\StoreRequest;
 use App\Http\Requests\Forms\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class FormsController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Form
-     */
     protected $form;
 
-    /**
-     * FormsController constructor.
-     * @param Form $form
-     */
     public function __construct(Form $form)
     {
         parent::__construct();
@@ -29,10 +22,6 @@ class FormsController extends BaseAdminController
         $this->form = $form;
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Form::class);
@@ -43,7 +32,7 @@ class FormsController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.forms.index', compact('forms', 'request', 'total'));
+        return view('panel.forms.index', compact('forms', 'request', 'total'));
     }
 
     public function deleted(Request $request)
@@ -56,30 +45,23 @@ class FormsController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(self::PAGINATION);
 
-        return view('admin.panel.forms.deleted', compact('forms', 'request', 'total'));
+        return view('panel.forms.deleted', compact('forms', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Form::class);
 
-        return view('admin.panel.forms.create');
+        return view('panel.forms.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Form::class);
 
         if (! count($request->get('fields'))) {
             return redirect()->back()->withErrors([
-                'fields' => 'El formulario debe contener campos'
+                'fields' => 'El formulario debe contener campos',
             ])->withInput();
         }
 
@@ -89,13 +71,13 @@ class FormsController extends BaseAdminController
         foreach ($request->get('fields') as $i => $field) {
             $i++;
             $form->fields()->create([
-                'order' => $i,
-                'name' => $i,
-                'type' => $field['type'],
-                'required' => $field['required'],
+                'order'                   => $i,
+                'name'                    => $i,
+                'type'                    => $field['type'],
+                'required'                => $field['required'],
                 $request->get('langform') => [
-                    'title' => $field['title']
-                ]
+                    'title' => $field['title'],
+                ],
             ]);
         }
 
@@ -104,11 +86,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::edit', ['id' => $form->id]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @internal param Request $request
-     */
     public function edit($id)
     {
         $form = $this->form
@@ -117,19 +94,14 @@ class FormsController extends BaseAdminController
 
         $this->authorize('update', $form);
 
-        return view('admin.panel.forms.edit', compact('form'));
+        return view('panel.forms.edit', compact('form'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         if (! count($request->get('fields'))) {
             return redirect()->back()->withErrors([
-                'fields' => 'El formulario debe contener campos'
+                'fields' => 'El formulario debe contener campos',
             ])->withInput();
         }
 
@@ -156,23 +128,23 @@ class FormsController extends BaseAdminController
         foreach ($request->get('fields') as $field) {
             if (isset($field['id'])) {
                 $form->fields()->findOrFail($field['id'])->update([
-                    'order' => $order,
-                    'name' => $order,
-                    'type' => $field['type'],
-                    'required' => $field['required'],
+                    'order'                   => $order,
+                    'name'                    => $order,
+                    'type'                    => $field['type'],
+                    'required'                => $field['required'],
                     $request->get('langform') => [
-                        'title' => $field['title']
-                    ]
+                        'title' => $field['title'],
+                    ],
                 ]);
             } else {
                 $form->fields()->create([
-                    'order' => $order,
-                    'name' => $order,
-                    'type' => $field['type'],
-                    'required' => $field['required'],
+                    'order'                   => $order,
+                    'name'                    => $order,
+                    'type'                    => $field['type'],
+                    'required'                => $field['required'],
                     $request->get('langform') => [
-                        'title' => $field['title']
-                    ]
+                        'title' => $field['title'],
+                    ],
                 ]);
             }
 
@@ -183,13 +155,9 @@ class FormsController extends BaseAdminController
 
         flash('El formulario se ha actualizado correctamente.');
 
-        return redirect()->to(route('admin::panel::forms::edit', ['id' => $id]) . '?langform=' . $request->get('langform'));
+        return redirect()->to(route('admin::panel::forms::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $form = $this->form->withTrashed()
@@ -203,11 +171,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $form = $this->form
@@ -223,11 +186,6 @@ class FormsController extends BaseAdminController
         return redirect()->route('admin::panel::forms::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $form = $this->form

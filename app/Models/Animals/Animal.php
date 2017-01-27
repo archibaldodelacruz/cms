@@ -5,8 +5,8 @@ namespace App\Models\Animals;
 use Carbon\Carbon;
 use App\Models\Webs\Web;
 use App\Models\BaseModel;
-use Illuminate\Support\Facades\Auth;
 use App\Helpers\Traits\LogsActivity;
+use Illuminate\Support\Facades\Auth;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,72 +14,18 @@ class Animal extends BaseModel
 {
     use SoftDeletes, Translatable, LogsActivity;
 
-    /**
-     * Meta data
-     *
-     * @var array
-     */
+    public $translatedAttributes = ['text', 'private_text', 'health_text', 'breed'];
     protected $meta;
-
-    /**
-     * Table name
-     *
-     * @var string
-     */
     protected $table = 'animals';
-
-    /**
-     * Translatable fields
-     *
-     * @var array
-     */
-    public $translatedAttributes = [
-        'text', 'private_text', 'health_text', 'breed'
-    ];
-
-    /**
-     * Fillable fields
-     *
-     * @var array
-     */
+    protected $casts = ['meta' => 'array'];
+    protected $dates = ['birth_date', 'entry_date'];
+    protected $touches = ['web'];
     protected $fillable = [
         'id', 'web_id', 'name', 'old_name', 'status', 'kind', 'location', 'gender', 'visible', 'litter', 'identifier',
         'meta', 'microchip', 'birth_date', 'birth_date_approximate', 'entry_date', 'entry_date_approximate', 'weight', 'height',
-        'length', 'temporary_home_id', 'created_at', 'updated_at'
+        'length', 'temporary_home_id', 'created_at', 'updated_at',
     ];
 
-    /**
-     * Casts fields
-     *
-     * @var array
-     */
-    protected $casts = [
-        'meta' => 'array'
-    ];
-
-    /**
-     * Dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'birth_date', 'entry_date'
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
-    protected $touches = ['web'];
-
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return \Illuminate\Database\Eloquent\Model|void
-     */
     public function setAttribute($key, $value)
     {
         if (in_array($key, ['birth_date', 'entry_date'])) {
@@ -126,7 +72,7 @@ class Animal extends BaseModel
             return Carbon::getTranslator()->transChoice(
                 'year',
                 $years,
-                [':count' => $years]) . ' y ' . Carbon::getTranslator()->transChoice('month', $months, [':count' => $months]
+                [':count' => $years]).' y '.Carbon::getTranslator()->transChoice('month', $months, [':count' => $months]
             );
         } elseif ($years && ! $months) {
             return Carbon::getTranslator()->transChoice('year', $years, [':count' => $years]);
@@ -140,7 +86,7 @@ class Animal extends BaseModel
             return Carbon::getTranslator()->transChoice(
                 'month',
                 $months,
-                [':count' => $months]) . ' y ' . Carbon::getTranslator()->transChoice('day', $days, [':count' => $days]
+                [':count' => $months]).' y '.Carbon::getTranslator()->transChoice('day', $days, [':count' => $days]
             );
         }
 
@@ -156,9 +102,6 @@ class Animal extends BaseModel
         return $query->whereIn('kind', Auth::user()->animalsPermissions());
     }
 
-    /**
-     * Relations
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

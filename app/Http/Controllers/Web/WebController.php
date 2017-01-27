@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Requests;
 use App\Models\Posts\Post;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Web\BaseWebController;
 
 class WebController extends BaseWebController
 {
@@ -33,5 +31,12 @@ class WebController extends BaseWebController
             ->paginate($this->web->getConfig('posts.pagination'));
 
         return view('index', compact('last_posts'));
+    }
+
+    public function custom_css(Request $request)
+    {
+        return response()
+            ->view('customcss')
+            ->header('Content-Type', 'text/css');
     }
 }

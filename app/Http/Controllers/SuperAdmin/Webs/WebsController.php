@@ -13,9 +13,6 @@ class WebsController extends SuperAdminController
 {
     use FilterBy;
 
-    /**
-     * SuperAdminController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -23,10 +20,6 @@ class WebsController extends SuperAdminController
         $this->web = app('App\Models\Webs\Web');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $total = $this->web->count();
@@ -37,24 +30,17 @@ class WebsController extends SuperAdminController
         return view('superadmin.webs.index', compact('webs', 'request', 'total'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         return view('superadmin.webs.create');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-        $web = (new Web)->forceCreate([
-            'domain' => $request->get('domain'),
+        $web = (new Web())->forceCreate([
+            'domain'    => $request->get('domain'),
             'subdomain' => $request->get('subdomain'),
-            'email' => $request->get('email')
+            'email'     => $request->get('email'),
         ]);
 
         $install_code = mt_rand(00000, 99999);
@@ -67,9 +53,6 @@ class WebsController extends SuperAdminController
         return redirect()->route('superadmin::index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit()
     {
         $web = $this->web;
@@ -77,10 +60,6 @@ class WebsController extends SuperAdminController
         return view('superadmin.webs.edit', compact('web'));
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(Request $request)
     {
         $this->web->update($request->all());

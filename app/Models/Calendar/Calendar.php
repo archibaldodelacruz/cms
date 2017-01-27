@@ -11,42 +11,12 @@ class Calendar extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
-    /**
-     * Table name
-     *
-     * @var string
-     */
     protected $table = 'calendar';
-
-    /**
-     * Fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title', 'description', 'start_date', 'end_date', 'all_day', 'type'
-    ];
-
-    protected $appends = ['color'];
-
-    protected $dates = [
-        'start_date', 'end_date'
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $appends = ['color'];
+    protected $dates = ['start_date', 'end_date'];
+    protected $fillable = ['title', 'description', 'start_date', 'end_date', 'all_day', 'type'];
 
-    /**
-     * Set attribute.
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return \Illuminate\Database\Eloquent\Model|void
-     */
     public function setAttribute($key, $value)
     {
         if (in_array($key, ['start_date', 'end_date'])) {
@@ -60,11 +30,6 @@ class Calendar extends BaseModel
         parent::setAttribute($key, $value);
     }
 
-    /**
-     * Get color by type
-     * 
-     * @return string
-     */
     public function getColorAttribute()
     {
         switch ($this->type) {
@@ -102,9 +67,6 @@ class Calendar extends BaseModel
         }
     }
 
-    /**
-     * Relations
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

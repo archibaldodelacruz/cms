@@ -3,25 +3,18 @@
 namespace App\Http\Controllers\Admin\Design;
 
 use Image;
-use App\Helpers\UploadFile;
 use Illuminate\Http\Request;
-use App\Http\Requests\Design\UpdateRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Design\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
 
 class DesignController extends BaseAdminController
 {
-    /**
-     * DesignController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $this->customAuthorize('admin.design');
@@ -29,33 +22,23 @@ class DesignController extends BaseAdminController
         chdir(public_path('assets/images/backgrounds'));
         $backgrounds = glob('*.png');
 
-        return view('admin.design.index', compact('backgrounds'));
+        return view('design.index', compact('backgrounds'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function config()
     {
         $this->customAuthorize('admin.design');
 
-        return view('admin.design.config');
+        return view('design.config');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function css()
     {
         $this->customAuthorize('admin.design');
 
-        return view('admin.design.css');
+        return view('design.css');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function css_update(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -67,10 +50,6 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::css');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function config_update(Request $request)
     {
         $this->customAuthorize('admin.design');
@@ -84,10 +63,6 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::config');
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request)
     {
         $this->customAuthorize('admin.design');
@@ -114,12 +89,12 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'logo.' . $extension;
+            $name = 'logo.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $logo->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $logo->stream($extension, 100)->__toString(), 'public');
 
             $this->web->update([
-                'logo' => $name
+                'logo' => $name,
             ]);
         }
 
@@ -145,9 +120,9 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'header.' . $extension;
+            $name = 'header.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $header->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $header->stream($extension, 100)->__toString(), 'public');
 
             $this->web->setConfig('themes.default.header_image', $name);
         }
@@ -175,9 +150,9 @@ class DesignController extends BaseAdminController
                     break;
             }
 
-            $name = 'favicon.' . $extension;
+            $name = 'favicon.'.$extension;
 
-            Storage::put('web/' . $this->web->id . '/images/' . $name, $favicon->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.$this->web->id.'/images/'.$name, $favicon->stream($extension, 100)->__toString(), 'public');
             $this->web->setConfig('themes.default.favicon', $name);
         }
 
@@ -212,7 +187,7 @@ class DesignController extends BaseAdminController
                 $this->web->setConfig('themes.default.background_content_color', $request->get('background_image_content')['background_content_color']);
                 $this->web->unsetConfig('themes.default.background_color');
                 break;
-            
+
             default:
                 $this->web->unsetConfig('themes.default.background_type');
                 $this->web->unsetConfig('themes.default.background_color');
@@ -226,70 +201,67 @@ class DesignController extends BaseAdminController
         return redirect()->route('admin::design::index');
     }
 
-    /**
-     * @return array
-     */
     public function getSidebar()
     {
         return [
             [
                 'title' => 'Diseño',
-                'menu' => [
-                    'title' => 'Diseño',
-                    'icon' => 'fa fa-picture-o',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/design*',
+                'menu'  => [
+                    'title'   => 'Diseño',
+                    'icon'    => 'fa fa-picture-o',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/design*',
                     'submenu' => [
                         [
-                            'title' => 'Principal',
-                            'icon' => 'fa fa-picture-o',
-                            'url' => route('admin::design::index'),
-                            'permissions' => ['admin.design', 'admin.design.view']
+                            'title'       => 'Principal',
+                            'icon'        => 'fa fa-picture-o',
+                            'url'         => route('admin::design::index'),
+                            'permissions' => ['admin.design', 'admin.design.view'],
                         ],
                         [
-                            'title' => 'Configuración',
-                            'icon' => 'fa fa-cogs',
-                            'url' => route('admin::design::config'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Configuración',
+                            'icon'        => 'fa fa-cogs',
+                            'url'         => route('admin::design::config'),
+                            'permissions' => ['admin.design'],
                         ],
                         [
-                            'title' => 'CSS Personalizado',
-                            'icon' => 'fa fa-css3',
-                            'url' => route('admin::design::css'),
-                            'permissions' => ['admin.design']
-                        ]
-                    ]
-                ]
+                            'title'       => 'CSS Personalizado',
+                            'icon'        => 'fa fa-css3',
+                            'url'         => route('admin::design::css'),
+                            'permissions' => ['admin.design'],
+                        ],
+                    ],
+                ],
             ],
             [
                 'title' => 'Bloques',
-                'menu' => [
-                    'title' => 'Bloques',
-                    'icon' => 'fa fa-clone',
-                    'url' => 'javascript:;',
-                    'base' => 'admin/design*',
+                'menu'  => [
+                    'title'   => 'Bloques',
+                    'icon'    => 'fa fa-clone',
+                    'url'     => 'javascript:;',
+                    'base'    => 'admin/design*',
                     'submenu' => [
                         [
-                            'title' => 'Bloques',
-                            'icon' => 'fa fa-clone',
-                            'url' => route('admin::design::widgets::index'),
-                            'permissions' => ['admin.design', 'admin.design.view']
+                            'title'       => 'Bloques',
+                            'icon'        => 'fa fa-clone',
+                            'url'         => route('admin::design::widgets::index'),
+                            'permissions' => ['admin.design', 'admin.design.view'],
                         ],
                         [
-                            'title' => 'Crear bloque',
-                            'icon' => 'fa fa-plus-square',
-                            'url' => route('admin::design::widgets::create'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Crear bloque',
+                            'icon'        => 'fa fa-plus-square',
+                            'url'         => route('admin::design::widgets::create'),
+                            'permissions' => ['admin.design'],
                         ],
                         [
-                            'title' => 'Bloques eliminados',
-                            'icon' => 'fa fa-trash',
-                            'url' => route('admin::design::widgets::deleted'),
-                            'permissions' => ['admin.design']
+                            'title'       => 'Bloques eliminados',
+                            'icon'        => 'fa fa-trash',
+                            'url'         => route('admin::design::widgets::deleted'),
+                            'permissions' => ['admin.design'],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

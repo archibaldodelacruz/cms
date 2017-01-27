@@ -5,24 +5,16 @@ namespace App\Http\Controllers\Admin\Panel\Animals;
 use Illuminate\Http\Request;
 use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\StoreRequest;
 use App\Http\Requests\Animals\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class AnimalsController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Animal
-     */
     protected $animal;
 
-    /**
-     * AnimalsController constructor.
-     * @param Animal $animal
-     */
     public function __construct(Animal $animal)
     {
         parent::__construct();
@@ -30,10 +22,6 @@ class AnimalsController extends BaseAdminController
         $this->animal = $animal;
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index(Request $request)
     {
         $this->authorize('view', Animal::class);
@@ -46,13 +34,9 @@ class AnimalsController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(30);
 
-        return view('admin.panel.animals.index', compact('animals', 'request', 'total'));
+        return view('panel.animals.index', compact('animals', 'request', 'total'));
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function deleted(Request $request)
     {
         $this->authorize('delete', Animal::class);
@@ -63,13 +47,9 @@ class AnimalsController extends BaseAdminController
             ->orderBy('name', 'ASC')
             ->paginate(25);
 
-        return view('admin.panel.animals.deleted', compact('animals', 'request', 'total'));
+        return view('panel.animals.deleted', compact('animals', 'request', 'total'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
         $this->authorize('view', Animal::class);
@@ -78,23 +58,16 @@ class AnimalsController extends BaseAdminController
             ->permission()
             ->findOrFail($id);
 
-        return view('admin.panel.animals.show', compact('animal'));
+        return view('panel.animals.show', compact('animal'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', Animal::class);
 
-        return view('admin.panel.animals.create');
+        return view('panel.animals.create');
     }
 
-    /**
-     * @param StoreRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(StoreRequest $request)
     {
         $this->authorize('create', Animal::class);
@@ -107,11 +80,6 @@ class AnimalsController extends BaseAdminController
         return redirect()->route('admin::panel::animals::edit', ['id' => $animal->id]);
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function edit(Request $request, $id)
     {
         $animal = $this->animal
@@ -120,14 +88,9 @@ class AnimalsController extends BaseAdminController
 
         $this->authorize('update', $animal);
 
-        return view('admin.panel.animals.edit', compact('animal'));
+        return view('panel.animals.edit', compact('animal'));
     }
 
-    /**
-     * @param UpdateRequest $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(UpdateRequest $request, $id)
     {
         $animal = $this->animal
@@ -138,13 +101,9 @@ class AnimalsController extends BaseAdminController
 
         flash('La ficha del animal se ha actualizado correctamente.');
 
-        return redirect()->to(route('admin::panel::animals::edit', ['id' => $id]) . '?langform=' . $request->get('langform'));
+        return redirect()->to(route('admin::panel::animals::edit', ['id' => $id]).'?langform='.$request->get('langform'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function restore($id)
     {
         $animal = $this->animal
@@ -160,11 +119,6 @@ class AnimalsController extends BaseAdminController
         return redirect()->route('admin::panel::animals::edit', ['id' => $id]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @internal param Request $request
-     */
     public function delete($id)
     {
         $animal = $this->animal
@@ -179,11 +133,6 @@ class AnimalsController extends BaseAdminController
         return redirect()->route('admin::panel::animals::index');
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete_translation(Request $request, $id)
     {
         $animal = $this->animal

@@ -11,18 +11,18 @@ $factory->define(App\Models\Posts\Post::class, function (Faker\Generator $faker)
         'category_id' => function () {
             return factory(App\Models\Posts\Category::class)->create()->id;
         },
-        'status' => $faker->randomElement(config('protecms.posts.status')),
+        'user_id' => function () {
+            return factory(App\Models\Users\User::class)->create()->id;
+        },
+        'status'          => $faker->randomElement(config('protecms.posts.status')),
         'comments_status' => $faker->randomElement(config('protecms.posts.comments_status')),
-        'comments' => 0,
-        'published_at' => \Carbon\Carbon::now(),
-        'es' => [
-            'title' => $title,
-            'slug' => $slug,
-            'text' => $faker->paragraph,
-            'user_id' => function () {
-                return factory(App\Models\Users\User::class)->create()->id;
-            }
-        ]
+        'comments'        => 0,
+        'published_at'    => \Carbon\Carbon::now(),
+        'es'              => [
+            'title'   => $title,
+            'slug'    => $slug,
+            'text'    => $faker->paragraph,
+        ],
     ];
 });
 
@@ -36,9 +36,9 @@ $factory->define(App\Models\Posts\Category::class, function (Faker\Generator $fa
         },
         'es' => [
             'title' => $title,
-            'slug' => $slug,
-            'text' => $faker->paragraph
-        ]
+            'slug'  => $slug,
+            'text'  => $faker->paragraph,
+        ],
     ];
 });
 
@@ -51,6 +51,6 @@ $factory->define(App\Models\Posts\Comment::class, function (Faker\Generator $fak
             return factory(App\Models\Users\User::class)->create()->id;
         },
         'comment' => $faker->paragraph,
-        'status' => $faker->randomElement(config('protecms.posts.comments.status'))
+        'status'  => $faker->randomElement(config('protecms.posts.comments.status')),
     ];
 });

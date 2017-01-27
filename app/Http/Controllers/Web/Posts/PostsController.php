@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web\Posts;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Web\BaseWebController;
 
@@ -40,7 +39,7 @@ class PostsController extends BaseWebController
         $category = $this->web->categories()
             ->with('translations', 'posts.translations')
             ->findOrFail($id);
-            
+
         $posts = $category->posts()
             ->paginate(10);
 

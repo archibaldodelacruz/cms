@@ -15,7 +15,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected $baseUrl = 'http://localhost';
 
     /**
-     * Default preparation for each test
+     * Default preparation for each test.
      */
     public function setUp()
     {
@@ -39,23 +39,23 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Prepare set up for tests
+     * Prepare set up for tests.
      */
     public function prepareForTests()
     {
         Artisan::call('migrate:refresh');
 
-        $web = new Web;
+        $web = new Web();
         $web->subdomain = 'testing';
         $web->installed = 1;
         $web->save();
 
         $web->users()->create([
-            'name' => 'Testing',
-            'email' => 'testing@protecms.com',
+            'name'     => 'Testing',
+            'email'    => 'testing@protecms.com',
             'password' => 'testing',
-            'type' => 'admin',
-            'status' => 'active'
+            'type'     => 'admin',
+            'status'   => 'active',
         ]);
 
         $web->setConfigs(config('protecms.webs.config.default'));
@@ -66,20 +66,24 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Verify the number of dom elements
-     * @param  string   $selector the dom selector (jquery style)
-     * @param  int      $number   how many elements should be present in the dom
+     * Verify the number of dom elements.
+     *
+     * @param string $selector the dom selector (jquery style)
+     * @param int    $number   how many elements should be present in the dom
+     *
      * @return $this
      */
     public function countElements($selector, $number)
     {
         $this->assertCount($number, $this->crawler->filter($selector));
+
         return $this;
     }
 
     /**
      * @param $values
      * @param $name
+     *
      * @return $this
      */
     protected function typeArray($values, $name)
@@ -99,11 +103,12 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
     /**
      * @param $path
+     *
      * @return UploadedFile
      */
     public function prepareFileUpload($path)
     {
-        TestCase::assertFileExists($path);
+        self::assertFileExists($path);
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
 

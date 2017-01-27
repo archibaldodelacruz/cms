@@ -57,12 +57,12 @@ return [
 
     'from' => [
         'address' => 'web@protecms.com',
-        'name' => 'ProteCMS',
+        'name'    => 'ProteCMS',
     ],
 
     'from-no-reply' => [
         'address' => 'no-reply@protecms.com',
-        'name' => 'ProteCMS'
+        'name'    => 'ProteCMS',
     ],
 
     /*

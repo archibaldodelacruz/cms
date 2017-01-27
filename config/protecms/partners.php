@@ -7,13 +7,13 @@ return [
         'day',
         'week',
         'month',
-        'year'
+        'year',
     ],
 
     'payment_method' => [
         null,
         'cash',
-        'wire_transfer'
-    ]
+        'wire_transfer',
+    ],
 
 ];

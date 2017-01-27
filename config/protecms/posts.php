@@ -4,12 +4,12 @@ return [
 
     'status' => [
         'published',
-        'pending'
+        'pending',
     ],
 
     'comments_status' => [
         'open',
-        'closed'
+        'closed',
     ],
 
     'comments' => [
@@ -17,9 +17,9 @@ return [
         'status' => [
             'published',
             'pending',
-            'moderated'
-        ]
+            'moderated',
+        ],
 
-    ]
+    ],
 
 ];

@@ -2,9 +2,9 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\Storage;
 use Image;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class UploadFile
 {
@@ -23,8 +23,8 @@ class UploadFile
     public function __construct(UploadedFile $file, $path, $name, $disk = null)
     {
         $this->file = $file;
-        $this->path = $path ?: 'web/' . app('App\Models\Webs\Web')->id;
-        $this->name = $name . '.' . $this->extension();
+        $this->path = $path ?: 'web/'.app('App\Models\Webs\Web')->id;
+        $this->name = $name.'.'.$this->extension();
     }
 
     public function store()
@@ -43,7 +43,7 @@ class UploadFile
             $constraint->upsize();
         });
 
-        Storage::put($this->path . '/' . $this->name, $photo->stream()->__toString(), $this->visibility);
+        Storage::put($this->path.'/'.$this->name, $photo->stream()->__toString(), $this->visibility);
 
         return $this;
     }
@@ -55,8 +55,8 @@ class UploadFile
         $thumbnail->$method($width, $height, function ($constraint) {
             $constraint->upsize();
         });
-        
-        Storage::put($this->path . '/' . $prepend . $this->name, $thumbnail->stream()->__toString(), $this->visibility);
+
+        Storage::put($this->path.'/'.$prepend.$this->name, $thumbnail->stream()->__toString(), $this->visibility);
 
         return $this;
     }
@@ -78,11 +78,11 @@ class UploadFile
 
     public function getFullPath()
     {
-        return $this->path . '/' . $this->name;
+        return $this->path.'/'.$this->name;
     }
 
     public function getThumbnailName($size = 'xs')
     {
-        return 'thumbnail-' . $size . '-' . $this->name;
+        return 'thumbnail-'.$size.'-'.$this->name;
     }
 }

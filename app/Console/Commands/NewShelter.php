@@ -7,35 +7,13 @@ use Illuminate\Console\Command;
 
 class NewShelter extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    protected $web;
+    protected $description = 'Create a new shelter';
     protected $signature = 'protecms:newshelter 
                             {subdomain : Shelter\'s subdomain} 
                             {domain : Shelter\'s domain} 
                             {email : Shelter\'s email}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new shelter';
-
-    /**
-     * Web model
-     * 
-     * @var \App\Models\Webs\Web
-     */
-    protected $web;
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct(Web $web)
     {
         parent::__construct();
@@ -51,14 +29,14 @@ class NewShelter extends Command
     public function handle()
     {
         $web = $this->web;
-            $web->domain = $this->argument('domain');
-            $web->subdomain = $this->argument('subdomain');
-            $web->email = $this->argument('email');
+        $web->domain = $this->argument('domain');
+        $web->subdomain = $this->argument('subdomain');
+        $web->email = $this->argument('email');
         $web->save();
 
         $code = mt_rand(00000, 99999);
         $web->setConfig('install_code', $code);
 
-        $this->info('Shelter created successfully. The security code is: ' . $code);
+        $this->info('Shelter created successfully. The security code is: '.$code);
     }
 }

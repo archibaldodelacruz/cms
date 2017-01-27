@@ -3,8 +3,8 @@
 return [
 
     'status' => [
-        'active' => 'Activa',
-        'inactive' => 'Inactiva'
-    ]
+        'active'   => 'Activa',
+        'inactive' => 'Inactiva',
+    ],
 
 ];

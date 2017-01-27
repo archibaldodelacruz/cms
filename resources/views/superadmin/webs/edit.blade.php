@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('themes.admin.metronic.layouts.base')
 
 @section('page.title')
     {{ $web->name }}
@@ -68,7 +68,7 @@
                         {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
-                @include('admin.layouts.partials.location', [
+                @include('themes.admin.metronic.layouts.partials.location', [
                     'model' => $web
                 ])
                 <div class="form-group">

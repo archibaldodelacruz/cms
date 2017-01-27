@@ -2,35 +2,25 @@
 
 namespace App\Helpers\Traits;
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Builder;
 
 trait FilterByWeb
 {
     protected static $excludedTables = [
-        'webs_config', 'users'
+        'webs_config', 'users',
     ];
 
-    /**
-     * @return string
-     */
     public static function getTableName() : string
     {
-        return with(new static)->getTable();
+        return with(new static())->getTable();
     }
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
     protected static function boot()
     {
         parent::boot();
 
         if (method_exists(get_called_class(), 'web')
             && ! in_array(self::getTableName(), self::$excludedTables)) {
-
             if (! app()->runningInConsole() || app()->environment() === 'testing') {
                 static::creating(function ($model) {
                     $model->web_id = app('App\Models\Webs\Web')->id;

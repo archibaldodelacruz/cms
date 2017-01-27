@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @param null $request
+ * @param null   $request
  * @param string $method
  */
 function getWebByRequest($request = null, $method = 'first')
@@ -18,7 +18,7 @@ function getWebByRequest($request = null, $method = 'first')
         $host = strstr($host, '.', true);
     } else {
         $findBy = 'domain';
-        $host = $host . $domain;
+        $host = $host.$domain;
     }
 
     return App\Models\Webs\Web::where($findBy, $host)->$method() ?: abort(500);
@@ -27,6 +27,7 @@ function getWebByRequest($request = null, $method = 'first')
 if (! function_exists('activity')) {
     /**
      * @param null $user
+     *
      * @return \App\Models\Activity
      */
     function activity($user = null)
@@ -46,8 +47,9 @@ if (! function_exists('activity')) {
 if (! function_exists('checkFolder')) {
     /**
      * @param $path
-     * @param int $chmod
+     * @param int  $chmod
      * @param bool $recursive
+     *
      * @return mixed
      */
     function checkFolder($path, $chmod = 0777, $recursive = true)
@@ -66,16 +68,15 @@ if (! function_exists('removeFolder')) {
      */
     function removeFolder($path)
     {
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             return;
         }
 
-        $files = glob($path . '/*');
+        $files = glob($path.'/*');
         foreach ($files as $file) {
             is_dir($file) ? removeFolder($file) : unlink($file);
         }
         rmdir($path);
-        return;
     }
 }
 
@@ -88,7 +89,7 @@ if (! function_exists('flash')) {
     {
         session()->flash('flash', [
             'text' => $text,
-            'type' => $type
+            'type' => $type,
         ]);
     }
 }

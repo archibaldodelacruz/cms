@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('themes.admin.metronic.layouts.base')
 
 @section('page.title')
     Nueva protectora

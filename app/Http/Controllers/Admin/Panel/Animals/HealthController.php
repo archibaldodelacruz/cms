@@ -14,21 +14,9 @@ class HealthController extends BaseAdminController
 {
     use FilterBy;
 
-    /**
-     * @var Animal
-     */
     protected $animal;
-
-    /**
-     * @var Finance
-     */
     protected $finance;
 
-    /**
-     * HealthController constructor.
-     * @param Animal $animal
-     * @param Finance $finance
-     */
     public function __construct(Animal $animal, Finance $finance)
     {
         parent::__construct();
@@ -45,14 +33,14 @@ class HealthController extends BaseAdminController
             ->orderBy('created_at', 'DESC')
             ->paginate(25);
 
-        return view('admin.panel.animals.health.index', compact('animal', 'health', 'request'));
+        return view('panel.animals.health.index', compact('animal', 'health', 'request'));
     }
 
     public function create($id)
     {
         $animal = $this->animal->findOrFail($id);
 
-        return view('admin.panel.animals.health.create', compact('animal'));
+        return view('panel.animals.health.create', compact('animal'));
     }
 
     public function store(StoreRequest $request, $id)
@@ -64,11 +52,11 @@ class HealthController extends BaseAdminController
 
         if ($request->has('finances') && $request->get('finances') && $request->get('cost') > 0) {
             $this->finance->create([
-                'title' => $health->title,
-                'amount' => $health->cost,
+                'title'       => $health->title,
+                'amount'      => $health->cost,
                 'executed_at' => $health->start_date,
-                'reason' => 'veterinary',
-                'type' => 'spending'
+                'reason'      => 'veterinary',
+                'type'        => 'spending',
             ]);
         }
 
@@ -82,7 +70,7 @@ class HealthController extends BaseAdminController
         $animal = $this->animal->with('health')->findOrFail($animal_id);
         $health = $animal->health()->findOrFail($id);
 
-        return view('admin.panel.animals.health.edit', compact('animal', 'health'));
+        return view('panel.animals.health.edit', compact('animal', 'health'));
     }
 
     public function update(UpdateRequest $request, $animal_id, $id)
@@ -100,7 +88,9 @@ class HealthController extends BaseAdminController
 
     /**
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @internal param Request $request
      */
     public function delete($animal_id, $id)

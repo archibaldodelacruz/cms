@@ -9,11 +9,11 @@ $factory->define(App\Models\Calendar\Calendar::class, function (Faker\Generator 
         'web_id' => function () {
             return factory(App\Models\Webs\Web::class)->create()->id;
         },
-        'title' => $faker->sentence,
+        'title'       => $faker->sentence,
         'description' => $faker->optional->paragraph,
-        'start_date' => $start->format('Y-m-d H:i:s'),
-        'end_date' => $end->format('Y-m-d H:i:s'),
-        'all_day' => $faker->boolean(5),
-        'type' => $faker->randomElement(config('protecms.calendar.type')),
+        'start_date'  => $start->format('Y-m-d H:i:s'),
+        'end_date'    => $end->format('Y-m-d H:i:s'),
+        'all_day'     => $faker->boolean(5),
+        'type'        => $faker->randomElement(config('protecms.calendar.type')),
     ];
 });

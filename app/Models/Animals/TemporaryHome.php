@@ -4,43 +4,20 @@ namespace App\Models\Animals;
 
 use App\Models\Webs\Web;
 use App\Models\BaseModel;
+use App\Models\Location\City;
+use App\Models\Location\State;
+use App\Models\Location\Country;
 use App\Helpers\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Location\Country;
-use App\Models\Location\State;
-use App\Models\Location\City;
 
 class TemporaryHome extends BaseModel
 {
     use SoftDeletes, LogsActivity;
 
-    /**
-     * Table name
-     *
-     * @var string
-     */
-    protected $table = 'temporary_homes';
-
-    /**
-     * Fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id', 'status',
-        'text'
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
     protected $touches = ['web'];
+    protected $table = 'temporary_homes';
+    protected $fillable = ['name', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id', 'status', 'text'];
 
-    /**
-     * Relations
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);

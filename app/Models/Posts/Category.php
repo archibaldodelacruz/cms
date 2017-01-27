@@ -11,48 +11,12 @@ class Category extends BaseModel
 {
     use SoftDeletes, Translatable;
 
-    /**
-     * Table name
-     *
-     * @var string
-     */
+    public $translatedAttributes = ['title', 'slug', 'text'];
     protected $table = 'posts_categories';
-
-    /**
-     * Translatable fields
-     */
-    public $translatedAttributes = [
-        'title', 'slug', 'text'
-    ];
-
-    /**
-     * Insert relations
-     *
-     * @var array
-     */
-    protected $with = [
-        'translations'
-    ];
-
-    /**
-     * Fillable fields
-     *
-     * @var array
-     */
-    protected $fillable = [
-
-    ];
-
-    /**
-     * All of the relationships to be touched.
-     *
-     * @var array
-     */
+    protected $with = ['translations'];
+    protected $fillable = [];
     protected $touches = ['web'];
 
-    /**
-     * Relations
-     */
     public function web()
     {
         return $this->belongsTo(Web::class);
