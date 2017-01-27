@@ -2,7 +2,7 @@
 
 use App\Models\Animals\Animal;
 
-class AnimalsSponsorshipsControllerTest extends TestCase
+class AnimalsSponsorshipsControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/panel/animals

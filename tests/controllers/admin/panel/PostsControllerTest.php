@@ -4,7 +4,7 @@ use App\Models\Posts\Post;
 use App\Models\Users\User;
 use App\Models\Posts\Category;
 
-class PostsControllerTest extends TestCase
+class PostsControllerTest extends BrowserKitTest
 {
     /**
      * @test

@@ -3,7 +3,7 @@
 use App\Models\Forms\Form;
 use App\Policies\FormPolicy;
 
-class FormPolicyTest extends TestCase
+class FormPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

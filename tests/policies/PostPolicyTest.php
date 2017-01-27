@@ -3,7 +3,7 @@
 use App\Models\Posts\Post;
 use App\Policies\PostPolicy;
 
-class PostPolicyTest extends TestCase
+class PostPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

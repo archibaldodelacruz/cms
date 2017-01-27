@@ -3,7 +3,7 @@
 use App\Policies\PartnerPolicy;
 use App\Models\Partners\Partner;
 
-class PartnerPolicyTest extends TestCase
+class PartnerPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

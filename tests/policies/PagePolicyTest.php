@@ -3,7 +3,7 @@
 use App\Models\Pages\Page;
 use App\Policies\PagePolicy;
 
-class PagePolicyTest extends TestCase
+class PagePolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

@@ -3,7 +3,7 @@
 use App\Models\Webs\Web;
 use App\Models\Users\User;
 
-class MiddlewareTest extends TestCase
+class MiddlewareTest extends BrowserKitTest
 {
     /**
      * @group middlewares

@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">* Fondo</label>
                     <div class="col-md-10">
-                        <p class="bg-info text-center">La mejor combinación es la de imagen de fondo y el color del contenido en blanco.</p>
+                        <p class="bg-info">La mejor combinación es la de imagen de fondo y el color del contenido en blanco.</p>
                         <select name="select_background" class="form-control">
                             <option value="">Por defecto</option>
                             <option value="background-color" {{ $web->getConfig('themes.default.background_type') == 'background_color' ? 'selected' : '' }}>Color del fondo</option>

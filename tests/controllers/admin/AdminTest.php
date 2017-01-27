@@ -1,7 +1,7 @@
 <?php
 
 
-class AdminTest extends TestCase
+class AdminTest extends BrowserKitTest
 {
     /**
      * @test

@@ -2,7 +2,7 @@
 
 use App\Models\Forms\Form;
 
-class FormsControllerTest extends TestCase
+class FormsControllerTest extends BrowserKitTest
 {
     /**
      * @test

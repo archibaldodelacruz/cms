@@ -1,7 +1,7 @@
 <?php
 
 
-class WebTest extends TestCase
+class WebTest extends BrowserKitTest
 {
     /** @test */
     public function it_check_that_web_exists()

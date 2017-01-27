@@ -3,7 +3,7 @@
 use App\Policies\VeterinaryPolicy;
 use App\Models\Veterinarians\Veterinary;
 
-class VeterinaryPolicyTest extends TestCase
+class VeterinaryPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

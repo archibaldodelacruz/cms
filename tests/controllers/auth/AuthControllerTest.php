@@ -1,7 +1,7 @@
 <?php
 
 
-class AuthControllerTest extends TestCase
+class AuthControllerTest extends BrowserKitTest
 {
     /**
      * @group auth

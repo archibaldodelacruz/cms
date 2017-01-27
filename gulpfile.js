@@ -36,6 +36,7 @@ elixir.extend('admin', function (mix) {
 
     mix.scripts([
         './node_modules/jquery/dist/jquery.js',
+        './resources/assets/plugins/jquery-migrate-3.0.0.min.js',
         './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
         './node_modules/js-cookie/src/js.cookie.js',
         './node_modules/jquery-slimscroll/jquery.slimscroll.js',

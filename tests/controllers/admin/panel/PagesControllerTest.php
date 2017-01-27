@@ -2,7 +2,7 @@
 
 use App\Models\Pages\Page;
 
-class PagesControllerTest extends TestCase
+class PagesControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/panel/pages
