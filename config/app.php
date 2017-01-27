@@ -187,7 +187,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
@@ -244,7 +243,6 @@ return [
         'Theme'    => igaster\laravelTheme\Facades\Theme::class,
         'Image'    => Intervention\Image\Facades\Image::class,
         'Carbon'   => \Carbon\Carbon::class,
-        'PDF'      => Barryvdh\DomPDF\Facade::class,
         'Captcha'  => Mews\Captcha\Facades\Captcha::class,
 
     ],
