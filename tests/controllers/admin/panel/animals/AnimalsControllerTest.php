@@ -3,7 +3,7 @@
 use App\Models\Users\User;
 use App\Models\Animals\Animal;
 
-class AnimalsControllerTest extends TestCase
+class AnimalsControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/panel/animals

@@ -2,7 +2,7 @@
 
 use App\Models\Partners\Partner;
 
-class PartnersControllerTest extends TestCase
+class PartnersControllerTest extends BrowserKitTest
 {
     /**
      * @test

@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use App\Models\Posts\Post;
 
-class WebControllerTest extends TestCase
+class WebControllerTest extends BrowserKitTest
 {
     /**
      * @group web

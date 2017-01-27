@@ -2,7 +2,7 @@
 
 use App\Models\Users\User;
 
-class DesignControllerTest extends TestCase
+class DesignControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/design

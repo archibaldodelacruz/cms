@@ -2,7 +2,7 @@
 
 use App\Models\Veterinarians\Veterinary;
 
-class VeterinariesControllerTest extends TestCase
+class VeterinariesControllerTest extends BrowserKitTest
 {
     /**
      * @test

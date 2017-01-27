@@ -3,7 +3,7 @@
 use App\Models\Animals\TemporaryHome;
 use App\Policies\TemporaryHomePolicy;
 
-class TemporaryHomePolicyTest extends TestCase
+class TemporaryHomePolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

@@ -3,7 +3,7 @@
 use App\Models\Animals\Animal;
 use Illuminate\Support\Facades\Mail;
 
-class AnimalsControllersTest extends TestCase
+class AnimalsControllersTest extends BrowserKitTest
 {
     /**
      * @group web

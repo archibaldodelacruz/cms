@@ -3,7 +3,7 @@
 use App\Policies\CalendarPolicy;
 use App\Models\Calendar\Calendar;
 
-class CalendarPolicyTest extends TestCase
+class CalendarPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

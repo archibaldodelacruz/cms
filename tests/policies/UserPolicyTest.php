@@ -3,7 +3,7 @@
 use App\Models\Users\User;
 use App\Policies\UserPolicy;
 
-class UserPolicyTest extends TestCase
+class UserPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

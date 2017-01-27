@@ -3,7 +3,7 @@
 use App\Models\Users\User;
 use App\Models\Widgets\Widget;
 
-class WidgetsControllerTest extends TestCase
+class WidgetsControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/design/widgets

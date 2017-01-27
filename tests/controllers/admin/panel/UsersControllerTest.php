@@ -4,7 +4,7 @@ use App\Models\Pages\Page;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
 
-class UsersControllerTest extends TestCase
+class UsersControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/panel/users

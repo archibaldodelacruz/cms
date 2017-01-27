@@ -2,7 +2,7 @@
 
 use App\Models\Files\File;
 
-class FilesControllerTest extends TestCase
+class FilesControllerTest extends BrowserKitTest
 {
     /**
      * @test

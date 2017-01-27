@@ -3,7 +3,7 @@
 use App\Models\Files\File;
 use App\Policies\FilePolicy;
 
-class FilePolicyTest extends TestCase
+class FilePolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

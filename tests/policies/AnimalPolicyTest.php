@@ -3,7 +3,7 @@
 use App\Models\Animals\Animal;
 use App\Policies\AnimalPolicy;
 
-class AnimalPolicyTest extends TestCase
+class AnimalPolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

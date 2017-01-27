@@ -3,7 +3,7 @@
 use App\Policies\FinancePolicy;
 use App\Models\Finances\Finance;
 
-class FinancePolicyTest extends TestCase
+class FinancePolicyTest extends BrowserKitTest
 {
     /**
      * @group policies

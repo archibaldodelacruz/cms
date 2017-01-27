@@ -2,7 +2,7 @@
 
 use App\Models\Webs\Web;
 
-class WebsControllerTest extends TestCase
+class WebsControllerTest extends BrowserKitTest
 {
     public function prepareForTests()
     {

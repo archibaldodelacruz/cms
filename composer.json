@@ -15,7 +15,9 @@
         "spatie/laravel-analytics": "^2.3",
         "doctrine/dbal": "^2.5",
         "mews/captcha": "^2.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "laravel/dusk": "^1.0",
+        "laravel/browser-kit-testing": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

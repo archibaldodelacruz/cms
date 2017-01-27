@@ -2,7 +2,7 @@
 
 use App\Models\Animals\Animal;
 
-class AnimalsHealthControllerTest extends TestCase
+class AnimalsHealthControllerTest extends BrowserKitTest
 {
     /**
      * @group admin/panel/animals
