@@ -2,7 +2,7 @@
 
 Route::group(['as' => 'superadmin::', 'namespace' => 'SuperAdmin', 'prefix' => 'superadmin', 'middleware' => ['superAdmin']], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'SuperAdminController@index']);
-    Route::get('/analytics', ['as' => 'analytics', 'uses' => 'SuperAdminController@analytics']);
+    Route::get('/stats', ['as' => 'stats', 'uses' => 'SuperAdminController@stats']);
     Route::post('/set-web', ['as' => 'set_web', 'uses' => 'SuperAdminController@set_web']);
 
     Route::get('notifications', ['as' => 'notifications', 'uses' => 'SuperAdminController@notifications']);
