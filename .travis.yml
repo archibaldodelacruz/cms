@@ -1,0 +1,36 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+      - node_modules
+      - vendor
+      - $HOME/.composer/cache
+
+php:
+  - '7.0'
+  - '7.1'
+
+install:
+  - mysql -e 'create database protecms_test'
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
+  - npm rebuild node-sass
+  - composer self-update
+  - composer install --no-interaction
+
+before_script:
+  - cp .env.travis .env
+  - php artisan key:generate
+
+script:
+  - gulp
+  - vendor/bin/phpunit
+
+branches:
+  only:
+    - master
+    - develop
