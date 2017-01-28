@@ -1,0 +1,38 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+      - node_modules
+      - vendor
+      - $HOME/.composer/cache
+
+php:
+  - '7.0'
+  - '7.1'
+
+before_script:
+  - mkdir bootstrap/cache
+  - cp .env.travis .env
+  - mysql -e 'create database protecms_test'
+  - export DB_DATABASE=protecms_test
+  - export DB_USERNAME=travis
+  - export DB_PASSWORD=
+  - npm install
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan protecms:seeddevdata
+
+script:
+  - gulp
+  - vendor/bin/phpunit
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email: 'web@protecms.com'
