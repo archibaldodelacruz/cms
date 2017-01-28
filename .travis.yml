@@ -8,6 +8,9 @@ cache:
       - vendor
       - $HOME/.composer/cache
 
+node_js:
+  - "node"
+
 php:
   - '7.0'
   - '7.1'
