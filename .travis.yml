@@ -33,6 +33,7 @@ branches:
   only:
     - master
     - develop
+    - feature/travisci
 
 notifications:
   email: 'web@protecms.com'
