@@ -12,8 +12,6 @@ php:
   - '7.0'
   - '7.1'
 
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
-
 install:
   - mysql -e 'create database protecms_test'
   - . $HOME/.nvm/nvm.sh
