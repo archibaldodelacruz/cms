@@ -9,10 +9,11 @@ cache:
       - $HOME/.composer/cache
 
 env:
-  - DB_DATABASE=protecms_test
-  - DB_USERNAME=travis
-  - DB_PASSWORD=
-  - MAIL_DRIVER=log
+  - global:
+    - DB_DATABASE=protecms_test
+    - DB_USERNAME=travis
+    - DB_PASSWORD=
+    - MAIL_DRIVER=log
 
 php:
   - '7.0'
