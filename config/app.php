@@ -182,7 +182,6 @@ return [
          * Vendor Service Providers...
          */
         Dimsav\Translatable\TranslatableServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         igaster\laravelTheme\themeServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,

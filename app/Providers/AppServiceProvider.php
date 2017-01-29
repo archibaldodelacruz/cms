@@ -7,6 +7,7 @@ use App\Models\Webs\Web;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\Debugbar\ServiceProvider as DebugBar;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -63,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment('local')) {
             $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(DebugBar::class);
         }
 
         if ($this->app->environment('local', 'testing')) {
