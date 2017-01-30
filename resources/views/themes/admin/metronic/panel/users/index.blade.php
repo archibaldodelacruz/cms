@@ -84,7 +84,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-6 col-xs-6">
-                                        <a href="{{ route('admin::panel::users::delete', ['id' => $user->id]) }}" class="btn btn-danger btn-block confirm-custom {{ $user->id == Auth::user()->id ? 'disabled' : '' }}" data-title="Acción irreversible" data-text="¿Está seguro de que desea continuar? Se eliminará el usuario permanentemente del sistema y no se podrá recuperar. <br><br>Se perderá todo lo relacionado con el usuario como por ejemplo los comentarios publicados en la web. {{ $user->isAdminOrVolunteer() ? '<br><br>(Cosas como los artículos o páginas publicados por el usuario serán asignados al usuario administrador)' : '' }}">
+                                        <a href="{{ route('admin::panel::users::delete', ['id' => $user->id]) }}" class="btn btn-danger btn-block confirm-custom {{ $user->id == Auth::user()->id ? 'disabled' : '' }}" data-title="Acción irreversible" data-content="¿Está seguro de que desea continuar? Se eliminará el usuario permanentemente del sistema y no se podrá recuperar. <br><br>Se perderá todo lo relacionado con el usuario como por ejemplo los comentarios publicados en la web. {{ $user->isAdminOrVolunteer() ? '<br><br>(Cosas como los artículos o páginas publicados por el usuario serán asignados al usuario administrador)' : '' }}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>

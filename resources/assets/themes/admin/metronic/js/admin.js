@@ -101,18 +101,36 @@ $(document).ready(function() {
 
     $('.confirm').confirm({
         title: 'Confirma la acción',
-        text: '¿Estás seguro de que quieres continuar?',
-        confirmButton: 'Continuar',
-        cancelButton: 'Cancelar',
-        confirmButtonClass: 'btn-success',
-        cancelButtonClass: 'pull-left btn-danger'
+        content: '¿Estás seguro de que quieres continuar?',
+        buttons: {
+            confirm: {
+                text: 'Continuar',
+                btnClass: 'btn-danger',
+                action: function() {
+                    location.href = this.$target.attr('href');
+                }
+            },
+            cancel: {
+                text: 'Cancelar',
+                btnClass: 'btn-default'
+            }
+        }
     });
 
     $('.confirm-custom').confirm({
-        confirmButton: 'Continuar',
-        cancelButton: 'Cancelar',
-        confirmButtonClass: 'btn-success',
-        cancelButtonClass: 'pull-left btn-danger'
+        buttons: {
+            confirm: {
+                text: 'Continuar',
+                btnClass: 'btn-danger',
+                action: function() {
+                    location.href = this.$target.attr('href');
+                }
+            },
+            cancel: {
+                text: 'Cancelar',
+                btnClass: 'btn-default'
+            }
+        }
     });
 
     $('.datetimerange').daterangepicker({

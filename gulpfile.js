@@ -30,6 +30,7 @@ elixir.extend('admin', function (mix) {
         './node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css',
         './node_modules/cropperjs/dist/cropper.min.css',
         './node_modules/animate.css/animate.css',
+        './node_modules/jquery-confirm/dist/jquery-confirm.min.css',
         './node_modules/bootstrap-daterangepicker/daterangepicker.css',
         './node_modules/magnific-popup/dist/magnific-popup.css',
     ], 'public/assets/admin/css/admin-plugins.css');

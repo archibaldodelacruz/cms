@@ -18,7 +18,20 @@
 <div class="row changelog">
     <div class="col-md-12">
 
-        <h2>Versión 2.1.0 <small>(actual)</small></h2>
+        <h2>Versión 2.1.2 <small>(actual)</small></h2>
+        <h4>27-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadidas mejoras internas en la aplicación de nuevas actualizaciones.</li>
+            <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que los enlaces de *Eliminar* no funcionasen correctamente.</li>
+        </ul>
+
+        <h2>Versión 2.1.1</h2>
+        <h4>28-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadidas mejoras internas.</li>
+        </ul>
+
+        <h2>Versión 2.1.0</h2>
         <h4>27-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Aplicadas varias actualizaciones estructurales importantes de forma interna.</li>
