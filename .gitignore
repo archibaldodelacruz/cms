@@ -9,7 +9,7 @@ Homestead.json
 /public/assets
 /public/themes
 /storage/debugbar
-/storage/app
+/storage/app/web
 /public/uploads
 /public/build
 /resources/views/vendor
