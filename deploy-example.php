@@ -13,11 +13,11 @@ set('writable_mode', 'chmod');
 add('shared_files', []);
 add('shared_dirs', [
     'public/uploads',
-    'node_modules'
+    'node_modules',
 ]);
 
 add('writable_dirs', [
-    'public/uploads'
+    'public/uploads',
 ]);
 
 // Servers
