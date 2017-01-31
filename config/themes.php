@@ -66,6 +66,12 @@ return [
             'asset-path'    => 'themes/default',
         ],
 
+        'bulma' => [
+            'extends'       => null,
+            'views-path'    => 'web/bulma',
+            'asset-path'    => 'themes/bulma',
+        ],
+
         /*
          * Admin themes
          */

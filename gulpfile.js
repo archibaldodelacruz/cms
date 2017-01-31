@@ -105,6 +105,30 @@ elixir.extend('themesDefault', function (mix) {
     mix.copy('resources/assets/themes/web/default/images', 'public/themes/default/images');
 });
 
+elixir.extend('themesBulma', function (mix) {
+    mix.sass('./resources/assets/themes/web/bulma/sass/bulma.sass', 'public/themes/bulma/css');
+
+    mix.styles([
+        './node_modules/font-awesome/css/font-awesome.css',
+        './node_modules/magnific-popup/dist/magnific-popup.css',
+        './node_modules/animate.css/animate.css'
+    ], 'public/themes/bulma/css/app.css');
+
+    mix.scripts([
+         './node_modules/jquery/dist/jquery.js',
+         './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+         './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
+         './node_modules/noty/js/noty/packaged/jquery.noty.packaged.js',
+         './node_modules/js-cookie/src/js.cookie.js',
+         './resources/assets/themes/web/bulma/js/app.js'
+    ], 'public/themes/bulma/js/app.js');
+
+    // Fontawesome
+    mix.copy('./node_modules/font-awesome/fonts', 'public/build/themes/bulma/fonts');
+
+    mix.copy('resources/assets/themes/web/bulma/images', 'public/themes/bulma/images');
+});
+
 /********************************************
  * Install
  *******************************************/
@@ -133,6 +157,7 @@ elixir(function (mix) {
     mix.global(mix);
     mix.admin(mix);
     mix.themesDefault(mix);
+    mix.themesBulma(mix);
     mix.install(mix);
 
     mix.version([
@@ -147,6 +172,10 @@ elixir(function (mix) {
         'themes/default/css/app.css',
         'themes/default/css/default.css',
         'themes/default/js/app.js',
+
+        // Bulma
+        'themes/bulma/css/bulma.css',
+        'themes/bulma/js/app.js',
 
         // Install
         'assets/install/css/install.css',
