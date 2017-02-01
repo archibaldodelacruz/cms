@@ -27,6 +27,7 @@ class CreateAnimalsNotesTable extends Migration
         Schema::create('animals_notes_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('note_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('locale')->index();
             $table->text('title');
             $table->text('text');
@@ -35,6 +36,7 @@ class CreateAnimalsNotesTable extends Migration
 
             $table->unique(['note_id', 'locale']);
             $table->foreign('note_id')->references('id')->on('animals_notes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

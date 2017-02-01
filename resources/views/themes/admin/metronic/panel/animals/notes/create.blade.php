@@ -52,10 +52,21 @@
                                 {!! $errors->first('status', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
+                        <div class="form-group {{ $errors->has(config('app.locale') . '.user_id') ? 'has-error' : '' }}">
+                            <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.author')) }}</label>
+                            <div class="col-md-10">
+                                <select name="{{ config('app.locale') }}[user_id]" class="form-control" required>
+                                    @foreach ($web->volunteers as $user)
+                                        <option value="{{ $user->id }}" {{ $user->id == Request::user()->id ? 'selected' : '' }} {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first(config('app.locale') . '.user_id', '<span class="help-block">:message</span>') !!}
+                            </div>
+                        </div>
                         <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
                             <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.published_at')) }}</label>
                             <div class="col-md-10">
-                                <input type="text" name="published_at" value="{{ date('Y-m-d H:i:s') }}" class="form-control datetimepicker" required>
+                                <input type="text" name="published_at" value="{{ date('d-m-Y H:i:s') }}" class="form-control datetimepicker" required>
                                 {!! $errors->first('published_at', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>

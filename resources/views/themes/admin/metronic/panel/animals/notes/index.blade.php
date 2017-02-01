@@ -31,9 +31,6 @@
                     Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
                         <option value="-published_at" {{ $request->get('sort') == '-published_at' ? 'selected' : '' }}>Fecha</option>
                         <option value="published_at" {{ $request->get('sort') == 'published_at' ? 'selected' : '' }}>Fecha (inversa)</option>
-                        <option value="title" {{ $request->get('sort') == 'title' ? 'selected' : '' }}>Título</option>
-                        <option value="-title" {{ $request->get('sort') == '-title' ? 'selected' : '' }}>Título (inversa)</option>
-                        
                     </select>
                 </div>
                 <div class="table-scrollable">

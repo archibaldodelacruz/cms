@@ -9,10 +9,11 @@ class UpdateRequest extends BaseRequest
     public function rules()
     {
         return [
-            $this->get('langform').'.title' => 'required',
-            $this->get('langform').'.text'  => 'required',
-            'status'                        => 'required|in:'.implode(',', config('protecms.animals.notes.status')),
-            'published_at'                  => 'required',
+            $this->get('langform').'.title'   => 'required',
+            $this->get('langform').'.text'    => 'required',
+            $this->get('langform').'.user_id' => 'required|exists:users,id',
+            'status'                          => 'required|in:'.implode(',', config('protecms.animals.notes.status')),
+            'published_at'                    => 'required',
         ];
     }
 }

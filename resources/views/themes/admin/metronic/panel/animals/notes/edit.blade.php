@@ -54,6 +54,17 @@
                                 {!! $errors->first('status', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
+                        <div class="form-group {{ $errors->has($langform.'.user_id') ? 'has-error' : '' }}">
+                            <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.author')) }}</label>
+                            <div class="col-md-10">
+                                <select name="{{ $langform }}[user_id]" class="form-control" required>
+                                    @foreach ($web->volunteers as $user)
+                                        <option value="{{ $user->id }}" {{ $note->hasTranslation($langform) ? $note->translate($langform)->user_id == $user->id ? 'selected' : '' : Auth::user()->id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first($langform.'.user_id', '<span class="help-block">:message</span>') !!}
+                            </div>
+                        </div>
                         <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
                             <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.published_at')) }}</label>
                             <div class="col-md-10">

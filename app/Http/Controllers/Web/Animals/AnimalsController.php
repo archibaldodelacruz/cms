@@ -83,6 +83,17 @@ class AnimalsController extends BaseWebController
         return redirect()->route('web::animals::show', ['id' => $animal->id]);
     }
 
+    public function note($animal_id, $id)
+    {
+        $note = $this->web->animals()
+            ->where('visible', 'visible')
+            ->findOrFail($animal_id)
+            ->public_notes()
+            ->findOrFail($id);
+
+        return view('animals.notes.show', compact('note'));
+    }
+
     /*
      * TODO: Temporal
      */
