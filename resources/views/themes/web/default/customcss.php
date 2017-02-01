@@ -28,7 +28,8 @@ $color = $web->getConfig('themes.default.color');
 */
 .widgets .widget .widget-bottom,
 .widgets .widget > h4,
-.pagination > .active > span {
+.pagination > .active > span,
+.label-primary {
     background-color: <?php echo $color; ?>;
 }
 .animal-card .animal-share i:hover,

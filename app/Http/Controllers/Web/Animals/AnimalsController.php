@@ -36,7 +36,9 @@ class AnimalsController extends BaseWebController
     {
         $animal = $this->web->animals()
             ->where('visible', 'visible')
-            ->with(['translations', 'public_sponsorships', 'photos' => function ($query) {
+            ->with(['translations', 'public_sponsorships', 'public_notes' => function ($query) {
+                $query->where('published_at', '<', date('Y-m-d H:i:s'));
+            }, 'photos' => function ($query) {
                 $query->main();
             }])->findOrFail($id);
 
@@ -79,6 +81,17 @@ class AnimalsController extends BaseWebController
         flash('Mensaje enviado correctamente.');
 
         return redirect()->route('web::animals::show', ['id' => $animal->id]);
+    }
+
+    public function note($animal_id, $id)
+    {
+        $note = $this->web->animals()
+            ->where('visible', 'visible')
+            ->findOrFail($animal_id)
+            ->public_notes()
+            ->findOrFail($id);
+
+        return view('animals.notes.show', compact('note'));
     }
 
     /*

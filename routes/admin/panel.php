@@ -80,6 +80,15 @@ Route::group(['prefix' => 'panel',  'as' => 'panel::', 'namespace' => 'Panel', '
             Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'SponsorshipsController@delete']);
         });
 
+        Route::group(['prefix' => '{animal_id}/notes', 'as' => 'notes::'], function () {
+            Route::get('/', ['as' => 'index', 'uses' => 'NotesController@index']);
+            Route::get('/create', ['as' => 'create', 'uses' => 'NotesController@create']);
+            Route::post('/', ['as' => 'store', 'uses' => 'NotesController@store']);
+            Route::get('/{id}/edit', ['as' => 'edit', 'uses' => 'NotesController@edit']);
+            Route::put('/{id}', ['as' => 'update', 'uses' => 'NotesController@update']);
+            Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'NotesController@delete']);
+        });
+
         Route::group(['prefix' => '{id}/export', 'as' => 'export::'], function () {
             Route::get('/pdf', ['as' => 'pdf', 'uses' => 'ExportController@pdf']);
             Route::get('/word', ['as' => 'word', 'uses' => 'ExportController@word']);

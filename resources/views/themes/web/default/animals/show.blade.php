@@ -178,6 +178,25 @@
 			</div>
 		</div>
 		@endif
+
+		@if (count($animal->public_notes))
+		<div class="row animal-notes">
+			<div class="col-md-12">
+				<h4 id="notas">Notas</h4>
+				<hr>
+			</div>
+			<div class="col-md-12">
+				@foreach ($animal->public_notes as $note)
+					<ul class="list-group">
+						<li class="list-group-item">
+							<a href="{{ route('web::animals::notes::show', ['animal_id' => $animal->id, 'id' => $note->id]) }}"><span class="label label-primary">{{ $note->published_at->diffForHumans() }}</span>
+							{{ $note->title }}</a>
+						</li>
+					</ul>
+				@endforeach
+			</div>
+		</div>
+		@endif
 	</div>
 
 	<div class="animal-contact row {{ in_array($animal->status, ['adopted', 'dead']) ? 'hide' : '' }}">
