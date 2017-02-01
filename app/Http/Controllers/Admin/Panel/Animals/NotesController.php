@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin\Panel\Animals;
 use Illuminate\Http\Request;
 use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\Notes\StoreRequest;
 use App\Http\Requests\Animals\Notes\UpdateRequest;
+use App\Http\Controllers\Admin\BaseAdminController;
 
 class NotesController extends BaseAdminController
 {
