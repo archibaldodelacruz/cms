@@ -17,7 +17,7 @@ class Note extends BaseModel
     protected $dates = ['published_at'];
     protected $touches = ['animal'];
     protected $fillable = [
-        'animal_id', 'published_at', 'status'
+        'animal_id', 'published_at', 'status',
     ];
 
     public function setAttribute($key, $value)

@@ -107,8 +107,8 @@ return [
     'notes' => [
         'status' => [
             'public',
-            'private'
-        ]
-    ]
+            'private',
+        ],
+    ],
 
 ];

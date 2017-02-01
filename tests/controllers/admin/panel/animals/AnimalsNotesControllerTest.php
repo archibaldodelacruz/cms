@@ -19,7 +19,7 @@ class AnimalsNotesControllerTest extends BrowserKitTest
 
         $this->actingAs($this->authUser())
             ->visitRoute('admin::panel::animals::notes::index', ['id' => $animal->id])
-            ->see("Notas")
+            ->see('Notas')
             ->countElements('table.table-center tbody tr', 5);
     }
 
@@ -59,7 +59,7 @@ class AnimalsNotesControllerTest extends BrowserKitTest
 
         $this->actingAs($this->authUser())
             ->seeInDatabase('animals_notes', [
-                'animal_id' => $animal->id
+                'animal_id' => $animal->id,
             ])
             ->visitRoute('admin::panel::animals::notes::edit', ['id' => $notes->id, 'animal_id' => $animal->id])
             ->see('Jaime')
