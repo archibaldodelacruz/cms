@@ -141,4 +141,14 @@ class Animal extends BaseModel
     {
         return $this->hasMany(Sponsorship::class)->where('visible', 'visible');
     }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function public_notes()
+    {
+        return $this->hasMany(Note::class)->where('status', 'public');
+    }
 }

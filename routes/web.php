@@ -13,6 +13,7 @@ Route::group(['as' => 'web::', 'namespace' => 'Web', 'middleware' => ['checkInst
         Route::group(['prefix' => trans_choice('routes.animals', 1)], function () {
             Route::get('/{id}', ['as' => 'show', 'uses' => 'AnimalsController@show']);
             Route::post('/{id}/contact', ['as' => 'contact', 'uses' => 'AnimalsController@contact']);
+            Route::get('{animal_id}/notas/{id}', ['as' => 'notes::show', 'uses' => 'AnimalsController@note']);
         });
     });
 

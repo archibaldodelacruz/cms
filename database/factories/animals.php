@@ -66,3 +66,22 @@ $factory->define(App\Models\Animals\Sponsorship::class, function (Faker\Generato
         'visible'        => $faker->randomElement(config('protecms.animals.sponsorships.visible')),
     ];
 });
+
+$factory->define(App\Models\Animals\Note::class, function (Faker\Generator $faker) {
+    $title = $faker->sentence;
+
+    return [
+        'animal_id' => function () {
+            return factory(App\Models\Animals\Note::class)->create()->id;
+        },
+        'user_id' => function () {
+            return factory(App\Models\Users\User::class)->create()->id;
+        },
+        'status'       => $faker->randomElement(config('protecms.animals.notes.status')),
+        'published_at' => $faker->dateTime->format('d-m-Y H:i:s'),
+        'es'           => [
+            'title'    => $title,
+            'text'     => $faker->paragraph,
+        ],
+    ];
+});

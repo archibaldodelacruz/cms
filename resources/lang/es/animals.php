@@ -103,4 +103,11 @@ return [
         ],
     ],
 
+    'notes' => [
+        'status' => [
+            'public' => 'Pública',
+            'private' => 'Privada',
+        ],
+    ],
+
 ];

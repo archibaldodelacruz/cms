@@ -24,6 +24,14 @@
         </div>
     </div>
 
+    <div class="collapse-block" id="notes-collapse">
+        <a href="#collapseNotes" class="list-group-item {{ Request::is('admin/panel/animals/*/notes*') ? 'active' : '' }}" data-toggle="collapse" data-parent="#notes-collapse" aria-expanded="false" aria-controls="collapseNotes"><i class="fa fa-file-text-o"></i> Notas <i class="fa fa-caret-down pull-right"></i></a>
+        <div id="collapseNotes" class="{{ Request::is('admin/panel/animals/*/notes*') ? '' : 'collapse' }}">
+            <a href="{{ route('admin::panel::animals::notes::index', ['id' => $animal->id]) }}" class="list-group-item {{ Request::is('admin/panel/animals/*/notes') ? 'active' : '' }}" style="padding-left: 30px"><i class="fa fa-list-ul"></i> Listado</a>
+            <a href="{{ route('admin::panel::animals::notes::create', ['id' => $animal->id]) }}" class="list-group-item {{ Request::is('admin/panel/animals/*/notes/create') ? 'active' : '' }}" style="padding-left: 30px"><i class="fa fa-plus-square"></i> Añadir nota</a>
+        </div>
+    </div>
+
     <div class="collapse-block hidden-xs" id="export-collapse">
         <a href="#collapseExport" class="list-group-item {{ Request::is('admin/panel/animals/*/export*') ? 'active' : '' }}" data-toggle="collapse" data-parent="#export-collapse" aria-expanded="false" aria-controls="collapseExport"><i class="fa fa-download"></i> Exportar ficha <i class="fa fa-caret-down pull-right"></i></a>
         <div id="collapseExport" class="{{ Request::is('admin/panel/animals/*/export*') ? '' : 'collapse' }}">

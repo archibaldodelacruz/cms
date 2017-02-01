@@ -16,7 +16,6 @@
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
                 <option value="-published_at" {{ $request->get('sort') == '-published_at' ? 'selected' : '' }}>Fecha de publicación</option>
-                
             </select>
         </div>
         <div class="table-scrollable">
