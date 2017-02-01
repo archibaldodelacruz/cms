@@ -18,8 +18,14 @@
 <div class="row changelog">
     <div class="col-md-12">
 
-        <h2>Versión 2.1.2 <small>(actual)</small></h2>
-        <h4>27-01-2017</h4>
+        <h2>Versión 2.1.3 <small>(actual)</small></h2>
+        <h4>01-02-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadidas las notas de los animales.</li>
+        </ul>
+
+        <h2>Versión 2.1.2</h2>
+        <h4>30-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadidas mejoras internas en la aplicación de nuevas actualizaciones.</li>
             <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que los enlaces de *Eliminar* no funcionasen correctamente.</li>
