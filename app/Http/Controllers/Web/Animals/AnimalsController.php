@@ -36,7 +36,9 @@ class AnimalsController extends BaseWebController
     {
         $animal = $this->web->animals()
             ->where('visible', 'visible')
-            ->with(['translations', 'public_sponsorships', 'photos' => function ($query) {
+            ->with(['translations', 'public_sponsorships', 'public_notes' => function ($query) {
+                $query->where('published_at', '<', date('Y-m-d H:i:s'));
+            }, 'photos' => function ($query) {
                 $query->main();
             }])->findOrFail($id);
 
