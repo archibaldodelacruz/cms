@@ -1,5 +1,13 @@
 @extends('themes.web.default.layouts.base')
 
+@section('page.title')
+	Ficha de {{ $animal->name }}
+@stop
+
+@section('page.description')
+	{{ str_limit(strip_tags($animal->text), 150, '...') }}
+@stop
+
 @section('meta.share')
 	@if (count($animal->photos))
 		<meta itemprop="image" content="{{ $animal->photos[0]->medium_thumbnail_url }}">
@@ -39,7 +47,7 @@
 			<div class="col-md-12 animal-card-title">
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<h4>Ficha de {{ $animal->name }}</h4>
+						<h1>Ficha de {{ $animal->name }}</h1>
 					</div>
 					<div class="col-xs-6 col-md-6">
 						<div class="animal-share">

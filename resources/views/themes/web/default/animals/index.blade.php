@@ -1,6 +1,16 @@
 @extends('themes.web.default.layouts.base')
 
+@section('page.title')
+	Listado de animales
+@stop
+
+@section('page.description')
+	En esta página se muestran los animales de la protectora de animales. Se puede acceder a la ficha individual de cada animal y añadir filtros al listado.
+@stop
+
 @section('content')
+
+	<h1 class="page-title hidden">Listado de animales</h1>
 
 	<div class="animals row">
 

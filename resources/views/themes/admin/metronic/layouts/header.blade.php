@@ -11,8 +11,9 @@
         <title>Panel de Administración | ProteCMS</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
+        <meta content="Panel de adminsitración del proyecto ProteCMS" name="description" />
+        <meta content="ProteCMS" name="author" />
+        <meta name="robots" content="noindex">
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link rel="stylesheet" type="text/css" href="{{ elixir('assets/admin/css/metronic.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ elixir('assets/admin/css/admin-plugins.css') }}">

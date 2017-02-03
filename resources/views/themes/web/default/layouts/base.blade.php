@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<title>{{ $web->name }}</title>
-	<meta name="description" content="{{ $web->description }}" />
+	<title>
+		@hasSection('page.title')
+			@yield('page.title') - {{ $web->name }}
+		@else
+			{{ $web->name }}
+		@endif
+	</title>
+
+	<meta name="description" content="@section('page.description') {{ $web->description }} @show" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="protecms, adopciones, animales, acogidas, asociacion, refugio, casas de acogida, perros, gatos">
 
 	<link rel="stylesheet" type="text/css" href="{{ elixir('themes/default/css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ elixir('themes/default/css/default.css') }}">
@@ -44,6 +53,10 @@
 
 </head>
 <body>
+	
+	@if (Request::is('/'))
+		<h1 class="page-title-hidden">{{ $web->name }}</h1>
+	@endif
 
 	@if (config('protecms.cms.env') == 'demo')
 	<nav class="navbar navbar-default">
@@ -78,7 +91,7 @@
 					@if ($web->logo)
 						<img src="{{ route('web::image', ['file' => $web->logo]) }}" class="img-responsive center-block" alt="{{ $web->name }}">
 					@else
-						<h1>{{ $web->name }}</h1>
+						<p class="text-center" style="font-size: 24px;margin-top: 15px">{{ $web->name }}</p>
 					@endif
 				</a>
 				<a href="#" class="widgets-right-button">
