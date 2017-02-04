@@ -150,7 +150,7 @@
                                 'field' => 'text'
                             ])
 
-                            <p class="form-control-static">{{ $animal->hasTranslation($langform) ? $animal->translate($langform)->text : '-' }}</p>
+                            <p class="form-control-static">{!! $animal->hasTranslation($langform) ? $animal->translate($langform)->text : '-' !!}</p>
                         </div>
                     </div>
                     <div class="form-actions">
