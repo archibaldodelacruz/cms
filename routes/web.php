@@ -41,3 +41,4 @@ Route::group(['as' => 'web::', 'namespace' => 'Web', 'middleware' => ['checkInst
 Route::get('/images/animal/{id}/photo/{photo}', ['as' => 'animals::photo', 'uses' => 'ResponseFilesController@animal_photo']);
 Route::get('/uploads/{file}', ['as' => 'web::upload', 'uses' => 'ResponseFilesController@web_file_upload']);
 Route::get('/images/{file}', ['as' => 'web::image', 'uses' => 'ResponseFilesController@web_image']);
+Route::get('/sitemap.xml', ['as' => 'web::sitemap', 'uses' => 'ResponseFilesController@sitemap']);

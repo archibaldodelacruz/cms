@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce97a6e9e6a0ec6e46ae89fb124a851b",
-    "content-hash": "7a01b09b4c10f85f51ffb488f83a4ec5",
+    "hash": "0c407cb4e977b7c8a922f9bd1a4ee5a4",
+    "content-hash": "afe8158310a3d989df526084c5a071ea",
     "packages": [
         {
             "name": "dimsav/laravel-translatable",
@@ -2027,6 +2027,60 @@
             "time": "2016-11-22 19:21:44"
         },
         {
+            "name": "spatie/crawler",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/crawler.git",
+                "reference": "36a9d28b6b4bced3a272e0609c4598a18b34be48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/36a9d28b6b4bced3a272e0609c4598a18b34be48",
+                "reference": "36a9d28b6b4bced3a272e0609c4598a18b34be48",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": "^7.0",
+                "symfony/dom-crawler": "^3.0",
+                "tightenco/collect": "^5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Crawler\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "Crawl all internal links found on a website",
+            "homepage": "https://github.com/spatie/crawler",
+            "keywords": [
+                "crawler",
+                "link",
+                "spatie",
+                "website"
+            ],
+            "time": "2017-01-28 08:50:57"
+        },
+        {
             "name": "spatie/laravel-analytics",
             "version": "2.4.0",
             "source": {
@@ -2081,6 +2135,56 @@
                 "spatie"
             ],
             "time": "2017-01-23 14:33:40"
+        },
+        {
+            "name": "spatie/laravel-sitemap",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-sitemap.git",
+                "reference": "7f9cc2e2c2b0b8c47d847e80c131601dfe40d4d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/7f9cc2e2c2b0b8c47d847e80c131601dfe40d4d9",
+                "reference": "7f9cc2e2c2b0b8c47d847e80c131601dfe40d4d9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.3.0|~5.4.0",
+                "nesbot/carbon": "^1.21",
+                "php": "^7.0",
+                "spatie/crawler": "^2.0.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.3.0|~3.4.0",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Sitemap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create and generate sitemaps with ease",
+            "homepage": "https://github.com/spatie/laravel-sitemap",
+            "keywords": [
+                "laravel-sitemap",
+                "spatie"
+            ],
+            "time": "2017-01-27 20:48:43"
         },
         {
             "name": "swiftmailer/swiftmailer",
