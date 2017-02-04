@@ -1,4 +1,4 @@
-<h3><a href="{{ route('web::posts::show', ['id' => $post->id, 'slug' => $post->slug]) }}">{{ $post->title }}</a></h3>
+<h1><a href="{{ route('web::posts::show', ['id' => $post->id, 'slug' => $post->slug]) }}">{{ $post->title }}</a></h1>
 <div class="post-content">{!! $post->text !!}</div>
 
 @if (! Request::is('/') && $post->form)

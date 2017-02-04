@@ -36,4 +36,15 @@ class ResponseFilesController extends Controller
 
         return response()->file($path);
     }
+
+    public function sitemap()
+    {
+        $path = storage_path('app/web/'.$this->web->id.'/sitemap.xml');
+
+        if (! is_file($path)) {
+            abort(404);
+        }
+
+        return response()->file($path);
+    }
 }

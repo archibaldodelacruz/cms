@@ -1,5 +1,13 @@
 @extends('themes.web.default.layouts.base')
 
+@section('page.title')
+	{{ $page->title }}
+@stop
+
+@section('page.description')
+	{{ str_limit(strip_tags($page->text), 150, '...') }}
+@stop
+
 @section('meta.share')
 	@if (preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $page->text, $metaimage))
 		<meta itemprop="image" content="{{ $web->getUrl() . $metaimage['src'] }}" />

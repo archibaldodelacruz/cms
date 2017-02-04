@@ -187,6 +187,7 @@ return [
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
 
     ],
 
