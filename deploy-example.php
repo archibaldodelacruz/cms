@@ -39,4 +39,4 @@ task('compile:assets', function () {
 
 before('deploy:symlink', 'composer:install');
 before('deploy:symlink', 'compile:assets');
-before('deploy:optimize', 'artisan:migrate');
+before('artisan:optimize', 'artisan:migrate');
