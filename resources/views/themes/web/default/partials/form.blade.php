@@ -1,6 +1,6 @@
 <div class="form">
     @if (! isset($post) && ! isset($page))
-        <h3><a href="{{ route('web::forms::show', ['id' => $form->id, 'slug' => $form->slug]) }}">{{ $form->title }}</a></h3>
+        <h1><a href="{{ route('web::forms::show', ['id' => $form->id, 'slug' => $form->slug]) }}">{{ $form->title }}</a></h1>
     @endif
     <div class="form-content">
         {!! $form->text !!}

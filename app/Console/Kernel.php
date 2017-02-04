@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\SeedDevelopmentData::class,
         Commands\NewShelter::class,
+        Commands\GenerateSitemap::class,
     ];
 
     /**
@@ -26,8 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('protecms:generatesitemap')->weekly();
     }
 
     /**

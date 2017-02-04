@@ -1,4 +1,4 @@
-<h3><a href="{{ route('web::pages::show', ['id' => $page->id, 'slug' => $page->slug]) }}">{{ $page->title }}</a></h3>
+<h1><a href="{{ route('web::pages::show', ['id' => $page->id, 'slug' => $page->slug]) }}">{{ $page->title }}</a></h1>
 <div class="post-content">{!! $page->text !!}</div>
 
 @if ($page->form)
