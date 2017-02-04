@@ -19,6 +19,12 @@
     <div class="col-md-12">
 
         <h2>Versión 2.1.3 <small>(actual)</small></h2>
+        <h4>03-02-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Mejoras en el SEO de la página web.</li>
+            <li><span class="label label-info">novedad</span> Añadido el <a href="/sitemap.xml" target="_blank">sitemap</a> a la página de la protectora (útil para buscadores). Se actualiza semanalmente.</li>
+        </ul>
+
         <h4>01-02-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadidas las notas de los animales.</li>
