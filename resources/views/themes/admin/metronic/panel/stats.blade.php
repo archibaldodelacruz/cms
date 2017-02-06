@@ -37,7 +37,7 @@
                 <div id="stats" style="width: 100%; height: 400px; overflow: scroll">
                     <div class="col-md-6">
                         <h4>Animales</h4>
-                        <table class="table table-striped">
+                        <table class="table table-stats table-striped">
                             <tr>
                                 <td>Animales</td>
                                 <td class="text-right">{{ $data['animals_total'] }}</td>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-md-6">
                         <h4>Usuarios</h4>
-                        <table class="table table-striped">
+                        <table class="table table-stats table-striped">
                             <tr>
                                 <td>Usuarios</td>
                                 <td class="text-right">{{ $data['users'] }}</td>
@@ -122,21 +122,21 @@
                             </tr>
                         </table>
                         <h4>Socios</h4>
-                        <table class="table table-striped">
+                        <table class="table table-stats table-striped">
                             <tr>
                                 <td>Socios</td>
                                 <td class="text-right">{{ $data['partners'] }}</td>
                             </tr>
                         </table>
                         <h4>Artículos</h4>
-                        <table class="table table-striped">
+                        <table class="table table-stats table-striped">
                             <tr>
                                 <td>Artículos</td>
                                 <td class="text-right">{{ $data['posts'] }}</td>
                             </tr>
                         </table>
                         <h4>Otras estadísticas</h4>
-                        <table class="table table-striped">
+                        <table class="table table-stats table-striped">
                             <tr>
                                 <td>Páginas</td>
                                 <td class="text-right">{{ $data['pages'] }}</td>
