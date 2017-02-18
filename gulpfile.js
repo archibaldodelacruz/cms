@@ -117,6 +117,7 @@ elixir.extend('install', function (mix) {
 
     mix.scripts([
         './node_modules/jquery/dist/jquery.js',
+        './resources/assets/plugins/jquery-migrate-3.0.0.min.js',
         './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
         './node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js',
         './node_modules/cropit/dist/jquery.cropit.js'
