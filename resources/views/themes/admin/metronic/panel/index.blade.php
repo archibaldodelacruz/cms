@@ -1,6 +1,16 @@
 @extends('themes.admin.metronic.layouts.base')
 
 @section('content')
+
+<div class="alert alert-info text-center">
+    <p>
+        <h4>¡El proyecto ya tiene Teaming oficial!</h4> 
+        Con solo 1€ al mes ayudarás a costear los gastos de servidores y servicios. 
+        <br><small>Esto es totalmente opcional, ProteCMS <strong>siempre será gratis</strong>.</small>
+    </p>
+    <a href="https://www.teaming.net/protecms" target="_blank" class="btn btn-default margin-top-10">Donar 1€ al mes</a>
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="portlet light bordered">
