@@ -2,6 +2,7 @@
 
 namespace App\Mail\Support;
 
+use Auth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -20,6 +21,7 @@ class SendContact extends Mailable
     public function build()
     {
         $build = $this->view('emails.support.contact')
+            ->replyTo(Auth::user()->email)
             ->subject('Mensaje de soporte');
 
         if ($this->request->hasFile('attachments')) {

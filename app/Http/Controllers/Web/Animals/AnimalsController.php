@@ -74,7 +74,8 @@ class AnimalsController extends BaseWebController
             'animal' => $animal,
         ], function ($m) use ($animal, $data) {
             $m->to($this->web->getConfig('animals.contact_email'))
-                ->from($data['email'])
+                ->from(config('mail.from.address'))
+                ->replyTo($data['email'])
                 ->subject($data['subject']);
         });
 
