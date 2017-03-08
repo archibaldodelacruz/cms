@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class VerifyAdminAccess
@@ -12,6 +13,13 @@ class VerifyAdminAccess
             && ! $request->user()->hasPermission('admin')
             || $request->user()->isBanned()
             || ! $request->user()->isAdminOrVolunteer()) {
+
+            if ($request->path() === 'admin/panel') {
+                Auth::logout();
+                flash('No tienes permisos para acceder al panel de administración.', 'error');
+                return redirect()->route('auth::login');
+            }
+
             abort(401);
         }
 
