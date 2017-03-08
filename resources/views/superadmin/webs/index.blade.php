@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
     <li>
-        <a href="{{ route('admin::panel::users::index') }}">Usuarios</a>
+        <a href="{{ route('superadmin::webs::index') }}">Protectoras</a>
     </li>
 @stop
 
