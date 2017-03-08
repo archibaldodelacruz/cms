@@ -19,9 +19,17 @@
     <div class="col-md-12">
 
         <h2>Versión 2.1.3 <small>(actual)</small></h2>
+        <h4>09-03-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadidas las opciones trimestral y semestral a las cuotas de los socios.</li>
+            <li><span class="label label-warning">corrección</span> Corregido un error que bloqueaba al usuario cuando no tenía permisos para acceder al panel de administración.</li>
+        </ul>
+
         <h4>03-03-2017</h4>
         <ul>
+            <li><span class="label label-info">novedad</span> Ahora los mails se envían desde la dirección <span class="label label-info">mail@protecms.com</span>. Añádela a los contactos de los emails de la protectora para que no se reciban como spam.</li>
             <li><span class="label label-info">novedad</span> Se ha cambiado el sistema de envíos de emails, ahora los correos de hotmail no deberían de tener problemas al recibir emails.</li>
+            <li><span class="label label-warning">corrección</span> Ahora cuando llegue un mail solicitando información de un animal, al hacer clic en responder en el cliente de correo, se reponderá al usuario.</li>
         </ul>
 
         <h4>03-02-2017</h4>
