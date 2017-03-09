@@ -39,4 +39,9 @@ class WebController extends BaseWebController
             ->view('customcss')
             ->header('Content-Type', 'text/css');
     }
+
+    public function error404()
+    {
+        return view('errors.404');
+    }
 }

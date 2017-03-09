@@ -22,6 +22,7 @@
         <h4>09-03-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadidas las opciones trimestral y semestral a las cuotas de los socios.</li>
+            <li><span class="label label-info">novedad</span> Ahora cuando se accede a una página que no existe, aparece el error integrado en la web.</li>
             <li><span class="label label-warning">corrección</span> Corregido un error que bloqueaba al usuario cuando no tenía permisos para acceder al panel de administración.</li>
         </ul>
 
