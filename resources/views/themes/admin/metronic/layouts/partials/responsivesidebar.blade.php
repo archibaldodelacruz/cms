@@ -5,6 +5,10 @@
         <li><a href="{{ route('admin::calendar::index') }}" class="btn btn-primary">Calendario</a></li>
         <li><a href="{{ route('admin::finances::index') }}" class="btn btn-primary">Finanzas</a></li>
         <li><a href="{{ route('admin::support::index') }}" class="btn btn-primary">Soporte</a></li>
+
+        @if (app('App\Models\Webs\Web')->subdomain === 'admin')
+            <li><a href="{{ route('superadmin::index') }}" class="btn btn-primary">SuperAdmin</a></li>
+        @endif
     </ul>
     <!-- BEGIN RESPONSIVE MENU FOR HORIZONTAL & SIDEBAR MENU -->
     <ul class="page-sidebar-menu page-header-fixed visible-sm visible-xs" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
