@@ -8,48 +8,31 @@
 	<link rel="stylesheet" type="text/css" href="{{ elixir('assets/install/css/install.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ elixir('assets/install/css/install-plugins.css') }}">
 
+	<link rel="shortcut icon" href="/favicon.png">
+
 	@stack('styles')
 </head>
 <body>
 
-	<div id="wrapper" class="container">
-		<div class="col-md-12">
-			<div class="header row">
-				<div class="col-md-3">
-					<img src="/assets/images/logos/logo_original@0.5x.png" class="img-responsive" alt="ProteCMS">
-				</div>
-				<div class="col-md-9">
-					<h3>
-						@section('title')
-							Instalación del proyecto
-						@show
-					</h3>
-				</div>
-			</div>
-			<div class="clearfix"></div>
+	<div class="container">
 
-			<div class="progress-block row">
-				<div class="progress">
-					@section('progress')
-						<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-						Paso 1 de 5
-						</div>
-					@show
-				</div>
+		<nav class="nav">
+			<div class="nav-center">
+				<img src="/assets/images/logo_original.png" alt="ProteCMS logo">
+				<h4 class="title is-3">{{ trans('install.install') }}</h4>
 			</div>
+		</nav>
 
-			<div class="content row">
-				<div class="col-md-offset-2 col-md-8 text-justify" style="margin-top: 40px; margin-bottom: 40px">
-					@yield('content')
-				</div>
-			</div>
+		@yield('progress')
 
-
-			<div class="footer container text-center">
-				Copyright &copy; {{ date('Y') }} <a href="http://protecms.com">ProteCMS</a>.
-			</div>
-		</div>
+		@yield('content')
 	</div>
+
+	<footer>
+		<p class="has-text-centered">
+			Copyright &copy; {{ date('Y') }} <a href="http://protecms.com" target="_blank">ProteCMS</a>. {{ trans('general.all_rights_reserved') }}.
+		</p>
+	</footer>
 
 	<script type="text/javascript" src="{{ elixir('assets/install/js/app.js') }}"></script>
 

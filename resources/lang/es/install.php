@@ -1,0 +1,55 @@
+<?php
+
+return array(
+    'install' => 'Instalación del proyecto',
+    'welcome' => 'Bienvenid@ a la instalación del proyecto.',
+    'step' => 'Paso :step de :last',
+    'description' => 'Si estás viendo esta página es que vuestra protectora está a unos pasos de tener su propia página web. Una vez hayas completado los 5 sencillos pasos, se generará automáticamente la página web de tu proyectora.',
+    'contact' => 'Si tienes cualquier duda durante el proceso de instalación, no dudes en ponerte en <a href="http://protecms.com/contacto" target="_blank">contacto</a>.',
+    'security' => 'Para continuar con la instalación debes introducir el código de seguridad que habéis recibido en el correo electrónico de la protectora.',
+    'security_code' => 'Código de seguridad',
+    'start' => 'Empezar',
+    'continue' => 'Continuar',
+    'finish' => 'Finalizar',
+    'ex' => 'Ej.',
+    'shelter_already_exists' => 'Ya existe una protectora registrada con esa dirección',
+    'invalid_code' => 'El código no es válido',
+
+    'data' => array(
+        'to_start' => 'Para comenzar, es necesario que introduzcas la información principal de vuestra protectora.',
+        'fields' => '<strong>Todos los campos son obligatorios</strong>. Podrán ser editados una vez se haya generado la página web.',
+        'no_city' => 'Si no aparece la ciudad donde se encuentra la protectora, seleccione otra ciudad de la misma provincia y notifíquelo una vez se haya completado la instalación.',
+        'shelter_data' => 'Datos de la protectora',
+        'other_data' => 'Otros datos',
+        'name' => 'Nombre de la protectora',
+        'description' => 'Descripción de la protectora',
+        'description_help' => 'En menos de 150 caracteres',
+        'description_example' => 'Somos una protectora de animales ubicada en Huelva que lucha en contra del abandono.',
+        'email' => 'Correo electrónico de la protectora',
+        'phone' => 'Teléfono de la protectora',
+        'address' => 'Dirección de la protectora',
+        'country' => 'País',
+        'state' => 'Provincia',
+        'city' => 'Ciudad',
+        'contact_name' => 'Nombre de la persona de contacto',
+        'contact_email' => 'Correo electrónico de la persona de contacto',
+        'private_data' => 'Los datos privados como la dirección o el teléfono <u>no</u> serán públicos. En ninguna circustancia.',
+        'select_country' => 'Seleccione un país',
+        'must_select_country' => 'Debes seleccionar un país',
+        'select_state' => 'Seleccione una provincia',
+        'must_select_state' => 'Debes seleccionar una provincia',
+        'select_city' => 'Seleccione una ciudad',
+        'must_select_city' => 'Debes seleccionar una ciudad',
+    ),
+
+    'design' => array(
+        'title' => 'Configura el diseño de la página web',
+        'description' => 'Aquí puedes configurar el apartado gráfico de la página web.',
+        'description2' => 'Las opciones que aquí se muestran son las opciones básicas. Una vez se haya generado la página web, se desbloquearán más opciones de personalización. Todos los datos de este formulario se pueden modificar más adelante.',
+        'select_color' => 'Selecciona el color de la protectora',
+        'select_color_help' => 'Éste será el color de la página web',
+        'logo' => 'Logo',
+        'header' => 'Cabecera',
+        'resize' => 'Redimensionar imagen'
+    )
+);

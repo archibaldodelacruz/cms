@@ -52,7 +52,7 @@ class InstallController extends Controller
             'contact_name'  => 'required',
             'contact_email' => 'required|email',
         ], [
-            'email.unique' => 'Ya existe una protectora registrada con esa dirección',
+            'email.unique' => trans('install.shelter_already_exists'),
         ]);
 
         $this->web->update($request->all());
@@ -193,7 +193,7 @@ class InstallController extends Controller
         $password = str_random(10);
 
         $user = $web->users()->create([
-            'name'     => 'Administrador',
+            'name'     => 'Admin',
             'email'    => $web->email,
             'password' => $password,
             'type'     => 'admin',
@@ -223,7 +223,7 @@ class InstallController extends Controller
         $this->validate($request, [
             'code' => 'required|exists:webs_config,value,web_id,'.$this->web->id,
         ], [
-            'code.exists' => 'El código no es válido',
+            'code.exists' => trans('install.invalid_code'),
         ]);
 
         session()->put('install_code', $request->get('code'));

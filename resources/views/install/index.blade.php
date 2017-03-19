@@ -1,23 +1,38 @@
 @extends('install.layouts.base')
 
+@section('progress')
+	<p class="has-text-centered">{{ trans('install.step', ['step' => 1, 'last' => 5]) }}</p>
+	<progress class="progress is-success is-large" value="20" max="100">20%</progress>
+@stop
+
 @section('content')
 
-	<h4>Bienvenid@ a la instalación de ProteCMS.</h4><br>
+	<div class="columns">
+		<div class="column is-offset-2 is-8">
+			<h2 class="subtitle is-4">{{ trans('install.welcome') }}</h2>
+			<p>{{ trans('install.description') }}</p>
+			<p>{!! trans('install.contact') !!}</p>
+			<p>{{ trans('install.security') }}</p>
+		</div>
+	</div>
 
-	<p>Si estás viendo esta página es que vuestra protectora está a unos pasos de tener su propia página web.</p>
-	<p>Ahora solo tienes que ir completando los pasos para finalizar. Una vez finalices la instalación se enviará un mensaje con los datos de acceso al correo electrónico de la protectora que hayas introducido.</p>
-	<p>Si tienes cualquier duda durante el proceso, no dudes en ponerte en <a href="http://protecms.com/#contact" target="_blank">contacto</a>.</p>
-	<p>Para continuar introduce el código de seguridad que has recibido en el correo electrónico del alta.</p>
-
-	<div class="col-md-offset-3 col-md-6">
-		<form action="{{ route('install::data') }}">
-			<div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-				<label for="" class="control-label text-left">Código de seguridad</label>
-				<input type="text" class="form-control" name="code" value="{{ Request::get('code') }}">
-				{!! $errors->first('code', '<span class="help-block text-left">:message</span>') !!}
-			</div>
-			<button type="submit" class="btn btn-success btn-block btn-block">Empezar</button>
-		</form>
+	<div class="columns">
+		<div class="column is-offset-4 is-4">
+			<form action="{{ route('install::data') }}">
+				<div class="field {{ $errors->has('code') ? 'has-error' : '' }}">
+					<label for="" class="label">{{ trans('install.security_code') }}</label>
+					<p class="control">
+						<input type="text" class="input" name="code" value="{{ Request::get('code') }}">
+					</p>
+					{!! $errors->first('code', '<div class="notification is-danger">:message</div>') !!}
+				</div>
+				<div class="field">
+					<p class="control">
+						<input type="submit" class="button is-info is-fullwidth is-medium" value="{{ trans('install.start') }}"></input>
+					</p>
+				</div>
+			</form>
+		</div>
 	</div>
 
 @stop

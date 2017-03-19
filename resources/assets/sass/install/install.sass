@@ -1,82 +1,86 @@
-@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap'
+@import url('https://fonts.googleapis.com/css?family=Nunito')
+@import "node_modules/bulma/bulma.sass"
 
-@font-face
-  font-family: 'Open Sans'
-  src: url('/assets/fonts/OpenSans-Regular.ttf')
+$blue: #2ac3e8
 
-@font-face
-  font-family: 'Open Sans'
-  src: url('/assets/fonts/OpenSans-Light.ttf')
-  font-weight: 300
+.button.is-info
+	background-color: $blue
 
-body
-	font-family: 'Open Sans'
-	background: #efefef
-	font-size: 16px
-	color: #333
+.button.is-info:hover
+	background-color: darken($blue, 10)
 
-.header
-	background-color: #fff
-	border: 1px solid #ddd
-	border-radius: 0 0 10px 10px
-	padding: 10 px20px
+.is-purple
+    background: $purple
 
-	h3
-		margin-top: 40px
-		font-size: 1.5em
-		font-family: 'Open Sans Light'
-		text-align: center
+.is-green
+    background: $green
 
-	img
-		display: block
-		margin: 10px auto
-		max-height: 85px
+.is-turquoise
+    background: $turquoise
 
-.progress-block
-	background-color: #fff
-	border: 1px solid #ddd
-	border-radius: 10px
-	margin-top: 20px
+.is-grey
+    background: $grey
 
-	.progress
-		margin-bottom: 0
-		border-radius: 10px
-		height: 50px
+.label
+	font-weight: normal
 
-		.progress-bar
-			font-size: 1.5em
-			font-family: 'Open Sans Light'
-			line-height: 50px
-
-.content
-	background-color: #fff
-	border: 1px solid #ddd
-	border-radius: 10px
-	padding: 20px
-	margin-top: 20px
-
-	form
-		margin: 40px 0
-
-		.form-group
-			margin-bottom: 30px
-
-			small
-				font-size: 0.8em
-
-			img
-				&.img-thumbnail
-					border: 3px solid #5cb85c
-
-	.terms
-		max-height: 400px
-		overflow-y: scroll
-		border: 1px solid #cecece
-		border-radius: 10px
-		padding: 20px
-		font-size: 12px
-
-.footer
-	margin-top: 50px
+.field
 	margin-bottom: 20px
 
+.input,
+.textarea,
+.select
+	font-size: 14px
+
+.input:focus,
+.input.is-focused,
+.textarea:focus,
+.textarea.is-focused,
+.select:focus,
+.select.is-focused
+    border-color: $blue
+
+.menu-list
+    a.is-active,
+    a:hover
+        background-color: $blue
+        color: $white
+
+html
+	background: #E2E2E2
+
+body
+	font-size: 16px
+	text-align: justify
+	font-family: "Nunito", sans-serif
+
+p
+	margin-bottom: 10px
+
+a
+    color: $blue
+
+.container
+	background: #fff
+	padding: 20px
+	box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1)
+
+	.terms
+		h4
+			margin-top: 40px
+
+.nav
+	margin-bottom: 40px
+
+	.nav-center
+		h4
+			margin: 10px 40px
+
+		img
+			max-height: 60px
+
+.progress:not(:last-child)
+	margin-bottom: 40px
+
+footer
+	margin: 40px 0
