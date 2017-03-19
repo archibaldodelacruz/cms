@@ -9,7 +9,6 @@
 
 	<div class="columns">
 		<div class="column is-offset-2 is-8">
-			<img src="{{ route('web::image', ['image' => $web->logo]) }}" class="image" alt="" style="margin: 10px auto 30px auto; max-width: 160px">
 
 			<h4 class="has-text-centered subtitle is-4" style="margin-top: 50px">Lee y acepta los términos y condiciones del proyecto</h4><br>
 
@@ -28,9 +27,11 @@
 			<br>
 			<p>¡Y eso es todo! Muchas gracias por confiar en el proyecto. <br>Ahora puedes:</p>
 
-			<div class="col-md-offset-3 col-md-6" style="margin-top: 50px">
-				<a href="{{ route('web::index') }}" class="btn btn-success btn-block">Ir a la página web</a>
-				<a href="{{ route('admin::panel::index') }}" class="btn btn-success btn-block">Ir al panel de administración</a>
+			<div class="columns">
+				<div class="column is-offset-3 is-6">
+					<a href="{{ route('web::index') }}" class="button is-success is-fullwidth">Ir a la página web</a>
+					<a href="{{ route('admin::panel::index') }}" class="button is-success is-fullwidth">Ir al panel de administración</a>
+				</div>
 			</div>
 		</div>
 	</div>
