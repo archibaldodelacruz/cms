@@ -20,7 +20,7 @@
 
 				<div class="field">
 					<p>{{ trans('install.design.select_color') }} <small>({{ trans('install.design.select_color_help') }})</small>:</p>
-					<input type="text" name="color" id="color" value="#25c2e6" class="input colorpicker">
+					<input type="text" name="color" id="color" value="#25c2e6" class="input jscolor">
 				</div>
 
 				<div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">

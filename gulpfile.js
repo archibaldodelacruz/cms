@@ -111,20 +111,20 @@ elixir.extend('themesDefault', function (mix) {
 elixir.extend('install', function (mix) {
     mix.sass('install/install.sass', 'public/assets/install/css');
 
-    mix.styles([
-        './node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
-    ], 'public/assets/install/css/install-plugins.css');
+    // mix.styles([
+    //     './node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
+    // ], 'public/assets/install/css/install-plugins.css');
 
     mix.scripts([
         './node_modules/jquery/dist/jquery.js',
         './resources/assets/plugins/jquery-migrate-3.0.0.min.js',
         './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-        './node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js',
+        './resources/assets/plugins/jscolor.min.js',
         './node_modules/cropit/dist/jquery.cropit.js'
     ], 'public/assets/install/js/app.js');
 
     // Colorpicker
-    mix.copy('./node_modules/bootstrap-colorpicker/dist/img', 'public/build/assets/install/img');
+    //mix.copy('./node_modules/bootstrap-colorpicker/dist/img', 'public/build/assets/install/img');
 });
 
 /********************************************

@@ -141,7 +141,7 @@ class InstallController extends Controller
         }
 
         $this->web->setConfig('install_step', 'terms');
-        $this->web->setConfig('themes.default.color', $request->get('color'));
+        $this->web->setConfig('themes.default.color', '#' . $request->get('color'));
 
         return redirect()->route('install::terms');
     }
