@@ -15,13 +15,16 @@
 <body>
 
 	<div class="container">
-
-		<nav class="nav">
-			<div class="nav-center">
-				<img src="/assets/images/logo_original.png" alt="ProteCMS logo">
-				<h4 class="title is-3">{{ trans('install.install') }}</h4>
+		<header>
+			<div class="columns">
+				<div class="column is-3">
+					<img src="/assets/images/logo_original.png" alt="ProteCMS logo">
+				</div>
+				<div class="column is-6 has-text-centered">
+					<h4 class="title is-3">{{ trans('install.install') }}</h4>
+				</div>
 			</div>
-		</nav>
+		</header>
 
 		@yield('progress')
 
