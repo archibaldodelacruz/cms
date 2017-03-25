@@ -68,15 +68,22 @@
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption">
-                    <span class="caption-subject font-blue bold uppercase">¡Bienvenidos a la nueva versión!</span>
+                    <span class="caption-subject font-blue bold uppercase">¿Qué te gustaría tener en el proyecto?</span>
                 </div>
             </div>
             <div class="portlet-body">
-                <p>Os doy la bienvenida a la nueva versión de proyecto: ProteCMS v2 (beta). Todavía quedan funcionalidades por activar y algunas cosas que corregir, pero esta es la nueva versión.</p>
-                <p>Es una reescritura completa del proyecto, no una simple actualización, de ahí que su desarrollo se haya extendido varios meses. Ahora será mucho más fácil y rápido añadir nuevas funcionalidades y corregir los errores que puedan surgir.</p>
-                <p>La nueva versión consta también de un diseño totalmente renovado de la página web, donde el contenido toma más importancia y donde los elementos de la misma son más personalizables (como los bloques, el fondo de la web, logo y cabecera...). Con el tiempo se irán añadiendo más temas para que cada protectora pueda elegir el que más le guste.</p>
-                <p>Si tienes cualquier duda, se te ha ocurrido alguna mejora o funcionalidad o tienes algun error, por favor, no dudes en ponerte en <a href="{{ route('admin::support::contact') }}">contacto</a>, por mínimo que sea.</p>
-                <p>Espero que el proyecto os guste y os sea realmente de utilidad. No olvidéis en compartir el proyecto con otras protectoras y en seguir al proyecto en las redes sociales. ¡Gracias por salvar vidas!</p>
+                <div class="alert alert-danger text-center">¡Atención! Ayuda al proyecto a mejorar.</div>
+                <p>Actualmente me encuentro trabajando en nuevas mejoras para el proyecto y llegarán antes de verano. Algunas de las mejoras son:</p>
+                <ul>
+                    <li>Renovación completa del panel de administración, con más opciones, mejoras y más.</li>
+                    <li>Traducción del proyecto a inglés, portugués, alemán, francés e italiano.</li>
+                    <li>Nuevos diseños para la página web, con más opciones de personalización.</li>
+                    <li>Nuevas características como gestión de tareas, generación de informes, gestión de stock...</li>
+                    <li>Y muchas características más...</li>
+                </ul>
+                <p>Por favor, si tiene en mente algo, por mínimo que sea y que pueda venir bien al proyecto, no dude en
+                    <a href="{{ route('admin::support::contact') }}">enviar sugerencias.</a></p>
+                <p>Gracias.<br>Jaime</p>
             </div>
         </div>
     </div>
