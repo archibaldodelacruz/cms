@@ -3,11 +3,13 @@
 return [
 
     'donation_time' => [
-        'unknown' => 'Desconocido',
-        'day'     => 'Diaria',
-        'week'    => 'Semanal',
-        'month'   => 'Mensual',
-        'year'    => 'Anual',
+        'unknown'   => 'Desconocido',
+        'day'       => 'Diaria',
+        'week'      => 'Semanal',
+        'month'     => 'Mensual',
+        'quarterly' => 'Trimestral',
+        'biannual'  => 'Semestral',
+        'year'      => 'Anual',
     ],
 
     'payment_method' => [

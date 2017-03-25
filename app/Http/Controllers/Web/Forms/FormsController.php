@@ -49,7 +49,8 @@ class FormsController extends BaseWebController
             'form' => $form,
         ], function ($m) use ($form) {
             $m->to($form->email)
-                ->from($form->email)
+                ->from(config('mail.from.address'))
+                ->replyTo($form->email)
                 ->subject($form->subject);
         });
 

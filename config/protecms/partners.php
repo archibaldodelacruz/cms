@@ -7,6 +7,8 @@ return [
         'day',
         'week',
         'month',
+        'quarterly',
+        'biannual',
         'year',
     ],
 
