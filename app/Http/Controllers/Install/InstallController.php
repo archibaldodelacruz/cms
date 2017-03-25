@@ -15,6 +15,8 @@ class InstallController extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        view()->share('web', $this->web);
     }
 
     public function index()
@@ -52,7 +54,7 @@ class InstallController extends Controller
             'contact_name'  => 'required',
             'contact_email' => 'required|email',
         ], [
-            'email.unique' => 'Ya existe una protectora registrada con esa dirección',
+            'email.unique' => trans('install.shelter_already_exists'),
         ]);
 
         $this->web->update($request->all());
@@ -141,7 +143,7 @@ class InstallController extends Controller
         }
 
         $this->web->setConfig('install_step', 'terms');
-        $this->web->setConfig('themes.default.color', $request->get('color'));
+        $this->web->setConfig('themes.default.color', '#' . $request->get('color'));
 
         return redirect()->route('install::terms');
     }
@@ -193,7 +195,7 @@ class InstallController extends Controller
         $password = str_random(10);
 
         $user = $web->users()->create([
-            'name'     => 'Administrador',
+            'name'     => 'Admin',
             'email'    => $web->email,
             'password' => $password,
             'type'     => 'admin',
@@ -223,7 +225,7 @@ class InstallController extends Controller
         $this->validate($request, [
             'code' => 'required|exists:webs_config,value,web_id,'.$this->web->id,
         ], [
-            'code.exists' => 'El código no es válido',
+            'code.exists' => trans('install.invalid_code'),
         ]);
 
         session()->put('install_code', $request->get('code'));
@@ -447,5 +449,17 @@ class InstallController extends Controller
                 'title' => 'Últimas fichas',
             ],
         ]);
+    }
+
+    public function lang(Request $request)
+    {
+        $this->validate($request, [
+            'lang' => 'required|in:'.implode(',', config('app.languages'))
+        ]);
+
+        $this->web->setConfig('lang', $request->get('lang'));
+
+        flash('Idioma cambiado correctamente');
+        return back();
     }
 }

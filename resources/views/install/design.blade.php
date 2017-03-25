@@ -1,63 +1,71 @@
 @extends('install.layouts.base')
 
 @section('progress')
-	<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-	Paso 3 de 5
-	</div>
+	<p class="has-text-centered">{{ trans('install.step', ['step' => 3, 'last' => 5]) }}</p>
+	<progress class="progress is-success is-large" value="60" max="100">60%</progress>
 @stop
 
 @section('content')
 
-	<h4>Configura el diseño de la página web</h4><br>
-	<p>Aquí puedes configurar el apartado gráfico de la página web. Actualmente solo existe 1 tema, aunque esto irá incrementando con el tiempo.</p>
+	<div class="columns">
+		<div class="column is-offset-2 is-8">
+			<h4 class="subtitle is-4">{{ trans('install.design.title') }}</h4><br>
+			<p>{{ trans('install.design.description') }}</p>
+			<p>{{ trans('install.design.description2') }}</p>
 
-	<form action="{{ route('install::design_post') }}" method="POST" enctype="multipart/form-data">
-		{{ csrf_field() }}
+			<br>
 
-		<div class="form-group">
-			<p>Selecciona el color principal de tu protectora <small>(Éste será el color principal de la página web)</small>:</p>
-			<input type="text" name="color" id="color" value="#25c2e6" class="form-control colorpicker">
-		</div>
+			<form action="{{ route('install::design_post') }}" method="POST" enctype="multipart/form-data">
+				{{ csrf_field() }}
 
-		<div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
-			<label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.logo')) }}</label>
-			<div class="col-md-10">
-				<div class="image-editor-logo">
-					<input type="file" class="cropit-image-input">
-					<div class="cropit-preview"></div>
-					<div class="image-size-label">
-						Redimensionar imagen
-					</div>
-					<input type="range" class="cropit-image-zoom-input">
-					<input type="hidden" name="logo" class="hidden-image-data-logo" />
+				<div class="field">
+					<p>{{ trans('install.design.select_color') }} <small>({{ trans('install.design.select_color_help') }})</small>:</p>
+					<input type="text" name="color" id="color" value="#25c2e6" class="input jscolor">
 				</div>
-				{!! $errors->first('logo', '<span class="help-block">:message</span>') !!}
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="form-group {{ $errors->has('header') ? 'has-error' : '' }}">
-			<label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.header_image')) }}</label>
-			<div class="col-md-10">
-				<div class="image-editor-header">
-					<input type="file" class="cropit-image-input">
-					<div class="cropit-preview"></div>
-					<div class="image-size-label">
-						Redimensionar imagen
+
+				<div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
+					<label class="control-label col-md-2">{{ trans('install.design.logo') }}</label>
+					<div class="col-md-10">
+						<div class="image-editor-logo">
+							<input type="file" class="cropit-image-input">
+							<div class="cropit-preview"></div>
+							<div class="image-size-label">
+								{{ trans('install.design.resize') }}
+							</div>
+							<input type="range" class="cropit-image-zoom-input">
+							<input type="hidden" name="logo" class="hidden-image-data-logo" />
+						</div>
+						{!! $errors->first('logo', '<div class="notification is-danger">:message</div>') !!}
 					</div>
-					<input type="range" class="cropit-image-zoom-input">
-					<input type="hidden" name="header" class="hidden-image-data-header" />
+					<div class="clearfix"></div>
 				</div>
-				{!! $errors->first('header', '<span class="help-block">:message</span>') !!}
-			</div>
-		</div>
+				<div class="form-group {{ $errors->has('header') ? 'has-error' : '' }}">
+					<label class="control-label col-md-2">{{ trans('install.design.header') }}</label>
+					<div class="col-md-10">
+						<div class="image-editor-header">
+							<input type="file" class="cropit-image-input">
+							<div class="cropit-preview"></div>
+							<div class="image-size-label">
+								{{ trans('install.design.resize') }}
+							</div>
+							<input type="range" class="cropit-image-zoom-input">
+							<input type="hidden" name="header" class="hidden-image-data-header" />
+						</div>
+						{!! $errors->first('header', '<div class="notification is-danger">:message</div>') !!}
+					</div>
+				</div>
 
-		<div class="form-group">
-			<div class="col-md-offset-4 col-md-4" style="margin-top: 50px">
-				<button type="submit" class="btn btn-success btn-block">Continuar</button>
-			</div>
-		</div>
+				<div class="field">
+					<div class="columns">
+						<div class="column is-offset-4 is-4">
+							<input type="submit" class="button is-info is-fullwidth is-medium" value="{{ trans('install.continue') }}">
+						</div>
+					</div>
+				</div>
 
-	</form>
+			</form>
+		</div>
+	</div>
 
 @stop
 

@@ -9,4 +9,5 @@ Route::group(['as' => 'install::', 'namespace' => 'Install', 'prefix' => 'instal
     Route::get('/terms', ['as' => 'terms', 'uses' => 'InstallController@terms']);
     Route::post('/terms', ['as' => 'terms_post', 'uses' => 'InstallController@terms_post']);
     Route::get('/finish', ['as' => 'finish', 'uses' => 'InstallController@finish']);
+    Route::post('/lang', ['as' => 'lang', 'uses' => 'InstallController@lang']);
 });

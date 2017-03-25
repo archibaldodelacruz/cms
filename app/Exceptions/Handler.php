@@ -25,7 +25,9 @@ class Handler extends ExceptionHandler
 
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof NotFoundHttpException || $exception instanceof ModelNotFoundException) {
+        if ($request->path() !== '/'
+            && $exception instanceof NotFoundHttpException
+            || $exception instanceof ModelNotFoundException) {
             return redirect()->to('/404');
         }
 

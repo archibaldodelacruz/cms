@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Instalación · ProteCMS</title>
+	<title>{{ trans('install.page_title') }} · ProteCMS</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="{{ elixir('assets/install/css/install.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ elixir('assets/install/css/install-plugins.css') }}">
 
+	<link rel="shortcut icon" href="/favicon.png">
+
 	@stack('styles')
 </head>
 <body>
 
-	<div id="wrapper" class="container">
-		<div class="col-md-12">
-			<div class="header row">
-				<div class="col-md-3">
-					<img src="/assets/images/logos/logo_original@0.5x.png" class="img-responsive" alt="ProteCMS">
+	<div class="container">
+		<header>
+			<div class="columns">
+				<div class="column is-3">
+					<img src="/assets/images/logo_original.png" alt="ProteCMS logo">
 				</div>
-				<div class="col-md-9">
-					<h3>
-						@section('title')
-							Instalación del proyecto
-						@show
-					</h3>
+				<div class="column is-6 has-text-centered">
+					<h4 class="title is-3">{{ trans('install.install') }}</h4>
 				</div>
-			</div>
-			<div class="clearfix"></div>
-
-			<div class="progress-block row">
-				<div class="progress">
-					@section('progress')
-						<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-						Paso 1 de 5
+				<div class="column is-3">
+					<form action="{{ route('install::lang') }}" method="POST">
+						{{ csrf_field() }}
+						<div class="field has-text-centered">
+							<p>{{ trans('general.language') }}</p>
+							<span class="select is-fullwidth">
+								<select name="lang" onchange="this.form.submit()">
+									@foreach (config('app.languages') as $lang)
+										<option value="{{ $lang }}" {{ $web->lang === $lang ? 'selected' : '' }}>{{ trans("general.languages.{$lang}") }}</option>
+									@endforeach
+								</select>
+								<small>{{ trans('install.change_lang_alert') }}</small>
+							</span>
 						</div>
-					@show
+					</form>
 				</div>
 			</div>
+		</header>
 
-			<div class="content row">
-				<div class="col-md-offset-2 col-md-8 text-justify" style="margin-top: 40px; margin-bottom: 40px">
-					@yield('content')
-				</div>
-			</div>
-
-
-			<div class="footer container text-center">
-				Copyright &copy; {{ date('Y') }} <a href="http://protecms.com">ProteCMS</a>.
-			</div>
+		<div class="progress-block">
+			@yield('progress')
 		</div>
+
+		@yield('content')
 	</div>
+
+	<footer>
+		<p class="has-text-centered">
+			Copyright &copy; {{ date('Y') }} <a href="http://protecms.com" target="_blank">ProteCMS</a>. {{ trans('general.all_rights_reserved') }}.
+		</p>
+	</footer>
 
 	<script type="text/javascript" src="{{ elixir('assets/install/js/app.js') }}"></script>
 

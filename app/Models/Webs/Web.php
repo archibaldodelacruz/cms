@@ -36,7 +36,7 @@ class Web extends BaseModel
 
     public function getLangAttribute()
     {
-        return 'es';
+        return $this->getConfig('lang', 'es');
     }
 
     public function getTheme()
