@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Instalación · ProteCMS</title>
+	<title>{{ trans('install.page_title') }} · ProteCMS</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,10 +23,28 @@
 				<div class="column is-6 has-text-centered">
 					<h4 class="title is-3">{{ trans('install.install') }}</h4>
 				</div>
+				<div class="column is-3">
+					<form action="{{ route('install::lang') }}" method="POST">
+						{{ csrf_field() }}
+						<div class="field has-text-centered">
+							<p>{{ trans('general.language') }}</p>
+							<span class="select is-fullwidth">
+								<select name="lang" onchange="this.form.submit()">
+									@foreach (config('app.languages') as $lang)
+										<option value="{{ $lang }}" {{ $web->lang === $lang ? 'selected' : '' }}>{{ trans("general.languages.{$lang}") }}</option>
+									@endforeach
+								</select>
+								<small>{{ trans('install.change_lang_alert') }}</small>
+							</span>
+						</div>
+					</form>
+				</div>
 			</div>
 		</header>
 
-		@yield('progress')
+		<div class="progress-block">
+			@yield('progress')
+		</div>
 
 		@yield('content')
 	</div>

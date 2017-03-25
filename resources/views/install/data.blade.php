@@ -70,12 +70,14 @@
 				<div class="field {{ $errors->has('country_id') ? 'has-error' : '' }}">
 					<label for="country_id" class="label">{{ trans('install.data.country') }}</label>
 					<p class="control">
-						<select name="country_id" id="country_id" class="select select-country is-fullwidth">
-							<option value="" disabled selected>{{ trans('install.data.select_country') }}...</option>
-							@foreach (App\Models\Location\Country::orderBy('name')->get() as $country)
-								<option value="{{ $country->id }}">{{ $country->name }}</option>
-							@endforeach
-						</select>
+						<span class="select is-fullwidth">
+							<select name="country_id" id="country_id" class="select-country is-fullwidth">
+								<option value="" disabled selected>{{ trans('install.data.select_country') }}...</option>
+								@foreach (App\Models\Location\Country::orderBy('name')->get() as $country)
+									<option value="{{ $country->id }}">{{ $country->name }}</option>
+								@endforeach
+							</select>
+						</span>
 					</p>
 					{!! $errors->first('country_id', '<div class="notification is-danger">:message</div>') !!}
 				</div>
@@ -83,9 +85,11 @@
 				<div class="field {{ $errors->has('state_id') ? 'has-error' : '' }}">
 					<label for="state_id" class="label">{{ trans('install.data.state') }}</label>
 					<p class="control">
-						<select name="state_id" id="state_id" class="select select-state is-fullwidth" disabled>
-							<option value="" disabled selected>{{ trans('install.data.must_select_country') }}...</option>
-						</select>
+						<span class="select is-fullwidth">
+							<select name="state_id" id="state_id" class="select-state is-fullwidth" disabled>
+								<option value="" disabled selected>{{ trans('install.data.must_select_country') }}...</option>
+							</select>
+						</span>
 					</p>
 					{!! $errors->first('state_id', '<div class="notification is-danger">:message</div>') !!}
 				</div>
@@ -93,9 +97,11 @@
 				<div class="field {{ $errors->has('city_id') ? 'has-error' : '' }}">
 					<label for="city_id" class="label">{{ trans('install.data.city') }}</label>
 					<p class="control">
-						<select name="city_id" id="city_id" class="select select-city is-fullwidth" disabled>
-							<option value="" disabled selected>{{ trans('install.data.must_select_state') }}...</option>
-						</select>
+						<span class="select is-fullwidth">
+							<select name="city_id" id="city_id" class="select-city is-fullwidth" disabled>
+								<option value="" disabled selected>{{ trans('install.data.must_select_state') }}...</option>
+							</select>
+						</span>
 					</p>
 					{!! $errors->first('city_id', '<div class="notification is-danger">:message</div>') !!}
 				</div>
@@ -121,7 +127,7 @@
 				<div class="field">
 					<div class="columns">
 						<div class="column is-offset-4 is-4">
-							<input type="submit" class="button is-info is-fullwidth is-medium" value="{{ trans('install.continue') }}"></input>
+							<input type="submit" class="button is-info is-fullwidth is-medium" value="{{ trans('install.continue') }}">
 						</div>
 					</div>
 				</div>

@@ -2,11 +2,13 @@
 
 return array(
     'install' => 'Instalación del proyecto',
+    'page_title' => 'Instalación',
     'welcome' => 'Bienvenid@ a la instalación del proyecto.',
     'step' => 'Paso :step de :last',
     'description' => 'Si estás viendo esta página es que vuestra protectora está a unos pasos de tener su propia página web. Una vez hayas completado los 5 sencillos pasos, se generará automáticamente la página web de tu proyectora.',
     'contact' => 'Si tienes cualquier duda durante el proceso de instalación, no dudes en ponerte en <a href="http://protecms.com/contacto" target="_blank">contacto</a>.',
     'security' => 'Para continuar con la instalación debes introducir el código de seguridad que habéis recibido en el correo electrónico de la protectora.',
+    'change_lang_alert' => 'Si cambia de idioma puede perder los datos rellenos del formulario.',
     'security_code' => 'Código de seguridad',
     'start' => 'Empezar',
     'continue' => 'Continuar',
@@ -16,7 +18,7 @@ return array(
     'invalid_code' => 'El código no es válido',
 
     'data' => array(
-        'to_start' => 'Para comenzar, es necesario que introduzcas la información principal de vuestra protectora.',
+        'to_start' => 'Para comenzar, es necesario que introduzca la información principal de vuestra protectora.',
         'fields' => '<strong>Todos los campos son obligatorios</strong>. Podrán ser editados una vez se haya generado la página web.',
         'no_city' => 'Si no aparece la ciudad donde se encuentra la protectora, seleccione otra ciudad de la misma provincia y notifíquelo una vez se haya completado la instalación.',
         'shelter_data' => 'Datos de la protectora',

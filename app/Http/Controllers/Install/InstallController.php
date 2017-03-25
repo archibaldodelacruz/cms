@@ -15,6 +15,8 @@ class InstallController extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        view()->share('web', $this->web);
     }
 
     public function index()
@@ -447,5 +449,17 @@ class InstallController extends Controller
                 'title' => 'Últimas fichas',
             ],
         ]);
+    }
+
+    public function lang(Request $request)
+    {
+        $this->validate($request, [
+            'lang' => 'required|in:'.implode(',', config('app.languages'))
+        ]);
+
+        $this->web->setConfig('lang', $request->get('lang'));
+
+        flash('Idioma cambiado correctamente');
+        return back();
     }
 }
