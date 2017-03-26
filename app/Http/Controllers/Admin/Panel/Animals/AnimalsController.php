@@ -6,10 +6,10 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Animals\StoreRequest;
 use App\Http\Requests\Animals\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
-use Illuminate\Support\Facades\DB;
 
 class AnimalsController extends BaseAdminController
 {
@@ -75,12 +75,12 @@ class AnimalsController extends BaseAdminController
         $this->authorize('create', Animal::class);
 
         try {
-            $animal = DB::transaction(function() use ($request) {
+            $animal = DB::transaction(function () use ($request) {
                 return $this->animal->create($request->all());
             });
         } catch (Exception $e) {
             return redirect()->back()->withInput()->withErrors([
-                'name' => 'Ha ocurrido un error al crear la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.'
+                'name' => 'Ha ocurrido un error al crear la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.',
             ]);
         }
 
@@ -108,12 +108,12 @@ class AnimalsController extends BaseAdminController
         $this->authorize('update', $animal);
 
         try {
-            DB::transaction(function() use ($animal, $request) {
+            DB::transaction(function () use ($animal, $request) {
                 $animal->update($request->all());
             });
         } catch (Exception $e) {
             return redirect()->back()->withInput()->withErrors([
-                'name' => 'Ha ocurrido un error al actualizar la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.'
+                'name' => 'Ha ocurrido un error al actualizar la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.',
             ]);
         }
 

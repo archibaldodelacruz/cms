@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Panel\Posts;
 
-use App\Models\Posts\Post;
 use Exception;
+use App\Models\Posts\Post;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Posts\StoreRequest;
 use App\Http\Requests\Posts\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
-use Illuminate\Support\Facades\DB;
 
 class PostsController extends BaseAdminController
 {
@@ -73,13 +73,13 @@ class PostsController extends BaseAdminController
         $this->authorize('create', Post::class);
 
         try {
-            $post = DB::transaction(function() use ($request) {
+            $post = DB::transaction(function () use ($request) {
                 return $this->post
                     ->create($request->all());
             });
         } catch (Exception $e) {
             return redirect()->back()->withInput()->withErrors([
-                config('app.locale') . '.title' => 'Ha ocurrido un error al publicar el artículo. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.'
+                config('app.locale').'.title' => 'Ha ocurrido un error al publicar el artículo. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.',
             ]);
         }
 
@@ -105,15 +105,14 @@ class PostsController extends BaseAdminController
         $this->authorize('update', $post);
 
         try {
-            DB::transaction(function() use ($post, $request) {
+            DB::transaction(function () use ($post, $request) {
                 $post->update($request->all());
             });
         } catch (Exception $e) {
             return redirect()->back()->withInput()->withErrors([
-                config('app.locale') . '.title' => 'Ha ocurrido un error al actualizar el artículo. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.'
+                config('app.locale').'.title' => 'Ha ocurrido un error al actualizar el artículo. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.',
             ]);
         }
-
 
         flash('El artículo se ha actualizado correctamente.');
 
