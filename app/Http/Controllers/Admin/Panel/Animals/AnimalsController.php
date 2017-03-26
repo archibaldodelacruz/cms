@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Requests\Animals\StoreRequest;
 use App\Http\Requests\Animals\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
+use Illuminate\Support\Facades\DB;
 
 class AnimalsController extends BaseAdminController
 {
@@ -72,8 +74,15 @@ class AnimalsController extends BaseAdminController
     {
         $this->authorize('create', Animal::class);
 
-        $animal = $this->animal
-            ->create($request->all());
+        try {
+            $animal = DB::transaction(function() use ($request) {
+                return $this->animal->create($request->all());
+            });
+        } catch (Exception $e) {
+            return redirect()->back()->withInput()->withErrors([
+                'name' => 'Ha ocurrido un error al crear la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.'
+            ]);
+        }
 
         flash('Ficha creada correctamente.');
 
@@ -97,7 +106,16 @@ class AnimalsController extends BaseAdminController
             ->findOrFail($id);
 
         $this->authorize('update', $animal);
-        $animal->update($request->all());
+
+        try {
+            DB::transaction(function() use ($animal, $request) {
+                $animal->update($request->all());
+            });
+        } catch (Exception $e) {
+            return redirect()->back()->withInput()->withErrors([
+                'name' => 'Ha ocurrido un error al actualizar la ficha. Normalmente se debe a caracteres extraños en el texto del animal. Si el problema persiste, contacte con un administrador.'
+            ]);
+        }
 
         flash('La ficha del animal se ha actualizado correctamente.');
 

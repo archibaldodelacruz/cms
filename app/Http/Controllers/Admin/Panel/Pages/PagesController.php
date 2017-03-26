@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin\Panel\Pages;
 
 use App\Models\Pages\Page;
+use Exception;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Requests\Pages\StoreRequest;
 use App\Http\Requests\Pages\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends BaseAdminController
 {
@@ -70,8 +72,16 @@ class PagesController extends BaseAdminController
     {
         $this->authorize('create', Page::class);
 
-        $page = $this->page
-            ->create($request->all());
+        try {
+            $page = DB::transaction(function() use ($request) {
+                return $page = $this->page
+                    ->create($request->all());
+            });
+        } catch (Exception $e) {
+            return redirect()->back()->withInput()->withErrors([
+                config('app.locale') . '.title' => 'Ha ocurrido un error al publicar la página. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.'
+            ]);
+        }
 
         flash('La página se ha creado correctamente.');
 
@@ -91,11 +101,18 @@ class PagesController extends BaseAdminController
 
     public function update(UpdateRequest $request, $id)
     {
-        $page = $this->page
-            ->findOrFail($id);
-
+        $page = $this->page->findOrFail($id);
         $this->authorize('update', $page);
-        $page->update($request->all());
+
+        try {
+            DB::transaction(function() use ($page, $request) {
+                $page->update($request->all());
+            });
+        } catch (Exception $e) {
+            return redirect()->back()->withInput()->withErrors([
+                config('app.locale') . '.title' => 'Ha ocurrido un error al actualizar la página. Normalmente se debe a caracteres extraños en el cuerpo del artículo. Si el problema persiste, contacte con un administrador.'
+            ]);
+        }
 
         flash('La página se ha actualizado correctamente.');
 
