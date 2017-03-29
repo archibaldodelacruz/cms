@@ -19,7 +19,8 @@
                 <option value="-name" {{ $request->get('sort') == '-name' ? 'selected' : '' }}>Nombre (inversa)</option>
                 <option value="birth_date" {{ $request->get('sort') == 'birth_date' ? 'selected' : '' }}>Edad (Mayor a menor)</option>
                 <option value="-birth_date" {{ $request->get('sort') == '-birth_date' ? 'selected' : '' }}>Edad (Menor a mayor)</option>
-                
+                <option value="-created_at" {{ $request->get('sort') == '-created_at' ? 'selected' : '' }}>Fecha de creación (Recientes primero)</option>
+                <option value="created_at" {{ $request->get('sort') == 'created_at' ? 'selected' : '' }}>Fecha de creación (Antiguos primero)</option>
             </select>
         </div>
         <div class="table-scrollable">
