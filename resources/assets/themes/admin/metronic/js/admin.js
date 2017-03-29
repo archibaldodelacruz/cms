@@ -210,15 +210,21 @@ $(document).ready(function() {
         var vm = $(this);
         $.confirm({
             title: 'Confirma la acción',
-            text: '¿Estás seguro de que quieres continuar?',
-            confirmButton: 'Continuar',
-            cancelButton: 'Cancelar',
-            confirmButtonClass: 'btn-success',
-            cancelButtonClass: 'pull-left btn-danger',
-            confirm: function () {
-                vm.closest('tr').fadeOut(300, function () {
-                    vm.closest('tr').remove();
-                });
+            content: '¿Estás seguro de que quieres continuar?',
+            buttons: {
+                confirm: {
+                    text: 'Continuar',
+                    btnClass: 'btn-danger',
+                    action: function() {
+                        vm.closest('tr').fadeOut(300, function () {
+                            vm.closest('tr').remove();
+                        });
+                    }
+                },
+                cancel: {
+                    text: 'Cancelar',
+                    btnClass: 'btn-success'
+                }
             }
         });
     });

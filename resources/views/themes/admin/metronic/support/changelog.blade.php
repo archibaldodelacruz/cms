@@ -18,6 +18,16 @@
 <div class="row changelog">
     <div class="col-md-12">
 
+        <h2>Versión 2.1.5 <small>(actual)</small></h2>
+        <ul>
+            <li><span class="label label-warning">corrección</span> Corregido un error al eliminar enlaces de los bloques.</li>
+        </ul>
+
+        <h2>Versión 2.1.4</h2>
+        <ul>
+            <li><span class="label label-warning">corrección</span> Corregido un error con la creación de artículos, páginas y animales y sus traducciones.</li>
+        </ul>
+
         <h2>Versión 2.1.3 <small>(actual)</small></h2>
         <h4>09-03-2017</h4>
         <ul>
