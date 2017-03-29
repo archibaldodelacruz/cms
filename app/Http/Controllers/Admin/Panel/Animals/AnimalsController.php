@@ -32,7 +32,7 @@ class AnimalsController extends BaseAdminController
         $animals = $this->filterBy($this->animal->permission()
             ->with(['photos' => function ($query) {
                 $query->orderBy('main', 'DESC');
-            }]), $request, ['name', 'status', 'kind', 'gender', 'location', 'birth_date'])
+            }]), $request, ['name', 'status', 'kind', 'gender', 'location', 'birth_date', 'created_at'])
             ->orderBy('name', 'ASC')
             ->paginate(30);
 

@@ -20,6 +20,7 @@
 
         <h2>Versión 2.1.5 <small>(actual)</small></h2>
         <ul>
+            <li><span class="label label-info">novedad</span> Ahora el listado de animales se puede ordenar por fecha de creación.</li>
             <li><span class="label label-warning">corrección</span> Corregido un error al eliminar enlaces de los bloques.</li>
         </ul>
 
