@@ -18,7 +18,12 @@
 <div class="row changelog">
     <div class="col-md-12">
 
-        <h2>Versión 2.1.5 <small>(actual)</small></h2>
+        <h2>Versión 2.1.6 <small>(actual)</small></h2>
+        <ul>
+            <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que no se pudiesen exportar las fichas de los animales a PDF.</li>
+        </ul>
+
+        <h2>Versión 2.1.5</h2>
         <ul>
             <li><span class="label label-info">novedad</span> Ahora el listado de animales se puede ordenar por fecha de creación.</li>
             <li><span class="label label-warning">corrección</span> Corregido un error al eliminar enlaces de los bloques.</li>
