@@ -10,7 +10,6 @@ use App\Models\Pages\Page;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
 use App\Models\Widgets\Link;
-use App\Models\Animals\Media;
 use App\Models\Animals\Animal;
 use App\Models\Posts\Category;
 use Illuminate\Console\Command;
