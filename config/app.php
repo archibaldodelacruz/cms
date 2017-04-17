@@ -188,6 +188,7 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -244,6 +245,7 @@ return [
         'Image'    => Intervention\Image\Facades\Image::class,
         'Carbon'   => \Carbon\Carbon::class,
         'Captcha'  => Mews\Captcha\Facades\Captcha::class,
+        'PDF'      => Barryvdh\DomPDF\Facade::class,
 
     ],
 
