@@ -24,7 +24,8 @@
         "laravel/tinker": "^1.0",
         "laravel/dusk": "^1.0",
         "laravel/browser-kit-testing": "^1.0",
-        "spatie/laravel-sitemap": "^2.1"
+        "spatie/laravel-sitemap": "^2.1",
+        "barryvdh/laravel-dompdf": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
