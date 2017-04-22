@@ -98,6 +98,7 @@ class AuthController extends Controller
             'email' => 'required|email|exists:users,email',
         ]);
 
+        Auth::logout();
         $user = $this->user->whereEmail($request->get('email'))->first();
 
         Mail::send('emails.auth.recovery', ['user' => $user], function ($m) use ($user) {
@@ -115,6 +116,7 @@ class AuthController extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
 
+        Auth::logout();
         $user = $this->user->whereRememberToken($request->get('token'))->first();
 
         $user->update([
