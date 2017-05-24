@@ -36,7 +36,7 @@ return [
     // Ex: The private folder of user will be named as the user id.
     // You cant use a closure when using the optimized config file (in Laravel 5.2 anyway)
     'user_field' => function () {
-        return app('App\Models\Webs\Web')->id;
+        return auth()->user()->web_id;
     },
 
     /*
