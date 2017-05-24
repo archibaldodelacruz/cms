@@ -16,7 +16,7 @@
         "dimsav/laravel-translatable": "^6.0",
         "igaster/laravel-theme": "^1.1",
         "intervention/image": "^2.3",
-        "unisharp/laravel-filemanager": "dev-master",
+        "unisharp/laravel-filemanager": "^1.7",
         "guzzlehttp/guzzle": "^6.2",
         "spatie/laravel-analytics": "^2.3",
         "doctrine/dbal": "^2.5",
