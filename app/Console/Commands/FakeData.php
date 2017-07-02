@@ -21,7 +21,7 @@ use App\Models\Veterinarians\Veterinary;
 
 class FakeData extends Command
 {
-    protected $signature = 'protecms:seeddevdata';
+    protected $signature = 'protecms:fakedata';
     protected $description = 'Seed fake data to development';
 
     const USERS = 20;
