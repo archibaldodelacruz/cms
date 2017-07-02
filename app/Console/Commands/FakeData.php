@@ -19,7 +19,7 @@ use App\Models\Calendar\Calendar;
 use App\Models\Animals\TemporaryHome;
 use App\Models\Veterinarians\Veterinary;
 
-class SeedDevelopmentData extends Command
+class FakeData extends Command
 {
     protected $signature = 'protecms:seeddevdata';
     protected $description = 'Seed fake data to development';
@@ -56,8 +56,8 @@ class SeedDevelopmentData extends Command
         $this->info('Generating web');
         $web = new $this->web();
         $web->name = 'Protectora de Demostración';
-        $web->domain = 'demo.dev';
-        $web->subdomain = 'demo';
+        $web->domain = 'shelter.dev';
+        $web->subdomain = 'shelter';
         $web->email = 'web@protecms.com';
         $web->country_id = 205;
         $web->state_id = 3288;
