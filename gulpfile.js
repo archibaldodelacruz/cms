@@ -4,7 +4,7 @@ const elixir = require('laravel-elixir'),
 /********************************************
  * Config
  *******************************************/
-const browserSyncUrl = 'demo.dev';
+const browserSyncUrl = 'shelter.dev';
 
 /********************************************
  * Global
@@ -156,6 +156,7 @@ elixir(function (mix) {
     ]);
 
     mix.browserSync({
-        proxy: browserSyncUrl
+        proxy: browserSyncUrl,
+        open: false
     });
 });
