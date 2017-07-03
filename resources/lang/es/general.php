@@ -1,12 +1,12 @@
 <?php
 
-return array(
+return [
 
     'language' => 'Idioma',
-    'languages' => array(
+    'languages' => [
         'es' => 'Español',
-        'en' => 'Inglés'
-    ),
+        'en' => 'Inglés',
+    ],
 
-    'all_rights_reserved' => 'Todos los derechos reservados'
-);
+    'all_rights_reserved' => 'Todos los derechos reservados',
+];

@@ -81,7 +81,7 @@ return [
 
     'languages' => [
         'es',
-        'en'
+        'en',
     ],
 
     /*

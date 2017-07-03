@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'install' => 'Instalación del proyecto',
     'page_title' => 'Instalación',
     'welcome' => 'Bienvenid@ a la instalación del proyecto.',
@@ -17,7 +17,7 @@ return array(
     'shelter_already_exists' => 'Ya existe una protectora registrada con esa dirección',
     'invalid_code' => 'El código no es válido',
 
-    'data' => array(
+    'data' => [
         'to_start' => 'Para comenzar, es necesario que introduzca la información principal de vuestra protectora.',
         'fields' => '<strong>Todos los campos son obligatorios</strong>. Podrán ser editados una vez se haya generado la página web.',
         'no_city' => 'Si no aparece la ciudad donde se encuentra la protectora, seleccione otra ciudad de la misma provincia y notifíquelo una vez se haya completado la instalación.',
@@ -42,9 +42,9 @@ return array(
         'must_select_state' => 'Debes seleccionar una provincia',
         'select_city' => 'Seleccione una ciudad',
         'must_select_city' => 'Debes seleccionar una ciudad',
-    ),
+    ],
 
-    'design' => array(
+    'design' => [
         'title' => 'Configura el diseño de la página web',
         'description' => 'Aquí puedes configurar el apartado gráfico de la página web.',
         'description2' => 'Las opciones que aquí se muestran son las opciones básicas. Una vez se haya generado la página web, se desbloquearán más opciones de personalización. Todos los datos de este formulario se pueden modificar más adelante.',
@@ -52,10 +52,10 @@ return array(
         'select_color_help' => 'Éste será el color de la página web',
         'logo' => 'Logo',
         'header' => 'Cabecera',
-        'resize' => 'Redimensionar imagen'
-    ),
+        'resize' => 'Redimensionar imagen',
+    ],
 
-    'finish_step' => array(
+    'finish_step' => [
         'title' => '¡La instalación ha finalizado!',
         'description' => 'Has completado todos los pasos con éxito. La página web se ha generado correctamente.',
         'description2' => 'Ya puedes acceder al panel de administración los datos generados que verás debajo. También los recibiréis en el correo electrónico de la protectora.',
@@ -68,10 +68,10 @@ return array(
         'go_web' => 'Ir a la página web',
         'go_admin' => 'Ir al panel de administración',
         'password_saved' => 'La contraseña se ha generado aleatoriamente y se ha almacenado de forma segura en el servidor. En el panel de administración podrás cambiarla.',
-        'last_text' => '¡Y eso es todo! Muchas gracias por confiar en el proyecto. <br>Ahora puedes:'
-    ),
+        'last_text' => '¡Y eso es todo! Muchas gracias por confiar en el proyecto. <br>Ahora puedes:',
+    ],
 
-    'terms' => array(
+    'terms' => [
         'title' => 'Lee y acepta los términos y condiciones del proyecto',
         'accept' => 'Acepto los términos y condiciones del proyecto',
         'terms' => '<h4 class="subtitle is-5">INFORMACIÓN RELEVANTE</h4>
@@ -100,6 +100,6 @@ return array(
 
 				<p>La suscripción a boletines de correos electrónicos publicitarios es voluntaria y podría ser cancelada en el panel de administración.</p>
 
-				<p>ProteCMS reserva los derechos de cambiar o de modificar estos términos sin previo aviso.</p>'
-    )
-);
+				<p>ProteCMS reserva los derechos de cambiar o de modificar estos términos sin previo aviso.</p>',
+    ],
+];
