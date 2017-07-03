@@ -83,6 +83,7 @@ class FakeData extends Command
             'email'      => 'admin@email.com',
             'password'   => 'admin',
             'type'       => 'admin',
+            'status'     => 'active',
             'country_id' => 205,
             'state_id'   => 3288,
             'city_id'    => 38492,
