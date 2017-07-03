@@ -17,7 +17,7 @@
 .widgets .widget {
     border-radius: 0px;
 }
-<?php 
+<?php
 } ?>
 
 <?php

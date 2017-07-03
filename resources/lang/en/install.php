@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'install' => 'Installation of the project',
     'page_title' => 'Installation',
     'welcome' => 'Welcome to the project installation.',
@@ -17,7 +17,7 @@ return array(
     'shelter_already_exists' => 'A shelter registered with this address already exists',
     'invalid_code' => 'The code is invalid',
 
-    'data' => array(
+    'data' => [
         'to_start' => 'To begin, it is necessary to enter the main information of your protector.',
         'fields' => '<strong>All fields are required</strong>. They can be edited once the website has been generated.',
         'no_city' => 'If the city where the protector is not displayed, select another city in the same province and notify it once the installation is completed.',
@@ -42,9 +42,9 @@ return array(
         'must_select_state' => 'You must select a state',
         'select_city' => 'Select a city',
         'must_select_city' => 'You must select a city',
-    ),
+    ],
 
-    'design' => array(
+    'design' => [
         'title' => 'Configure the webpage layout',
         'description' => 'Here you can configure the graphic section of the web page.',
         'description2' => 'The options shown here are the basic options. Once the web page has been generated, more customization options will be unlocked. All data on this form can be modified later.',
@@ -52,10 +52,10 @@ return array(
         'select_color_help' => 'This will be the color of the webpage',
         'logo' => 'Logo',
         'header' => 'Header',
-        'resize' => 'Resize image'
-    ),
+        'resize' => 'Resize image',
+    ],
 
-    'finish_step' => array(
+    'finish_step' => [
         'title' => 'The installation is complete!',
         'description' => 'You have successfully completed all the steps. The website has been successfully generated.',
         'description2' => 'You can now access the administration panel generated data that you will see below. You will also receive them in the shelter email.',
@@ -68,10 +68,10 @@ return array(
         'go_web' => 'Go to webpage',
         'go_admin' => 'Go to admin',
         'password_saved' => 'The password has been randomly generated and has been stored securely on the server. In the admin panel you can change it.',
-        'last_text' => 'And that\'s it! Thank you very much for trusting the project. <br>Now you can:'
-    ),
+        'last_text' => 'And that\'s it! Thank you very much for trusting the project. <br>Now you can:',
+    ],
 
-    'terms' => array(
+    'terms' => [
         'title' => 'Read and accept the terms and conditions of the project',
         'accept' => 'I accept the terms and conditions of the project',
         'terms' => '<h4 class="subtitle is-5">RELEVANT INFORMATION</h4>
@@ -100,6 +100,6 @@ return array(
 
 <p>Subscription to e-mail bulletins is voluntary and could be canceled in the admin panel.</p>
 
-<p>ProteCMS reserves the right to change or modify these terms without prior notice.</p>'
-    )
-);
+<p>ProteCMS reserves the right to change or modify these terms without prior notice.</p>',
+    ],
+];

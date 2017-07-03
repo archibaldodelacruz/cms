@@ -143,7 +143,7 @@ class InstallController extends Controller
         }
 
         $this->web->setConfig('install_step', 'terms');
-        $this->web->setConfig('themes.default.color', '#' . $request->get('color'));
+        $this->web->setConfig('themes.default.color', '#'.$request->get('color'));
 
         return redirect()->route('install::terms');
     }
@@ -454,12 +454,13 @@ class InstallController extends Controller
     public function lang(Request $request)
     {
         $this->validate($request, [
-            'lang' => 'required|in:'.implode(',', config('app.languages'))
+            'lang' => 'required|in:'.implode(',', config('app.languages')),
         ]);
 
         $this->web->setConfig('lang', $request->get('lang'));
 
         flash('Idioma cambiado correctamente');
+
         return back();
     }
 }
