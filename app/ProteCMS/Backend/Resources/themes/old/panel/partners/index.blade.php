@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de socios <div class="pull-right"><small>Mostrando {{ $partners->count() }} socios de un total de {{ $total }}.</small></div>

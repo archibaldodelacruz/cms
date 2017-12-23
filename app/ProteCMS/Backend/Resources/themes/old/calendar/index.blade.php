@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Calendario <small>Tareas, eventos, recordatorios...</small>

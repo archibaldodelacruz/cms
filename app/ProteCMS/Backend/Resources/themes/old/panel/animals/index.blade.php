@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de animales <div class="pull-right"><small>Mostrando {{ $animals->count() }} animales de un total de {{ $total }}.</small></div>

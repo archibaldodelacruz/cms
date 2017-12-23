@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de casas de acogida <div class="pull-right"><small>Mostrando {{ $temporary_homes->count() }} casas de acogida de un total de {{ $total }}.</small></div>

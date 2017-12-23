@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de páginas <div class="pull-right"><small>Mostrando {{ $pages->count() }} páginas de un total de {{ $total }}.</small></div>

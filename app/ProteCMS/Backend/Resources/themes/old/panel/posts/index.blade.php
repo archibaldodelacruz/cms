@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de artículos <div class="pull-right"><small>Mostrando {{ $posts->count() }} artículos de un total de {{ $total }}.</small></div>

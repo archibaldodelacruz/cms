@@ -1,8 +1,8 @@
-@include('themes.admin.metronic.layouts.header')
+@include('layouts.header')
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         
-        @include('themes.admin.metronic.layouts.partials.sidebar')
+        @include('layouts.partials.sidebar')
 
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
@@ -10,7 +10,7 @@
             <div class="page-content">
                 <!-- BEGIN PAGE HEADER-->
                 
-                @include('themes.admin.metronic.layouts.partials.breadcrumb')
+                @include('layouts.partials.breadcrumb')
 
                 <!-- BEGIN PAGE TITLE-->
                 <h2 class="page-title"> 
@@ -49,5 +49,5 @@
         </div>
     </div>
 
-    @include('themes.admin.metronic.layouts.footer')
+    @include('layouts.footer')
 </body>

@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Finanzas <div class="pull-right"><small>Mostrando {{ $finances->count() }} registros de un total de {{ $total }}.</small></div>

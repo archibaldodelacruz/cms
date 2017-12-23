@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Configuración<p class="pull-right" style="margin-top:0"><small>Todos los campos son obligatorios.</small></p>

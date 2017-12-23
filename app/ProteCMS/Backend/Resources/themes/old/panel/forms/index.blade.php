@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de formularios <div class="pull-right"><small>Mostrando {{ $forms->count() }} formularios de un total de {{ $total }}.</small></div>

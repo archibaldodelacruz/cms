@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Apadrinamiento de {{ $sponsorship->name }} del animal {{ $animal->name }}
@@ -25,7 +25,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2 animal-menu">
-            @include('themes.admin.metronic.layouts.partials.animalmenu', [
+            @include('layouts.partials.animalmenu', [
                 'animal' => $animal
             ])
         </div>
@@ -63,7 +63,7 @@
                                 {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
-                        @include('themes.admin.metronic.layouts.partials.location', [
+                        @include('layouts.partials.location', [
                             'model' => $sponsorship
                         ])
                         <div class="form-group {{ $errors->has('visible') ? 'has-error' : '' }}">

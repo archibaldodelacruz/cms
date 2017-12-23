@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de archivos <div class="pull-right"><small>Mostrando {{ $files->count() }} archivos de un total de {{ $total }}.</small></div>

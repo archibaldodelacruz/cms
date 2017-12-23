@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Fotos de {{ $animal->name }}
@@ -21,7 +21,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2 animal-menu">
-            @include('themes.admin.metronic.layouts.partials.animalmenu', [
+            @include('layouts.partials.animalmenu', [
                 'animal' => $animal
             ])
         </div>

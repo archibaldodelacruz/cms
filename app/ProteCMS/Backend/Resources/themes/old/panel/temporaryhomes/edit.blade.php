@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Casa de acogida: {{ $temporary_home->name }}<p class="pull-right" style="margin-top:0"><small>Los campos con * son obligatorios.</small></p>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                        @include('themes.admin.metronic.layouts.partials.location', [
+                        @include('layouts.partials.location', [
                             'model' => $temporary_home
                         ])
 

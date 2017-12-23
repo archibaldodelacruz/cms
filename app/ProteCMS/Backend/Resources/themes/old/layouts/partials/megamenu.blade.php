@@ -19,7 +19,7 @@
         <li class="mega-menu-dropdown {{ Request::is('admin/support*') ? 'active' : '' }} {{ ! Auth::user()->hasPermissions(['admin.support']) ? 'hide' : '' }}">
             <a href="{{ route('admin::support::index') }}" class="dropdown-toggle"> Soporte</a>
         </li>
-        @if (app('App\Models\Webs\Web')->subdomain === 'admin')
+        @if (shelter()->subdomain === 'admin')
             <li class="mega-menu-dropdown {{ Request::is('superadmin*') ? 'active' : '' }}">
                 <a href="{{ route('superadmin::index') }}" class="dropdown-toggle"> SuperAdmin</a>
             </li>

@@ -41,7 +41,7 @@
                     </div>
                     <!-- END LOGO -->
                     
-                    @include('themes.admin.metronic.layouts.partials.megamenu')
+                    @include('layouts.partials.megamenu')
 
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
                     <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,7 +49,7 @@
                     </a>
                     <!-- END RESPONSIVE MENU TOGGLER -->
 
-                    @include('themes.admin.metronic.layouts.partials.topmenu')
+                    @include('layouts.partials.topmenu')
 
                 </div>
                 <!-- END HEADER INNER -->

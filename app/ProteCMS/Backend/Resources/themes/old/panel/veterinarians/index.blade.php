@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Listado de veterinarios <div class="pull-right"><small>Mostrando {{ $veterinarians->count() }} veterinarios de un total de {{ $total }}.</small></div>

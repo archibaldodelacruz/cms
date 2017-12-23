@@ -1,7 +1,7 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
-    @include('themes.admin.metronic.layouts.partials.pagetitletranslation', [
+    @include('layouts.partials.pagetitletranslation', [
         'model' => $post
     ])
 
@@ -20,7 +20,7 @@
 
 @section('content')
 
-    @include('themes.admin.metronic.layouts.partials.selectlang', [
+    @include('layouts.partials.selectlang', [
         'model' => $post,
         'route' => route('admin::panel::posts::delete_translation', ['id' => $post->id])
     ])
@@ -128,7 +128,7 @@
                     <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.text')) }}</label>
                     <div class="col-md-10">
 
-                        @include('themes.admin.metronic.layouts.partials.maintranslationtext', [
+                        @include('layouts.partials.maintranslationtext', [
                             'model' => $post,
                             'field' => 'text'
                         ])

@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     {{ str_limit($post->title, 70, '...') }}
@@ -16,7 +16,7 @@
 
 @section('content') 
 
-    @include('themes.admin.metronic.layouts.partials.selectlang', [
+    @include('layouts.partials.selectlang', [
         'model' => $post
     ])
 

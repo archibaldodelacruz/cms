@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Nueva casa de acogida<p class="pull-right" style="margin-top:0"><small>Los campos con * son obligatorios.</small></p>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    @include('themes.admin.metronic.layouts.partials.location')
+                    @include('layouts.partials.location')
 
                     <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.observations')) }}</label>

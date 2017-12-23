@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Editando la ficha de {{ $animal->name }}<p class="pull-right" style="margin-top:0"><small>Los campos con * son obligatorios.</small></p>
@@ -17,13 +17,13 @@
 @section('content')
 <div class="row">
 
-    @include('themes.admin.metronic.layouts.partials.selectlang', [
+    @include('layouts.partials.selectlang', [
         'model' => $animal,
         'route' => route('admin::panel::animals::delete_translation', ['id' => $animal->id])
     ])
 
     <div class="col-md-2 animal-menu">
-        @include('themes.admin.metronic.layouts.partials.animalmenu', [
+        @include('layouts.partials.animalmenu', [
             'animal' => $animal
         ])
     </div>
@@ -319,7 +319,7 @@
                         <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.private_text')) }}<br><small>(Información sobre el animal sólo disponible para voluntarios)</small></label>
                         <div class="col-md-10">
 
-                            @include('themes.admin.metronic.layouts.partials.maintranslationtext', [
+                            @include('layouts.partials.maintranslationtext', [
                                 'model' => $animal,
                                 'field' => 'private_text'
                             ])
@@ -332,7 +332,7 @@
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.description')) }}</label>
                         <div class="col-md-10">
 
-                            @include('themes.admin.metronic.layouts.partials.maintranslationtext', [
+                            @include('layouts.partials.maintranslationtext', [
                                 'model' => $animal,
                                 'field' => 'text'
                             ])

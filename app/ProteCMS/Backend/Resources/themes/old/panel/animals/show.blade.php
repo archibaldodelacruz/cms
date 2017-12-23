@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     {{ $animal->name }}
@@ -133,7 +133,7 @@
                         <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.private_text')) }}<br><small>(Información sobre el animal sólo disponible para voluntarios)</small></label>
                         <div class="col-md-10">
 
-                            @include('themes.admin.metronic.layouts.partials.maintranslationtext', [
+                            @include('layouts.partials.maintranslationtext', [
                                 'model' => $animal,
                                 'field' => 'private_text'
                             ])
@@ -145,7 +145,7 @@
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.description')) }}</label>
                         <div class="col-md-10">
 
-                            @include('themes.admin.metronic.layouts.partials.maintranslationtext', [
+                            @include('layouts.partials.maintranslationtext', [
                                 'model' => $animal,
                                 'field' => 'text'
                             ])

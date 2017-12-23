@@ -6,7 +6,7 @@
         <li><a href="{{ route('admin::finances::index') }}" class="btn btn-primary">Finanzas</a></li>
         <li><a href="{{ route('admin::support::index') }}" class="btn btn-primary">Soporte</a></li>
 
-        @if (app('App\Models\Webs\Web')->subdomain === 'admin')
+        @if (shelter()->subdomain === 'admin')
             <li><a href="{{ route('superadmin::index') }}" class="btn btn-primary">SuperAdmin</a></li>
         @endif
     </ul>

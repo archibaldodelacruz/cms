@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
+use Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -35,33 +35,44 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        Route::group([
-            'middleware' => 'web',
-            'namespace'  => 'App\ProteCMS\Frontend\Controllers',
-        ], function ($router) {
-            require base_path('routes/auth.php');
-            require base_path('routes/web.php');
-            require base_path('routes/admin.php');
-            require base_path('routes/superadmin.php');
-            require base_path('routes/api.php');
-            require base_path('routes/install.php');
-        });
+        $this->mapFrontendRoutes();
+        $this->mapBackendRoutes();
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "frnotend" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapFrontendRoutes()
     {
         Route::group([
             'middleware' => 'web',
-            'namespace'  => $this->namespace,
+            'namespace'  => 'App\ProteCMS\Frontend\Controllers',
         ], function ($router) {
             require base_path('routes/web.php');
+            require base_path('routes/install.php');
+        });
+    }
+
+    /**
+     * Define the "backend" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapBackendRoutes()
+    {
+        Route::group([
+            'middleware' => 'web',
+            'namespace'  => 'App\ProteCMS\Backend\Controllers',
+        ], function ($router) {
+            require base_path('routes/auth.php');
+            require base_path('routes/admin.php');
+            require base_path('routes/install.php');
         });
     }
 

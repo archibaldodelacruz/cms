@@ -1,7 +1,7 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
-    @include('themes.admin.metronic.layouts.partials.pagetitletranslation', [
+    @include('layouts.partials.pagetitletranslation', [
         'model' => $widget
     ])
 
@@ -24,7 +24,7 @@
 
 @section('content')
 
-    @include('themes.admin.metronic.layouts.partials.selectlang', [
+    @include('layouts.partials.selectlang', [
         'model' => $widget,
         'route' => route('admin::design::widgets::delete_translation', ['id' => $widget->id])
     ])

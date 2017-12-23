@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Editando: {{ $user->name }}<p class="pull-right" style="margin-top:0"><small>Los campos con * son obligatorios.</small></p>

@@ -65,7 +65,7 @@
                         {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
-                @include('themes.admin.metronic.layouts.partials.location', [
+                @include('layouts.partials.location', [
                     'model' => $web
                 ])
                 <div class="form-group">

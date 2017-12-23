@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Actualizar nota: {{ $note->hasTranslation($langform) ? $note->translate($langform)->title : '' }}
@@ -25,7 +25,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2 animal-menu">
-            @include('themes.admin.metronic.layouts.partials.animalmenu', [
+            @include('layouts.partials.animalmenu', [
                 'animal' => $animal
             ])
         </div>

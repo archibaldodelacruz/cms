@@ -1,4 +1,4 @@
-@extends('themes.admin.metronic.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
     Añadir apadrinamiento a la ficha de {{ $animal->name }}
@@ -25,7 +25,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2 animal-menu">
-            @include('themes.admin.metronic.layouts.partials.animalmenu', [
+            @include('layouts.partials.animalmenu', [
                 'animal' => $animal
             ])
         </div>
@@ -62,7 +62,7 @@
                                 {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
-                        @include('themes.admin.metronic.layouts.partials.location')
+                        @include('layouts.partials.location')
                         <div class="form-group {{ $errors->has('visible') ? 'has-error' : '' }}">
                             <label class="control-label col-md-2">* Visible en la web</label>
                             <div class="col-md-10">

@@ -20,7 +20,7 @@
                 </div>
             </li>
             <!-- END SIDEBAR TOGGLER BUTTON -->
-            @if (app('App\Models\Webs\Web')->subdomain === 'admin')
+            @if (shelter()->subdomain === 'admin')
             <li class="nav-item">
                 <form action="{{ route('superadmin::set_web') }}" method="POST">
                     {{ csrf_field() }}
@@ -28,7 +28,7 @@
                         <select name="web_id" class="form-control" onchange="this.form.submit()">
                             <option value="">Todas las protectoras</option>
                             @foreach (App\Models\Webs\Web::all() as $web_filter)
-                                <option value="{{ $web_filter->id }}" {{ app('App\Models\Webs\Web')->getConfig('web') == $web_filter->id ? 'selected' :  ''}}>{{ $web_filter->name }}</option>
+                                <option value="{{ $web_filter->id }}" {{ shelter()->getConfig('web') == $web_filter->id ? 'selected' :  ''}}>{{ $web_filter->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -117,7 +117,7 @@
             </li> --}}
         </ul>
         
-        @include('themes.admin.metronic.layouts.partials.responsivesidebar')
+        @include('layouts.partials.responsivesidebar')
 
         <!-- END SIDEBAR MENU -->
     </div>
