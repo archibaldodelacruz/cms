@@ -19,7 +19,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'themes_path' => realpath(base_path('resources/views/themes')), // eg: realpath(base_path('resources/themes'))
+    'themes_path' => realpath(base_path('app/ProteCMS')), // eg: realpath(base_path('resources/themes'))
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ return [
          */
         'default' => [
             'extends'       => null,
-            'views-path'    => 'web/default',
+            'views-path'    => 'Frontend/Resources/themes/old',
             'asset-path'    => 'themes/default',
         ],
 
@@ -71,7 +71,7 @@ return [
          */
         'admin' => [
             'extends'       => null,
-            'views-path'    => 'admin/metronic',
+            'views-path'    => 'Backend/Resources/themes/old',
             'asset-path'    => 'themes/default',
         ],
     ],

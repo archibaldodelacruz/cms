@@ -13,7 +13,7 @@ class WebController extends BaseController
     {
         parent::__construct();
 
-        if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin' && ! app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web')) {
+        if (shelter()->subdomain === 'admin' && ! shelter()->getConfig('web')) {
             abort(404);
         }
 
@@ -29,6 +29,8 @@ class WebController extends BaseController
             ->orderBy('fixed', 1)
             ->orderBy('published_at', 'DESC')
             ->paginate($this->web->getConfig('posts.pagination'));
+
+        dd(app('view'));
 
         return view('index', compact('last_posts'));
     }
