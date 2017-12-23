@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Web\Posts;
+namespace App\ProteCMS\Frontend\Controllers\Posts;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Web\BaseWebController;
+use App\ProteCMS\Frontend\Controllers\BaseController;
 
-class PostsController extends BaseWebController
+class PostsController extends BaseController
 {
     public function __construct()
     {

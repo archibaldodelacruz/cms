@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Panel\Forms;
 
-use App\Models\Forms\Form;
+use App\ProteCMS\Core\Models\Forms\Form;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use App\Http\Requests\Forms\StoreRequest;

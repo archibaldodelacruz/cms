@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Panel\Users;
 
 use Auth;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Users\User;
 use App\Mail\UserRegistered;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;

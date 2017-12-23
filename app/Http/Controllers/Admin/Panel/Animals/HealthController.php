@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
 use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Animals\Animal;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Finances\Finance;
+use App\ProteCMS\Core\Models\Finances\Finance;
 use App\Http\Requests\Animals\Health\StoreRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\Animals\Health\UpdateRequest;

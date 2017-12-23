@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Webs\Web;
+use App\ProteCMS\Core\Models\Webs\Web;
 use Illuminate\Console\Command;
 
 class NewShelter extends Command

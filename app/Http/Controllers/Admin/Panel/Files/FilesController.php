@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Panel\Files;
 
-use App\Models\Files\File;
+use App\ProteCMS\Core\Models\Files\File;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Storage;

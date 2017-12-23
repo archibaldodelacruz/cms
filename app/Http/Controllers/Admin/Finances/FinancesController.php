@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Finances;
 
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Finances\Finance;
+use App\ProteCMS\Core\Models\Finances\Finance;
 use App\Http\Requests\Finances\StoreRequest;
 use App\Http\Requests\Finances\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;

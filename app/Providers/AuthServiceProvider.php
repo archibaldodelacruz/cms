@@ -2,28 +2,28 @@
 
 namespace App\Providers;
 
-use App\Models\Files\File;
-use App\Models\Forms\Form;
-use App\Models\Pages\Page;
-use App\Models\Posts\Post;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Files\File;
+use App\ProteCMS\Core\Models\Forms\Form;
+use App\ProteCMS\Core\Models\Pages\Page;
+use App\ProteCMS\Core\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Users\User;
 use App\Policies\FilePolicy;
 use App\Policies\FormPolicy;
 use App\Policies\PagePolicy;
 use App\Policies\PostPolicy;
 use App\Policies\UserPolicy;
-use App\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Animals\Animal;
 use App\Policies\AnimalPolicy;
 use App\Policies\FinancePolicy;
 use App\Policies\PartnerPolicy;
-use App\Models\Finances\Finance;
-use App\Models\Partners\Partner;
+use App\ProteCMS\Core\Models\Finances\Finance;
+use App\ProteCMS\Core\Models\Partners\Partner;
 use App\Policies\CalendarPolicy;
-use App\Models\Calendar\Calendar;
+use App\ProteCMS\Core\Models\Calendar\Calendar;
 use App\Policies\VeterinaryPolicy;
-use App\Models\Animals\TemporaryHome;
+use App\ProteCMS\Core\Models\Animals\TemporaryHome;
 use App\Policies\TemporaryHomePolicy;
-use App\Models\Veterinarians\Veterinary;
+use App\ProteCMS\Core\Models\Veterinarians\Veterinary;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

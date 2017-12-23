@@ -7,7 +7,7 @@
 function getWebByRequest($request = null, $method = 'first')
 {
     if (! $request) {
-        $request = app('Illuminate\Http\Request');
+        $request = app('request');
     }
 
     $domain = strrchr($request->getHost(), '.');
@@ -21,20 +21,30 @@ function getWebByRequest($request = null, $method = 'first')
         $host = $host.$domain;
     }
 
-    return App\Models\Webs\Web::where($findBy, $host)->$method() ?: abort(500);
+    return App\ProteCMS\Core\Models\Webs\Web::where($findBy, $host)->$method() ?: abort(500);
+}
+
+if (! function_exists('shelter')) {
+    /**
+     * @return \Illuminate\Foundation\Application|mixed
+     */
+    function shelter()
+    {
+        return app('shelter');
+    }
 }
 
 if (! function_exists('activity')) {
     /**
      * @param null $user
      *
-     * @return \App\Models\Activity
+     * @return \App\ProteCMS\Core\Models\Activity
      */
     function activity($user = null)
     {
-        $activity = new \App\Models\Activity();
+        $activity = new \App\ProteCMS\Core\Models\Activity();
 
-        $activity->setWeb(app('App\Models\Webs\Web') ?: null);
+        $activity->setWeb(app('App\ProteCMS\Core\Models\Webs\Web') ?: null);
 
         if (! $user) {
             $activity->setUser(Auth::check() ? Auth::user() : null);

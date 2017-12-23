@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Files\File;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Files\File;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FilePolicy extends BasePolicy

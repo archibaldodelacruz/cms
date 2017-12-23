@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Web\Pages;
+namespace App\ProteCMS\Frontend\Controllers\Pages;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Web\BaseWebController;
+use App\ProteCMS\Frontend\Controllers\BaseController;
 
-class PagesController extends BaseWebController
+class PagesController extends BaseController
 {
     public function __construct()
     {

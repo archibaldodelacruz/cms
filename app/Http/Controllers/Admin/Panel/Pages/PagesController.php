@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Panel\Pages;
 
 use Exception;
-use App\Models\Pages\Page;
+use App\ProteCMS\Core\Models\Pages\Page;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\DB;

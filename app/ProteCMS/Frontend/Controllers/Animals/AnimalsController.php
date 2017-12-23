@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Web\Animals;
+namespace App\ProteCMS\Frontend\Controllers\Animals;
 
 use Mail;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Http\Controllers\Web\BaseWebController;
+use App\ProteCMS\Frontend\Controllers\BaseController;
 
-class AnimalsController extends BaseWebController
+class AnimalsController extends BaseController
 {
     use FilterBy;
 

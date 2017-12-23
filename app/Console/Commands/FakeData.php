@@ -2,21 +2,22 @@
 
 namespace App\Console\Commands;
 
-use DB;
+use Faker\Factory;
 use Image;
-use App\Models\Webs\Web;
-use App\Models\Files\File;
-use App\Models\Pages\Page;
-use App\Models\Posts\Post;
-use App\Models\Users\User;
-use App\Models\Widgets\Link;
-use App\Models\Animals\Animal;
-use App\Models\Posts\Category;
+use App\ProteCMS\Core\{
+    Models\Webs\Web,
+    Models\Files\File,
+    Models\Pages\Page,
+    Models\Posts\Post,
+    Models\Users\User,
+    Models\Animals\Animal,
+    Models\Posts\Category,
+    Models\Partners\Partner,
+    Models\Calendar\Calendar,
+    Models\Animals\TemporaryHome,
+    Models\Veterinarians\Veterinary
+};
 use Illuminate\Console\Command;
-use App\Models\Partners\Partner;
-use App\Models\Calendar\Calendar;
-use App\Models\Animals\TemporaryHome;
-use App\Models\Veterinarians\Veterinary;
 
 class FakeData extends Command
 {
@@ -49,7 +50,7 @@ class FakeData extends Command
         $this->call('migrate:refresh');
         $this->call('db:seed');
 
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
 
         // Generate web
         $this->info('Generating web');

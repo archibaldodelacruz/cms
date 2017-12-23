@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Users\User;
-use App\Models\Animals\TemporaryHome;
+use App\ProteCMS\Core\Models\Users\User;
+use App\ProteCMS\Core\Models\Animals\TemporaryHome;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TemporaryHomePolicy extends BasePolicy

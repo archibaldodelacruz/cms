@@ -23,7 +23,7 @@ class UploadFile
     public function __construct(UploadedFile $file, $path, $name, $disk = null)
     {
         $this->file = $file;
-        $this->path = $path ?: 'web/'.app('App\Models\Webs\Web')->id;
+        $this->path = $path ?: 'web/'.app('App\ProteCMS\Core\Models\Webs\Web')->id;
         $this->name = $name.'.'.$this->extension();
     }
 

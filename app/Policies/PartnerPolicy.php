@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Users\User;
-use App\Models\Partners\Partner;
+use App\ProteCMS\Core\Models\Users\User;
+use App\ProteCMS\Core\Models\Partners\Partner;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PartnerPolicy extends BasePolicy

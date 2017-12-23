@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\ProteCMS\Frontend\Controllers;
 
 use Theme;
 use App\Http\Controllers\Controller;
 
-class BaseWebController extends Controller
+class BaseController extends Controller
 {
     public function __construct()
     {

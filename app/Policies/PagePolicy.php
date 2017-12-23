@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Pages\Page;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Pages\Page;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PagePolicy extends BasePolicy

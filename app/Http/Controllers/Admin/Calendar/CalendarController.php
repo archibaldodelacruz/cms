@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Calendar;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Animals\Animal;
-use App\Models\Calendar\Calendar;
+use App\ProteCMS\Core\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Calendar\Calendar;
 use App\Http\Requests\Calendar\StoreRequest;
 use App\Http\Requests\Calendar\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;

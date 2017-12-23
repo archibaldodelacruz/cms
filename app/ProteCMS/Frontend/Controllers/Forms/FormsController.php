@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Web\Forms;
+namespace App\ProteCMS\Frontend\Controllers\Forms;
 
 use Mail;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Web\BaseWebController;
+use App\ProteCMS\Frontend\Controllers\BaseController;
 
-class FormsController extends BaseWebController
+class FormsController extends BaseController
 {
     public function __construct()
     {

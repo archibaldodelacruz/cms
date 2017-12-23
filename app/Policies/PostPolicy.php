@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Posts\Post;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy extends BasePolicy

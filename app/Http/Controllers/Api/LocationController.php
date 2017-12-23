@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\Location\State;
-use App\Models\Location\Country;
+use App\ProteCMS\Core\Models\Location\State;
+use App\ProteCMS\Core\Models\Location\Country;
 use App\Http\Controllers\Controller;
 
 class LocationController extends Controller

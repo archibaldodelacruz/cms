@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\ProteCMS\Frontend\Controllers;
 
-use App\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Posts\Post;
 use Illuminate\Http\Request;
 
-class WebController extends BaseWebController
+class Controller extends BaseController
 {
     protected $post;
 
@@ -13,7 +13,7 @@ class WebController extends BaseWebController
     {
         parent::__construct();
 
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin' && ! app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web')) {
             abort(404);
         }
 

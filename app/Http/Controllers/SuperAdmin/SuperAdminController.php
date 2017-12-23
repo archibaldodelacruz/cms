@@ -4,15 +4,15 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use Notification;
 use Carbon\Carbon;
-use App\Models\Webs\Web;
-use App\Models\Posts\Post;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Webs\Web;
+use App\ProteCMS\Core\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
-use App\Models\Animals\Animal;
-use App\Models\Partners\Partner;
+use App\ProteCMS\Core\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Partners\Partner;
 use App\Notifications\NewUpdate;
-use App\Models\Veterinarians\Veterinary;
+use App\ProteCMS\Core\Models\Veterinarians\Veterinary;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
 use App\Http\Controllers\Admin\BaseAdminController;
 
@@ -22,7 +22,7 @@ class SuperAdminController extends BaseAdminController
     {
         parent::__construct();
 
-        $this->web = app('App\Models\Webs\Web');
+        $this->web = app('App\ProteCMS\Core\Models\Webs\Web');
     }
 
     public function index(Request $request)

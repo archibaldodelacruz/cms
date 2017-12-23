@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Panel\Animals;
 
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Animals\TemporaryHome;
+use App\ProteCMS\Core\Models\Animals\TemporaryHome;
 use App\Http\Requests\TemporaryHomes\StoreRequest;
 use App\Http\Controllers\Admin\BaseAdminController;
 use App\Http\Requests\TemporaryHomes\UpdateRequest;

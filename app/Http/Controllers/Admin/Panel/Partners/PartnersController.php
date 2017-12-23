@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Panel\Partners;
 
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Partners\Partner;
+use App\ProteCMS\Core\Models\Partners\Partner;
 use App\Http\Requests\Partners\StoreRequest;
 use App\Http\Requests\Partners\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;

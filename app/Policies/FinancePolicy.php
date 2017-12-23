@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Users\User;
-use App\Models\Finances\Finance;
+use App\ProteCMS\Core\Models\Users\User;
+use App\ProteCMS\Core\Models\Finances\Finance;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FinancePolicy extends BasePolicy

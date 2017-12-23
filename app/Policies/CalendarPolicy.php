@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Users\User;
-use App\Models\Calendar\Calendar;
+use App\ProteCMS\Core\Models\Users\User;
+use App\ProteCMS\Core\Models\Calendar\Calendar;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CalendarPolicy extends BasePolicy

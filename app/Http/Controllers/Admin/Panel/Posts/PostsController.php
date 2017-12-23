@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Panel\Posts;
 
 use Exception;
-use App\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Posts\Post;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\DB;

@@ -106,7 +106,7 @@ class InstallController extends Controller
 
             $name = 'logo.'.$extension;
 
-            Storage::put('web/'.app('App\Models\Webs\Web')->id.'/images/'.$name, $logo->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.app('App\ProteCMS\Core\Models\Webs\Web')->id.'/images/'.$name, $logo->stream($extension, 100)->__toString(), 'public');
 
             $this->web->update([
                 'logo' => $name,
@@ -137,7 +137,7 @@ class InstallController extends Controller
 
             $name = 'header.'.$extension;
 
-            Storage::put('web/'.app('App\Models\Webs\Web')->id.'/images/'.$name, $header->stream($extension, 100)->__toString(), 'public');
+            Storage::put('web/'.app('App\ProteCMS\Core\Models\Webs\Web')->id.'/images/'.$name, $header->stream($extension, 100)->__toString(), 'public');
 
             $this->web->setConfig('themes.default.header_image', $name);
         }

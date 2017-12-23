@@ -8,7 +8,7 @@ class RedirectIfInstalled
 {
     public function handle($request, Closure $next)
     {
-        $web = app('App\Models\Webs\Web');
+        $web = app('App\ProteCMS\Core\Models\Webs\Web');
 
         if ($web->installed) {
             return redirect()->route('web::index');

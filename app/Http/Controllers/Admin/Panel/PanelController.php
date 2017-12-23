@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin\Panel;
 
 use Carbon\Carbon;
-use App\Models\Posts\Post;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Posts\Post;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
-use App\Models\Animals\Animal;
-use App\Models\Partners\Partner;
-use App\Models\Veterinarians\Veterinary;
+use App\ProteCMS\Core\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Partners\Partner;
+use App\ProteCMS\Core\Models\Veterinarians\Veterinary;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
 use App\Http\Controllers\Admin\BaseAdminController;
 
@@ -43,7 +43,7 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        if (app('App\Models\Webs\Web')->subdomain === 'admin' && ! app('App\Models\Webs\Web')->getConfig('web')) {
+        if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin' && ! app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),
                 'ga:pageviews,ga:users',

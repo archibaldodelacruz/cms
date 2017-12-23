@@ -2,7 +2,7 @@
 
 namespace App\Helpers\Traits;
 
-use App\Models\Activity;
+use App\ProteCMS\Core\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
 
 trait LogsActivity

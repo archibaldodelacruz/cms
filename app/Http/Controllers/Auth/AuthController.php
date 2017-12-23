@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use Mail;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -52,7 +52,7 @@ class AuthController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if (! app('App\Models\Webs\Web')->users()->where('email', $request->get('email'))->exists()) {
+        if (! app('App\ProteCMS\Core\Models\Webs\Web')->users()->where('email', $request->get('email'))->exists()) {
             flash('Ha ocurrido un error al enviar el formulario. Revisa los campos.', 'error');
 
             return back()->withErrors([
@@ -129,8 +129,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        if (app('App\Models\Webs\Web')->subdomain === 'admin') {
-            app('App\Models\Webs\Web')->unsetConfig('web');
+        if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin') {
+            app('App\ProteCMS\Core\Models\Webs\Web')->unsetConfig('web');
         }
 
         Auth::logout();

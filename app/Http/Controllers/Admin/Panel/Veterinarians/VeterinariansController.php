@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Panel\Veterinarians;
 
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
-use App\Models\Veterinarians\Veterinary;
+use App\ProteCMS\Core\Models\Veterinarians\Veterinary;
 use App\Http\Requests\Veterinarians\StoreRequest;
 use App\Http\Requests\Veterinarians\UpdateRequest;
 use App\Http\Controllers\Admin\BaseAdminController;

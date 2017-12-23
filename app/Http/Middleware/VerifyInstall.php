@@ -8,7 +8,7 @@ class VerifyInstall
 {
     public function handle($request, Closure $next)
     {
-        $web = app('App\Models\Webs\Web');
+        $web = app('App\ProteCMS\Core\Models\Webs\Web');
 
         if (! $web->installed && ! $request->is('api*')) {
             if (! isset($web->config['install_step'])) {

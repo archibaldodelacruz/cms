@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Forms\Form;
-use App\Models\Users\User;
+use App\ProteCMS\Core\Models\Forms\Form;
+use App\ProteCMS\Core\Models\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FormPolicy extends BasePolicy

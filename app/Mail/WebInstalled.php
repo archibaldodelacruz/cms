@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Webs\Web;
+use App\ProteCMS\Core\Models\Webs\Web;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

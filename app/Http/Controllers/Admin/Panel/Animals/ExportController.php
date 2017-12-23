@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Panel\Animals;
 
 use PDF;
-use App\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Animals\Animal;
 use App\Http\Controllers\Admin\BaseAdminController;
 
 class ExportController extends BaseAdminController

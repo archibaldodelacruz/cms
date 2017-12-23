@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
-use App\Models\Webs\Web;
+use App\ProteCMS\Core\Models\Webs\Web;
+use Carbon;
 use Laravel\Dusk\DuskServiceProvider;
-use Illuminate\Support\Facades\Schema;
+use Schema;
 use Illuminate\Support\ServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as DebugBar;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
@@ -25,11 +25,11 @@ class AppServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
             if ($this->app->environment() === 'dev') {
                 $web = Web::where('subdomain', 'dev')->first();
-                $this->app->bind('App\Models\Webs\Web', function () use ($web) {
+                $this->app->bind('shelter', function () use ($web) {
                     return $web;
                 });
             } else {
-                $request = app('Illuminate\Http\Request');
+                $request = app('request');
 
                 $domain = strrchr($request->getHost(), '.');
                 $host = str_replace($domain, '', str_replace('www.', '', $request->getHost()));
@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
                     abort(404);
                 }
 
-                $this->app->bind('App\Models\Webs\Web', function () use ($web) {
+                $this->app->bind('shelter', function () use ($web) {
                     return $web;
                 });
             }

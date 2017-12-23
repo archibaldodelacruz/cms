@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\SuperAdmin\Webs;
 
 use App\Mail\WebCreated;
-use App\Models\Webs\Web;
+use App\ProteCMS\Core\Models\Webs\Web;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +17,7 @@ class WebsController extends SuperAdminController
     {
         parent::__construct();
 
-        $this->web = app('App\Models\Webs\Web');
+        $this->web = app('App\ProteCMS\Core\Models\Webs\Web');
     }
 
     public function index(Request $request)

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Users\User;
-use App\Models\Animals\Animal;
+use App\ProteCMS\Core\Models\Users\User;
+use App\ProteCMS\Core\Models\Animals\Animal;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AnimalPolicy extends BasePolicy
