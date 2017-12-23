@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\ProteCMS\Core\Middleware;
 
 use Closure;
 
@@ -8,7 +8,7 @@ class RedirectIfInstalled
 {
     public function handle($request, Closure $next)
     {
-        $web = app('App\ProteCMS\Core\Models\Webs\Web');
+        $web = shelter();
 
         if ($web->installed) {
             return redirect()->route('web::index');

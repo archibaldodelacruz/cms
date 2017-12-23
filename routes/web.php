@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/404', ['as' => '404', 'uses' => 'Web\WebController@error404']);
+Route::get('/404', ['as' => '404', 'uses' => 'WebController@error404']);
 
-Route::group(['as' => 'web::', 'namespace' => 'Web', 'middleware' => ['checkInstallation', 'redirectIfHasDomain']], function () {
+Route::group(['as' => 'web::', 'middleware' => ['checkInstallation', 'redirectIfHasDomain']], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'WebController@index']);
 
     Route::get('/custom_css', ['as' => 'custom_css', 'uses' => 'WebController@custom_css']);

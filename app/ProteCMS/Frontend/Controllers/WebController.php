@@ -5,7 +5,7 @@ namespace App\ProteCMS\Frontend\Controllers;
 use App\ProteCMS\Core\Models\Posts\Post;
 use Illuminate\Http\Request;
 
-class Controller extends BaseController
+class WebController extends BaseController
 {
     protected $post;
 

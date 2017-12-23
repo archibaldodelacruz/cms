@@ -53,10 +53,10 @@ class Kernel extends HttpKernel
         'guest'               => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'            => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'setTheme'            => \igaster\laravelTheme\Middleware\setTheme::class,
-        'checkInstallation'   => \App\Http\Middleware\VerifyInstall::class,
-        'redirectIfInstalled' => \App\Http\Middleware\RedirectIfInstalled::class,
-        'redirectIfHasDomain' => \App\Http\Middleware\RedirectIFHasDomain::class,
-        'superAdmin'          => \App\Http\Middleware\CheckSuperAdmin::class,
-        'verifyAdminAccess'   => \App\Http\Middleware\VerifyAdminAccess::class,
+        'checkInstallation'   => \App\ProteCMS\Core\Middleware\VerifyInstall::class,
+        'redirectIfInstalled' => \App\ProteCMS\Core\Middleware\RedirectIfInstalled::class,
+        'redirectIfHasDomain' => \App\ProteCMS\Core\Middleware\RedirectIFHasDomain::class,
+        'superAdmin'          => \App\ProteCMS\Core\Middleware\CheckSuperAdmin::class,
+        'verifyAdminAccess'   => \App\ProteCMS\Core\Middleware\VerifyAdminAccess::class,
     ];
 }

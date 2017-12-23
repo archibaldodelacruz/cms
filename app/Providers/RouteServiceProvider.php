@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'web',
-            'namespace'  => $this->namespace,
+            'namespace'  => 'App\ProteCMS\Frontend\Controllers',
         ], function ($router) {
             require base_path('routes/auth.php');
             require base_path('routes/web.php');
