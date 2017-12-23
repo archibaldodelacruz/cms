@@ -30,8 +30,6 @@ class WebController extends BaseController
             ->orderBy('published_at', 'DESC')
             ->paginate($this->web->getConfig('posts.pagination'));
 
-        dd(app('view'));
-
         return view('index', compact('last_posts'));
     }
 

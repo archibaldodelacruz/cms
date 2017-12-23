@@ -58,18 +58,18 @@ return [
     'themes' => [
 
         /*
-         * Web themes
+         * Frontend themes
          */
-        'default' => [
+        'frontend_old' => [
             'extends'       => null,
             'views-path'    => 'Frontend/Resources/themes/old',
             'asset-path'    => 'themes/default',
         ],
 
         /*
-         * Admin themes
+         * Backend themes
          */
-        'admin' => [
+        'backend_old' => [
             'extends'       => null,
             'views-path'    => 'Backend/Resources/themes/old',
             'asset-path'    => 'themes/default',

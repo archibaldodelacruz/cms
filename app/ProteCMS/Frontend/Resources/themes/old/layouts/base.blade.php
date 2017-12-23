@@ -130,7 +130,7 @@
 						@elseif ($widget->type == 'custom')
 							<div class="widget-content">{!! $widget->content !!}</div>
 						@elseif ($widget->type == 'protecms')
-							@include('themes.web.default.partials.widgets.' . $widget->file)
+							@include('partials.widgets.' . $widget->file)
 						@endif
 						<div class="widget-bottom {{ $widget->getConfig('without_background') || $widget->getConfig('without_background_bottom') ? 'hide' : '' }}"></div>
 					</div>
@@ -171,7 +171,7 @@
 					@elseif ($widget->type == 'custom')
 						<div class="widget-content">{!! $widget->content !!}</div>
 					@elseif ($widget->type == 'protecms')
-						@include('themes.web.default.partials.widgets.' . $widget->file)
+						@include('partials.widgets.' . $widget->file)
 					@endif
 					<div class="widget-bottom {{ $widget->getConfig('without_background') || $widget->getConfig('without_background_bottom') ? 'hide' : '' }}"></div>
 				</div>

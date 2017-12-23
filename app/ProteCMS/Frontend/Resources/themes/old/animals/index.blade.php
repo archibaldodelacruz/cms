@@ -1,4 +1,4 @@
-@extends('themes.web.default.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
 	Listado de animales
@@ -20,7 +20,7 @@
 			<div class="animals-list">
 				@foreach ($animals as $animal)
 					<div class="col-md-4 col-xs-6 col-sm-4 animal">
-						@include('themes.web.default.partials.animal', [
+						@include('partials.animal', [
 							'animal' => $animal
 						])
 					</div>

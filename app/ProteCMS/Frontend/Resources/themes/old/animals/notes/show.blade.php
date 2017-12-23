@@ -1,4 +1,4 @@
-@extends('themes.web.default.layouts.base')
+@extends('layouts.base')
 
 @section('meta.share')
     @if (preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $note->text, $metaimage))

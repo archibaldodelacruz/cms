@@ -4,7 +4,7 @@
 @if ($page->form)
 
 	<div class="post-form">
-		@include('themes.web.default.partials.form', [
+		@include('partials.form', [
 			'form' => $page->form
 		])
 	</div>

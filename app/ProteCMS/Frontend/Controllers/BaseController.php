@@ -11,7 +11,7 @@ class BaseController extends Controller
     {
         parent::__construct();
 
-        Theme::set('web/'.$this->web->getConfig('theme'));
+        Theme::set("frontend_{$this->web->getConfig('theme')}");
 
         $widgets = $this->web->widgets()->active()->with(['links' => function ($query) {
             $query->orderBy('order', 'ASC');

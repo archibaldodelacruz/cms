@@ -1,4 +1,4 @@
-@extends('themes.web.default.layouts.base')
+@extends('layouts.base')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 					@if (! Request::is('/') && $post->form)
 
 						<div class="post-form">
-							@include('themes.web.default.partials.form', [
+							@include('partials.form', [
 								'form' => $post->form
 							])
 						</div>

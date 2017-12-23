@@ -4,7 +4,7 @@
 @if (! Request::is('/') && $post->form)
 
 	<div class="post-form">
-		@include('themes.web.default.partials.form', [
+		@include('partials.form', [
 			'form' => $post->form
 		])
 	</div>

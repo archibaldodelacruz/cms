@@ -1,4 +1,4 @@
-@extends('themes.web.default.layouts.base')
+@extends('layouts.base')
 
 @section('page.title')
 	{{ $post->title }}
@@ -41,7 +41,7 @@
 	<div class="posts">
 		<div class="row post">
 			<div class="col-md-12">
-				@include('themes.web.default.partials.post', [
+				@include('partials.post', [
 					'post' => $post
 				])
 			</div>

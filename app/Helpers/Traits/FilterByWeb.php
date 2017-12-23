@@ -23,15 +23,15 @@ trait FilterByWeb
             && ! in_array(self::getTableName(), self::$excludedTables)) {
             if (! app()->runningInConsole() || app()->environment() === 'testing') {
                 static::creating(function ($model) {
-                    $model->web_id = app('App\ProteCMS\Core\Models\Webs\Web')->id;
+                    $model->web_id = shelter()->id;
                 });
             }
 
             static::addGlobalScope('web', function (Builder $builder) {
-                if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin' && app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web')) {
-                    $builder->where('web_id', app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web'));
-                } elseif (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain !== 'admin') {
-                    $builder->where('web_id', app('App\ProteCMS\Core\Models\Webs\Web')->id);
+                if (shelter()->subdomain === 'admin' && shelter()->getConfig('web')) {
+                    $builder->where('web_id', shelter()->getConfig('web'));
+                } elseif (shelter()->subdomain !== 'admin') {
+                    $builder->where('web_id', shelter()->id);
                 }
             });
         }

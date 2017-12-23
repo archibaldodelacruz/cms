@@ -41,7 +41,7 @@
 	<div class="posts">
 		<div class="row post">
 			<div class="col-md-12">
-				@include('themes.web.default.partials.form', [
+				@include('partials.form', [
 					'form' => $form
 				])
 			</div>
