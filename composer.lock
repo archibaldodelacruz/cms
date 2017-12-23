@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ad6bf4795df912fbe4afffeefae6ff9",
+    "content-hash": "ef83bc3467316f897194672e41a45eb9",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1267,36 +1267,43 @@
         },
         {
             "name": "igaster/laravel-theme",
-            "version": "v1.16",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igaster/laravel-theme.git",
-                "reference": "7816c4497feb326d11447737e8477779a713fc96"
+                "reference": "3db2869e85b4ed2d1f1fc89503e0a8487be42ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igaster/laravel-theme/zipball/7816c4497feb326d11447737e8477779a713fc96",
-                "reference": "7816c4497feb326d11447737e8477779a713fc96",
+                "url": "https://api.github.com/repos/igaster/laravel-theme/zipball/3db2869e85b4ed2d1f1fc89503e0a8487be42ff6",
+                "reference": "3db2869e85b4ed2d1f1fc89503e0a8487be42ff6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": ">=5.2.0",
-                "php": ">=5.4.0"
+                "illuminate/contracts": "5.4.*|5.5.*"
             },
             "require-dev": {
-                "illuminate/database": "~5.2",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~4.0",
-                "vlucas/phpdotenv": "~2.0"
+                "orchestra/testbench": "~3.4",
+                "phpunit/phpunit": "^6.0"
             },
             "suggest": {
                 "orchestra/asset": "Use '@css' and '@js' in Blade files"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Igaster\\LaravelTheme\\themeServiceProvider"
+                    ],
+                    "aliases": {
+                        "Theme": "Igaster\\LaravelTheme\\Facades\\Theme"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "igaster\\laravelTheme\\": "src/",
-                    "igaster\\laravelTheme\\Tests\\": "tests/"
+                    "Igaster\\LaravelTheme\\": "src/",
+                    "Igaster\\LaravelTheme\\Tests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1310,7 +1317,7 @@
                 }
             ],
             "description": "Laravel 5 Themes: Asset & Views folder per theme. Theme inheritance. Blade integration and more...",
-            "homepage": "https://github.com/igaster/laravel-theme",
+            "homepage": "https://github.com/Igaster/laravel-theme.git",
             "keywords": [
                 "assets",
                 "blade",
@@ -1319,7 +1326,7 @@
                 "themes",
                 "views"
             ],
-            "time": "2017-06-07T15:24:25+00:00"
+            "time": "2017-09-27T11:05:13+00:00"
         },
         {
             "name": "intervention/image",
@@ -1527,35 +1534,40 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v1.1.1",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "87d57bbcb878e569aa8750e1d487ce923561f3e3"
+                "reference": "a7529e19592879d3a6408728080ba657499890bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/87d57bbcb878e569aa8750e1d487ce923561f3e3",
-                "reference": "87d57bbcb878e569aa8750e1d487ce923561f3e3",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/a7529e19592879d3a6408728080ba657499890bc",
+                "reference": "a7529e19592879d3a6408728080ba657499890bc",
                 "shasum": ""
             },
             "require": {
                 "facebook/webdriver": "~1.0",
-                "illuminate/console": "~5.4",
-                "illuminate/support": "~5.4",
+                "illuminate/console": "~5.5",
+                "illuminate/support": "~5.5",
                 "nesbot/carbon": "~1.20",
                 "php": ">=5.6.4",
                 "symfony/console": "~3.2",
                 "symfony/process": "~3.2"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.6",
-                "phpunit/phpunit": "^5.7"
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Dusk\\DuskServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -1574,13 +1586,12 @@
                 }
             ],
             "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
-            "homepage": "https://laravel.com",
             "keywords": [
                 "laravel",
                 "testing",
                 "webdriver"
             ],
-            "time": "2017-10-31T21:41:42+00:00"
+            "time": "2017-12-08T14:18:11+00:00"
         },
         {
             "name": "laravel/framework",
