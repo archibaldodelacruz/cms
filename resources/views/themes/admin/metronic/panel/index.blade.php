@@ -4,8 +4,8 @@
 
 <div class="alert alert-info text-center">
     <p>
-        <h4>¡El proyecto ya tiene Teaming oficial!</h4> 
-        Con solo 1€ al mes ayudarás a costear los gastos de servidores y servicios. 
+        <h4>¡El proyecto ya tiene Teaming oficial!</h4>
+        Con solo 1€ al mes ayudarás a costear los gastos de servidores y servicios.
         <br><small>Esto es totalmente opcional, ProteCMS <strong>siempre será gratis</strong>.</small>
     </p>
     <a href="https://www.teaming.net/protecms" target="_blank" class="btn btn-default margin-top-10">Donar 1€ al mes</a>
@@ -183,7 +183,7 @@
     <p>Esta es la página principal del panel de administración. Cuando un voluntario que tiene acceso al panel o un administrador se identifican en el sistema, ven esta página.</p>
     <p>En ella hay 4 bloques (por el momento):</p>
     <p><strong>Últimos animales:</strong><br> Muestra los últimos 5 animales añadidos.</p>
-    <p><strong>¡Bienvenidos a la nueva versión!:</strong><br> Muestra un mensaje de bienvenida, que podrá tener información sobre nuevas actualizaciones, correciones, etc..</p>
+    <p><strong>¡Bienvenidos a la nueva versión!:</strong><br> Muestra un mensaje de bienvenida, que podrá tener información sobre nuevas actualizaciones, correcciones, etc..</p>
     <p><strong>Últimos artículos:</strong><br> Muestra los últimos 5 artículos añadidos.</p>
     <p><strong>Últimos usuarios:</strong><br> Muestra los últimos 5 usuarios registrados.</p>
 @endsection
