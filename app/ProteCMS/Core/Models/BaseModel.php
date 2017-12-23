@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\ProteCMS\Core\Models;
 
 use App\Helpers\Traits\FilterByWeb;
 use Illuminate\Database\Eloquent\Model;

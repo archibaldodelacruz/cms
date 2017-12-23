@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\ProteCMS\Core\Models;
 
 use App\ProteCMS\Core\Models\Webs\Web;
 use Illuminate\Database\Eloquent\Model;
