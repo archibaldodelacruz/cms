@@ -2,8 +2,8 @@
 
 namespace App\ProteCMS\Frontend\Controllers;
 
+use App\ProteCMS\Core\Controllers\Controller;
 use Theme;
-use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {

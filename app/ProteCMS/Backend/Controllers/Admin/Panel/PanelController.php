@@ -43,7 +43,7 @@ class PanelController extends BaseAdminController
 
     public function stats(Request $request)
     {
-        if (app('App\ProteCMS\Core\Models\Webs\Web')->subdomain === 'admin' && ! app('App\ProteCMS\Core\Models\Webs\Web')->getConfig('web')) {
+        if (shelter()->subdomain === 'admin' && ! shelter()->getConfig('web')) {
             $response = Analytics::performQuery(
                 Period::days(30),
                 'ga:pageviews,ga:users',

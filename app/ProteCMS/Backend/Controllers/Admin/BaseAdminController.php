@@ -17,7 +17,7 @@ class BaseAdminController extends Controller
 
         config('translatable.use_fallback', false);
 
-        Theme::set('backend_old');
+        Theme::set('backend_default');
 
         view()->share('web', $this->web);
         view()->share('sidebar', $this->getSidebar());

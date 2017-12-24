@@ -1,0 +1,23 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css';
+@import '~select2/dist/css/select2.css';
+//@import './resources/assets/plugins/datetimepicker/jquery.datetimepicker.css';
+@import '~fullcalendar/dist/fullcalendar.css';
+@import '~bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css';
+@import '~cropperjs/dist/cropper.min.css';
+@import '~animate.css/animate.css';
+@import '~jquery-confirm/dist/jquery-confirm.min.css';
+@import '~bootstrap-daterangepicker/daterangepicker.css';
+@import '~magnific-popup/dist/magnific-popup.css';
+
+@import 'global/_components.scss';
+@import 'global/_plugins.scss';
+@import 'layouts/layout/layout.scss';
+
+@import 'layouts/layout/themes/light.scss';
+
+@import 'pages/login.scss';
+@import 'pages/faq.scss';
+
+@import 'custom';

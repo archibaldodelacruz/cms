@@ -60,18 +60,18 @@ return [
         /*
          * Frontend themes
          */
-        'frontend_old' => [
+        'frontend_default' => [
             'extends'       => null,
-            'views-path'    => 'Frontend/Resources/themes/old',
+            'views-path'    => 'Frontend/Resources/themes/default/views',
             'asset-path'    => 'themes/default',
         ],
 
         /*
          * Backend themes
          */
-        'backend_old' => [
+        'backend_default' => [
             'extends'       => null,
-            'views-path'    => 'Backend/Resources/themes/old',
+            'views-path'    => 'Backend/Resources/themes/default/views',
             'asset-path'    => 'themes/default',
         ],
     ],
