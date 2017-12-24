@@ -1,14 +1,25 @@
-@font-face {
-  font-family: "Open Sans";
-  src: "/assets/fonts/OpenSans-Regular.ttf";
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500');
+
+body {
+  font-size: 16px;
+  font-weight: lighter;
+  font-family: 'Poppins', sans-serif;
 }
 
-@font-face {
-  font-family: "Dosis";
-  src: "/assets/fonts/Dosis-Medium.ttf";
+$main-color: #62a8ea;
+
+.page-content-wrapper, .page-content {
+  background: #f1f4f5;
 }
 
-$main-color: #25c2e6;
+.page-content-wrapper .page-content {
+  margin-left: 260px;
+}
+
+.page-sidebar {
+  width: 260px;
+  padding-bottom: 100px !important;
+}
 
 // Animals
 .table-animals {
@@ -41,21 +52,46 @@ $main-color: #25c2e6;
 // Design
 .page-header.navbar {
   background-color: $main-color;
+  border-radius: 0;
+  height: 60px;
 
   .page-logo {
+    height: 60px;
     padding-left: 0;
+    width: 260px;
 
     .logo-default {
       margin: 7px 0 0 0;
     }
   }
 
+  .hor-menu .navbar-nav {
+    height: 60px;
+
+    & > li > a {
+      height: 60px;
+      padding: 20px;
+    }
+  }
+
   .top-menu {
+    height: 60px;
     .navbar-nav {
       > li.dropdown {
-        .dropdown-toggle {
+        a.dropdown-toggle {
+          padding: 20px;
           > i {
             color: #fff;
+          }
+
+          &:hover {
+            background-color: #5897D2 !important;
+          }
+        }
+
+        &.open {
+          a.dropdown-toggle {
+            background-color: #5897D2 !important;
           }
         }
       }
@@ -77,16 +113,25 @@ $main-color: #25c2e6;
   padding: 10px;
 }
 
+.btn-danger {
+  background-color: #f96868;
+  border-color: #f96868;
+}
+
 .mfp-img {
   height: 500px !important;
 }
 
-.page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a {
-  background-color: #fefefe !important;
+.page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a, .page-header.navbar .hor-menu .navbar-nav > li:hover > a, .page-header.navbar .hor-menu .navbar-nav > li.open > a, .page-header.navbar .hor-menu .navbar-nav > li > a:hover {
+  background-color: #5897D2 !important;
 }
 
 .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a:hover {
-  color: #888;
+  color: #fff;
+}
+
+.page-sidebar .page-sidebar-menu > li > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .arrow:before {
+  top: 14px;
 }
 
 .page-sidebar .page-sidebar-menu > li.heading, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading {
@@ -101,6 +146,22 @@ $main-color: #25c2e6;
   background-color: red;
 }
 
+.page-sidebar .page-sidebar-menu .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {
+  padding: 15px 15px 15px 43px;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a, .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a, .page-sidebar .page-sidebar-menu .sub-menu > li.open > a, .page-sidebar .page-sidebar-menu .sub-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a, .page-sidebar .page-sidebar-menu > li:hover > a, .page-sidebar .page-sidebar-menu > li.open > a {
+  background: #F5F9FC !important;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li .sub-menu li > a, .page-sidebar .page-sidebar-menu li .sub-menu li > a {
+  color: #76838f;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li .sub-menu li > a, .page-sidebar .page-sidebar-menu li .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a, .page-sidebar .page-sidebar-menu li > a {
+  font-weight: lighter;
+}
+
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar .page-sidebar-menu > li.active.open > a {
   background-color: $main-color;
 }
@@ -111,6 +172,11 @@ $main-color: #25c2e6;
 
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {
   max-width: inherit;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a, .page-sidebar .page-sidebar-menu > li > a {
+  border-top: 0;
+  padding: 15px;
 }
 
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a {

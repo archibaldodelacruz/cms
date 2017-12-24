@@ -19,7 +19,7 @@
             </select>
         </div>
         <div class="table-scrollable">
-            <table class="table table-center table-striped table-bordered table-condensed table-hover">
+            <table class="table table-center table-hover">
                 <thead>
                 <tr>
                     <th>Título</th>
@@ -48,7 +48,7 @@
                         </select>
                     </th>
                     <th class="table-actions">
-                        <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn btn-block btn-default"><i class="fa fa-search"></i></button>
                     </th>
                 </tr>
                 </thead>
@@ -66,23 +66,17 @@
                             <td>{{ $post->category->title }}</td>
                             <td class="table-actions">
                                 @cannot('update', $post)
-                                    <div class="col-md-offset-3 col-md-6 col-xs-12">
-                                        <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
+                                    <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                 @endcannot
                                 @can('update', $post)
-                                    <div class="col-md-6 col-xs-6">
-                                        <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 col-xs-6">
-                                        <a href="{{ route('admin::panel::posts::delete', ['id' => $post->id]) }}" class="btn btn-danger btn-block confirm">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
+                                    <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{ route('admin::panel::posts::delete', ['id' => $post->id]) }}" class="btn btn-danger confirm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 @endif
                             </td>
                         </tr>

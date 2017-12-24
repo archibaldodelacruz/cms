@@ -41,12 +41,12 @@
                                         <td>{{ trans_choice('animals.gender.' . $animal->gender, 1) }}</td>
                                         <td class="table-actions-single">
                                             @cannot('update', $animal)
-                                                <a href="{{ route('admin::panel::animals::show', ['id' => $animal->id]) }}" class="btn btn-primary btn-block">
+                                                <a href="{{ route('admin::panel::animals::show', ['id' => $animal->id]) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             @endcannot
                                             @can('update', $animal)
-                                                <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary btn-block">
+                                                <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             @endcan
@@ -114,12 +114,12 @@
                                         <td>{{ $post->category->title }}</td>
                                         <td class="table-actions-single">
                                             @cannot('update', $post)
-                                                <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
+                                                <a href="{{ route('admin::panel::posts::show', ['id' => $post->id]) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             @endcannot
                                             @can('update', $post)
-                                                <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block">
+                                                <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             @endif
@@ -161,7 +161,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="table-actions-single">
-                                        <a href="{{ route('admin::panel::users::edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('admin::panel::users::edit', ['id' => $user->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

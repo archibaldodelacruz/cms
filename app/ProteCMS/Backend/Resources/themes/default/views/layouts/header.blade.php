@@ -53,7 +53,8 @@
                 </div>
                 <!-- END HEADER INNER -->
             </div>
-            <!-- END HEADER -->
-            <!-- BEGIN HEADER & CONTENT DIVIDER -->
-            <div class="clearfix"> </div>
-            <!-- END HEADER & CONTENT DIVIDER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
